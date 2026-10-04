@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Sanad">
+  <!-- Badge -->
+  <rect width="200" height="200" rx="16" fill="#0E4B3B"/>
+  <!-- Gold frame + corner diamonds -->
+  <rect x="13" y="13" width="174" height="174" fill="none" stroke="#C9A45C" stroke-width="2"/>
+  <path fill="#C9A45C" d="M13 7L19 13L13 19L7 13Z M187 7L193 13L187 19L181 13Z M13 181L19 187L13 193L7 187Z M187 181L193 187L187 193L181 187Z"/>
+  <!-- سند in square Kufic, 11x9 grid -->
+  <path fill="#F5F2EB" transform="translate(34 46) scale(12)" d="M0 2H3V8H4V2H5V8H6V2H7V8H8V2H9V8H10V2H11V9H0V8H2V3H0Z M4 0H5V1H4Z"/>
+</svg>
