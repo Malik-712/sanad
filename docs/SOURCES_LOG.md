@@ -7,8 +7,8 @@ Required by the challenge Terms and Conditions, §9. Add a row for every AI tool
 | 2026-10-04 | AI tool | Claude (claude.ai) | https://claude.ai | Planning, brief, logo draft (`sanad-mark.svg`) | Anthropic Consumer Terms (Claude Pro) |
 | 2026-10-04 | AI tool | Claude Code | https://claude.com/claude-code | Writing and testing code, with human review | Anthropic Consumer Terms (Claude Pro) |
 | 2026-10-04 | AI tool | Claude Design | https://claude.ai | UI design system and screen designs | Anthropic Consumer Terms (Claude Pro) |
-| 2026-10-04 | Font | Readex Pro | https://fonts.google.com/specimen/Readex+Pro | Interface font | SIL Open Font License 1.1 (check on the font page) |
-| 2026-10-04 | Font | Amiri | https://fonts.google.com/specimen/Amiri | Hadith text and narrator names | SIL Open Font License 1.1 (check on the font page) |
+| 2026-10-04 | Font | IBM Plex Sans Arabic | https://fonts.google.com/specimen/IBM+Plex+Sans+Arabic | The only font: interface, hadith text, narrator names | SIL Open Font License 1.1 (check on the font page) |
+
 | 2026-10-04 | Hosting | Vercel (Hobby) | https://vercel.com | Live demo hosting | Vercel Terms of Service |
 
 ## To add when used

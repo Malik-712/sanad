@@ -46,6 +46,7 @@ Sanad enters **Track 04 — Knowledge and verification tools** (أدوات ال�
 
 - Disclose every AI tool, model, service, dataset and open-source part, with its licence, in `docs/SOURCES_LOG.md` (type, source, purpose, date, licence). This includes Claude Code and Claude Design, which we use to build Sanad (§9).
 - Only work from 4–6 Oct is judged. The repo started empty on 4 Oct; the first commit says so (§8).
+- **Prior project:** an earlier version exists (`Malik-712/sanad2`). Say so openly in `docs/BASELINE.md`: its link, a tag of its last version, and anything reused from it. Hiding it is the risk, not having it (§8).
 - No real user data in tests or in any AI service; use made-up examples only (§9).
 - No passwords or keys in the repo (§10).
 - Do not copy protected material, such as an editor's footnotes in a Shamela edition. Use the classical text, name the edition, and link to the page (§8–9).
@@ -57,12 +58,12 @@ We have about 55 hours, so the MVP is small and complete: 4 screens, 5 fully che
 
 **MVP (must have for the demo)**
 
-1. **Home + search:** search by words of the hadith or by narrator; 5 featured hadiths.
-2. **Tree view:** top-to-bottom tree from the Prophet ﷺ to the compilers; zoom, pan, highlight one route, highlight the common link (*madar*) and every branch point.
+1. **Home + search:** the slogan «لكلِّ حديثٍ إسناد»; search by words of the hadith or by narrator; 5 featured hadiths.
+2. **Tree view:** top-to-bottom tree of the hadith's isnads («أسانيد») from the Prophet ﷺ to the compilers; zoom, pan, highlight one isnad, highlight the common link (*madar*) and every branch point.
 3. **Narrator panel:** name, generation (*tabaqa*), death year, grade quoted from a named rijal book (e.g. Taqrib al-Tahdhib) with its page, and the routes he appears in.
-4. **Source panel:** for each route: full isnad text, book, hadith number, grade from an approved source, and a link to the source page.
-5. **Paste an isnad (AI):** paste raw Arabic isnad text; the AI extracts the narrators, links each one to a narrator record with a confidence score, and draws the chain. Low confidence shows "needs verification".
-6. **About and method page:** how it works, sources used, AI limits, and a clear note that this is an AI-assisted tool that does not grade hadiths or give fatwas.
+4. **Source panel:** for each isnad: its full text word for word from the source, book, hadith number, place (edition, volume, page), the quoted grade, a link to the source page, and a «انسخ التوثيق» (copy the reference) button.
+5. **Paste an isnad (AI):** paste raw Arabic isnad text; the AI extracts the narrators, links each one to a narrator record with a confidence score, and draws the chain. Low confidence shows "needs verification". The text stays in the browser.
+6. **About and method page:** how it works, sources used, the three evidence statuses, AI limits, privacy, and a clear note that this is an AI-assisted tool that does not grade hadiths or give fatwas.
 
 **Later (only if time is left)**
 
@@ -73,57 +74,71 @@ We have about 55 hours, so the MVP is small and complete: 4 screens, 5 fully che
 
 ## Visual identity
 
-The look is "a manuscript, made digital": calm parchment, deep ink green, and one touch of gold for what matters most.
+The look is "a manuscript, made digital", built on the square Kufic grid of the logo: square units, straight lines, and a thin gold frame with diamond corners. Every element comes from the logo; if it does not, it does not belong. The full identity board is the first board («هوية سند») in the design file (`design/`).
 
-**Name and tagline**
+**Name and slogan**
 
-- Name: Sanad — Arabic wordmark **سَنَد**.
-- Tagline (Arabic, in product): كلُّ الطرق في شجرة واحدة — English meaning: "Every route, one tree."
+- Name: Sanad — سَنَد.
+- Slogan (Arabic, in the product): **«لكلِّ حديثٍ إسناد»** — English: *"Every hadith has its isnad."* It is our promise: we never show a hadith without its isnad, word for word from its book. Write it in full, next to or under the logo.
 
-**Logo**
+**Logo** (`public/brand/sanad-mark.svg`)
 
-- Mark (already made: `public/brand/sanad-mark.svg`): the word سند in square Kufic, cream on a deep-green rounded badge, inside a thin gold frame with four gold corner diamonds.
-- Use: header (32–40 px), favicon, video intro, first and last slide. At 16 px (favicon) drop the gold frame; it is too thin to read.
-- Rules: flat, no gradients, no shadows; never stretch or recolour; keep clear space equal to the frame margin on all sides.
+| Version | Use | Rule |
+| --- | --- | --- |
+| Full mark (green badge + gold frame) | 48 px and larger: header, cover, video | Never stretch, rotate, recolour, or add a shadow |
+| Small mark (no gold frame) | Under 48 px: favicon, app icon | The thin frame disappears at small sizes |
+| One colour (green letters, no badge) | Print, stamps, light backgrounds | Sanad Green on parchment or white |
+| Clear space | Every use | Empty space around it of at least ¼ of its width |
 
 **Colours**
 
-| Token | Hex | Use |
-| --- | --- | --- |
-| Sanad Green (primary) | #0E4B3B | Logo badge, header, buttons, tree lines |
-| Parchment (background) | #F5F2EB | Page background (same cream as the logo letters) |
-| Paper (surface) | #FFFDF8 | Cards and panels |
-| Ink (text) | #1C1C1A | Body text |
-| Muted (secondary text) | #5E6B66 | Labels, metadata (about 4.9:1 on Parchment, passes AA) |
-| Manuscript Gold (accent) | #C9A45C | Logo frame, the Prophet ﷺ node, common-link ring, active route. Shapes only, never small text (low contrast) |
-| Sage | #6F8F7F | Later generations, quiet lines |
-| Status: supported | #2E7D5B | "Source found" and trusted-grade badges |
-| Status: check | #B7791F | "Needs verification" badge |
-| Status: weak / missing | #B23A3A | Weak grade quoted from a source, or no source found |
-| Dark mode background | #0B1F19 | Dark theme page (green-black) |
+| Token | Hex | Share | Use |
+| --- | --- | --- | --- |
+| Parchment (background) | #F5F2EB | 52% | Page background; text on green |
+| Sanad Green (primary) | #0E4B3B | 26% | Header bands, buttons, tree lines. Green is a surface, not a small touch |
+| Paper (surface) | #FFFDF8 | 14% | Tree stage, panels, inputs |
+| Ink (text) | #1C1C1A | 5% | Text, compiler nodes, strong borders |
+| Sage | #6F8F7F | 2% | Later-narrator node outline |
+| Manuscript Gold (accent) | #C9A45C | 1% | Frame and diamonds only. Never text |
+| Muted | #5E6B66 | — | Secondary text (5.0:1 on parchment) |
+| On-green muted | #CFDAD4 | — | Secondary text on green (7.0:1) |
+| Status: source verified | #2E7D5B · #1F5E44 on #E6F0EA | — | «مصدر موثق» |
+| Status: needs checking | #B7791F · #7A4F0F on #F7EBD6 | — | «يحتاج تحققًا» |
+| Status: no source yet | #8B908D · #45494A on #ECEBE7 | — | «لا مصدر بعد» — neutral grey, never red |
 
-Grade colours always come with a word (never colour alone), and the grade always names its rijal source.
+The three statuses describe **the evidence, not the hadith**. A missing source does not mean the hadith is fabricated, so it is grey, not red. Scholars' grades are quoted text with the name of who said them, never a colour. Status colours always come with a word.
 
 **Typography**
 
-- Interface: Readex Pro (Google Fonts) — the challenge's own font, so the site, video and slides feel like one family. Weights 400, 600, 700.
-- Hadith text and narrator names: Amiri (Google Fonts) — classical Naskh, 400 and 700.
-- Sizes: 14 / 16 / 20 / 28 / 40 px; Arabic body line-height 1.8.
-- Slides: the official template (Readex Pro, navy #12183F, violet #6150EA, turquoise #2EF2C2). Our green and gold appear only in screenshots and the logo.
+- **One font only: IBM Plex Sans Arabic** (Google Fonts, Open Font License), weights 400, 500, 600 and 700. It is used for everything: headings, interface, hadith text and narrator names.
+- Sizes: 13 (smallest) / 14 / 16 / 20 / 28 / 40 / 64 px. Arabic body line-height 1.8; hadith text 1.9.
+- Source text is shown inside «» with its source line under it. The difference comes from layout, not from a second font.
+- Slides: the official template keeps its own font and colours. Sanad's green and gold appear in the logo and the screenshots.
 
-**Tree nodes**
+**Shapes and tree nodes**
 
-- The Prophet ﷺ: gold circle at the top.
-- Companions: ink green circle.
-- Later narrators: sage outline circle.
-- Compilers: ink square with a small book icon.
-- Common link: gold ring around the node. Branch point: small gold dot on the line.
+- 8 px grid, 2 px corners, borders instead of shadows, no gradients, straight lines with square ends. Touch targets of at least 44 px.
+- The Prophet ﷺ: gold diamond with a green outline, at the top. Companions: filled green square. Later narrators: sage outline square. Compilers: ink rectangle with an open-book icon, on the bottom row.
+- Common link: gold diamond ring around the node, with the tag «نقطة الالتقاء». Branch point: small gold diamond on the line.
+- Route line 2 px #7D8A84; selected route 4 px Sanad Green.
 
-**Icons, motion, tone**
+**Voice and fixed sentences**
 
-- Icons: Lucide, 1.5 px stroke.
-- Motion: when a route is chosen, its line draws from top to bottom in 300 ms. No motion if the user turns on "reduce motion".
-- Tone: respectful, plain, scholarly. Always write ﷺ after the Prophet's name and رضي الله عنه after companions.
+Calm, plain, short sentences. We never say «صحيح», «ضعيف» or «موضوع» in our own voice; we only quote them with their author. Always ﷺ after the Prophet's name and رضي الله عنه after a companion's name. These sentences are written exactly as below, in their place, every time:
+
+| Where | Sentence |
+| --- | --- |
+| Every page | «أداة مساعدة بالذكاء الاصطناعي، لا تحكم على الأحاديث ولا تُفتي.» |
+| With every source | «ذِكرُ الحديث في كتابٍ ليس حكمًا عليه. الأحكام تُنقل منسوبةً إلى قائليها.» |
+| The word for a route | «إسناد» (plural «أسانيد»), never «طريق» or «طرق» |
+| With ML output | «استخراج آلي — راجِع النتائج.» |
+| When there is no source | «لم ننقل نصّ الحكم بعد، ولن نعرض حكمًا بلا مصدر.» |
+| Privacy | «يُحلَّل النص في متصفحك، ولا نحفظه ولا نرسله.» |
+
+**Icons and motion**
+
+- Icons: Lucide, 1.5 px stroke, square ends, only where the design has one.
+- Motion: the selected route draws from top to bottom in 300 ms. No motion when the user turns on "reduce motion".
 
 ## Tech stack and resources
 
@@ -133,7 +148,7 @@ One Next.js app on Vercel, with checked data as JSON in the repo. There is no pa
 | --- | --- | --- |
 | Design | Claude Design (Design System + Design artifacts), seeded with the logo and colour tokens | [frontend-design skill](https://github.com/anthropics/skills/tree/main/skills/frontend-design) (Anthropic) |
 | Web app | Next.js (App Router) + TypeScript + Tailwind CSS, `dir="rtl"` | [Next.js docs](https://nextjs.org/docs), [react-best-practices](https://github.com/vercel-labs/agent-skills) (Vercel) |
-| Tree drawing | React Flow (@xyflow/react) + dagre layout | [React Flow docs](https://reactflow.dev) |
+| Tree drawing | Our own SVG renderer (matches the design exactly) + dagre layout | [dagre](https://github.com/dagrejs/dagre) |
 | Isnad engine | TypeScript graph code: merge routes, find the common link and branch points (network analysis) | Unit tests with Vitest |
 | Hadith sources | 5 demo hadiths; text and numbers checked in al-Maktaba al-Shamila and dorar.net/hadith; grades quoted, never computed | The official reference pack |
 | Narrator records | Name, generation, death year, grade quoted from Taqrib al-Tahdhib with page | al-Maktaba al-Shamila |
@@ -148,29 +163,29 @@ One Next.js app on Vercel, with checked data as JSON in the repo. There is no pa
 
 ## Plan and tasks
 
-The deadline drives everything: submit by **Tue 6 Oct 20:00**. After design, the app track and the data track run at the same time and meet at the live demo. The site goes live on Vercel on Sunday night, so we always have a working link.
+The deadline drives everything: submit by **Tue 6 Oct 20:00**. The detailed build order, with times and a "done when" list per session, is in `docs/IMPLEMENTATION.md` (revised Mon 5 Oct, 05:30). The phases below are the summary.
 
 ```
 0 Plan ──► 1 Design ──┬──► 3 Website ───► 4 Isnad engine ──┬──► 6 Launch and pitch
                       └──► 2 Sources ───► 5 AI layer ──────┘
 ```
 
-### Phase 0 — Plan (Sun 4 Oct, now to 18:00)
+### Phase 0 — Plan (done Sun 4 Oct)
 
 - [x] Read the challenge guide and the reference pack
 - [x] Choose the track: Track 04, knowledge and verification tools
 - [x] Confirm the repo: `Malik-712/sanad` (empty, so the start is clean)
 - [x] Answer the open questions
-- [ ] Approve this file; the first commit adds it as `docs/BRIEF.md` and records the starting version
+- [x] Approve this file; the first commit adds it as `docs/BRIEF.md` and records the starting version
 
-### Phase 1 — Design in Claude Design (Sun 4 Oct, 18:00–22:00)
+### Phase 1 — Design in Claude Design (done Sun 4 Oct)
 
-- [ ] Build the Sanad design system from the logo, colour tokens and fonts above
-- [ ] Design 4 screens: Home and search, Tree view (with narrator and source panels), Paste an isnad, About and method
-- [ ] Check mobile layout and contrast, then approve
-- [ ] Export the design so Claude Code can build from it
+- [x] Build the Sanad design system from the logo, colour tokens and fonts above
+- [x] Design 4 screens: Home and search, Tree view (with narrator and source panels), Paste an isnad, About and method
+- [x] Check mobile layout and contrast, then approve
+- [x] Export the design (HTML, in `design/`) so Claude Code can build from it
 
-### Phase 2 — Sources and documentation (Mon 5 Oct, morning)
+### Phase 2 — Sources and documentation (Mon 5 Oct, 10:00–19:00, with a mentor)
 
 - [ ] Pick 5 hadiths from al-Sahihayn with many routes (first one: «إنما الأعمال بالنيات»)
 - [ ] For every route: full isnad text, book, hadith number, link; check each one in al-Maktaba al-Shamila or dorar.net
@@ -178,20 +193,20 @@ The deadline drives everything: submit by **Tue 6 Oct 20:00**. After design, the
 - [ ] For every narrator: name, generation, death year, Taqrib grade and page
 - [ ] Save as JSON with one fixed schema; a hadith specialist reviews at least 1 hadith in full
 
-### Phase 3 — Website (Sun 4 Oct night → Mon 5 Oct)
+### Phase 3 — Website (Session A, Mon 06:00–10:00)
 
 - [ ] Set up Next.js, Tailwind, Arabic RTL, fonts and colour tokens
-- [ ] Connect GitHub to Vercel and deploy the empty skeleton on Sunday night
+- [ ] Connect GitHub to Vercel and deploy
 - [ ] Build pages: Home, Hadith tree, Narrator, Paste an isnad, About and method
 
-### Phase 4 — Isnad engine (Mon 5 Oct)
+### Phase 4 — Isnad engine (Session B, Mon 10:00–14:00)
 
 - [ ] Build the graph: one node per narrator, one line per "heard from"
 - [ ] Merge the same narrator across routes
 - [ ] Find the common link and branch points; count routes per generation
 - [ ] Write tests that run on all 5 hadiths
 
-### Phase 5 — AI layer (Mon 5 Oct, afternoon and evening)
+### Phase 5 — AI layer (Sessions C and D, Mon 14:00 → Tue 01:00)
 
 - [ ] Check the licences of Sanadset and BERT-mini; record them in `docs/SOURCES_LOG.md`
 - [ ] Turn Sanadset into word-level labels; split by book into training data and a 300-isnad test set
@@ -201,22 +216,28 @@ The deadline drives everything: submit by **Tue 6 Oct 20:00**. After design, the
 - [ ] Narrator linking with a confidence score
 - [ ] Hard-case file (unknown narrator, broken chain, two people with one name, text that is not an isnad); run it 3 times; results must match
 
-### Phase 6 — Launch and pitch (Tue 6 Oct, submit by 20:00)
+### Phase 6 — Launch and pitch (Sessions E and F, Tue 08:00–19:00, submit by 20:00)
 
 - [ ] 5-user test: time to build a tree by hand vs with Sanad; fix 1 issue it finds
 - [ ] Lighthouse 90+, accessibility check, mobile check
 - [ ] README (setup, test steps, licences) and `docs/SOURCES.md`
+- [ ] `docs/REQUIREMENTS.md`: every official requirement → the feature that meets it → the evidence
+- [ ] `docs/JUDGES.md`: 5 things to try on the live site, and one command to re-run the numbers
+- [ ] `docs/BASELINE.md`: the prior project, and what was built on 4–6 Oct
 - [ ] Video of 2 minutes or less; deck on the official template; 5-minute pitch script
 - [ ] Submit on the portal by 20:00 and keep the confirmation email
 
 ## Decisions and open questions
 
-**Decisions (4 Oct)**
+**Decisions**
 
 - **AI:** no paid API key. We train our own small model and run it in the browser. Cost is $0, and it shows real machine learning work.
 - **Team:** working alone. For human review, book a challenge mentor (content or sharia) during mentoring hours on Mon 5 Oct (10:00–19:00). Record who checked what, and what changed, in `docs/REVIEW.md`.
 - **Hosting:** Vercel account is linked to GitHub, so every push deploys.
 - **Entry:** accepted, so we submit on the portal.
+- **Slogan (5 Oct):** «لكلِّ حديثٍ إسناد» replaces «كلُّ الطرق في شجرة واحدة». It says what Sanad shows, and it matches the Track 04 success test: every hadith with its isnad from its source.
+- **Font (5 Oct):** one font only, IBM Plex Sans Arabic. Amiri is removed.
+- **Statuses (5 Oct):** "no source yet" is neutral grey, not red. Grades are quoted, never coloured. Every isnad shows its source and place, with a "copy the reference" button. The interface says «أسانيد», not «طرق». These ideas come from the old Sanad plan.
 
 **Still open**
 

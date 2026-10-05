@@ -41,3 +41,6 @@ test-results/
 # OS
 .DS_Store
 Thumbs.db
+
+# Keep the exported browser model (Session C)
+!public/models/**/*.onnx
