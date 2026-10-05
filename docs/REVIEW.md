@@ -41,4 +41,55 @@ Source: a review report prepared with Claude from al-Maktaba al-Shamila (book id
 - The other isnads of «إنما الأعمال بالنيات» (all except `bukhari-1`): not reviewed by the report; they remain as the owner verified them on 5 Oct.
 - Two identifications made by the report itself, not stated in the chains, are marked «قرينة لا نصّ» and should be confirmed in *Tahdhib al-Kamal*: «محمد بن عباد المكي» (= Ibn al-Zibriqan) and «همام» (= Ibn Yahya).
 
-**Phase 2 status:** closed by the owner's authorization, with the items above left open.
+**Phase 2 status (superseded by the verification pass below):** not closed. The earlier pass was authorised to close it; the verification pass of 5 Oct (evening) was told not to mark it complete.
+
+## 5 Oct 2026 — verification pass (branch `phase2-verification`)
+
+Reports: [`docs/VERIFY-ISNADS.md`](VERIFY-ISNADS.md), [`docs/VERIFY-NARRATORS.md`](VERIFY-NARRATORS.md). Source for everything: Shamela (Bukhari ط السلطانية 1681, Muslim ت عبد الباقي 1727, Taqrib 8609, Nawawi's sharh 1711, Ibn al-Salah ed. Itr 22870).
+
+### Result in numbers
+
+| Item | Count |
+| --- | --- |
+| Routes compared with Shamela | 37 |
+| Differences found | 6 kinds, 0 in isnad wording (D1–D5 in `VERIFY-ISNADS.md`; D1, D2 are mistakes from my own 5 Oct migration) |
+| Narrators compared with Taqrib in this pass | 73 (+17 cross-checked by number and page against the external report) |
+| Narrator mismatches | 0 |
+| Narrators with same-name entries flagged (`identification: null`) | 9 (8 same-name + «يحيى بن زكريا») |
+| `identification`: «نص» / «قرينة» / empty | 19 / 27 / 47 |
+
+### What changed in the data
+
+- New optional narrator field `identification` (rules in `CLAUDE.md`), and `verification.note` documented for narrators. The 9 flagged records carry their candidate Taqrib entry numbers in `verification.note`.
+- `sad-ibn-tariq-abu-malik-al-ashjai`: evidence added from Nawawi, *Sharh Muslim* 1/177–178 («أبو مالك الأشجعي فهو سعد بن طارق»).
+- `muhammad-ibn-hatim-unidentified`: note now lists all five Taqrib entries (5791–5795) and the two marked «م».
+- The routes with a null grade (`muslim-muqaddima-*`, `muslim-iman-16-n20`) now say in their note what was searched; no grade was added or changed.
+- `inclusion` was not added anywhere new. It stays on the Muslim routes inside the Sahih proper, never on the Muqaddima, and is not applied to `muslim-iman-16-n20` or `muslim-zuhd-3004-n72` (left open by the owner).
+- Transcription fixes in the data: none (there were no copy errors).
+
+### Not changed on purpose (as instructed)
+
+`muhammad-ibn-hatim-unidentified`, the grade of `muslim-iman-16-n20`, marfu'/mawquf of `muslim-zuhd-3004-n72`, «سفيان» in `muslim-iman-55-n96`, and the grades of the Muqaddima routes. The Taqrib `edition` field.
+
+### Top problems found
+
+1. `number` of the four Muqaddima entries is shorter than the printed form («١» vs «١ - (١)», …, `muslim-muqaddima-n1…n4`) and the unnumbered isnad has an added phrase. Caused by my migration; not fixed because this pass was report-only.
+2. Same-name narrators were linked by one id without a text that decides: Anas (565/566), «محمد بن جعفر» (5785–5789) in `muslim-iman-45-n71`, «محمد بن كثير» (6251–6255), «يحيى بن سعيد» (7554–7559) in six niyyah routes, Ali ibn Rabia (4733 vs the Bajali), Ibn Umar.
+3. Muhammad ibn Hatim: Ibn Maymun or Ibn Bazi' is still undecided.
+4. «يحيى بن زكريا» in `muslim-iman-16-n20` (7548 vs 7549): Nawawi does not settle it.
+5. `muslim-muqaddima-n1-*` has no `page`: Shamela's label «1/ 1» looks wrong; the printed volume must be checked.
+6. The route-level matn is not stored, and route wordings differ (e.g. «بالنية» vs «بالنيات»).
+7. The Muqaddima routes and `muslim-iman-16-n20` have no ruling; Nawawi's sharh gives none for them in the passages searched.
+8. The two identifications made by the external report itself (`muhammad-ibn-abbad-al-makki`, `hammam-ibn-yahya`) are «قرينة» only.
+9. The Taqrib `edition` is still the Shamela placeholder text.
+10. The comparison of isnads is by reading, not a byte diff (see the method in `VERIFY-ISNADS.md`).
+
+### What remains for the owner (Phase 2 is not complete)
+
+- [ ] The five hadith names confirmed, and the deadline (the first request had them in square brackets).
+- [ ] Confirm that `muslim-96` meant **narration 96** (hadith (55)), not hadith (96).
+- [ ] The Taqrib edition (publisher, editor, year) from the printed copy.
+- [ ] Resolve Muhammad ibn Hatim in *Tahdhib al-Kamal* or *Tuhfat al-Ashraf*.
+- [ ] Decide the same-name table in `VERIFY-NARRATORS.md`.
+- [ ] Approve the fix for D1/D2 in `VERIFY-ISNADS.md` and check the page of `muslim-muqaddima-n1-*`.
+- [ ] A specialist's review of at least one full hadith.

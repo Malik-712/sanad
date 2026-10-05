@@ -122,11 +122,19 @@ type Narrator = {
   role: "prophet" | "companion" | "narrator" | "compiler";
   tabaqa?: string;                    // as written in Taqrib, e.g. «من الخامسة»
   deathAr?: string;                   // as written in the source
+  identification?: { kind: "نص" | "قرينة"; note: string } | null;   // see «Identifying narrators»; null/absent = not certain
   taqrib?: { quoteAr: string; entryNo: string; page: string; edition: string; url?: string };
-  verification: { status: "verified" | "unverified"; checkedBy?: string; checkedAt?: string };
+  verification: { status: "verified" | "unverified"; checkedBy?: string; checkedAt?: string; note?: string };
 };
 ```
 
+## Identifying narrators and variant readings (data rules)
+
+- A narrator record is linked to a name in an isnad only when the evidence is written in the record. `identification.kind` is **«نص»** when the isnad itself names him fully (four or more name tokens, or three with a nisba, or an apposition inside the isnad such as «يعني ابن علية»), and **«قرينة»** when the isnad gives a short form and the identity comes from evidence quoted in the route note (sharh, Taqrib, al-Ansab) or from the nasab inside the same isnad. The `note` says which. Anything else is `null`; never guess.
+- A shared name (several Taqrib entries with the same name next to each other, e.g. «محمد ابن جعفر» ٥٧٨٥–٥٧٨٩) is **not** resolved by choosing one: leave `identification: null`, list the candidate entry numbers in `verification.note`, and let the owner decide. If a source settles it (e.g. *Fath al-Bari*: «هو ابن العاص»), quote it in the route note and use «قرينة». A narrator the sources leave open stays a placeholder record (`<name>-unidentified`, no Taqrib fields).
+- Rulings: `grade` is only a quoted ruling with its author. For Muslim routes inside the Sahih (not the Muqaddima), `inclusion` quotes Ibn al-Salah (*Muqaddima*, ed. Itr, pp. 28–29) as «أخرجه مسلم في صحيحه». Routes in Muslim's Muqaddima keep `grade: null` («لم أجد») unless a named ruling on that isnad is found and quoted.
+- Variant readings of the matn go in `matnVariants` (with their source); the main `matnAr` follows the reading the owner approved, and the reading of our Shamela copy stays in `matnVariants` if it differs.
+- Muslim route ids: `muslim-<kitab>-<hadith no>-n<narration no>[-a|-b]` (Muqaddima: `muslim-muqaddima-n<no>`); `number` is the printed form, e.g. «٩٦ - (٥٥)».
 Status shown in the UI (the design's three badges):
 - **مصدر موثق** — `verification.status === "verified"` and a source URL exists.
 - **يحتاج تحققًا** — unverified, or produced by the ML model, or linker confidence below threshold.

@@ -17,6 +17,10 @@
     "role": "prophet",
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "نص",
+      "note": "مذكور في كل إسناد: «رسول الله ﷺ» أو «النبي ﷺ»."
     }
   },
   {
@@ -36,6 +40,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "نص",
+      "note": "صاحب الكتاب الذي منه الإسناد."
     }
   },
   {
@@ -54,6 +62,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "نص",
+      "note": "صاحب الكتاب الذي منه الإسناد."
     }
   },
   {
@@ -102,6 +114,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "سُمّي بنسبه في بعض الأسانيد، وجاء بصيغة مختصرة في bukhari-54، bukhari-3898، bukhari-5070، bukhari-6953، muslim-imara-1907-n155 (بقرينة أنه الراوي نفسه في الحديث ذاته)."
     }
   },
   {
@@ -127,6 +143,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "سُمّي بنسبه في بعض الأسانيد، وجاء بصيغة مختصرة في bukhari-54، bukhari-3898، bukhari-6953، muslim-imara-1907-n155 (بقرينة أنه الراوي نفسه في الحديث ذاته)."
     }
   },
   {
@@ -151,8 +171,10 @@
       "url": "https://shamela.ws/book/8609/517"
     },
     "verification": {
-      "status": "unverified"
-    }
+      "status": "unverified",
+      "note": "اسم مشترك في التقريب: «يحيى ابن سعيد» ٧٥٥٤، ٧٥٥٥، ٧٥٥٦، ٧٥٥٧ (القطان)، ٧٥٥٨، ٧٥٥٩ (الأنصاري). نصّ بنسبته الأنصاري في bukhari-1 فقط؛ وفي بقية أسانيد «إنما الأعمال» ورد «يحيى بن سعيد» أو «يحيى» مجردًا."
+    },
+    "identification": null
   },
   {
     "id": "sufyan-ibn-uyayna",
@@ -173,6 +195,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "لم يُسمَّ بنسبه في muslim-iman-55-n95، bukhari-1؛ تعيينه بقرينة موثّقة في ملاحظة الإسناد (شرح أو التقريب أو الأنساب)، لا بنصّ الإسناد."
     }
   },
   {
@@ -194,6 +220,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "لم يُسمَّ بنسبه في bukhari-2529؛ تعيينه بقرينة موثّقة في ملاحظة الإسناد (شرح أو التقريب أو الأنساب)، لا بنصّ الإسناد."
     }
   },
   {
@@ -215,6 +245,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "نص",
+      "note": "مسمّى بنسبه أو بما يميّزه في نص كل إسناد يرد فيه."
     }
   },
   {
@@ -237,6 +271,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "نص",
+      "note": "مسمّى بنسبه أو بما يميّزه في نص كل إسناد يرد فيه."
     }
   },
   {
@@ -278,8 +316,10 @@
       "url": "https://shamela.ws/book/8609/430"
     },
     "verification": {
-      "status": "unverified"
-    }
+      "status": "unverified",
+      "note": "اسم مشترك في التقريب: «محمد ابن كثير» ٦٢٥١ (الثقفي الصنعاني)، ٦٢٥٢ (العبدي)، ٦٢٥٣، ٦٢٥٤، ٦٢٥٥. لم أجد نصًّا يعيّنه في إسناد bukhari-2529."
+    },
+    "identification": null
   },
   {
     "id": "musaddad-ibn-musarhad",
@@ -322,6 +362,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "سُمّي بنسبه في بعض الأسانيد، وجاء بصيغة مختصرة في bukhari-6953 (بقرينة أنه الراوي نفسه في الحديث ذاته)."
     }
   },
   {
@@ -384,6 +428,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "لم يُسمَّ بنسبه في bukhari-6689؛ تعيينه بقرينة موثّقة في ملاحظة الإسناد (شرح أو التقريب أو الأنساب)، لا بنصّ الإسناد."
     }
   },
   {
@@ -404,8 +452,10 @@
       "url": "https://shamela.ws/book/8609/428"
     },
     "verification": {
-      "status": "unverified"
-    }
+      "status": "unverified",
+      "note": "ورد «أبو النعمان» كنية فقط في bukhari-6953؛ لا نصّ في الإسناد، والدليل المذكور غير مباشر (فتح الباري ١١/ ٤٢٥ في حديث آخر)."
+    },
+    "identification": null
   },
   {
     "id": "ali-ibn-abi-talib",
@@ -466,6 +516,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "لم يُسمَّ بنسبه في bukhari-107؛ تعيينه بقرينة موثّقة في ملاحظة الإسناد (شرح أو التقريب أو الأنساب)، لا بنصّ الإسناد."
     }
   },
   {
@@ -487,8 +541,10 @@
       "url": "https://shamela.ws/book/8609/41"
     },
     "verification": {
-      "status": "unverified"
-    }
+      "status": "unverified",
+      "note": "اسم مشترك في التقريب: ٥٦٥ (الأنصاري الخزرجي خادم رسول الله ﷺ) و٥٦٦ (القشيري الكعبي). الإسناد يقول «أنس» مجردًا ولا يعيّنه نصًّا."
+    },
+    "identification": null
   },
   {
     "id": "salama-ibn-al-akwa",
@@ -508,6 +564,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "لم يُسمَّ بنسبه في bukhari-109؛ تعيينه بقرينة موثّقة في ملاحظة الإسناد (شرح أو التقريب أو الأنساب)، لا بنصّ الإسناد."
     }
   },
   {
@@ -571,6 +631,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "ورد «عبد الله بن عمرو» دون «ابن العاص» (في التقريب ٣٤٩٦–٣٥٠١ عدة أسماء بهذه الصيغة)؛ عيّنه ابن حجر في فتح الباري ١/ ٢٠٣ (انظر ملاحظة bukhari-3461)."
     }
   },
   {
@@ -591,6 +655,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "نص",
+      "note": "مسمّى بنسبه أو بما يميّزه في نص كل إسناد يرد فيه."
     }
   },
   {
@@ -656,6 +724,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "لم يُسمَّ بنسبه في bukhari-106، muslim-muqaddima-n1-a، muslim-muqaddima-n1-b، muslim-muqaddima-n1-c؛ تعيينه بقرينة موثّقة في ملاحظة الإسناد (شرح أو التقريب أو الأنساب)، لا بنصّ الإسناد."
     }
   },
   {
@@ -699,6 +771,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "لم يُسمَّ بنسبه في bukhari-107؛ تعيينه بقرينة موثّقة في ملاحظة الإسناد (شرح أو التقريب أو الأنساب)، لا بنصّ الإسناد."
     }
   },
   {
@@ -741,6 +817,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "نص",
+      "note": "مسمّى بنسبه أو بما يميّزه في نص كل إسناد يرد فيه."
     }
   },
   {
@@ -762,6 +842,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "لم يُسمَّ بنسبه في bukhari-108؛ تعيينه بقرينة موثّقة في ملاحظة الإسناد (شرح أو التقريب أو الأنساب)، لا بنصّ الإسناد."
     }
   },
   {
@@ -783,6 +867,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "لم يُسمَّ بنسبه في bukhari-108؛ تعيينه بقرينة موثّقة في ملاحظة الإسناد (شرح أو التقريب أو الأنساب)، لا بنصّ الإسناد."
     }
   },
   {
@@ -805,6 +893,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "لم يُسمَّ بنسبه في bukhari-108؛ تعيينه بقرينة موثّقة في ملاحظة الإسناد (شرح أو التقريب أو الأنساب)، لا بنصّ الإسناد."
     }
   },
   {
@@ -847,6 +939,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "نص",
+      "note": "مسمّى بنسبه أو بما يميّزه في نص كل إسناد يرد فيه."
     }
   },
   {
@@ -974,6 +1070,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "في التقريب ٢٣٥٩–٢٣٦٣ عدة «سعيد ابن عبيد»؛ عيّنه ابن حجر في فتح الباري ٣/ ١٦٢: «سعيد بن عبيد هو الطائي» (انظر ملاحظة bukhari-1291)."
     }
   },
   {
@@ -995,8 +1095,10 @@
       "url": "https://shamela.ws/book/8609/327"
     },
     "verification": {
-      "status": "unverified"
-    }
+      "status": "unverified",
+      "note": "في التقريب ٤٧٣٣ (الوالبي) وذكر ابن حجر في الترجمة نفسها أنه يقال هو الذي قال فيه العلاء «علي ابن ربيعة البجلي» وفرّق بينهما البخاري؛ ولم أجد نصًّا يحسم أيهما في إسنادي bukhari-1291 وmuslim-muqaddima-n4."
+    },
+    "identification": null
   },
   {
     "id": "abu-asim-al-dahhak-ibn-makhlad",
@@ -1017,6 +1119,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "نص",
+      "note": "مسمّى بنسبه أو بما يميّزه في نص كل إسناد يرد فيه."
     }
   },
   {
@@ -1100,6 +1206,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "نص",
+      "note": "مسمّى بنسبه أو بما يميّزه في نص كل إسناد يرد فيه."
     }
   },
   {
@@ -1121,8 +1231,10 @@
       "url": "https://shamela.ws/book/8609/398"
     },
     "verification": {
-      "status": "unverified"
-    }
+      "status": "unverified",
+      "note": "اسم مشترك في التقريب: «محمد ابن جعفر» ٥٧٨٥، ٥٧٨٦، ٥٧٨٧ (الهذلي المعروف بغندر)، ٥٧٨٨، ٥٧٨٩. في مقدمة مسلم سمّاه النووي (شرحه ١/ ٦٥) «غندر ... واسمه محمد بن جعفر الهذلي»؛ وفي إسنادي لا يؤمن (muslim-iman-45-n71-a/b) ورد «محمد بن جعفر» مجردًا ولا نصّ يعيّنه."
+    },
+    "identification": null
   },
   {
     "id": "muhammad-ibn-al-muthanna",
@@ -1143,6 +1255,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "نص",
+      "note": "مسمّى بنسبه أو بما يميّزه في نص كل إسناد يرد فيه."
     }
   },
   {
@@ -1206,6 +1322,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "نص",
+      "note": "مسمّى بنسبه أو بما يميّزه في نص كل إسناد يرد فيه."
     }
   },
   {
@@ -1227,6 +1347,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "نص",
+      "note": "مسمّى بنسبه أو بما يميّزه في نص كل إسناد يرد فيه."
     }
   },
   {
@@ -1248,6 +1372,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "سُمّي بنسبه في بعض الأسانيد، وجاء بصيغة مختصرة في muslim-iman-16-n22 (بقرينة أنه الراوي نفسه في الحديث ذاته)."
     }
   },
   {
@@ -1269,6 +1397,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "لم يُسمَّ بنسبه في muslim-iman-16-n22، muslim-muqaddima-n4-a؛ تعيينه بقرينة موثّقة في ملاحظة الإسناد (شرح أو التقريب أو الأنساب)، لا بنصّ الإسناد."
     }
   },
   {
@@ -1290,6 +1422,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "نص",
+      "note": "مسمّى بنسبه أو بما يميّزه في نص كل إسناد يرد فيه."
     }
   },
   {
@@ -1331,6 +1467,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "نص",
+      "note": "مسمّى بنسبه أو بما يميّزه في نص كل إسناد يرد فيه."
     }
   },
   {
@@ -1352,6 +1492,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "نص",
+      "note": "مسمّى بنسبه أو بما يميّزه في نص كل إسناد يرد فيه."
     }
   },
   {
@@ -1373,6 +1517,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "لم يُسمَّ بنسبه في muslim-zuhd-3004-n72؛ تعيينه بقرينة موثّقة في ملاحظة الإسناد (شرح أو التقريب أو الأنساب)، لا بنصّ الإسناد."
     }
   },
   {
@@ -1436,6 +1584,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "في التقريب ٥٩٩٢ و٥٩٩٣ «محمد ابن عباد» مكيان؛ عيّنه السمعاني في الأنساب ١٢/ ٤١٧ (مادة «المكي») ابنَ الزبرقان الراوي عن سفيان بن عيينة (انظر ملاحظة muslim-iman-55-n95). قرينة لا نصّ."
     }
   },
   {
@@ -1458,6 +1610,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "سُمّي بنسبه في بعض الأسانيد، وجاء بصيغة مختصرة في muslim-iman-55-unnumbered (بقرينة أنه الراوي نفسه في الحديث ذاته)."
     }
   },
   {
@@ -1480,6 +1636,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "سُمّي بنسبه في بعض الأسانيد، وجاء بصيغة مختصرة في muslim-iman-55-n95، muslim-iman-55-unnumbered (بقرينة أنه الراوي نفسه في الحديث ذاته)."
     }
   },
   {
@@ -1512,7 +1672,7 @@
     "role": "narrator",
     "verification": {
       "status": "unverified",
-      "note": "placeholder: في التقريب «محمد بن حاتم» اثنان بالرمز (م): ابن بزيع (٥٧٩١) وابن ميمون (٥٧٩٣). لم يحسم المصدر أيهما؛ لا تقريب لهذا السجل عمدًا."
+      "note": "placeholder: في التقريب «محمد ابن حاتم» خمسة (٥٧٩١–٥٧٩٥)؛ برمز مسلم (م) اثنان: ابن بزيع ٥٧٩١ (خ م د س، ثقة) وابن ميمون ٥٧٩٣ (م د، صدوق ربما وهم). لم يحسم المصدر أيهما؛ يُراجع تحفة الأشراف أو تهذيب الكمال. لا تقريب لهذا السجل عمدًا."
     }
   },
   {
@@ -1534,6 +1694,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "لم يُسمَّ بنسبه في muslim-iman-55-n96؛ تعيينه بقرينة موثّقة في ملاحظة الإسناد (شرح أو التقريب أو الأنساب)، لا بنصّ الإسناد."
     }
   },
   {
@@ -1631,8 +1795,10 @@
       "url": "https://shamela.ws/book/8609/517"
     },
     "verification": {
-      "status": "unverified"
-    }
+      "status": "unverified",
+      "note": "اسم مشترك في التقريب: «يحيى ابن سعيد» ٧٥٥٤–٧٥٥٩. عيّنه ابن حجر بالقطان في فتح الباري ١/ ٥٧ لإسنادي bukhari-13، وفي مسلم (٧٢) بما نقله عن مستخرج أبي نعيم؛ لم يرد في الإسناد نفسه نسبته."
+    },
+    "identification": null
   },
   {
     "id": "husayn-ibn-dhakwan-al-muallim",
@@ -1696,6 +1862,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "نص",
+      "note": "مسمّى بنسبه أو بما يميّزه في نص كل إسناد يرد فيه."
     }
   },
   {
@@ -1718,6 +1888,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "لم يُسمَّ بنسبه في muslim-iman-16-n22؛ تعيينه بقرينة موثّقة في ملاحظة الإسناد (شرح أو التقريب أو الأنساب)، لا بنصّ الإسناد."
     }
   },
   {
@@ -1740,6 +1914,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "في التقريب ٤٦٦٨ (ابن العاص، ثقة) و٤٦٦٩ (ابن سلمة، ضعيف)؛ عيّنه ابن حجر في فتح الباري ١/ ٤٩: «عكرمة بن خالد هو ابن سعيد بن العاص...» (انظر ملاحظة bukhari-8)."
     }
   },
   {
@@ -1763,8 +1941,10 @@
       "url": "https://shamela.ws/book/8609/241"
     },
     "verification": {
-      "status": "unverified"
-    }
+      "status": "unverified",
+      "note": "اسم مشترك في التقريب: «عبد الله ابن عمر» ٣٤٩٠ (ابن الخطاب) إلى ٣٤٩٥. ورد في الأسانيد «ابن عمر» أو «عبد الله» مجردًا (muslim-iman-16-n21: بدلالة نسب ابن محمد بن زيد بن عبد الله بن عمر)."
+    },
+    "identification": null
   },
   {
     "id": "sulayman-ibn-hayyan-abu-khalid-al-ahmar",
@@ -1807,6 +1987,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "النووي، شرح مسلم ١/ ١٧٧–١٧٨: «أما أبو مالك الأشجعي فهو سعد بن طارق المسمى في الرواية الثانية» (إسناد muslim-iman-16-n19)."
     }
   },
   {
@@ -1829,6 +2013,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "سُمّي بنسبه في بعض الأسانيد، وجاء بصيغة مختصرة في muslim-iman-16-n19 (بقرينة أنه الراوي نفسه في الحديث ذاته)."
     }
   },
   {
@@ -1850,6 +2038,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "نص",
+      "note": "مسمّى بنسبه أو بما يميّزه في نص كل إسناد يرد فيه."
     }
   },
   {
@@ -1870,8 +2062,10 @@
       "url": "https://shamela.ws/book/8609/516"
     },
     "verification": {
-      "status": "unverified"
-    }
+      "status": "unverified",
+      "note": "في التقريب ٧٥٤٨ (ابن أبي زائدة، ثقة) و٧٥٤٩ (النيسابوري، ثقة): لم أجد نصًّا يحسم أيهما في muslim-iman-16-n20. لم يتعرّض له النووي في شرح مسلم ١/ ١٧٧–١٧٨. بقي مفتوحًا بقرار المالك."
+    },
+    "identification": null
   },
   {
     "id": "ubaydullah-ibn-muadh",
@@ -1892,6 +2086,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "نص",
+      "note": "مسمّى بنسبه أو بما يميّزه في نص كل إسناد يرد فيه."
     }
   },
   {
@@ -1953,6 +2151,10 @@
     },
     "verification": {
       "status": "unverified"
+    },
+    "identification": {
+      "kind": "قرينة",
+      "note": "لم يُسمَّ بنسبه في muslim-iman-16-n21؛ تعيينه بقرينة موثّقة في ملاحظة الإسناد (شرح أو التقريب أو الأنساب)، لا بنصّ الإسناد."
     }
   }
 ]
