@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens from CLAUDE.md and design/screens/*.dc.html.
+ * Default palette, radii and shadows are cleared: only design colours exist,
+ * corners are square (2px) and nothing casts a shadow.
+ */
+@theme {
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --color-green: #0e4b3b;
+  --color-green-deep: #0a3a2d;
+  --color-green-line: #2a6453;
+  --color-parchment: #f5f2eb;
+  --color-paper: #fffdf8;
+  --color-ink: #1c1c1a;
+  --color-muted: #5e6b66;
+  --color-on-green-muted: #cfdad4;
+  --color-line: #ddd6c6;
+  --color-line-strong: #c9c2b0;
+  --color-gold: #c9a45c;
+  --color-sage: #6f8f7f;
+  --color-edge: #7d8a84;
+  --color-selected: #eaf1ec;
+  --color-hover: #ede8dc;
+
+  --color-ok: #2e7d5b;
+  --color-ok-bg: #e6f0ea;
+  --color-ok-fg: #1f5e44;
+  --color-check: #b7791f;
+  --color-check-bg: #f7ebd6;
+  --color-check-fg: #7a4f0f;
+  --color-none: #8b908d;
+  --color-none-bg: #ecebe7;
+  --color-none-fg: #45494a;
+
+  --radius-*: initial;
+  --radius-sq: 2px;
+
+  --shadow-*: initial;
+  --inset-shadow-*: initial;
+  --drop-shadow-*: initial;
+  --text-shadow-*: initial;
+
+  --breakpoint-lg: 64rem;
+
+  --font-*: initial;
+}
+
+/* One font only. next/font sets --font-plex-arabic on <html>; inline so it resolves there. */
+@theme inline {
+  --font-sans: var(--font-plex-arabic), Tahoma, sans-serif;
+  --default-font-family: var(--font-plex-arabic), Tahoma, sans-serif;
+  --default-mono-font-family: var(--font-plex-arabic), Tahoma, sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-parchment);
+    color: var(--color-ink);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  a {
+    color: var(--color-green);
+  }
+  a:hover {
+    color: var(--color-green-deep);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-green);
+    outline-offset: 2px;
+  }
+  .ongreen :focus-visible {
+    outline-color: var(--color-gold);
+  }
+
+  ::selection {
+    background-color: var(--color-green);
+    color: var(--color-parchment);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
