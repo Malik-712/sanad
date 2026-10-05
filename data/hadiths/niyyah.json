@@ -1,0 +1,372 @@
+{
+  "id": "niyyah",
+  "titleAr": "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ",
+  "matnAr": "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى، فَمَنْ كَانَتْ هِجْرَتُهُ إِلَى دُنْيَا يُصِيبُهَا، أَوْ إِلَى امْرَأَةٍ يَنْكِحُهَا، فَهِجْرَتُهُ إِلَى مَا هَاجَرَ إِلَيْهِ",
+  "matnSource": {
+    "url": "https://shamela.ws/book/1681/10",
+    "book": "صحيح البخاري - ط السلطانية",
+    "number": "1"
+  },
+  "routes": [
+    {
+      "id": "bukhari-1",
+      "book": {
+        "nameAr": "صحيح البخاري",
+        "authorAr": "البخاري",
+        "edition": "ط السلطانية"
+      },
+      "number": "1",
+      "volume": "1",
+      "page": "6",
+      "url": "https://shamela.ws/book/1681/10",
+      "retrieved": "2026-10-05",
+      "method": "manual-checked",
+      "isnadAr": "حَدَّثَنَا الْحُمَيْدِيُّ عَبْدُ اللهِ بْنُ الزُّبَيْرِ ، قَالَ: حَدَّثَنَا سُفْيَانُ ، قَالَ: حَدَّثَنَا يَحْيَى بْنُ سَعِيدٍ الْأَنْصَارِيُّ ، قَالَ: أَخْبَرَنِي مُحَمَّدُ بْنُ إِبْرَاهِيمَ التَّيْمِيُّ : أَنَّهُ سَمِعَ عَلْقَمَةَ بْنَ وَقَّاصٍ اللَّيْثِيَّ ، يَقُولُ: سَمِعْتُ عُمَرَ بْنَ الْخَطَّابِ ﵁ عَلَى الْمِنْبَرِ، قَالَ: سَمِعْتُ رَسُولَ اللهِ ﷺ",
+      "chain": [
+        "bukhari",
+        "al-humaydi",
+        "sufyan-ibn-uyayna",
+        "yahya-ibn-said-al-ansari",
+        "muhammad-ibn-ibrahim-al-taymi",
+        "alqama-ibn-waqqas-al-laythi",
+        "umar-ibn-al-khattab",
+        "prophet"
+      ],
+      "sighas": [
+        "حَدَّثَنَا",
+        "حَدَّثَنَا",
+        "حَدَّثَنَا",
+        "أَخْبَرَنِي",
+        "سَمِعَ",
+        "سَمِعْتُ",
+        "سَمِعْتُ"
+      ],
+      "grade": {
+        "textAr": "[صحيح]",
+        "byAr": "البخاري",
+        "sourceUrl": "https://dorar.net/h/45wXAdej"
+      },
+      "verification": {
+        "status": "verified",
+        "checkedBy": "Malek",
+        "checkedAt": "2026-10-05",
+        "note": "«سفيان» = ابن عيينة: فتح الباري لابن حجر (ط السلفية) ١/ ١٠: «قَوْلُهُ: (حَدَّثَنَا سُفْيَانُ) هُوَ ابْنُ عُيَيْنَةَ» — https://shamela.ws/book/1673/496 . وفي تقريب التهذيب (ترجمة الحميدي ٣٣٢٠): «أجل أصحاب ابن عيينة» — https://shamela.ws/book/8609/229"
+      }
+    },
+    {
+      "id": "bukhari-54",
+      "book": {
+        "nameAr": "صحيح البخاري",
+        "authorAr": "البخاري",
+        "edition": "ط السلطانية"
+      },
+      "number": "54",
+      "volume": "1",
+      "page": "20",
+      "url": "https://shamela.ws/book/1681/104",
+      "retrieved": "2026-10-05",
+      "method": "manual-checked",
+      "isnadAr": "حَدَّثَنَا عَبْدُ اللهِ بْنُ مَسْلَمَةَ قَالَ: أَخْبَرَنَا مَالِكٌ، عَنْ يَحْيَى بْنِ سَعِيدٍ، عَنْ مُحَمَّدِ بْنِ إِبْرَاهِيمَ، عَنْ عَلْقَمَةَ بْنِ وَقَّاصٍ، عَنْ عُمَرَ : أَنَّ رَسُولَ اللهِ ﷺ",
+      "chain": [
+        "bukhari",
+        "abdullah-ibn-maslama-al-qanabi",
+        "malik-ibn-anas",
+        "yahya-ibn-said-al-ansari",
+        "muhammad-ibn-ibrahim-al-taymi",
+        "alqama-ibn-waqqas-al-laythi",
+        "umar-ibn-al-khattab",
+        "prophet"
+      ],
+      "sighas": [
+        "حَدَّثَنَا",
+        "أَخْبَرَنَا",
+        "عَنْ",
+        "عَنْ",
+        "عَنْ",
+        "عَنْ",
+        "أَنَّ"
+      ],
+      "grade": {
+        "textAr": "[صحيح]",
+        "byAr": "البخاري",
+        "sourceUrl": "https://dorar.net/h/KTRHBMcP"
+      },
+      "verification": {
+        "status": "verified",
+        "checkedBy": "Malek",
+        "checkedAt": "2026-10-05",
+        "note": "«مالك» و«يحيى بن سعيد» غير منسوبَين في هذا الإسناد؛ انظر قسم Needs owner decision."
+      }
+    },
+    {
+      "id": "bukhari-2529",
+      "book": {
+        "nameAr": "صحيح البخاري",
+        "authorAr": "البخاري",
+        "edition": "ط السلطانية"
+      },
+      "number": "2529",
+      "volume": "3",
+      "page": "145-146",
+      "url": "https://shamela.ws/book/1681/4021",
+      "retrieved": "2026-10-05",
+      "method": "manual-checked",
+      "isnadAr": "حَدَّثَنَا مُحَمَّدُ بْنُ كَثِيرٍ ، عَنْ سُفْيَانَ : حَدَّثَنَا يَحْيَى بْنُ سَعِيدٍ ، عَنْ مُحَمَّدِ بْنِ إِبْرَاهِيمَ التَّيْمِيِّ ، عَنْ عَلْقَمَةَ بْنِ وَقَّاصٍ اللَّيْثِيِّ قَالَ: سَمِعْتُ عُمَرَ بْنَ الْخَطَّابِ ﵁، عَنِ النَّبِيِّ ﷺ",
+      "chain": [
+        "bukhari",
+        "muhammad-ibn-kathir-al-abdi",
+        "sufyan-al-thawri",
+        "yahya-ibn-said-al-ansari",
+        "muhammad-ibn-ibrahim-al-taymi",
+        "alqama-ibn-waqqas-al-laythi",
+        "umar-ibn-al-khattab",
+        "prophet"
+      ],
+      "sighas": [
+        "حَدَّثَنَا",
+        "عَنْ",
+        "حَدَّثَنَا",
+        "عَنْ",
+        "عَنْ",
+        "سَمِعْتُ",
+        "عَنِ"
+      ],
+      "grade": {
+        "textAr": "[صحيح]",
+        "byAr": "البخاري",
+        "sourceUrl": "https://dorar.net/h/jISdoGgA"
+      },
+      "verification": {
+        "status": "verified",
+        "checkedBy": "Malek",
+        "checkedAt": "2026-10-05",
+        "note": "«سفيان» = الثوري: فتح الباري لابن حجر (ط السلفية) ٥/ ١٦١: «قَوْلُهُ: (عَنْ سُفْيَانَ) هُوَ الثَّوْرِيُّ» — https://shamela.ws/book/1673/2943 . «يحيى بن سعيد» غير منسوب هنا؛ انظر Needs owner decision."
+      }
+    },
+    {
+      "id": "bukhari-3898",
+      "book": {
+        "nameAr": "صحيح البخاري",
+        "authorAr": "البخاري",
+        "edition": "ط السلطانية"
+      },
+      "number": "3898",
+      "volume": "5",
+      "page": "56-57",
+      "url": "https://shamela.ws/book/1681/5892",
+      "retrieved": "2026-10-05",
+      "method": "manual-checked",
+      "isnadAr": "حَدَّثَنَا مُسَدَّدٌ: حَدَّثَنَا حَمَّادٌ هُوَ ابْنُ زَيْدٍ، عَنْ يَحْيَى، عَنْ مُحَمَّدِ بْنِ إِبْرَاهِيمَ، عَنْ عَلْقَمَةَ بْنِ وَقَّاصٍ قَالَ: سَمِعْتُ عُمَرَ ﵁ قَالَ: سَمِعْتُ النَّبِيَّ ﷺ",
+      "chain": [
+        "bukhari",
+        "musaddad-ibn-musarhad",
+        "hammad-ibn-zayd",
+        "yahya-ibn-said-al-ansari",
+        "muhammad-ibn-ibrahim-al-taymi",
+        "alqama-ibn-waqqas-al-laythi",
+        "umar-ibn-al-khattab",
+        "prophet"
+      ],
+      "sighas": [
+        "حَدَّثَنَا",
+        "حَدَّثَنَا",
+        "عَنْ",
+        "عَنْ",
+        "عَنْ",
+        "سَمِعْتُ",
+        "سَمِعْتُ"
+      ],
+      "grade": {
+        "textAr": "[صحيح]",
+        "byAr": "البخاري",
+        "sourceUrl": "https://dorar.net/h/dbXtAAoj"
+      },
+      "verification": {
+        "status": "verified",
+        "checkedBy": "Malek",
+        "checkedAt": "2026-10-05",
+        "note": "«حماد» مبيَّن في نص الإسناد نفسه: «حَمَّادٌ هُوَ ابْنُ زَيْدٍ». «يحيى» مهمل (بلا اسم أب) — انظر Needs owner decision."
+      }
+    },
+    {
+      "id": "bukhari-5070",
+      "book": {
+        "nameAr": "صحيح البخاري",
+        "authorAr": "البخاري",
+        "edition": "ط السلطانية"
+      },
+      "number": "5070",
+      "volume": "7",
+      "page": "3-4",
+      "url": "https://shamela.ws/book/1681/7555",
+      "retrieved": "2026-10-05",
+      "method": "manual-checked",
+      "isnadAr": "حَدَّثَنَا يَحْيَى بْنُ قَزَعَةَ: حَدَّثَنَا مَالِكٌ، عَنْ يَحْيَى بْنِ سَعِيدٍ، عَنْ مُحَمَّدِ بْنِ إِبْرَاهِيمَ بْنِ الْحَارِثِ، عَنْ عَلْقَمَةَ بْنِ وَقَّاصٍ، عَنْ عُمَرَ بْنِ الْخَطَّابِ ﵁ قَالَ: قَالَ النَّبِيُّ ﷺ",
+      "chain": [
+        "bukhari",
+        "yahya-ibn-qazaa",
+        "malik-ibn-anas",
+        "yahya-ibn-said-al-ansari",
+        "muhammad-ibn-ibrahim-al-taymi",
+        "alqama-ibn-waqqas-al-laythi",
+        "umar-ibn-al-khattab",
+        "prophet"
+      ],
+      "sighas": [
+        "حَدَّثَنَا",
+        "حَدَّثَنَا",
+        "عَنْ",
+        "عَنْ",
+        "عَنْ",
+        "عَنْ",
+        "قَالَ"
+      ],
+      "grade": {
+        "textAr": "[صحيح]",
+        "byAr": "البخاري",
+        "sourceUrl": "https://dorar.net/h/V1ix4Kc4"
+      },
+      "verification": {
+        "status": "verified",
+        "checkedBy": "Malek",
+        "checkedAt": "2026-10-05",
+        "note": "حُذفت علامة الصفحة ⦗٤⦘ من داخل الإسناد (بعد «عَنْ» وقبل «مُحَمَّدِ»). «مالك» و«يحيى بن سعيد» غير منسوبَين؛ انظر Needs owner decision."
+      }
+    },
+    {
+      "id": "bukhari-6689",
+      "book": {
+        "nameAr": "صحيح البخاري",
+        "authorAr": "البخاري",
+        "edition": "ط السلطانية"
+      },
+      "number": "6689",
+      "volume": "8",
+      "page": "140",
+      "url": "https://shamela.ws/book/1681/9984",
+      "retrieved": "2026-10-05",
+      "method": "manual-checked",
+      "isnadAr": "حَدَّثَنَا قُتَيْبَةُ بْنُ سَعِيدٍ، حَدَّثَنَا عَبْدُ الْوَهَّابِ قَالَ: سَمِعْتُ يَحْيَى بْنَ سَعِيدٍ يَقُولُ: أَخْبَرَنِي مُحَمَّدُ بْنُ إِبْرَاهِيمَ: أَنَّهُ سَمِعَ عَلْقَمَةَ بْنَ وَقَّاصٍ اللَّيْثِيَّ يَقُولُ: سَمِعْتُ عُمَرَ بْنَ الْخَطَّابِ ﵁ يَقُولُ: سَمِعْتُ رَسُولَ اللهِ ﷺ",
+      "chain": [
+        "bukhari",
+        "qutayba-ibn-said",
+        "abd-al-wahhab-al-thaqafi",
+        "yahya-ibn-said-al-ansari",
+        "muhammad-ibn-ibrahim-al-taymi",
+        "alqama-ibn-waqqas-al-laythi",
+        "umar-ibn-al-khattab",
+        "prophet"
+      ],
+      "sighas": [
+        "حَدَّثَنَا",
+        "حَدَّثَنَا",
+        "سَمِعْتُ",
+        "أَخْبَرَنِي",
+        "سَمِعَ",
+        "سَمِعْتُ",
+        "سَمِعْتُ"
+      ],
+      "grade": {
+        "textAr": "[صحيح]",
+        "byAr": "البخاري",
+        "sourceUrl": "https://dorar.net/h/Bkjjidcf"
+      },
+      "verification": {
+        "status": "verified",
+        "checkedBy": "Malek",
+        "checkedAt": "2026-10-05",
+        "note": "«عبد الوهاب» = الثقفي: فتح الباري لابن حجر (ط السلفية) ١١/ ٥٧٢: «وَعَبْدُ الْوَهَّابِ الْمَذْكُورُ فِي السَّنَدِ هُوَ ابْنُ عَبْدِ الْمَجِيدِ الثَّقَفِيُّ، وَمُحَمَّدُ بْنُ إِبْرَاهِيمَ هُوَ التَّيْمِيُّ» — https://shamela.ws/book/1673/6944 . «يحيى بن سعيد» غير منسوب؛ انظر Needs owner decision."
+      }
+    },
+    {
+      "id": "bukhari-6953",
+      "book": {
+        "nameAr": "صحيح البخاري",
+        "authorAr": "البخاري",
+        "edition": "ط السلطانية"
+      },
+      "number": "6953",
+      "volume": "9",
+      "page": "22-23",
+      "url": "https://shamela.ws/book/1681/10382",
+      "retrieved": "2026-10-05",
+      "method": "manual-checked",
+      "isnadAr": "حَدَّثَنَا أَبُو النُّعْمَانِ، حَدَّثَنَا حَمَّادُ بْنُ زَيْدٍ، عَنْ يَحْيَى بْنِ سَعِيدٍ، عَنْ مُحَمَّدِ بْنِ إِبْرَاهِيمَ، عَنْ عَلْقَمَةَ بْنِ وَقَّاصٍ قَالَ: سَمِعْتُ عُمَرَ بْنَ الْخَطَّابِ ﵁ يَخْطُبُ قَالَ: سَمِعْتُ النَّبِيَّ ﷺ",
+      "chain": [
+        "bukhari",
+        "abu-al-numan-arim",
+        "hammad-ibn-zayd",
+        "yahya-ibn-said-al-ansari",
+        "muhammad-ibn-ibrahim-al-taymi",
+        "alqama-ibn-waqqas-al-laythi",
+        "umar-ibn-al-khattab",
+        "prophet"
+      ],
+      "sighas": [
+        "حَدَّثَنَا",
+        "حَدَّثَنَا",
+        "عَنْ",
+        "عَنْ",
+        "عَنْ",
+        "سَمِعْتُ",
+        "سَمِعْتُ"
+      ],
+      "grade": {
+        "textAr": "[صحيح]",
+        "byAr": "البخاري",
+        "sourceUrl": "https://dorar.net/h/XwSlTK8a"
+      },
+      "verification": {
+        "status": "verified",
+        "checkedBy": "Malek",
+        "checkedAt": "2026-10-05",
+        "note": "«أبو النعمان» = محمد بن الفضل عارم — دليل غير مباشر: فتح الباري ١١/ ٤٢٥ في حديث آخر بالإسناد «أبو النعمان عن حماد بن زيد»: «أَبُو النُّعْمَانِ هُوَ مُحَمَّدُ بْنُ الْفَضْلِ، وَحَمَّادٌ هُوَ ابْنُ زَيْدٍ» — https://shamela.ws/book/1673/6797 ؛ وفي تقريب التهذيب: «أبو النعمان السدوسي هو محمد ابن الفضل عارم» — https://shamela.ws/book/8609/604 . فتح الباري على هذا الحديث نفسه (١٢/ ٣٢٧، https://shamela.ws/book/1673/7314) لم يسمِّه. انظر Needs owner decision."
+      }
+    },
+    {
+      "id": "muslim-1907",
+      "book": {
+        "nameAr": "صحيح مسلم",
+        "authorAr": "مسلم",
+        "edition": "ت عبد الباقي"
+      },
+      "number": "1907",
+      "volume": "3",
+      "page": "1515-1516",
+      "url": "https://shamela.ws/book/1727/4862",
+      "retrieved": "2026-10-05",
+      "method": "manual-checked",
+      "isnadAr": "حَدَّثَنَا عَبْدُ اللَّهِ بْنُ مَسْلَمَةَ بْنِ قَعْنَبٍ. حَدَّثَنَا مَالِكٌ عَنْ يَحْيَى بْنِ سَعِيدٍ، عَنْ مُحَمَّدِ بْنِ إِبْرَاهِيمَ، عَنْ عَلْقَمَةَ بن وقاص، عن عمر ابن الْخَطَّابِ. قَالَ: قَالَ رَسُولُ اللَّهِ ﷺ",
+      "chain": [
+        "muslim",
+        "abdullah-ibn-maslama-al-qanabi",
+        "malik-ibn-anas",
+        "yahya-ibn-said-al-ansari",
+        "muhammad-ibn-ibrahim-al-taymi",
+        "alqama-ibn-waqqas-al-laythi",
+        "umar-ibn-al-khattab",
+        "prophet"
+      ],
+      "sighas": [
+        "حَدَّثَنَا",
+        "حَدَّثَنَا",
+        "عَنْ",
+        "عَنْ",
+        "عَنْ",
+        "عن",
+        "قَالَ"
+      ],
+      "grade": {
+        "textAr": "[صحيح]",
+        "byAr": "مسلم",
+        "sourceUrl": "https://dorar.net/h/lkRAghzd"
+      },
+      "verification": {
+        "status": "verified",
+        "checkedBy": "Malek",
+        "checkedAt": "2026-10-05",
+        "note": "الرقم في المطبوع: «١٥٥ - (١٩٠٧)» — ١٥٥ رقمه داخل كتاب الإمارة، و١٩٠٧ الرقم العام. لم تظهر في صفحة الشاملة إلا رواية واحدة لهذا الحديث (لا تحويل). «مالك» و«يحيى بن سعيد» غير منسوبَين؛ انظر Needs owner decision."
+      }
+    }
+  ]
+}

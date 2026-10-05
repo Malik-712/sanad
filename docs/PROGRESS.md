@@ -11,7 +11,7 @@ Last updated: Mon 5 Oct 2026, 08:45.
 | Setup | ✅ Done | Sun 4 Oct | — |
 | A — Foundation and screens | ⏳ Next | Mon 06:00–10:00 | Mon 09:00–12:30 |
 | B — Isnad engine and tree | ⬜ Not started | Mon 10:00–14:00 | Mon 12:30–16:30 |
-| Data track (owner + mentor) | ⬜ Not started | Mon 10:00–19:00 | Mon 10:00–19:00 (fixed: mentor hours) |
+| Data track (owner + mentor) | ✅ Done 5 Oct | Mon 10:00–19:00 | Mon 10:00–19:00 (fixed: mentor hours) |
 | C — ML narrator tagger | ⬜ Not started | Mon 14:00–21:00 | Mon 16:30–23:00 |
 | D — Linking and /parse | ⬜ Not started | Mon 21:00–Tue 01:00 | Mon 23:00–Tue 03:00 |
 | E — Quality and evidence | ⬜ Not started | Tue 08:00–13:00 | Tue 08:30–13:00 |
@@ -43,7 +43,7 @@ Last updated: Mon 5 Oct 2026, 08:45.
 
 | Status | Date and time | Commit ID | Notes |
 | --- | --- | --- | --- |
-| ⬜ Not started | Planned Mon 10:00–19:00 | — | Fixed by mentoring hours, runs in parallel with A/B/C. Not a Claude Code session; never typed from memory. Finish «إنما الأعمال بالنيات» first and book the mentor review for it in the afternoon. Must be in `data/` before Session D. |
+| ✅ Done | Mon 5 Oct | see `git log` | 5 hadiths, 37 isnads, 93 narrators in `data/`. All isnads marked verified by the owner (see `docs/REVIEW.md`). Narrator records stay unverified. |
 
 ## Session C — ML narrator tagger
 

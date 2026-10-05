@@ -187,11 +187,11 @@ The deadline drives everything: submit by **Tue 6 Oct 20:00**. The detailed buil
 
 ### Phase 2 — Sources and documentation (Mon 5 Oct, 10:00–19:00, with a mentor)
 
-- [ ] Pick 5 hadiths from al-Sahihayn with many routes (first one: «إنما الأعمال بالنيات»)
-- [ ] For every route: full isnad text, book, hadith number, link; check each one in al-Maktaba al-Shamila or dorar.net
-- [ ] For every route: the grade quoted from an approved source, with who gave it
-- [ ] For every narrator: name, generation, death year, Taqrib grade and page
-- [ ] Save as JSON with one fixed schema; a hadith specialist reviews at least 1 hadith in full
+- [x] Pick 5 hadiths from al-Sahihayn with many routes (first one: «إنما الأعمال بالنيات»)
+- [x] For every route: full isnad text, book, hadith number, link; check each one in al-Maktaba al-Shamila or dorar.net
+- [x] For every route: the grade quoted from an approved source, with who gave it
+- [x] For every narrator: name, generation, death year, Taqrib grade and page
+- [x] Save as JSON with one fixed schema; a hadith specialist reviews at least 1 hadith in full
 
 ### Phase 3 — Website (Session A, Mon 06:00–10:00)
 
