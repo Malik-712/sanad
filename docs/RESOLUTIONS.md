@@ -16,6 +16,24 @@ Date: 5 Oct 2026 (evening). Every item below was checked by reading the cited Sh
 - **`muslim-iman-16-n20`** — no ruling found for this wording. `grade` stays `null`.
 - **The other 6 Muqaddima routes** — nothing found; `grade` stays `null`.
 
+## Companion honorifics (`honorificAr`)
+
+Owner decision (5 Oct 2026): every companion record carries the honorific shown after the name in the UI. «رضي الله عنهما» for a companion whose father was also a companion; «رضي الله عنه» otherwise; «رضي الله عنها» for women (none in the data yet). `validate:data` requires the field on every companion.
+
+| Record | Value | Basis |
+| --- | --- | --- |
+| `abdullah-ibn-umar`, `abdullah-ibn-amr-ibn-al-as`, `abdullah-ibn-al-zubayr` | «رضي الله عنهما» | Owner decision. |
+| `abu-said-al-khudri` | «رضي الله عنهما» | Owner decision, on Taqrib no. 2253: «له ولأبيه صحبة» — https://shamela.ws/book/8609/158 |
+| the other 8 companions | «رضي الله عنه» | Owner decision after the checks below. |
+
+Checks made for the other companions' fathers (Taqrib, and Ibn Hajar's *al-Isaba*, local Shamela copy, book 9767). «Not found» means no evidence found by exact-phrase search, not proof:
+
+- `anas-ibn-malik`: *al-Isaba* 8/409 (entry of Umm Sulaym): «فغضب مالك وخرج إلى الشّام فمات بها» — https://shamela.ws/book/9767/4322
+- `ali-ibn-abi-talib`: *al-Isaba* 7/196, Abu Talib (no. 10175) is listed under «القسم الرابع» — https://shamela.ws/book/9767/3728
+- `umar-ibn-al-khattab`, `al-zubayr-ibn-al-awwam`: no entry found for the father in *al-Isaba* (named only in the lineage of others).
+- `al-mughira-ibn-shuba`, `tamim-al-dari`, `salama-ibn-al-akwa`: the father's name was not found as an entry in *al-Isaba*.
+- `abu-hurayra`: the father's name itself is disputed (Taqrib no. 8426).
+
 ## Still open
 
 - `muslim-zuhd-3004-n72`: whether the hadith is marfu' or mawquf to Abu Said — «لم أجد».

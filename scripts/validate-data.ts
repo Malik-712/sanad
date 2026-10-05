@@ -6,6 +6,7 @@ import { join } from "node:path";
 
 const dataDir = join(process.cwd(), "data");
 const errors: string[] = [];
+const HONORIFICS = new Set(["رضي الله عنه", "رضي الله عنها", "رضي الله عنهما"]);
 
 function readJson(path: string): unknown {
   try {
@@ -38,6 +39,13 @@ if (narrators !== undefined && !Array.isArray(narrators)) {
     }
     if (narratorIds.has(n.id)) errors.push(`${narratorsPath}: duplicate narrator id "${n.id}"`);
     narratorIds.add(n.id);
+    // Owner decision (docs/RESOLUTIONS.md): every companion carries the honorific shown after his or her name.
+    if (n.role === "companion" && !HONORIFICS.has(n.honorificAr as string)) {
+      errors.push(`${narratorsPath}: companion "${n.id}" needs honorificAr (${[...HONORIFICS].join(" / ")})`);
+    }
+    if (n.role !== "companion" && n.honorificAr !== undefined) {
+      errors.push(`${narratorsPath}: "${n.id}" is not a companion but has honorificAr`);
+    }
   });
 }
 
