@@ -102,6 +102,23 @@ export const ar = {
     definitePrefix: "ال",
   },
 
+  home: {
+    intro: "ابحث عن حديث، فترى أسانيده بنصّها من كتبها في شجرة واحدة: أين تلتقي، وأين تفترق.",
+    // «أسانيد «…»: ثمانية أسانيد عند مصنِّفَين.» Counts from data only.
+    heroCaption: (title: string, routes: string, compilers: string) => `أسانيد «${title}»: ${routes} عند ${compilers}.`,
+    searchPlaceholder: "مثلًا: إنما الأعمال",
+    tryLabel: "جرّب",
+    pasteTitle: "عندك إسناد من كتاب؟",
+    pasteText: "الصقه، ونستخرج رواته ونرسم سلسلته.",
+    featured: "أحاديث مختارة",
+    // «من رواية عمر بن الخطاب رضي الله عنه. عند البخاري ومسلم.»
+    narratedBy: (who: string, compilers: string) => `من رواية ${who}. عند ${compilers}.`,
+    companionsCount: (count: string) => `${count} من الصحابة`,
+    openTree: (routes: string) => `افتح الشجرة: ${routes}`,
+    noResults: "لم نجد حديثًا بهذه الكلمات. جرّب كلمة من نص الحديث أو اسم راوٍ.",
+    and: "و",
+  },
+
   placeholder: {
     intro: "ابحث عن حديث، فترى أسانيده بنصّها من كتبها في شجرة واحدة: أين تلتقي، وأين تفترق.",
     building: "الموقع قيد البناء.",
