@@ -91,6 +91,33 @@
   }
 }
 
+/* The gold frame with diamond corners (design `.fr`): a thin line inset from the edge. */
+@layer components {
+  .gold-frame {
+    position: absolute;
+    border: 1px solid var(--color-gold);
+    pointer-events: none;
+  }
+  .gold-frame > i {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background: var(--color-gold);
+    transform: rotate(45deg);
+  }
+  .gold-frame > i:nth-child(1) { top: -4.5px; right: -4.5px; }
+  .gold-frame > i:nth-child(2) { top: -4.5px; left: -4.5px; }
+  .gold-frame > i:nth-child(3) { bottom: -4.5px; right: -4.5px; }
+  .gold-frame > i:nth-child(4) { bottom: -4.5px; left: -4.5px; }
+  @media (min-width: 64rem) {
+    .gold-frame > i { width: 8px; height: 8px; }
+    .gold-frame > i:nth-child(-n + 2) { top: -5px; }
+    .gold-frame > i:nth-child(n + 3) { bottom: -5px; }
+    .gold-frame > i:nth-child(odd) { right: -5px; }
+    .gold-frame > i:nth-child(even) { left: -5px; }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
