@@ -156,6 +156,10 @@ Status shown in the UI (the design's three badges):
 | `line-strong` | #C9C2B0 | chip and card borders |
 | `gold` (accent) | #C9A45C | Prophet ﷺ node, common-link ring, branch diamonds, gold frame, focus on green — **shapes only, never text** |
 | `sage` | #6F8F7F | later-generation node outlines |
+| `edge` | #7D8A84 | normal isnad line on the tree, 2px (the selected route is `green`, 4px) |
+| `selected` | #EAF1EC | background of the selected route card |
+| `hover` | #EDE8DC | hover on paper buttons (zoom buttons) |
+| `green-line` | #2A6453 | divider lines on the green band |
 | `ok` / `ok-bg` / `ok-fg` | #2E7D5B / #E6F0EA / #1F5E44 | «مصدر موثق» |
 | `check` / `check-bg` / `check-fg` | #B7791F / #F7EBD6 / #7A4F0F | «يحتاج تحققًا» |
 | `none` / `none-bg` / `none-fg` | #8B908D / #ECEBE7 / #45494A | «لا مصدر بعد» (neutral, not red) |

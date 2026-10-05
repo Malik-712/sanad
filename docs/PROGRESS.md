@@ -2,14 +2,14 @@
 
 Live record of what is done, per session in `docs/IMPLEMENTATION.md`. All times are Riyadh time (UTC+3). Update this file at the end of every session.
 
-Last updated: Mon 5 Oct 2026, 08:45.
+Last updated: Mon 5 Oct 2026, 20:30.
 
 ## Summary
 
 | Session | Status | Planned (original) | Planned (adjusted) |
 | --- | --- | --- | --- |
 | Setup | ✅ Done | Sun 4 Oct | — |
-| A — Foundation and screens | ⏳ Next | Mon 06:00–10:00 | Mon 09:00–12:30 |
+| A — Foundation and screens | 🔄 In progress | Mon 06:00–10:00 | Mon 09:00–12:30 |
 | B — Isnad engine and tree | ⬜ Not started | Mon 10:00–14:00 | Mon 12:30–16:30 |
 | Data track (owner + mentor) | ✅ Done 5 Oct | Mon 10:00–19:00 | Mon 10:00–19:00 (fixed: mentor hours) |
 | C — ML narrator tagger | ⬜ Not started | Mon 14:00–21:00 | Mon 16:30–23:00 |
@@ -25,13 +25,14 @@ Last updated: Mon 5 Oct 2026, 08:45.
 | ✅ Done | Sun 4 Oct 16:52 | `65ff4ff` | Starting version: planning files only (CLAUDE.md, BRIEF, SOURCES_LOG, README, LICENSE, logo). |
 | ✅ Done | Mon 5 Oct 07:38 | `d758a43` | Build playbook (`docs/IMPLEMENTATION.md`), updated CLAUDE.md/BRIEF/SOURCES_LOG/.gitignore, design bundle `design/sanad-design.html`. |
 | ✅ Done | Mon 5 Oct 08:45 | see `git log` | Readable design source in `design/screens/` (6 screens + canvas.json + README), this tracker. |
-| ⚠️ Open | Mon 5 Oct 08:41 | — | Node v24.14.0 OK. **pnpm is not installed.** Run `corepack enable pnpm` in an admin PowerShell (Node is in `C:\Program Files\nodejs`), or `npm i -g pnpm`. Needed before Session A step 3. |
+| ✅ Closed | Mon 5 Oct 20:10 | — | pnpm 12.9.1 installed with `npm i -g pnpm` (user-level, no admin). Was: Node v24.14.0 OK. **pnpm is not installed.** Run `corepack enable pnpm` in an admin PowerShell (Node is in `C:\Program Files\nodejs`), or `npm i -g pnpm`. Needed before Session A step 3. |
 
 ## Session A — Foundation and screens
 
 | Status | Date and time | Commit ID | Notes |
 | --- | --- | --- | --- |
-| ⏳ Next | Planned Mon 09:00–12:30 | — | Starts ~3 h late. If short on time, cut the Open Graph image polish first; keep every "Done when" item. Owner imports the repo in Vercel at the end. |
+| ✅ Done | Mon 5 Oct 20:30 | see `git log` | Item 1: Next.js 16.3.8 + TypeScript strict + Tailwind 4 tokens (design colours only, no shadows, 2px radius), IBM Plex Sans Arabic as the only font, `lang="ar" dir="rtl"`, `lib/copy/ar.ts`, favicon (small mark), Vitest, `validate:data` stub + prebuild. lint/test/validate/build pass. Home is a temporary placeholder. |
+| ⏳ Next | — | — | Items 2+: design/NOTES.md, shared components, the 5 routes, demo data, metadata/OG image. Originally: starts ~3 h late. If short on time, cut the Open Graph image polish first; keep every "Done when" item. Owner imports the repo in Vercel at the end. |
 
 ## Session B — Isnad engine and tree
 
@@ -43,7 +44,7 @@ Last updated: Mon 5 Oct 2026, 08:45.
 
 | Status | Date and time | Commit ID | Notes |
 | --- | --- | --- | --- |
-| ✅ Done | Mon 5 Oct | see `git log` | 5 hadiths, 37 isnads, 93 narrators in `data/`. All isnads marked verified by the owner (see `docs/REVIEW.md`). Narrator records stay unverified. |
+| ✅ Done | Mon 5 Oct | see `git log` | 5 hadiths, 37 isnads, 92 narrators in `data/` (count from `pnpm validate:data`). All isnads marked verified by the owner (see `docs/REVIEW.md`). Narrator records stay unverified. |
 
 ## Session C — ML narrator tagger
 
