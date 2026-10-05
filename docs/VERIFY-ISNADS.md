@@ -35,6 +35,9 @@ Date: 5 Oct 2026. Branch: `phase2-verification`. Nothing in `data/hadiths/` was 
 | D4 | all Bukhari routes | `number` | Western digits («54») | Arabic-Indic digits («٥٤») | 1681 | digit style differs from the Muslim routes; not an error of content |
 | D5 | `al-din-al-nasiha` hadith | `matnAr` | «…ولأئمة المسلمين وعامتهم.» | «…ولأئمة المسلمين وعاماهم.» | 1/74, https://shamela.ws/book/1727/160 | intentional (owner decision 5 Oct, Turkish ed. 1/53); the Shamela wording is kept in `matnVariants` |
 
+**Status (5 Oct, evening): D1 and D2 are fixed** (owner approved; 
+umber now holds the printed form). D3 stays open. The rest of this section describes the state before the fix.
+
 D1 and D2 are caused by my own migration on 5 Oct (the `number` values I wrote for the Muqaddima and the unnumbered isnad). They are not copy errors from the source. Suggested fix, for the owner to approve: set `number` to the printed form («١ - (١)», «٢ - (٢)», «٣ - (٣)», «٤ - (٤)», «(٥٥) -»).
 
 ## Not a difference, but worth knowing

@@ -93,3 +93,24 @@ Reports: [`docs/VERIFY-ISNADS.md`](VERIFY-ISNADS.md), [`docs/VERIFY-NARRATORS.md
 - [ ] Decide the same-name table in `VERIFY-NARRATORS.md`.
 - [ ] Approve the fix for D1/D2 in `VERIFY-ISNADS.md` and check the page of `muslim-muqaddima-n1-*`.
 - [ ] A specialist's review of at least one full hadith.
+
+## 5 Oct 2026 — owner decisions after the verification pass
+
+Decisions given by the owner (Malek) and applied:
+
+1. **Merged** `phase2-verification` into `main` (merge commit `260eb32`).
+2. **Muqaddima numbers fixed** (D1/D2 in `VERIFY-ISNADS.md`): `muslim-muqaddima-n1-a/b/c` «١ - (١)», `n2` «٢ - (٢)», `n3` «٣ - (٣)», `n4-a/b` «٤ - (٤)», `muslim-iman-55-unnumbered` «(٥٥) -». 8 routes; structure check passes.
+3. **`muslim-iman-55-n96` = narration 96 (hadith (55))**: confirmed. Shamela prints «٩٦ - (٥٥)» on Sahih Muslim (Abd al-Baqi) 1/75, https://shamela.ws/book/1727/161, and the id `muslim-iman-55-n96` already says so; it is not hadith (96).
+4. **Accepted as they are** (no change): all current narrator `identification` values (19 «نص», 27 «قرينة», 47 empty, 9 of them flagged same-name) and all null grades (the 7 Muqaddima routes and `muslim-iman-16-n20` stay «لم أجد»).
+5. **Phase 2 checklist** (`docs/BRIEF.md`): tasks 1–5 ticked.
+
+### Honest note on task 5
+
+The owner marked task 5 complete. This log records no named specialist or mentor review of a full hadith, so that part of the task rests on the owner's own checks. When a mentor reviews one (the best candidate is «إنما الأعمال بالنيات»), add the name, date and changes here.
+
+### Still open after this (no longer blocking Session A)
+
+- Same-name narrators (`VERIFY-NARRATORS.md`) — accepted as null for now.
+- Muhammad ibn Hatim, «يحيى بن زكريا» in `n20`, marfu'/mawquf of `muslim-zuhd-3004-n72`, «سفيان» in `n96`.
+- The Taqrib `edition` (publisher, editor, year) from the printed copy.
+- D3: the printed page of `muslim-muqaddima-n1-*`.
