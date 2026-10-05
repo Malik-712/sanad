@@ -2,6 +2,8 @@
 
 Date: 5 Oct 2026. Branch: `phase2-verification`. Source: Ibn Hajar, *Taqrib al-Tahdhib* (Shamela book 8609). Entry numbers and printed pages are the ones Shamela shows. Shamela gives no publisher or edition, so the `edition` field is unchanged (the owner adds it from the printed copy).
 
+> **Update 5 Oct (evening):** the rows for sufyan-unidentified, muhammad-ibn-hatim-unidentified and yahya-ibn-zakariyya-ibn-abi-zaida below were resolved against *Tuhfat al-Ashraf* and *Tahdhib al-Kamal* (see [RESOLUTIONS.md](RESOLUTIONS.md)). There are now 92 records (the sufyan-unidentified placeholder was removed, the Hatim placeholder became muhammad-ibn-hatim-ibn-maymun, Taqrib 5793, text checked on the printed page 472). identification is now 19 «نص», 29 «قرينة», 44 empty (8 of them flagged same-name records, 36 with no deciding source). The counts in the tables below are the state before this update.
+
 ## Counts
 
 | Group | Records | Result |

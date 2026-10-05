@@ -114,3 +114,22 @@ The owner marked task 5 complete. This log records no named specialist or mentor
 - Muhammad ibn Hatim, «يحيى بن زكريا» in `n20`, marfu'/mawquf of `muslim-zuhd-3004-n72`, «سفيان» in `n96`.
 - The Taqrib `edition` (publisher, editor, year) from the printed copy.
 - D3: the printed page of `muslim-muqaddima-n1-*`.
+
+## 5 Oct 2026 (evening) — resolutions verified against the sources
+
+Another session proposed resolutions in `docs/RESOLUTIONS.md` (untracked draft). The owner asked me to verify and apply. I read each cited page myself; the file now holds the verified version. Details and page links: [`RESOLUTIONS.md`](RESOLUTIONS.md).
+
+| Item | Applied |
+| --- | --- |
+| «سفيان» in `muslim-iman-55-n96` | al-Thawri, from *Tuhfat al-Ashraf* 2/116 (explicit). Chain changed to `sufyan-al-thawri`; placeholder `sufyan-unidentified` removed. Kind «قرينة». |
+| «محمد بن حاتم» | Ibn Maymun (Taqrib 5793), «قرينة», from *Tahdhib al-Kamal* 25/20. **The sources conflict** (Taqrib marks Ibn Bazi' «خ م د س», Tahdhib «خ د»), so it is flagged for a specialist. The record stays `unverified`. |
+| «يحيى بن زكريا» in `n20` | Ibn Abi Zaida, «قرينة», *Tahdhib al-Kamal* 12/198. |
+| Ibn Abbad, Hammam | confirmed in *Tahdhib al-Kamal* (25/435–436; 30/303–304), «قرينة». |
+| Albani on `muslim-muqaddima-n1-*` | found (*Sahih al-Jami'* 7437, «صحيح», wording «فليلج») but **not applied**: different wording, and a ruling on the hadith, not on the isnad. `grade` stays `null`; the candidate is in the route notes for the owner to decide. |
+| `muslim-iman-16-n20` and the other 6 Muqaddima routes | no ruling found; `grade` stays `null`. |
+
+Numbers after this step: 92 narrators; `identification` 19 «نص», 29 «قرينة», 44 empty (8 flagged same-name records). Structure check passes.
+
+The first draft also listed a "difference" in `muslim-muqaddima-n1-b/c` (missing Abu Bakr ibn Abi Shayba / Ibn Bashshar). That is not a defect: each of the three routes follows one path of the printed tahwil isnad.
+
+Still open: marfu'/mawquf of `muslim-zuhd-3004-n72`; the Hatim comparison (specialist); the page of `muslim-muqaddima-n1-*`; the Taqrib edition; a specialist's review of one full hadith.
