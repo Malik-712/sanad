@@ -8,7 +8,12 @@ build/
 next-env.d.ts
 npm-debug.log*
 pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 .pnpm-store/
+.pnp
+.pnp.*
+*.pem
 
 # Environment files (never commit secrets)
 .env*
