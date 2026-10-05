@@ -44,7 +44,7 @@ export function HomeSearch({ entries, cards, tryLinks, between, demoTag, initial
         <label htmlFor="home-q" className="text-[15px] font-medium">
           {ar.search.label}
         </label>
-        <div className="flex h-[52px] rounded-sq border-[1.5px] border-ink bg-paper">
+        <div className="flex h-[52px] rounded-sq border-[1.5px] border-ink bg-paper focus-within:outline-[3px] focus-within:outline-offset-2 focus-within:outline-green focus-within:outline-solid">
           <input
             id="home-q"
             type="search"

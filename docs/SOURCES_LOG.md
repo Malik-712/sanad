@@ -20,6 +20,13 @@ Required by the challenge Terms and Conditions, §9. Add a row for every AI tool
 | 2026-10-05 | Dev tool | tsx 4.23.15 | https://www.npmjs.com/package/tsx | Runs `scripts/validate-data.ts` | MIT |
 | 2026-10-05 | AI tool | Agent skills: frontend-design, webapp-testing (anthropics/skills) | https://github.com/anthropics/skills | Claude Code guidance for UI work and browser tests (dev only, not shipped) | Apache-2.0 (LICENSE.txt in each skill) |
 | 2026-10-05 | AI tool | Agent skills: vercel-labs/agent-skills (vercel-react-best-practices, web-design-guidelines, …) | https://github.com/vercel-labs/agent-skills | Claude Code guidance for React/Next.js and UI review (dev only, not shipped) | MIT |
+| 2026-10-05 | Service | shields.io badges | https://shields.io | Static badges in `README.md` | Apache-2.0 (licence of the badges/shields repository, read from the GitHub API) |
+| 2026-10-05 | Dev tool | playwright-core 1.63.0 (with the installed Google Chrome) | https://www.npmjs.com/package/playwright-core | One-off screenshot, keyboard and focus checks at 390px and 1440px; run outside the repo, not shipped | Apache-2.0 |
+| 2026-10-05 | Dev tool | kill-port 2.0.1 (via npx) | https://www.npmjs.com/package/kill-port | Stops the local test server between checks; not in the repo | MIT |
+| 2026-10-05 | AI tool | Vercel connector (claude.ai) | https://vercel.com | Read-only checks of deployments and project protection settings | Vercel Terms of Service |
+| 2026-10-05 | AI tool | Context7 (documentation lookup) | https://github.com/upstash/context7 | Checking current Tailwind CSS docs | MIT (server code); the hosted service has its own terms |
+| 2026-10-05 | AI tool | Shamela connector («وصلة الشاملة», local Shamela library) | — | Reading Taqrib and al-Isaba pages for the companion honorific checks (`docs/RESOLUTIONS.md`) | unclear (no licence stated by the connector; owner to confirm) |
+| 2026-10-05 | Source | Ibn Hajar, *al-Isaba fi Tamyiz al-Sahaba* (al-Maktaba al-Shamila, book 9767) | https://shamela.ws/book/9767 | Evidence for the honorific decision (entries cited in `docs/RESOLUTIONS.md`); nothing copied into `data/` | Classical text; shamela.ws terms not yet checked (Stage 10) — unclear |
 
 ## To add when used
 

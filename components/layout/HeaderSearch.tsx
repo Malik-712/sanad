@@ -8,7 +8,7 @@ export function HeaderSearch() {
       role="search"
       action="/"
       method="get"
-      className="flex h-11 min-w-[240px] shrink basis-[360px] rounded-sq border-[1.5px] border-on-green-muted"
+      className="flex h-11 min-w-[240px] shrink basis-[360px] rounded-sq border-[1.5px] border-on-green-muted focus-within:outline-[3px] focus-within:outline-offset-2 focus-within:outline-gold focus-within:outline-solid"
     >
       <label htmlFor="top-q" className="sr-only">
         {ar.search.label}
