@@ -14,6 +14,8 @@ Date: 5 Oct 2026. Branch: `phase2-verification`. Source: Ibn Hajar, *Taqrib al-T
 | Placeholders with no Taqrib entry by design (`sufyan-unidentified`, `muhammad-ibn-hatim-unidentified`) | 2 | — |
 | **Total in the file** | **93** | |
 
+Now 92 after ef94a14 (see REVIEW.md)
+
 ## What was compared (73 records)
 
 For each record the Taqrib page was read and the entry copied word for word into a script that compared it with our record:
