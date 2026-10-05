@@ -97,8 +97,13 @@ export const ar = {
     twelveNom: "اثنا عشر",
     twelveGen: "اثني عشر",
     teen: "عشر",
-    twentyNom: "عشرون",
-    twentyGen: "عشرين",
+    // 21–99: unit + «و» + tens. Units 1 and 2 inside a compound number.
+    unitOne: "واحد",
+    unitTwoNom: "اثنان",
+    unitTwoGen: "اثنين",
+    tensNom: ["", "", "عشرون", "ثلاثون", "أربعون", "خمسون", "ستون", "سبعون", "ثمانون", "تسعون"],
+    tensGen: ["", "", "عشرين", "ثلاثين", "أربعين", "خمسين", "ستين", "سبعين", "ثمانين", "تسعين"],
+    and: "و",
     definitePrefix: "ال",
   },
 
@@ -149,6 +154,27 @@ export const ar = {
     openSource: "افتح الموضع في المصدر",
     copy: "انسخ التوثيق",
     copied: "نُسخ التوثيق",
+  },
+
+  narrator: {
+    // The role word above the name (design kindName).
+    role: {
+      prophet: "رأس الإسناد",
+      companion: "صحابي",
+      narrator: "راوٍ",
+      compiler: "مصنِّف",
+    },
+    tabaqa: "الطبقة",
+    death: "الوفاة",
+    notReported: "لم تُنقل",
+    book: "الكتاب",
+    taqribHeading: "قال ابن حجر في «تقريب التهذيب»",
+    taqribRef: (page: string, entry: string) => `تقريب التهذيب، ص ${page}، رقم ${entry}`,
+    noQuote: "لم ننقل نصّ الحكم بعد، ولن نعرض حكمًا بلا مصدر.",
+    prophetNote: "إليه ﷺ ترجع الأسانيد كلها.",
+    identification: "تعيين الراوي",
+    routesThrough: (routes: string) => `يمرّ به ${routes}:`,
+    sourceLink: "المصدر",
   },
 
   legend: {

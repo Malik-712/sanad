@@ -16,6 +16,10 @@ describe("countNoun", () => {
     expect(countNoun(12, "isnad")).toBe("اثنا عشر إسنادًا");
     expect(countNoun(16, "isnad")).toBe("ستة عشر إسنادًا");
     expect(countNoun(20, "isnad")).toBe("عشرون إسنادًا");
+    expect(countNoun(21, "isnad")).toBe("واحد وعشرون إسنادًا");
+    expect(countNoun(22, "isnad")).toBe("اثنان وعشرون إسنادًا");
+    expect(countNoun(37, "isnad")).toBe("سبعة وثلاثون إسنادًا");
+    expect(countNoun(40, "isnad")).toBe("أربعون إسنادًا");
   });
 
   it("compiler after «عند» (genitive)", () => {
@@ -30,9 +34,14 @@ describe("countNoun", () => {
     expect(countNoun(2, "name")).toBe("اسمان");
   });
 
-  it("rejects counts outside 1–20", () => {
+  it("genitive compound numbers", () => {
+    expect(countNoun(22, "compiler", "gen")).toBe("اثنين وعشرين مصنِّفًا");
+    expect(countNoun(37, "compiler", "gen")).toBe("سبعة وثلاثين مصنِّفًا");
+  });
+
+  it("rejects counts outside 1–99", () => {
     expect(() => countNoun(0, "isnad")).toThrow(RangeError);
-    expect(() => countNoun(21, "isnad")).toThrow(RangeError);
+    expect(() => countNoun(100, "isnad")).toThrow(RangeError);
     expect(() => countNoun(2.5, "isnad")).toThrow(RangeError);
   });
 });
