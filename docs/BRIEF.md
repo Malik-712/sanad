@@ -137,7 +137,7 @@ Calm, plain, short sentences. We never say «صحيح», «ضعيف» or «مو�
 
 **Icons and motion**
 
-- Icons: Lucide, 1.5 px stroke, square ends, only where the design has one.
+- Icons: the design's own SVG icons (2 px stroke, square ends), only where the design has one. No icon package (owner decision, 5 Oct; see CLAUDE.md).
 - Motion: the selected route draws from top to bottom in 300 ms. No motion when the user turns on "reduce motion".
 
 ## Tech stack and resources
