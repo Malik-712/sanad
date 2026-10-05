@@ -92,12 +92,13 @@ type Hadith = {
   titleAr: string;                    // short title for cards
   matnAr: string;                     // text of the hadith, copied from a source
   matnSource: { url: string; book: string; number: string };
+  matnVariants?: { textAr: string; note: string; sourceUrl: string }[];   // other readings of the matn, kept out of the main text
   routes: Route[];
 };
 type Route = {
-  id: string;                         // "bukhari-1"
+  id: string;                         // Bukhari: "bukhari-<hadith no>"; Muslim: "muslim-<kitab>-<hadith no>-n<narration no>[-a]", e.g. muslim-iman-55-n96 (hadith 55, narration 96). Muqaddima: muslim-muqaddima-n<no>
   book: { nameAr: string; authorAr: string; edition: string };
-  number: string;                     // hadith number in that edition
+  number: string;                     // as printed in that edition, e.g. «٩٥ - (٥٥)» (narration - (hadith))
   volume?: string; page?: string;
   url: string;                        // source page (dorar.net, shamela.ws, sunnah.com)
   retrieved: string;                  // date the text was copied, ISO "2026-10-05" (kept for docs/SOURCES.md; not shown in the UI)
@@ -106,6 +107,7 @@ type Route = {
   chain: string[];                    // narrator ids, from the compiler UP TO the Prophet ﷺ
   sighas?: string[];                  // transmission words between links, same order (length = chain.length - 1)
   grade: null | { textAr: string; byAr: string; sourceUrl: string };   // quoted, never computed
+  inclusion?: { textAr: string; quoteAr: string; byAr: string; sourceUrl: string };   // «أخرجه مسلم في صحيحه», only for routes inside the Sahih itself, attributed to who said it (Ibn al-Salah)
   verification: { status: "verified" | "unverified"; checkedBy?: string; checkedAt?: string; note?: string };
 };
 ```

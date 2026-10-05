@@ -347,13 +347,13 @@
       }
     },
     {
-      "id": "muslim-1-a",
+      "id": "muslim-muqaddima-n1-a",
       "book": {
         "nameAr": "صحيح مسلم",
         "authorAr": "مسلم",
         "edition": "ت عبد الباقي"
       },
-      "number": "1",
+      "number": "١",
       "volume": "1",
       "url": "https://shamela.ws/book/1727/11",
       "retrieved": "2026-10-05",
@@ -387,13 +387,13 @@
       }
     },
     {
-      "id": "muslim-1-b",
+      "id": "muslim-muqaddima-n1-b",
       "book": {
         "nameAr": "صحيح مسلم",
         "authorAr": "مسلم",
         "edition": "ت عبد الباقي"
       },
-      "number": "1",
+      "number": "١",
       "volume": "1",
       "url": "https://shamela.ws/book/1727/11",
       "retrieved": "2026-10-05",
@@ -427,13 +427,13 @@
       }
     },
     {
-      "id": "muslim-1-c",
+      "id": "muslim-muqaddima-n1-c",
       "book": {
         "nameAr": "صحيح مسلم",
         "authorAr": "مسلم",
         "edition": "ت عبد الباقي"
       },
-      "number": "1",
+      "number": "١",
       "volume": "1",
       "url": "https://shamela.ws/book/1727/11",
       "retrieved": "2026-10-05",
@@ -467,13 +467,13 @@
       }
     },
     {
-      "id": "muslim-2",
+      "id": "muslim-muqaddima-n2",
       "book": {
         "nameAr": "صحيح مسلم",
         "authorAr": "مسلم",
         "edition": "ت عبد الباقي"
       },
-      "number": "2",
+      "number": "٢",
       "volume": "1",
       "page": "10",
       "url": "https://shamela.ws/book/1727/12",
@@ -504,13 +504,13 @@
       }
     },
     {
-      "id": "muslim-3",
+      "id": "muslim-muqaddima-n3",
       "book": {
         "nameAr": "صحيح مسلم",
         "authorAr": "مسلم",
         "edition": "ت عبد الباقي"
       },
-      "number": "3",
+      "number": "٣",
       "volume": "1",
       "page": "10",
       "url": "https://shamela.ws/book/1727/13",
@@ -543,13 +543,13 @@
       }
     },
     {
-      "id": "muslim-4-a",
+      "id": "muslim-muqaddima-n4-a",
       "book": {
         "nameAr": "صحيح مسلم",
         "authorAr": "مسلم",
         "edition": "ت عبد الباقي"
       },
-      "number": "4",
+      "number": "٤",
       "volume": "1",
       "page": "10",
       "url": "https://shamela.ws/book/1727/14",
@@ -582,13 +582,13 @@
       }
     },
     {
-      "id": "muslim-4-b",
+      "id": "muslim-muqaddima-n4-b",
       "book": {
         "nameAr": "صحيح مسلم",
         "authorAr": "مسلم",
         "edition": "ت عبد الباقي"
       },
-      "number": "4",
+      "number": "٤",
       "volume": "1",
       "page": "10",
       "url": "https://shamela.ws/book/1727/14",
@@ -621,13 +621,13 @@
       }
     },
     {
-      "id": "muslim-3004",
+      "id": "muslim-zuhd-3004-n72",
       "book": {
         "nameAr": "صحيح مسلم",
         "authorAr": "مسلم",
         "edition": "ت عبد الباقي"
       },
-      "number": "3004",
+      "number": "٧٢ - (٣٠٠٤)",
       "volume": "4",
       "page": "2298-2299",
       "url": "https://shamela.ws/book/1727/7442",
@@ -660,7 +660,7 @@
         "status": "verified",
         "checkedBy": "Malek",
         "checkedAt": "2026-10-05",
-        "note": "الرقم في المطبوع «٧٢ - (٣٠٠٤)». في المتن شك من همام: «ومن كذب علي - قال همام أحسبه قال - متعمدا». «هداب» = هدبة: شرح النووي على مسلم ١/ ٢٣٠: «(هَدَّابُ بْنُ خَالِدٍ) ... وَيُقَالُ هُدْبَةُ» — https://shamela.ws/book/1711/230 ؛ والتقريب: «هداب ابن خالد هو هدبة» — https://shamela.ws/book/8609/651 . «همام» غير منسوب؛ انظر Needs owner decision."
+        "note": "الرقم في المطبوع «٧٢ - (٣٠٠٤)». في المتن شك من همام: «ومن كذب علي - قال همام أحسبه قال - متعمدا». «هداب» = هدبة: شرح النووي على مسلم ١/ ٢٣٠: «(هَدَّابُ بْنُ خَالِدٍ) ... وَيُقَالُ هُدْبَةُ» — https://shamela.ws/book/1711/230 ؛ والتقريب: «هداب ابن خالد هو هدبة» — https://shamela.ws/book/8609/651 . «همام» غير منسوب؛ انظر Needs owner decision. | رفع الحديث أو وقفه على أبي سعيد: لم أجد. «همام» = ابن يحيى: قرينة لا نصّ (يُراجع تهذيب الكمال)."
       }
     }
   ]
