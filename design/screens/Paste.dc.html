@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>سند — الصق إسنادًا</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F2EB}
+a{color:#0E4B3B}a:hover{color:#0A3A2D}
+button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid #0E4B3B;outline-offset:2px}
+.ongreen a:focus-visible{outline-color:#C9A45C}
+.kf{font-family:inherit}
+.am{font-family:inherit}
+.nav{min-height:44px;padding:0 10px;display:flex;align-items:center;font-size:14px;color:#F5F2EB;text-decoration:none;border-bottom:2px solid transparent;box-sizing:border-box}
+.nav.cur{border-bottom-color:#C9A45C;font-weight:600}
+.chip{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 6px 0 12px;border:1px solid #C9C2B0;border-radius:2px;background:#FFFDF8}
+.chip.warn{border:1.5px dashed #B7791F}
+.tag{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 8px;border-radius:2px;font-size:13px;font-weight:500}
+.tag .q{width:7px;height:7px;flex:none}
+.ok{background:#E6F0EA;color:#1F5E44}.ok .q{background:#2E7D5B}
+.wn{background:#F7EBD6;color:#7A4F0F}.wn .q{background:#B7791F}
+.row{display:flex;align-items:center;gap:14px}
+.col{width:28px;display:flex;justify-content:center;flex:none}
+.link{display:flex;align-items:center;gap:14px;height:32px}
+.link .col span{width:2px;height:32px;background:#7D8A84}
+.link em{font-style:normal;font-size:13px;color:#5E6B66}
+</style>
+</helmet>
+<div dir="rtl" style="width: 390px; min-height: 2360px; box-sizing: border-box; background: #F5F2EB; color: #1C1C1A; font-family: 'IBM Plex Sans Arabic', Tahoma, sans-serif; display: flex; flex-direction: column">
+
+<div class="ongreen" style="background: #0E4B3B; color: #F5F2EB">
+<header style="height: 64px; box-sizing: border-box; padding: 0 16px 0 8px; display: flex; align-items: center; justify-content: space-between">
+<a href="Home.dc.html" aria-label="سَنَد، الرئيسية" style="display: flex; align-items: center; min-height: 44px">
+<img src="/_blob/84b90d4d632c91db482e9c8ca319a69f" alt="" width="44" height="44" style="width: 44px; height: 44px; display: block">
+</a>
+<nav aria-label="القائمة الرئيسية" style="display: flex; gap: 2px">
+<a href="Paste.dc.html" class="nav cur" aria-current="page">الصق إسنادًا</a>
+<a href="About.dc.html" class="nav">المنهج</a>
+</nav>
+</header>
+<section style="padding: 20px 20px 32px; display: flex; flex-direction: column; gap: 10px">
+<h1 class="kf" style="margin: 0; font-size: 40px; line-height: 1.25; font-weight: 700">الصق إسنادًا</h1>
+<p style="margin: 0; font-size: 16px; line-height: 1.8; color: #CFDAD4">من أي كتاب. نستخرج الرواة، ونرسم السلسلة، ونبحث عنها في شجرة الحديث.</p>
+</section>
+</div>
+
+<main style="display: flex; flex-direction: column; gap: 28px; padding: 24px 16px 36px">
+
+<form style="display: flex; flex-direction: column; gap: 10px">
+<label for="isnad-in" style="font-size: 15px; font-weight: 500">نصّ الإسناد</label>
+<textarea id="isnad-in" rows="7" class="am" style="box-sizing: border-box; width: 100%; padding: 14px 16px; border: 1.5px solid #1C1C1A; border-radius: 2px; background: #FFFDF8; font-size: 19px; line-height: 1.9; color: #1C1C1A; resize: vertical">حدثنا الحميدي عبد الله بن الزبير قال حدثنا سفيان قال حدثنا يحيى بن سعيد الأنصاري قال أخبرني محمد بن إبراهيم التيمي أنه سمع علقمة بن وقاص الليثي يقول سمعت عمر بن الخطاب رضي الله عنه على المنبر قال سمعت رسول الله ﷺ يقول</textarea>
+<span style="font-size: 13px; color: #5E6B66">يكفي الإسناد وحده، ولا يضرّ أن يأتي معه المتن.</span>
+<span style="display: flex; gap: 8px; align-items: center; font-size: 13px; color: #5E6B66"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M6 11h12v9H6zM9 11V7a3 3 0 0 1 6 0v4"></path></svg>يُحلَّل النص في متصفحك، ولا نحفظه ولا نرسله.</span>
+<button type="button" style="height: 52px; border: 0; border-radius: 2px; background: #0E4B3B; color: #F5F2EB; font-family: inherit; font-size: 16px; font-weight: 500; cursor: pointer">حلِّل الإسناد</button>
+</form>
+
+<div role="note" style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border: 1.5px solid #B7791F; border-radius: 2px; background: #FFFDF8">
+<span style="width: 10px; height: 10px; background: #B7791F; transform: rotate(45deg); flex: none; margin-top: 9px"></span>
+<span style="display: flex; flex-direction: column; gap: 2px"><b style="font-size: 16px; font-weight: 600">استخراج آلي — راجِع النتائج</b><span style="font-size: 14px; line-height: 1.7">قد يخلط الذكاء الاصطناعي بين رواة يتشابهون في الاسم. راجِع كل اسم قبل أن تعتمد عليه.</span></span>
+</div>
+
+<section aria-labelledby="found-h" style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; padding-bottom: 10px; border-bottom: 2px solid #1C1C1A">
+<h2 id="found-h" class="kf" style="margin: 0; font-size: 26px; line-height: 1.3; font-weight: 600">سبعة أسماء</h2>
+<span style="display: inline-flex; align-items: center; height: 26px; padding: 0 8px; border: 1px dashed #5E6B66; border-radius: 2px; font-size: 13px; color: #5E6B66">بيانات توضيحية</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<span class="chip"><span class="am" style="font-size: 17px">الحميدي</span><span class="tag ok"><span class="q"></span>تطابق عالٍ ٩٤٪</span></span>
+<span class="chip warn"><span class="am" style="font-size: 17px">سفيان</span><span class="tag wn"><span class="q"></span>تطابق متوسط ٥٨٪</span></span>
+<span class="chip"><span class="am" style="font-size: 17px">يحيى بن سعيد الأنصاري</span><span class="tag ok"><span class="q"></span>٩٧٪</span></span>
+<span class="chip"><span class="am" style="font-size: 17px">محمد بن إبراهيم التيمي</span><span class="tag ok"><span class="q"></span>٩٥٪</span></span>
+<span class="chip"><span class="am" style="font-size: 17px">علقمة بن وقاص الليثي</span><span class="tag ok"><span class="q"></span>٩٦٪</span></span>
+<span class="chip"><span class="am" style="font-size: 17px">عمر بن الخطاب</span><span class="tag ok"><span class="q"></span>٩٩٪</span></span>
+<span class="chip" style="padding-left: 12px"><span class="am" style="font-size: 17px">رسول الله ﷺ</span></span>
+</div>
+<p style="margin: 0; font-size: 13px; line-height: 1.8; color: #5E6B66">نسبة التطابق: من ٩٠٪ فأكثر تطابق عالٍ. أقلّ من ذلك يحتاج تحققًا. ومن لم نجد له ترجمة نعلّمه «لا مصدر بعد».</p>
+
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 16px; border: 1.5px solid #1C1C1A; border-radius: 2px; background: #FFFDF8">
+<span style="font-size: 15px; line-height: 1.7"><b style="font-weight: 600">من «سفيان» هنا؟</b> الأقرب ابن عيينة، لأن الحميدي من أشهر أصحابه. اختر لتؤكّد.</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<button type="button" class="am" style="min-height: 44px; padding: 0 16px; border: 2px solid #0E4B3B; border-radius: 2px; background: #0E4B3B; color: #F5F2EB; font-size: 18px; cursor: pointer">سفيان بن عيينة</button>
+<button type="button" class="am" style="min-height: 44px; padding: 0 16px; border: 2px solid #0E4B3B; border-radius: 2px; background: transparent; color: #0E4B3B; font-size: 18px; cursor: pointer">سفيان الثوري</button>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="chain-h" style="display: flex; flex-direction: column; gap: 14px">
+<div style="padding-bottom: 10px; border-bottom: 2px solid #1C1C1A">
+<h2 id="chain-h" class="kf" style="margin: 0; font-size: 26px; line-height: 1.3; font-weight: 600">السلسلة كما وردت</h2>
+</div>
+<div style="display: flex; flex-direction: column; padding: 20px; border: 1px solid #C9C2B0; border-radius: 2px; background: #FFFDF8" aria-label="من النبي ﷺ في الأعلى إلى المصنِّف في الأسفل">
+<div class="row"><span class="col"><span style="width: 13px; height: 13px; background: #C9A45C; border: 2px solid #0E4B3B; transform: rotate(45deg)"></span></span><span class="am" style="font-size: 19px; font-weight: 700">رسول الله ﷺ</span></div>
+<div class="link"><span class="col"><span></span></span><em>سمعتُ</em></div>
+<div class="row"><span class="col"><span style="width: 14px; height: 14px; background: #0E4B3B"></span></span><span class="am" style="font-size: 19px">عمر بن الخطاب</span></div>
+<div class="link"><span class="col"><span></span></span><em>سمعتُ</em></div>
+<div class="row"><span class="col"><span style="width: 14px; height: 14px; box-sizing: border-box; border: 2px solid #6F8F7F"></span></span><span class="am" style="font-size: 19px">علقمة بن وقاص الليثي</span></div>
+<div class="link"><span class="col"><span></span></span><em>أنه سمع</em></div>
+<div class="row"><span class="col"><span style="width: 14px; height: 14px; box-sizing: border-box; border: 2px solid #6F8F7F"></span></span><span class="am" style="font-size: 19px">محمد بن إبراهيم التيمي</span></div>
+<div class="link"><span class="col"><span></span></span><em>أخبرني</em></div>
+<div class="row"><span class="col" style="position: relative; height: 28px; align-items: center"><span style="position: absolute; width: 22px; height: 22px; box-sizing: border-box; border: 2px solid #C9A45C; transform: rotate(45deg)"></span><span style="width: 14px; height: 14px; box-sizing: border-box; border: 2px solid #6F8F7F; background: #FFFDF8; position: relative"></span></span><span class="am" style="font-size: 19px">يحيى بن سعيد الأنصاري</span><span style="display: inline-flex; align-items: center; height: 24px; padding: 0 8px; border: 1.5px solid #C9A45C; font-size: 12px; font-weight: 500">نقطة الالتقاء</span></div>
+<div class="link"><span class="col"><span></span></span><em>حدّثنا</em></div>
+<div class="row"><span class="col"><span style="width: 14px; height: 14px; box-sizing: border-box; border: 2px dashed #B7791F"></span></span><span class="am" style="font-size: 19px">سفيان</span><span style="font-size: 13px; font-weight: 500; color: #7A4F0F">يحتاج تحققًا</span></div>
+<div class="link"><span class="col"><span></span></span><em>حدّثنا</em></div>
+<div class="row"><span class="col"><span style="width: 14px; height: 14px; box-sizing: border-box; border: 2px solid #6F8F7F"></span></span><span class="am" style="font-size: 19px">الحميدي</span></div>
+<div class="link"><span class="col"><span style="background: none; border-right: 2px dashed #7D8A84; width: 0"></span></span><em>حدّثنا</em></div>
+<div class="row"><span class="col"><span style="width: 24px; height: 18px; box-sizing: border-box; border: 2px dashed #1C1C1A"></span></span><span style="font-size: 14px; color: #5E6B66">المصنِّف، ولم يُذكر في النص</span></div>
+</div>
+<p style="margin: 0; font-size: 13px; line-height: 1.7; color: #5E6B66">بين كل راويين صيغة الأداء كما جاءت في النص المُلصَق.</p>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 10px; padding: 20px; background: #0E4B3B; color: #F5F2EB" class="ongreen">
+<span class="kf" style="font-size: 22px; font-weight: 600">وجدناه في شجرة «إنما الأعمال بالنيات»</span>
+<span style="font-size: 14px; line-height: 1.7; color: #CFDAD4">يطابق الإسناد الأول من سبعة: صحيح البخاري، حديث ١.</span>
+<a href="Tree.dc.html" style="height: 48px; margin-top: 6px; border: 2px solid #C9A45C; border-radius: 2px; color: #F5F2EB; font-size: 16px; font-weight: 500; display: flex; align-items: center; justify-content: center; text-decoration: none">اعرض الإسناد في الشجرة</a>
+</section>
+</main>
+
+<footer style="margin-top: auto; padding: 20px 16px 28px; border-top: 2px solid #1C1C1A; display: flex; gap: 10px; align-items: flex-start">
+<span style="width: 8px; height: 8px; background: #0E4B3B; transform: rotate(45deg); flex: none; margin-top: 9px"></span>
+<span style="font-size: 14px; line-height: 1.7">أداة مساعدة بالذكاء الاصطناعي، لا تحكم على الأحاديث ولا تُفتي.</span>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":2360}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

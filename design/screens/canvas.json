@@ -1,0 +1,82 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "About.dc.html": {
+      "h": 3000,
+      "is_interactive": true,
+      "title": "٤ · عن المنهج",
+      "w": 390,
+      "x": 1410,
+      "y": 5520
+    },
+    "Home.dc.html": {
+      "h": 2000,
+      "is_interactive": true,
+      "title": "١ · الرئيسية والبحث",
+      "w": 390,
+      "x": 0,
+      "y": 5520
+    },
+    "Main.dc.html": {
+      "h": 5100,
+      "title": "هوية سند",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "Paste.dc.html": {
+      "h": 2360,
+      "is_interactive": true,
+      "title": "٣ · الصق إسنادًا",
+      "w": 390,
+      "x": 940,
+      "y": 5520
+    },
+    "Tree.dc.html": {
+      "h": 1760,
+      "is_interactive": true,
+      "title": "٢ · شجرة الأسانيد",
+      "w": 390,
+      "x": 470,
+      "y": 5520
+    },
+    "TreeDesktop.dc.html": {
+      "expand": "fill",
+      "h": 1360,
+      "is_interactive": true,
+      "title": "٢ · شجرة الأسانيد على سطح المكتب",
+      "w": 1440,
+      "x": 0,
+      "y": 8640
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-10-04T17:10:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas"
+  },
+  "notes": {
+    "mobileRow": {
+      "kind": "title1",
+      "maxW": 1800,
+      "text": "الشاشات على الجوال",
+      "w": 240,
+      "x": 0,
+      "y": 5250
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Home.dc.html",
+    "Tree.dc.html",
+    "Paste.dc.html",
+    "About.dc.html",
+    "TreeDesktop.dc.html"
+  ],
+  "pages": [],
+  "title": "سَنَد — Sanad"
+}

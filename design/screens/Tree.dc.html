@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>سند — شجرة الأسانيد</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F2EB}
+a{color:#0E4B3B}a:hover{color:#0A3A2D}
+button:focus-visible,a:focus-visible{outline:3px solid #0E4B3B;outline-offset:2px}
+.ongreen a:focus-visible{outline-color:#C9A45C}
+.kf{font-family:inherit}
+.am{font-family:inherit}
+.nav{min-height:44px;padding:0 10px;display:flex;align-items:center;font-size:14px;color:#F5F2EB;text-decoration:none}
+.nav:hover{color:#F5F2EB;text-decoration:underline;text-underline-offset:6px}
+.fr{position:absolute;inset:8px;border:1px solid #C9A45C;pointer-events:none}
+.fr i{position:absolute;width:7px;height:7px;background:#C9A45C;transform:rotate(45deg)}
+.fr i:nth-child(1){top:-4.5px;right:-4.5px}.fr i:nth-child(2){top:-4.5px;left:-4.5px}.fr i:nth-child(3){bottom:-4.5px;right:-4.5px}.fr i:nth-child(4){bottom:-4.5px;left:-4.5px}
+.vp{position:relative;height:560px;overflow:hidden;touch-action:none;cursor:grab;background:#FFFDF8}
+.layer{position:absolute;top:10px;left:50%;width:358px;height:540px;margin-left:-179px;transform-origin:50% 0}
+.nd{position:absolute;display:flex;flex-direction:column;align-items:center;gap:5px;min-height:44px;padding:0;border:0;background:none;cursor:pointer;font:inherit;color:#1C1C1A}
+.nd .sh{display:flex;align-items:center;justify-content:center;box-sizing:border-box;flex:none;position:relative}
+.k-prophet .sh{width:15px;height:15px;background:#C9A45C;border:2px solid #0E4B3B;transform:rotate(45deg)}
+.k-companion .sh{width:14px;height:14px;background:#0E4B3B}
+.k-narrator .sh{width:14px;height:14px;background:#FFFDF8;border:2px solid #6F8F7F}
+.k-compiler .sh{width:26px;height:20px;background:#1C1C1A;color:#FFFDF8}
+.common .sh::after{content:"";position:absolute;left:50%;top:50%;width:22px;height:22px;margin:-11px 0 0 -11px;box-sizing:border-box;border:2px solid #C9A45C;transform:rotate(45deg)}
+.k-prophet .lb{margin-top:3px}
+.common .lb{margin-top:9px}
+.nd .lb{font-family:inherit;font-size:13px;line-height:1.35;background:#FFFDF8;padding:0 3px;text-align:center;max-width:100%}
+.k-compiler .lb{font-weight:700}
+.nd.sel .lb{background:#0E4B3B;color:#F5F2EB}
+.nd.dim .lb{color:#5E6B66}
+.nd.dim .sh{opacity:.4}
+.nd:focus-visible{outline:none}
+.nd:focus-visible .lb{outline:3px solid #0E4B3B;outline-offset:2px}
+.bd{position:absolute;width:8px;height:8px;margin:-4px 0 0 -4px;background:#C9A45C;transform:rotate(45deg)}
+.ctag{position:absolute;height:24px;box-sizing:border-box;padding:0 8px;display:flex;align-items:center;border:1.5px solid #C9A45C;background:#FFFDF8;font-size:12px;font-weight:500;color:#1C1C1A;white-space:nowrap}
+.zb{width:44px;height:44px;border:1.5px solid #1C1C1A;border-radius:2px;background:#FFFDF8;color:#1C1C1A;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.seg{flex:1;height:44px;border:0;background:transparent;color:#0E4B3B;font-family:inherit;font-size:15px;cursor:pointer}
+.seg.on{background:#0E4B3B;color:#F5F2EB;font-weight:600}
+.rt{display:flex;flex-direction:column;align-items:stretch;gap:8px;padding:14px 16px;border:1px solid #C9C2B0;border-radius:2px;background:#FFFDF8;text-align:right;font-family:inherit;color:#1C1C1A;cursor:pointer}
+.rt.on{border:2px solid #0E4B3B;padding:13px 15px;background:#EAF1EC}
+.rt .no{width:28px;height:28px;border:1.5px solid #0E4B3B;color:#0E4B3B;font-family:inherit;font-size:15px;display:flex;align-items:center;justify-content:center;box-sizing:border-box;flex:none}
+.rt.on .no{background:#0E4B3B;color:#F5F2EB}
+.tag{display:inline-flex;align-self:flex-start;align-items:center;gap:7px;height:26px;padding:0 9px;border-radius:2px;font-size:13px;font-weight:500}
+.tag .q{width:8px;height:8px;flex:none}
+.lg{display:inline-flex;align-items:center;gap:7px}
+</style>
+</helmet>
+<div dir="rtl" style="width: 390px; min-height: 1760px; box-sizing: border-box; background: #F5F2EB; color: #1C1C1A; font-family: 'IBM Plex Sans Arabic', Tahoma, sans-serif; display: flex; flex-direction: column">
+
+<div class="ongreen" style="background: #0E4B3B; color: #F5F2EB">
+<header style="height: 64px; box-sizing: border-box; padding: 0 16px 0 8px; display: flex; align-items: center; justify-content: space-between">
+<a href="Home.dc.html" aria-label="سَنَد، الرئيسية" style="display: flex; align-items: center; min-height: 44px">
+<img src="/_blob/84b90d4d632c91db482e9c8ca319a69f" alt="" width="44" height="44" style="width: 44px; height: 44px; display: block">
+</a>
+<nav aria-label="القائمة الرئيسية" style="display: flex; gap: 2px">
+<a href="Paste.dc.html" class="nav">الصق إسنادًا</a>
+<a href="About.dc.html" class="nav">المنهج</a>
+</nav>
+</header>
+<section style="padding: 4px 20px 24px; display: flex; flex-direction: column; gap: 10px">
+<a href="Home.dc.html" style="display: inline-flex; align-items: center; gap: 4px; align-self: flex-start; min-height: 44px; font-size: 14px; color: #CFDAD4; text-decoration: none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg>نتائج البحث</a>
+<h1 class="am" style="margin: 0; font-size: 26px; line-height: 1.75; font-weight: 400">«إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى»</h1>
+<p style="margin: 0; font-size: 15px; line-height: 1.7; color: #CFDAD4">سبعة أسانيد عند خمسة مصنِّفين، تلتقي كلها عند يحيى بن سعيد الأنصاري.</p>
+<span style="display: inline-flex; align-self: flex-start; align-items: center; height: 26px; padding: 0 8px; border: 1px dashed #CFDAD4; border-radius: 2px; font-size: 13px; color: #CFDAD4">بيانات توضيحية</span>
+</section>
+</div>
+
+<main style="display: flex; flex-direction: column; gap: 16px; padding: 20px 16px 32px">
+
+<div role="group" aria-label="طريقة العرض" style="display: flex; border: 2px solid #0E4B3B; border-radius: 2px">
+<button type="button" class="{{segTree}}" aria-pressed="{{isTreeStr}}" onClick="{{showTree}}">الشجرة</button>
+<button type="button" class="{{segList}}" aria-pressed="{{isListStr}}" onClick="{{showList}}">الأسانيد السبعة</button>
+</div>
+
+<sc-if value="{{isTree}}" hint-placeholder-val="{{ true }}">
+<section aria-label="شجرة الأسانيد" style="display: flex; flex-direction: column; border: 1.5px solid #1C1C1A; border-radius: 2px; overflow: hidden; background: #FFFDF8">
+<div class="vp" onPointerDown="{{onDown}}" onPointerMove="{{onMove}}" onPointerUp="{{onUp}}" onPointerLeave="{{onUp}}">
+<span class="fr" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+<div class="layer" style="transform: translate({{px}}px, {{py}}px) scale({{z}})">
+<svg width="358" height="540" viewBox="0 0 358 540" aria-hidden="true" style="position: absolute; left: 0; top: 0; overflow: visible">
+<path d="{{edgeD}}" fill="none" stroke="#7D8A84" stroke-width="2" stroke-linecap="square"></path>
+<path d="{{hiD}}" fill="none" stroke="#0E4B3B" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter"></path>
+</svg>
+<sc-for list="{{dots}}" as="d" hint-placeholder-count="3">
+<span class="bd" style="left: {{d.x}}px; top: {{d.y}}px"></span>
+</sc-for>
+<span class="ctag" style="left: {{tag.left}}px; top: {{tag.top}}px">نقطة الالتقاء</span>
+<sc-for list="{{nodes}}" as="n" hint-placeholder-count="20">
+<button type="button" class="{{n.cls}}" style="left: {{n.left}}px; top: {{n.top}}px; width: {{n.w}}px" aria-label="{{n.aria}}" aria-pressed="{{n.pressed}}" onClick="{{n.tap}}">
+<span class="sh"><sc-if value="{{n.isCompiler}}" hint-placeholder-val="{{ false }}"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square" aria-hidden="true"><path d="M4 5h7v15H4zM13 5h7v15h-7z"></path></svg></sc-if></span>
+<span class="lb">{{n.label}}</span>
+</button>
+</sc-for>
+</div>
+<div style="position: absolute; top: 18px; left: 18px; display: flex; flex-direction: column; gap: 6px">
+<button type="button" class="zb" aria-label="تكبير" onClick="{{zin}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button>
+<button type="button" class="zb" aria-label="تصغير" onClick="{{zout}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M5 12h14"></path></svg></button>
+<button type="button" class="zb" aria-label="إعادة الشجرة إلى وضعها" onClick="{{zreset}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"></path></svg></button>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px 16px; padding: 12px 14px; border-top: 1.5px solid #1C1C1A; font-size: 13px">
+<span class="lg"><span style="width: 9px; height: 9px; background: #C9A45C; border: 2px solid #0E4B3B; transform: rotate(45deg); margin: 0 2px"></span>النبي ﷺ</span>
+<span class="lg"><span style="width: 11px; height: 11px; background: #0E4B3B"></span>صحابي</span>
+<span class="lg"><span style="width: 11px; height: 11px; box-sizing: border-box; border: 2px solid #6F8F7F"></span>راوٍ</span>
+<span class="lg"><span style="width: 15px; height: 11px; background: #1C1C1A"></span>مصنِّف</span>
+<span class="lg"><span style="width: 12px; height: 12px; box-sizing: border-box; border: 2px solid #C9A45C; transform: rotate(45deg); margin: 0 2px"></span>نقطة الالتقاء</span>
+<span class="lg"><span style="width: 8px; height: 8px; background: #C9A45C; transform: rotate(45deg); margin: 0 2px"></span>نقطة افتراق</span>
+</div>
+</section>
+<p style="margin: -4px 0 0; font-size: 13px; color: #5E6B66">اسحب لتحريك الشجرة، واضغط على راوٍ لتظهر ترجمته.</p>
+</sc-if>
+
+<sc-if value="{{isList}}" hint-placeholder-val="{{ false }}">
+<section aria-label="قائمة الأسانيد" style="display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{routes}}" as="r" hint-placeholder-count="7">
+<button type="button" class="{{r.cls}}" aria-pressed="{{r.pressed}}" onClick="{{r.tap}}">
+<span style="display: flex; align-items: center; gap: 10px"><span class="no">{{r.no}}</span><span style="font-size: 15px; font-weight: 600">{{r.title}}</span></span>
+<span class="am" style="font-size: 17px; line-height: 1.6">{{r.sum}}</span>
+<span class="tag" style="background: {{r.st.bg}}; color: {{r.st.fg}}"><span class="q" style="background: {{r.st.dot}}"></span>{{r.st.label}}</span>
+</button>
+</sc-for>
+</section>
+</sc-if>
+
+<sc-if value="{{panel.isN}}" hint-placeholder-val="{{ true }}">
+<section aria-label="لوحة الراوي" style="display: flex; flex-direction: column; border: 1.5px solid #1C1C1A; border-radius: 2px; background: #FFFDF8; overflow: hidden">
+<div style="background: #0E4B3B; color: #F5F2EB; padding: 16px 20px 18px; display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 13px; color: #CFDAD4">{{panel.eyebrow}}</span>
+<h2 class="am" style="margin: 0; font-size: 28px; font-weight: 700; line-height: 1.5">{{panel.name}}</h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 18px; padding: 20px">
+<sc-if value="{{panel.isCommon}}" hint-placeholder-val="{{ true }}">
+<p style="margin: 0; display: flex; gap: 10px; align-items: flex-start; font-size: 15px; line-height: 1.7"><span style="width: 10px; height: 10px; box-sizing: border-box; border: 2px solid #C9A45C; transform: rotate(45deg); flex: none; margin-top: 8px"></span>تمرّ به الأسانيد السبعة كلها، ومنه تتفرّع إلى خمسة رواة.</p>
+</sc-if>
+<sc-if value="{{panel.isProphet}}" hint-placeholder-val="{{ false }}">
+<p style="margin: 0; font-size: 15px; line-height: 1.8">إليه ﷺ ترجع الأسانيد كلها في هذه الشجرة.</p>
+</sc-if>
+<sc-if value="{{panel.showMeta}}" hint-placeholder-val="{{ true }}">
+<dl style="margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 2px"><dt style="font-size: 13px; color: #5E6B66">الطبقة</dt><dd style="margin: 0; font-size: 16px">{{panel.gen}}</dd></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><dt style="font-size: 13px; color: #5E6B66">الوفاة</dt><dd style="margin: 0; font-size: 16px">{{panel.death}}</dd></div>
+</dl>
+</sc-if>
+<sc-if value="{{panel.isCompiler}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 13px; color: #5E6B66">الكتاب</span><span class="am" style="font-size: 19px">{{panel.book}}</span></div>
+</sc-if>
+<sc-if value="{{panel.showGrade}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 10px; padding-top: 16px; border-top: 1px solid #DDD6C6">
+<span style="font-size: 14px; font-weight: 500">قال ابن حجر في «تقريب التهذيب»</span>
+<sc-if value="{{panel.hasQuote}}" hint-placeholder-val="{{ true }}">
+<blockquote class="am" style="margin: 0; font-size: 21px; line-height: 1.9">{{panel.quote}}</blockquote>
+<span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #5E6B66"><span style="width: 7px; height: 7px; background: #C9A45C; transform: rotate(45deg); flex: none"></span>{{panel.ref}}</span>
+</sc-if>
+<sc-if value="{{panel.noQuote}}" hint-placeholder-val="{{ false }}">
+<p style="margin: 0; padding: 12px 14px; border: 1px dashed #7D8A84; font-size: 14px; line-height: 1.7; color: #5E6B66">لم ننقل نصّ الحكم بعد، ولن نعرض حكمًا بلا مصدر.</p>
+</sc-if>
+<span class="tag" style="background: {{panel.st.bg}}; color: {{panel.st.fg}}"><span class="q" style="background: {{panel.st.dot}}"></span>{{panel.st.label}}</span>
+</div>
+</sc-if>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 16px; border-top: 1px solid #DDD6C6">
+<span style="font-size: 14px">يمرّ به {{panel.count}} من سبعة أسانيد</span>
+<button type="button" onClick="{{showList}}" style="min-height: 44px; padding: 0 14px; border: 2px solid #0E4B3B; border-radius: 2px; background: transparent; color: #0E4B3B; font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer">اعرض الأسانيد</button>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{panel.isR}}" hint-placeholder-val="{{ false }}">
+<section aria-label="لوحة المصدر" style="display: flex; flex-direction: column; border: 1.5px solid #1C1C1A; border-radius: 2px; background: #FFFDF8; overflow: hidden">
+<div style="background: #0E4B3B; color: #F5F2EB; padding: 16px 20px 18px; display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 13px; color: #CFDAD4">الإسناد {{panel.no}} من سبعة</span>
+<h2 style="margin: 0; font-size: 20px; font-weight: 600; line-height: 1.5">{{panel.title}}</h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 18px; padding: 20px">
+<span class="tag" style="background: {{panel.st.bg}}; color: {{panel.st.fg}}"><span class="q" style="background: {{panel.st.dot}}"></span>{{panel.st.label}}</span>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 14px; font-weight: 500">الإسناد بنصّه من المصدر</span>
+<p class="am" style="margin: 0; font-size: 19px; line-height: 2">{{panel.isnad}}</p>
+<sc-if value="{{panel.hasNote}}" hint-placeholder-val="{{ false }}">
+<p style="margin: 0; font-size: 13px; line-height: 1.7; color: #5E6B66">{{panel.note}}</p>
+</sc-if>
+</div>
+<dl style="margin: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; padding-top: 16px; border-top: 1px solid #DDD6C6">
+<div style="display: flex; flex-direction: column; gap: 2px"><dt style="font-size: 13px; color: #5E6B66">الموضع</dt><dd style="margin: 0; font-size: 15px">{{panel.place}}</dd></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><dt style="font-size: 13px; color: #5E6B66">الحكم المنقول</dt><dd style="margin: 0; font-size: 15px">{{panel.grade}}</dd></div>
+</dl>
+<p style="margin: 0; display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.7; color: #5E6B66"><span style="width: 7px; height: 7px; background: #C9A45C; transform: rotate(45deg); flex: none; margin-top: 9px"></span>ذِكرُ الحديث في كتابٍ ليس حكمًا عليه. الأحكام تُنقل منسوبةً إلى قائليها.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<a href="#" style="flex: 1 1 180px; min-height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 2px; background: #0E4B3B; color: #F5F2EB; font-size: 15px; font-weight: 500; text-decoration: none">افتح الموضع في المصدر</a>
+<button type="button" onClick="{{copyRef}}" style="flex: 1 1 140px; min-height: 48px; border: 2px solid #0E4B3B; border-radius: 2px; background: transparent; color: #0E4B3B; font-family: inherit; font-size: 15px; font-weight: 500; cursor: pointer">{{copyLabel}}</button>
+</div>
+</div>
+</section>
+</sc-if>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1760}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.S = this.build();
+    this.cfg = { W: 358, ys: [26, 82, 138, 194, 252, 330, 408, 486], step: 68, elbow: 26,
+      size: { prophet: 15, companion: 14, narrator: 14, compiler: 20 },
+      half: { prophet: 11, companion: 7, narrator: 7, compiler: 10 }, ring: 9,
+      chainW: 170, colW: 66, short: true, tagW: 86 };
+    this.state = { view: 'tree', sel: { t: 'n', id: 'yahya' }, z: 1, px: 0, py: 0 };
+    this.drag = null;
+    this.wasDrag = false;
+  }
+  build() {
+    var toAr = function (s) { return String(s).replace(/\d/g, function (d) { return '٠١٢٣٤٥٦٧٨٩'[d]; }); };
+    var ST = {
+      ok: { label: 'مصدر موثق', bg: '#E6F0EA', fg: '#1F5E44', dot: '#2E7D5B' },
+      check: { label: 'يحتاج تحققًا', bg: '#F7EBD6', fg: '#7A4F0F', dot: '#B7791F' },
+      none: { label: 'لا مصدر بعد', bg: '#ECEBE7', fg: '#45494A', dot: '#8B908D' }
+    };
+    var NODES = {
+      p: { name: 'النبي ﷺ', mid: 'النبي ﷺ', short: 'النبي ﷺ', kind: 'prophet', level: 0 },
+      umar: { name: 'عمر بن الخطاب', mid: 'عمر بن الخطاب', short: 'عمر', kind: 'companion', level: 1, gen: 'صحابي', death: 'سنة ٢٣هـ', status: 'check' },
+      alq: { name: 'علقمة بن وقاص الليثي', mid: 'علقمة بن وقاص', short: 'علقمة', level: 2, gen: 'الثانية', death: 'في خلافة عبد الملك', quote: 'ثقة ثبت من الثانية، أخطأ من زعم أن له صحبة…', ref: 'تقريب التهذيب، ص ٣٩٧، رقم ٤٦٨٥', status: 'ok' },
+      taymi: { name: 'محمد بن إبراهيم التيمي', mid: 'محمد بن إبراهيم التيمي', short: 'التيمي', level: 3, gen: 'لم تُنقل', death: 'سنة ١٢٠هـ', status: 'check' },
+      yahya: { name: 'يحيى بن سعيد الأنصاري', mid: 'يحيى بن سعيد الأنصاري', short: 'يحيى بن سعيد', level: 4, common: true, gen: 'الخامسة', death: 'سنة ١٤٤هـ أو بعدها', quote: 'ثقة ثبت من الخامسة مات سنة أربع وأربعين أو بعدها', ref: 'تقريب التهذيب، ص ٥٩١، رقم ٧٥٥٩', status: 'ok' },
+      uyayna: { name: 'سفيان بن عيينة', mid: 'سفيان بن عيينة', short: 'ابن عيينة', level: 5, col: 0, gen: 'الثامنة', death: 'رجب ١٩٨هـ', quote: 'ثقة حافظ فقيه إمام حجة إلا أنه تغير حفظه بأخرة وكان ربما دلس لكن عن الثقات…', ref: 'تقريب التهذيب، ص ٢٤٥، رقم ٢٤٥١', status: 'ok' },
+      malik: { name: 'مالك بن أنس', mid: 'مالك بن أنس', short: 'مالك', level: 5, col: 1, gen: 'لم تُنقل', death: 'سنة ١٧٩هـ', status: 'check' },
+      thaqafi: { name: 'عبد الوهاب بن عبد المجيد الثقفي', mid: 'عبد الوهاب الثقفي', short: 'الثقفي', level: 5, col: 2, gen: 'لم تُنقل', death: 'سنة ١٩٤هـ', status: 'check' },
+      thawri: { name: 'سفيان بن سعيد الثوري', mid: 'سفيان الثوري', short: 'الثوري', level: 5, col: 3, gen: 'لم تُنقل', death: 'سنة ١٦١هـ', status: 'check' },
+      hammad: { name: 'حماد بن زيد', mid: 'حماد بن زيد', short: 'حماد', level: 5, col: 4, gen: 'لم تُنقل', death: 'سنة ١٧٩هـ', status: 'check' },
+      humaydi: { name: 'عبد الله بن الزبير الحميدي', mid: 'الحميدي', short: 'الحميدي', level: 6, col: 0, gen: 'لم تُنقل', death: 'سنة ٢١٩هـ', status: 'check' },
+      qanabi: { name: 'عبد الله بن مسلمة القعنبي', mid: 'القعنبي', short: 'القعنبي', level: 6, col: 1, gen: 'لم تُنقل', death: 'سنة ٢٢١هـ', status: 'check' },
+      muthanna: { name: 'محمد بن المثنى', mid: 'محمد بن المثنى', short: 'ابن المثنى', level: 6, col: 2, gen: 'لم تُنقل', death: 'سنة ٢٥٢هـ', status: 'check' },
+      kathir: { name: 'محمد بن كثير', mid: 'محمد بن كثير', short: 'ابن كثير', level: 6, col: 3, gen: 'لم تُنقل', death: 'سنة ٢٢٣هـ', status: 'check' },
+      habib: { name: 'يحيى بن حبيب بن عربي', mid: 'يحيى بن حبيب', short: 'ابن حبيب', level: 6, col: 4, gen: 'لم تُنقل', death: 'سنة ٢٤٨هـ', status: 'check' },
+      bukhari: { name: 'الإمام البخاري', mid: 'البخاري', short: 'البخاري', kind: 'compiler', level: 7, col: 0, death: 'سنة ٢٥٦هـ', book: 'الجامع الصحيح' },
+      muslim: { name: 'الإمام مسلم', mid: 'مسلم', short: 'مسلم', kind: 'compiler', level: 7, col: 1, death: 'سنة ٢٦١هـ', book: 'الصحيح' },
+      tirmidhi: { name: 'الإمام الترمذي', mid: 'الترمذي', short: 'الترمذي', kind: 'compiler', level: 7, col: 2, death: 'سنة ٢٧٩هـ', book: 'الجامع' },
+      abudawud: { name: 'الإمام أبو داود', mid: 'أبو داود', short: 'أبو داود', kind: 'compiler', level: 7, col: 3, death: 'سنة ٢٧٥هـ', book: 'السنن' },
+      nasai: { name: 'الإمام النسائي', mid: 'النسائي', short: 'النسائي', kind: 'compiler', level: 7, col: 4, death: 'سنة ٣٠٣هـ', book: 'السنن' }
+    };
+    var CHAIN = ['p', 'umar', 'alq', 'taymi', 'yahya'];
+    var CUT = 'إسناد مقرون بأسانيد أخرى في الموضع نفسه، حذفناها ووضعنا مكانها «…».';
+    var ROUTES = [
+      { id: 'r1', book: 'صحيح البخاري', num: '١', via: ['uyayna', 'humaydi'], c: 'bukhari', status: 'ok',
+        head: 'حدثنا الْحُمَيْدِيُّ عَبْدُ اللَّهِ بْنُ الزُّبَيْرِ، قَالَ: حَدَّثَنَا سُفْيَانُ، قَالَ: حَدَّثَنَا يَحْيَى بْنُ سَعِيدٍ الْأَنْصَارِيُّ…',
+        isnad: 'حدثنا الْحُمَيْدِيُّ عَبْدُ اللَّهِ بْنُ الزُّبَيْرِ، قَالَ: حَدَّثَنَا سُفْيَانُ، قَالَ: حَدَّثَنَا يَحْيَى بْنُ سَعِيدٍ الْأَنْصَارِيُّ، قَالَ: أَخْبَرَنِي مُحَمَّدُ بْنُ إِبْرَاهِيمَ التَّيْمِيُّ، أَنَّهُ سَمِعَ عَلْقَمَةَ بْنَ وَقَّاصٍ اللَّيْثِيَّ يَقُولُ: سَمِعْتُ عُمَرَ بْنَ الْخَطَّابِ رضي الله عنه عَلَى الْمِنْبَرِ قَالَ: سَمِعْتُ رَسُولَ اللَّهِ ﷺ يَقُولُ',
+        place: 'طبعة التأصيل، ج ١، ص ١٧٩، كتاب بدء الوحي', grade: 'مُخرَّج في «الجامع الصحيح» للبخاري' },
+      { id: 'r2', book: 'صحيح البخاري', num: '٥٤', via: ['malik', 'qanabi'], c: 'bukhari', status: 'ok',
+        head: 'حدثنا عَبْدُ اللَّهِ بْنُ مَسْلَمَةَ، قَالَ: أَخْبَرَنَا مَالِكٌ، عَنْ يَحْيَى بْنِ سَعِيدٍ…',
+        isnad: 'حدثنا عَبْدُ اللَّهِ بْنُ مَسْلَمَةَ، قَالَ: أَخْبَرَنَا مَالِكٌ، عَنْ يَحْيَى بْنِ سَعِيدٍ، عَنْ مُحَمَّدِ بْنِ إِبْرَاهِيمَ، عَنْ عَلْقَمَةَ بْنِ وَقَّاصٍ، عَنْ عُمَرَ أَنَّ رَسُولَ اللَّهِ ﷺ قَالَ',
+        place: 'طبعة التأصيل، ج ١، ص ٢٢٩، كتاب الإيمان', grade: 'مُخرَّج في «الجامع الصحيح» للبخاري' },
+      { id: 'r3', book: 'صحيح مسلم', num: '١٩٠٧', via: ['malik', 'qanabi'], c: 'muslim', status: 'ok',
+        head: 'حَدَّثَنَا عَبْدُ اللَّهِ بْنُ مَسْلَمَةَ بْنِ قَعْنَبٍ. حَدَّثَنَا مَالِكٌ عَنْ يَحْيَى بْنِ سَعِيدٍ…',
+        isnad: 'حَدَّثَنَا عَبْدُ اللَّهِ بْنُ مَسْلَمَةَ بْنِ قَعْنَبٍ. حَدَّثَنَا مَالِكٌ عَنْ يَحْيَى بْنِ سَعِيدٍ، عَنْ مُحَمَّدِ بْنِ إِبْرَاهِيمَ، عَنْ عَلْقَمَةَ بن وقاص، عن عمر ابن الْخَطَّابِ. قَالَ: قَالَ رَسُولُ اللَّهِ ﷺ',
+        place: 'تحقيق محمد فؤاد عبد الباقي، ج ٣، ص ١٥١٥، كتاب الإمارة', grade: 'مُخرَّج في «صحيح مسلم»' },
+      { id: 'r4', book: 'صحيح مسلم', num: '١٩٠٧', via: ['thaqafi', 'muthanna'], c: 'muslim', status: 'ok',
+        head: 'وَحَدَّثَنَا مُحَمَّدُ بْنُ الْمُثَنَّى، حَدَّثَنَا عَبْدُ الْوَهَّابِ، (يَعْنِي الثَّقَفِيَّ)… عَنْ يَحْيَى بْنِ سَعِيدٍ…',
+        isnad: 'وَحَدَّثَنَا مُحَمَّدُ بْنُ الْمُثَنَّى، حَدَّثَنَا عَبْدُ الْوَهَّابِ، (يَعْنِي الثَّقَفِيَّ). … كُلُّهُمْ عَنْ يَحْيَى بْنِ سَعِيدٍ بِإِسْنَادِ مَالِكٍ وَمَعْنَى حَدِيثِهِ.',
+        place: 'الطبعة التركية، ج ٦، ص ٤٨، كتاب الإمارة', grade: 'مُخرَّج في «صحيح مسلم»', note: CUT },
+      { id: 'r5', book: 'سنن الترمذي', num: '١٦٤٧', via: ['thaqafi', 'muthanna'], c: 'tirmidhi', status: 'ok',
+        head: 'حَدَّثَنَا مُحَمَّدُ بْنُ المُثَنَّى قَالَ: حَدَّثَنَا عَبْدُ الوَهَّابِ الثَّقَفِيُّ، عَنْ يَحْيَى بْنِ سَعِيدٍ…',
+        isnad: 'حَدَّثَنَا مُحَمَّدُ بْنُ المُثَنَّى قَالَ: حَدَّثَنَا عَبْدُ الوَهَّابِ الثَّقَفِيُّ، عَنْ يَحْيَى بْنِ سَعِيدٍ، عَنْ مُحَمَّدِ بْنِ إِبْرَاهِيمَ، عَنْ عَلْقَمَةَ بْنِ وَقَّاصٍ اللَّيْثِيِّ، عَنْ عُمَرَ بْنِ الخَطَّابِ قَالَ: قَالَ رَسُولُ اللَّهِ ﷺ',
+        place: 'تحقيق أحمد شاكر، ج ٤، ص ١٧٩، أبواب فضائل الجهاد', grade: 'قال الترمذي عقبه: «هَذَا حَدِيثٌ حَسَنٌ صَحِيحٌ»' },
+      { id: 'r6', book: 'سنن أبي داود', num: '٢٢٠١', via: ['thawri', 'kathir'], c: 'abudawud', status: 'ok',
+        head: 'حَدَّثَنَا مُحَمَّدُ بْنُ كَثِيرٍ، أَخْبَرَنَا سُفْيَانُ، حَدَّثَنِي يَحْيَى بْنُ سَعِيدٍ…',
+        isnad: 'حَدَّثَنَا مُحَمَّدُ بْنُ كَثِيرٍ، أَخْبَرَنَا سُفْيَانُ، حَدَّثَنِي يَحْيَى بْنُ سَعِيدٍ، عَنْ مُحَمَّدِ بْنِ إِبْرَاهِيمَ التَّيْمِيِّ، عَنْ عَلْقَمَةَ بْنِ وَقَّاصٍ اللَّيْثِيِّ قَالَ: سَمِعْتُ عُمَرَ بْنَ الْخَطَّابِ يَقُولُ: قَالَ رَسُولُ اللَّهِ ﷺ',
+        place: 'تحقيق محيي الدين عبد الحميد، ج ٢، ص ٢٦٢، كتاب الطلاق', grade: 'في حاشية هذه الطبعة: «صحيح»' },
+      { id: 'r7', book: 'سنن النسائي', num: '٧٥', via: ['hammad', 'habib'], c: 'nasai', status: 'ok',
+        head: 'أَخْبَرَنَا يَحْيَى بْنُ حَبِيبِ بْنِ عَرَبِيٍّ، عَنْ حَمَّادٍ… عَنْ يَحْيَى بْنِ سَعِيدٍ…',
+        isnad: 'أَخْبَرَنَا يَحْيَى بْنُ حَبِيبِ بْنِ عَرَبِيٍّ، عَنْ حَمَّادٍ … عَنْ يَحْيَى بْنِ سَعِيدٍ، عَنْ مُحَمَّدِ بْنِ إِبْرَاهِيمَ، عَنْ عَلْقَمَةَ بْنِ وَقَّاصٍ، عَنْ عُمَرَ بْنِ الْخَطَّابِ رضي الله عنه قَالَ: قَالَ رَسُولُ اللهِ ﷺ',
+        place: 'الطبعة المصرية، ج ١، ص ٥٨، كتاب الطهارة', grade: 'لم يُذكر حكم في هذا الموضع', note: CUT }
+    ];
+    ROUTES.forEach(function (r, i) { r.no = toAr(i + 1); r.path = CHAIN.concat(r.via, [r.c]); });
+    var edgesOf = function (routes) {
+      var seen = {}, out = [];
+      routes.forEach(function (r) {
+        for (var i = 0; i < r.path.length - 1; i++) {
+          var k = r.path[i] + '>' + r.path[i + 1];
+          if (!seen[k]) { seen[k] = 1; out.push([r.path[i], r.path[i + 1]]); }
+        }
+      });
+      return out;
+    };
+    var kindName = function (n) {
+      if (n.kind === 'prophet') return 'رأس الإسناد';
+      if (n.kind === 'companion') return 'صحابي';
+      if (n.kind === 'compiler') return 'مصنِّف';
+      return n.common ? 'راوٍ، وهو نقطة الالتقاء' : 'راوٍ';
+    };
+    return { toAr: toAr, ST: ST, NODES: NODES, ROUTES: ROUTES, edgesOf: edgesOf, ALL: edgesOf(ROUTES), kindName: kindName };
+  }
+  place() {
+    var S = this.S, cfg = this.cfg, P = {};
+    Object.keys(S.NODES).forEach(function (id) {
+      var n = S.NODES[id], kind = n.kind || 'narrator';
+      var x = n.col == null ? cfg.W / 2 : cfg.W / 2 + (2 - n.col) * cfg.step;
+      P[id] = { x: x, y: cfg.ys[n.level], s: cfg.size[kind], h: cfg.half[kind] + (n.common ? cfg.ring : 0) };
+    });
+    return P;
+  }
+  pathD(edges, P) {
+    var cfg = this.cfg;
+    return edges.map(function (e) {
+      var A = P[e[0]], B = P[e[1]], sy = A.y + A.h, ey = B.y - B.h;
+      if (A.x === B.x) return 'M' + A.x + ' ' + sy + 'V' + ey;
+      var m = B.y - cfg.elbow;
+      return 'M' + A.x + ' ' + sy + 'V' + m + 'H' + B.x + 'V' + ey;
+    }).join(' ');
+  }
+  dots(P) {
+    var cfg = this.cfg, kids = {};
+    this.S.ALL.forEach(function (e) { (kids[e[0]] = kids[e[0]] || []).push(e[1]); });
+    return Object.keys(kids).filter(function (k) { return kids[k].length > 1; }).map(function (k) {
+      return { key: k, x: P[k].x, y: P[kids[k][0]].y - cfg.elbow };
+    });
+  }
+  renderVals() {
+    var S = this.S, CFG = this.cfg, self = this, st = this.state, sel = st.sel;
+    var P = this.place();
+    var selRoute = sel.t === 'r' ? S.ROUTES.filter(function (r) { return r.id === sel.id; })[0] : null;
+    var selNode = sel.t === 'n' ? sel.id : null;
+    var inRoute = selRoute ? selRoute.path : null;
+    var hiEdges = selRoute ? S.edgesOf([selRoute]) : (selNode ? S.ALL.filter(function (e) { return e[0] === selNode || e[1] === selNode; }) : []);
+
+    var nodes = Object.keys(S.NODES).map(function (id) {
+      var n = S.NODES[id], p = P[id], kind = n.kind || 'narrator';
+      var w = n.col == null ? CFG.chainW : CFG.colW;
+      var on = selNode === id;
+      return {
+        key: id,
+        label: CFG.short && n.col != null ? n.short : n.mid,
+        aria: n.name + '، ' + S.kindName(n),
+        cls: 'nd k-' + kind + (n.common ? ' common' : '') + (on ? ' sel' : '') + (inRoute && inRoute.indexOf(id) < 0 ? ' dim' : ''),
+        left: Math.round(p.x - w / 2), top: Math.round(p.y - p.s / 2), w: w,
+        isCompiler: kind === 'compiler', pressed: on ? 'true' : 'false',
+        tap: function () { self.pick({ t: 'n', id: id }); }
+      };
+    });
+
+    var routes = S.ROUTES.map(function (r) {
+      var on = !!(selRoute && selRoute.id === r.id);
+      return {
+        key: r.id, no: r.no, title: r.book + '، حديث ' + r.num,
+        sum: r.head,
+        st: S.ST[r.status], cls: 'rt' + (on ? ' on' : ''), pressed: on ? 'true' : 'false',
+        tap: function () { self.setState({ sel: { t: 'r', id: r.id }, view: 'tree', copied: false }); }
+      };
+    });
+
+    var panel;
+    if (selNode) {
+      var n = S.NODES[selNode], kind = n.kind || 'narrator';
+      var count = S.ROUTES.filter(function (r) { return r.path.indexOf(selNode) >= 0; }).length;
+      panel = {
+        isN: true, isR: false, eyebrow: S.kindName(n), name: n.name,
+        isProphet: kind === 'prophet', isCompiler: kind === 'compiler', isCommon: !!n.common,
+        showMeta: kind !== 'prophet', gen: kind === 'compiler' ? 'مصنِّف' : (n.gen || 'لم تُنقل'), death: n.death || 'لم تُنقل',
+        showGrade: kind === 'companion' || kind === 'narrator',
+        hasQuote: !!n.quote, noQuote: !n.quote, quote: '«' + (n.quote || '') + '»', ref: n.ref || '',
+        st: S.ST[n.status || 'check'], book: n.book || '', count: S.toAr(count)
+      };
+    } else {
+      var r = selRoute;
+      panel = {
+        isN: false, isR: true, no: r.no, title: r.book + '، حديث رقم ' + r.num, book: r.book, num: r.num,
+        st: S.ST[r.status], isnad: r.isnad, hasNote: !!r.note, note: r.note || '',
+        place: r.place, grade: r.grade
+      };
+    }
+
+    var y = P.yahya;
+    return {
+      isTree: st.view === 'tree', isList: st.view === 'list',
+      segTree: 'seg' + (st.view === 'tree' ? ' on' : ''), segList: 'seg' + (st.view === 'list' ? ' on' : ''),
+      isTreeStr: st.view === 'tree' ? 'true' : 'false', isListStr: st.view === 'list' ? 'true' : 'false',
+      showTree: function () { self.setState({ view: 'tree' }); },
+      showList: function () { self.setState({ view: 'list' }); },
+      nodes: nodes, routes: routes, panel: panel,
+      copyLabel: st.copied ? 'نُسخ التوثيق' : 'انسخ التوثيق',
+      copyRef: function () { self.setState({ copied: true }); },
+      edgeD: this.pathD(S.ALL, P), hiD: this.pathD(hiEdges, P) || 'M0 0',
+      dots: this.dots(P),
+      tag: { left: Math.round(y.x - 22 - CFG.tagW), top: y.y - 12 },
+      z: st.z, px: st.px, py: st.py,
+      zin: function () { self.setState({ z: Math.min(2, +(self.state.z + 0.2).toFixed(2)) }); },
+      zout: function () { self.setState({ z: Math.max(0.6, +(self.state.z - 0.2).toFixed(2)) }); },
+      zreset: function () { self.setState({ z: 1, px: 0, py: 0 }); },
+      onDown: function (e) { self.wasDrag = false; self.drag = { x: e.clientX, y: e.clientY, px: self.state.px, py: self.state.py, moved: false }; },
+      onMove: function (e) {
+        var d = self.drag; if (!d) return;
+        var dx = e.clientX - d.x, dy = e.clientY - d.y;
+        if (!d.moved && Math.abs(dx) + Math.abs(dy) < 5) return;
+        d.moved = true; self.setState({ px: d.px + dx, py: d.py + dy });
+      },
+      onUp: function () { if (self.drag) { self.wasDrag = self.drag.moved; } self.drag = null; }
+    };
+  }
+  pick(sel) {
+    if (this.wasDrag) { this.wasDrag = false; return; }
+    this.setState({ sel: sel, copied: false });
+  }
+}
+</script>
+</body>
+</html>
