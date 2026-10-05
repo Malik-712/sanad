@@ -177,6 +177,26 @@ export const ar = {
     sourceLink: "المصدر",
   },
 
+  parse: {
+    title: "الصق إسنادًا",
+    intro: "من أي كتاب. نستخرج الرواة، ونرسم السلسلة، ونبحث عنها في شجرة الحديث.",
+    label: "نصّ الإسناد",
+    hint: "يكفي الإسناد وحده، ولا يضرّ أن يأتي معه المتن.",
+    privacy: "يُحلَّل النص في متصفحك، ولا نحفظه ولا نرسله.",
+    analyse: "حلِّل الإسناد",
+    soon: "قريبًا",
+    noticeTitle: "استخراج آلي — راجِع النتائج",
+    noticeText: "قد يخلط الذكاء الاصطناعي بين رواة يتشابهون في الاسم. راجِع كل اسم قبل أن تعتمد عليه.",
+    chainTitle: "السلسلة كما وردت",
+    chainAria: "من النبي ﷺ في الأعلى إلى المصنِّف في الأسفل",
+    missingCompiler: "المصنِّف، ولم يُذكر في النص",
+    chainNote: "بين كل راويين صيغة الأداء كما جاءت في النص المُلصَق.",
+    foundTitle: (title: string) => `وجدناه في شجرة «${title}»`,
+    foundFirst: (total: string, title: string) => `يطابق الإسناد الأول من ${total}: ${title}.`,
+    foundNth: (no: string, total: string, title: string) => `يطابق الإسناد ${no} من ${total}: ${title}.`,
+    showInTree: "اعرض الإسناد في الشجرة",
+  },
+
   legend: {
     prophet: "النبي ﷺ",
     companion: "صحابي",
