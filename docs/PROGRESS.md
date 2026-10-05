@@ -2,7 +2,7 @@
 
 Live record of what is done, per session in `docs/IMPLEMENTATION.md`. All times are Riyadh time (UTC+3). Update this file at the end of every session.
 
-Last updated: Mon 5 Oct 2026, 20:30.
+Last updated: Mon 5 Oct 2026, 21:00.
 
 ## Summary
 
@@ -32,6 +32,7 @@ Last updated: Mon 5 Oct 2026, 20:30.
 | Status | Date and time | Commit ID | Notes |
 | --- | --- | --- | --- |
 | ✅ Done | Mon 5 Oct 20:30 | see `git log` | Item 1: Next.js 16.3.8 + TypeScript strict + Tailwind 4 tokens (design colours only, no shadows, 2px radius), IBM Plex Sans Arabic as the only font, `lang="ar" dir="rtl"`, `lib/copy/ar.ts`, favicon (small mark), Vitest, `validate:data` stub + prebuild. lint/test/validate/build pass. Home is a temporary placeholder. |
+| ✅ Done | Mon 5 Oct | see `git log` | Step 10: repo imported in Vercel (project `sanad`, deployment `dpl_5Wu4FANi4bPYe6Ay2D8h9dHXobPq`, production, READY, from `dc0e28d`). Live URL: https://sanad-pi-five.vercel.app (HTTP 200, `lang="ar" dir="rtl"`). README rewritten, `docs/BASELINE.md` added. |
 | ⏳ Next | — | — | Items 2+: design/NOTES.md, shared components, the 5 routes, demo data, metadata/OG image. Originally: starts ~3 h late. If short on time, cut the Open Graph image polish first; keep every "Done when" item. Owner imports the repo in Vercel at the end. |
 
 ## Session B — Isnad engine and tree
