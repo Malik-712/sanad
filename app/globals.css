@@ -68,7 +68,7 @@
     background-color: var(--color-parchment);
     color: var(--color-ink);
     font-size: 16px;
-    line-height: 1.7;
+    line-height: 1.5; /* the design screens leave it at `normal`, which is 1.5 for IBM Plex Sans Arabic */
   }
 
   /* Links inside text are underlined so they are not told apart by colour alone (cards and nav opt out). */
