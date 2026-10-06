@@ -81,7 +81,7 @@ export function HomeSearch({ entries, cards, tryLinks, between, demoTag, heroTex
             />
             <button
               type="submit"
-              className="w-[84px] flex-none cursor-pointer border-0 bg-green text-[15px] font-medium text-parchment"
+              className="w-[84px] flex-none cursor-pointer border-0 bg-green text-[15px] font-medium text-parchment hover:bg-green-deep"
             >
               {ar.search.button}
             </button>

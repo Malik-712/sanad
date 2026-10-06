@@ -30,7 +30,7 @@ export function HeaderSearch() {
       <button
         type="submit"
         aria-label={ar.search.button}
-        className="flex w-11 flex-none cursor-pointer items-center justify-center border-0 border-s-[1.5px] border-on-green-muted bg-transparent text-parchment"
+        className="flex w-11 flex-none cursor-pointer items-center justify-center border-0 border-s-[1.5px] border-on-green-muted bg-transparent text-parchment hover:bg-green-deep"
       >
         <SearchIcon />
       </button>

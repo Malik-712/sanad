@@ -16,7 +16,10 @@ export function NavLinks({ desktop = false }: { desktop?: boolean }) {
   links.push({ href: "/parse", label: ar.nav.parse, current: pathname === "/parse" });
   links.push({ href: "/about", label: ar.nav.about, current: pathname === "/about" });
 
-  const size = desktop ? "px-3 text-[15px] hover:border-on-green-muted" : "px-2.5 text-[14px]";
+  // Hover as in the design: a muted underline bar on desktop, a text underline on mobile.
+  const size = desktop
+    ? "px-3 text-[15px] hover:border-on-green-muted"
+    : "px-2.5 text-[14px] hover:underline hover:underline-offset-[6px]";
 
   return (
     <nav aria-label={ar.nav.label} className={`flex flex-wrap ${desktop ? "flex-1 gap-1" : "gap-0.5"}`}>

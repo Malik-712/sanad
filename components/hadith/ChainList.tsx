@@ -34,7 +34,11 @@ export function ChainList({
               <Shape role={r.role} />
             </span>
             {r.href ? (
-              <Link href={r.href} className={`text-[19px] leading-[1.6] ${r.role === "prophet" ? "font-bold" : ""}`}>
+              // 7px of padding taken back by the margin: a 44px hit area without changing the row's height.
+              <Link
+                href={r.href}
+                className={`-my-[7px] py-[7px] text-[19px] leading-[1.6] ${r.role === "prophet" ? "font-bold" : ""}`}
+              >
                 {r.name}
               </Link>
             ) : (
