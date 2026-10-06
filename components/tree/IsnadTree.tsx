@@ -23,6 +23,9 @@ type Props = {
   routeNodes: Record<string, string[]>;
   selection: Selection;
   onSelectNarrator: (id: string) => void;
+  /** Title and file name of the downloaded picture (the hadith's title and «sanad-<id>.png»). */
+  exportTitle?: string;
+  exportFile?: string;
 };
 
 export function IsnadTree(props: Props) {
@@ -58,6 +61,8 @@ function TreeCanvas({
   routeNodes,
   selection,
   onSelectNarrator,
+  exportTitle,
+  exportFile,
 }: Props & { layout: TreeLayout; variant: "mobile" | "desktop" }) {
   const vpRef = useRef<HTMLDivElement>(null);
   const [fit, setFit] = useState(1);
@@ -150,9 +155,13 @@ function TreeCanvas({
           selection?.kind === "route" ? e.routeIds.includes(selection.id) : selectedNode ? e.from === selectedNode || e.to === selectedNode : false,
         )
         .map((e) => e.d),
+      brand: ar.tree.downloadBrand,
       footer: ar.tree.downloadFooter,
-      commonTag: ar.legend.common,
-      fileName: ar.tree.downloadFile,
+      site: ar.tree.downloadSite,
+      legend: ar.legend,
+      legendNote: ar.tree.legendNote,
+      title: exportTitle ?? ar.tree.downloadBrand,
+      fileName: exportFile ?? ar.tree.downloadFile,
     });
   const zoomButtons = (
     <>

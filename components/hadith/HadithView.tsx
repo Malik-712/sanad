@@ -44,6 +44,8 @@ type Props = {
   honorifics: Record<string, string>;
   arias: Record<string, string>;
   disclaimer: ReactNode;
+  exportTitle: string;
+  exportFile: string;
 };
 
 export function HadithViewFromUrl(props: Props) {
@@ -65,6 +67,8 @@ export function HadithView({
   honorifics,
   arias,
   disclaimer,
+  exportTitle,
+  exportFile,
   initial,
 }: Props & { initial: Selection }) {
   const [selection, setSelection] = useState<Selection>(initial);
@@ -175,6 +179,8 @@ export function HadithView({
           routeNodes={routeNodes}
           selection={selection}
           onSelectNarrator={(id) => select({ kind: "narrator", id })}
+          exportTitle={exportTitle}
+          exportFile={exportFile}
         />
       </div>
 

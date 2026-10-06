@@ -1,5 +1,6 @@
 // Draws the isnad tree onto a canvas and saves it as a PNG. Browser only; no data leaves the page.
 // Colours are the design tokens (CLAUDE.md); sizes come from the layout, so the picture matches the screen.
+// The picture is a finished sheet: gold frame, brand line, title, the tree, the legend, and the footer.
 import type { TreeLayout } from "./layout";
 
 const C = {
@@ -10,7 +11,17 @@ const C = {
   sage: "#6F8F7F",
   edge: "#7D8A84",
   muted: "#5E6B66",
-  parchment: "#F5F2EB",
+  line: "#DDD6C6",
+};
+
+export type LegendLabels = {
+  prophet: string;
+  companion: string;
+  narrator: string;
+  compiler: string;
+  common: string;
+  branch: string;
+  selected: string;
 };
 
 type Input = {
@@ -20,16 +31,22 @@ type Input = {
   /** Node ids to dim (outside the selected isnad) and edge paths to draw thick. */
   dimmed: Set<string> | null;
   highlightEdges: string[];
-  /** Text under the picture (the site address and the disclaimer), already in Arabic. */
+  /** Brand line above the title, and the line under the legend (the site address and the disclaimer), already in Arabic. */
+  brand: string;
   footer: string;
-  /** The «نقطة الالتقاء» tag text. */
-  commonTag: string;
+  site: string;
+  legend: LegendLabels;
+  legendNote: string;
+  /** Hadith title (or the explorer's graph title) printed at the top of the sheet. */
+  title: string;
   fileName: string;
 };
 
 const SCALE = 3;
 const FONT_SIZE = 16;
 const LINE = 21.6;
+const MARGIN = 36;
+const HEADER_H = 78;
 
 function wrap(ctx: CanvasRenderingContext2D, text: string, maxWidth: number, maxLines: number): string[] {
   const words = text.split(/\s+/).filter(Boolean);
@@ -51,13 +68,25 @@ function wrap(ctx: CanvasRenderingContext2D, text: string, maxWidth: number, max
 }
 
 export async function downloadTreePng(input: Input): Promise<void> {
-  const { layout, labels, honorifics, dimmed, highlightEdges, footer, commonTag, fileName } = input;
+  const { layout, labels, honorifics, dimmed, highlightEdges, brand, footer, site, legend, legendNote, title, fileName } = input;
   await document.fonts.ready;
   const family = getComputedStyle(document.body).fontFamily;
 
-  const footerH = 44;
-  const W = Math.ceil(layout.width);
-  const H = Math.ceil(layout.height) + footerH;
+  // The sheet is at least wide enough for the legend and the title, however narrow the tree is.
+  const W = Math.max(Math.ceil(layout.width) + MARGIN * 2, 760);
+  const treeLeft = (W - layout.width) / 2;
+  const treeTop = MARGIN + HEADER_H;
+
+  // Measure the text blocks that depend on the sheet width before the canvas height is known.
+  const measure = document.createElement("canvas").getContext("2d");
+  if (!measure) return;
+  measure.direction = "rtl";
+  measure.font = `400 14px ${family}`;
+  const noteLines = wrap(measure, legendNote, W - MARGIN * 2 - 24, 3);
+  const legendH = 78 + noteLines.length * 22;
+  const footerH = 46;
+  const H = Math.ceil(treeTop + layout.height + legendH + footerH + MARGIN);
+
   const canvas = document.createElement("canvas");
   canvas.width = W * SCALE;
   canvas.height = H * SCALE;
@@ -70,6 +99,27 @@ export async function downloadTreePng(input: Input): Promise<void> {
   ctx.textAlign = "center";
   ctx.textBaseline = "top";
   ctx.lineCap = "square";
+
+  // Gold frame, as on the logo and the tree stage.
+  ctx.strokeStyle = C.gold;
+  ctx.lineWidth = 2;
+  ctx.strokeRect(12, 12, W - 24, H - 24);
+  ctx.strokeStyle = C.green;
+  ctx.lineWidth = 1;
+  ctx.strokeRect(18, 18, W - 36, H - 36);
+
+  // Header: brand line, title, and a short rule.
+  ctx.fillStyle = C.muted;
+  ctx.font = `500 14px ${family}`;
+  ctx.fillText(brand, W / 2, MARGIN - 4);
+  ctx.fillStyle = C.green;
+  ctx.font = `700 26px ${family}`;
+  ctx.fillText(title, W / 2, MARGIN + 22);
+  ctx.fillStyle = C.gold;
+  ctx.fillRect(W / 2 - 24, MARGIN + 64, 48, 3);
+
+  ctx.save();
+  ctx.translate(treeLeft, treeTop);
 
   // Lines: all isnads thin, the selected one thick.
   ctx.strokeStyle = C.edge;
@@ -134,10 +184,14 @@ export async function downloadTreePng(input: Input): Promise<void> {
     ctx.fillStyle = C.ink;
     const extra = n.common ? 9 : 0;
     let y = n.box.top + extra * 2 + (n.role === "compiler" ? 26 : 18) + 6;
+    // The white plate behind a name is always opaque, so a line never shows through the text; only the text is dimmed.
+    const alpha = dimmed?.has(n.id) ? 0.4 : 1;
     for (const line of wrap(ctx, labels[n.id] ?? n.id, n.box.width - 8, 3)) {
       const w = ctx.measureText(line).width;
+      ctx.globalAlpha = 1;
       ctx.fillStyle = C.paper;
       ctx.fillRect(n.x - w / 2 - 3, y, w + 6, LINE);
+      ctx.globalAlpha = alpha;
       ctx.fillStyle = C.ink;
       ctx.fillText(line, n.x, y + 1);
       y += LINE;
@@ -146,8 +200,10 @@ export async function downloadTreePng(input: Input): Promise<void> {
     if (honorific) {
       ctx.font = `400 13px ${family}`;
       const w = ctx.measureText(honorific).width;
+      ctx.globalAlpha = 1;
       ctx.fillStyle = C.paper;
       ctx.fillRect(n.x - w / 2 - 3, y, w + 6, LINE);
+      ctx.globalAlpha = alpha;
       ctx.fillStyle = C.ink;
       ctx.fillText(honorific, n.x, y + 1);
     }
@@ -164,19 +220,116 @@ export async function downloadTreePng(input: Input): Promise<void> {
     ctx.font = `500 13px ${family}`;
     ctx.fillStyle = C.ink;
     ctx.textBaseline = "middle";
-    ctx.fillText(commonTag, t.x + t.w / 2, t.y + t.h / 2);
+    ctx.fillText(legend.common, t.x + t.w / 2, t.y + t.h / 2);
     ctx.textBaseline = "top";
   }
+  ctx.restore();
 
-  ctx.strokeStyle = C.parchment;
+  // Legend: the same marks as under the tree on screen, laid out from the right (RTL).
+  const ly = treeTop + layout.height + 14;
+  ctx.strokeStyle = C.line;
   ctx.lineWidth = 1;
   ctx.beginPath();
-  ctx.moveTo(16, layout.height + 4);
-  ctx.lineTo(W - 16, layout.height + 4);
+  ctx.moveTo(MARGIN, ly);
+  ctx.lineTo(W - MARGIN, ly);
+  ctx.stroke();
+
+  const items: { text: string; draw: (x: number, y: number) => void }[] = [
+    {
+      text: legend.prophet,
+      draw: (x, y) => {
+        ctx.fillStyle = C.gold;
+        ctx.strokeStyle = C.green;
+        ctx.lineWidth = 2;
+        diamond(x, y, 7);
+        ctx.fill();
+        ctx.stroke();
+      },
+    },
+    {
+      text: legend.companion,
+      draw: (x, y) => {
+        ctx.fillStyle = C.green;
+        ctx.fillRect(x - 6, y - 6, 12, 12);
+      },
+    },
+    {
+      text: legend.narrator,
+      draw: (x, y) => {
+        ctx.strokeStyle = C.sage;
+        ctx.lineWidth = 2;
+        ctx.strokeRect(x - 5, y - 5, 10, 10);
+      },
+    },
+    {
+      text: legend.compiler,
+      draw: (x, y) => {
+        ctx.fillStyle = C.ink;
+        ctx.fillRect(x - 8, y - 6, 16, 12);
+      },
+    },
+    {
+      text: legend.common,
+      draw: (x, y) => {
+        ctx.strokeStyle = C.gold;
+        ctx.lineWidth = 2;
+        diamond(x, y, 8);
+        ctx.stroke();
+      },
+    },
+    {
+      text: legend.branch,
+      draw: (x, y) => {
+        ctx.fillStyle = C.gold;
+        diamond(x, y, 5);
+        ctx.fill();
+      },
+    },
+  ];
+  if (highlightEdges.length) {
+    items.push({
+      text: legend.selected,
+      draw: (x, y) => {
+        ctx.fillStyle = C.green;
+        ctx.fillRect(x - 11, y - 2, 22, 4);
+      },
+    });
+  }
+  ctx.font = `400 14px ${family}`;
+  ctx.textAlign = "right";
+  ctx.textBaseline = "middle";
+  const rowY = ly + 26;
+  let x = W - MARGIN - 12;
+  for (const it of items) {
+    const w = ctx.measureText(it.text).width;
+    it.draw(x - 11, rowY);
+    ctx.fillStyle = C.ink;
+    ctx.fillText(it.text, x - 28, rowY);
+    x -= w + 28 + 22;
+  }
+
+  ctx.textAlign = "center";
+  ctx.textBaseline = "top";
+  ctx.fillStyle = C.muted;
+  ctx.font = `400 14px ${family}`;
+  let ny = ly + 48;
+  for (const line of noteLines) {
+    ctx.fillText(line, W / 2, ny);
+    ny += 22;
+  }
+
+  // Footer: the disclaimer, and the site address.
+  const fy = H - MARGIN - footerH + 6;
+  ctx.strokeStyle = C.line;
+  ctx.beginPath();
+  ctx.moveTo(MARGIN, fy - 8);
+  ctx.lineTo(W - MARGIN, fy - 8);
   ctx.stroke();
   ctx.fillStyle = C.muted;
   ctx.font = `400 13px ${family}`;
-  ctx.fillText(footer, W / 2, layout.height + 16);
+  ctx.fillText(footer, W / 2, fy);
+  ctx.direction = "ltr";
+  ctx.fillText(site, W / 2, fy + 20);
 
   const blob: Blob | null = await new Promise((res) => canvas.toBlob(res, "image/png"));
   if (!blob) return;
@@ -187,5 +340,6 @@ export async function downloadTreePng(input: Input): Promise<void> {
   document.body.appendChild(a);
   a.click();
   a.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  // Revoke late: a slow device may not have started reading the file after one second.
+  setTimeout(() => URL.revokeObjectURL(url), 60_000);
 }

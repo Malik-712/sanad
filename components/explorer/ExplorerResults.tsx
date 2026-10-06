@@ -169,6 +169,8 @@ export function ExplorerResults({ pasted, display }: { pasted: string[]; display
             honorifics={{}}
             arias={graph.arias}
             routeNodes={graph.routeNodes}
+            exportTitle={ar.explorer.graphTitle}
+            exportFile="sanad-shared-chain.png"
             selection={selection}
             onSelectNarrator={(id) => {
               if (id === PROPHET) return;

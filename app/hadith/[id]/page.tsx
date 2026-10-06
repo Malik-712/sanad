@@ -126,6 +126,8 @@ export default async function HadithPage({ params }: PageProps<"/hadith/[id]">) 
     labels,
     honorifics,
     arias,
+    exportTitle: h.titleAr,
+    exportFile: `sanad-${h.id}.png`,
     disclaimer: (
       <p className="m-0 flex items-start gap-2.5 text-[14px] leading-[1.7]">
         <Diamond tone="green" className="mt-2" />

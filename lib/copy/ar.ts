@@ -358,6 +358,9 @@ export const ar = {
     downloadShort: "تنزيل صورة",
     downloadFooter: "سَنَد — شجرة الأسانيد. أداة مساعدة بالذكاء الاصطناعي، لا تحكم على الأحاديث ولا تُفتي.",
     downloadFile: "sanad-isnad-tree.png",
+    // Header of the downloaded picture: the brand line above the hadith title.
+    downloadBrand: "سَنَد — لكلِّ حديثٍ إسناد",
+    downloadSite: "sanad-pi-five.vercel.app",
     // One line under the legend (owner, 6 Oct).
     legendNote: "نقطة الالتقاء: راوٍ تلتقي عنده أكثر الأسانيد. نقطة الافتراق: موضع يتفرّع منه الإسناد إلى أكثر من راوٍ.",
     hintMobile: "اسحب لتحريك الشجرة، واضغط على راوٍ لتظهر ترجمته.",
