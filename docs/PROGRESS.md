@@ -2,7 +2,7 @@
 
 Live record of what is done, per session in `docs/IMPLEMENTATION.md`. All times are Riyadh time (UTC+3). Update this file at the end of every session.
 
-Last updated: Tue 6 Oct 2026, 11:40 (Sessions E and F; owner steps remain, see below).
+Last updated: Tue 6 Oct 2026, evening (explorer refocus; owner steps remain, see below).
 
 ## Summary
 
@@ -82,6 +82,12 @@ Last updated: Tue 6 Oct 2026, 11:40 (Sessions E and F; owner steps remain, see b
 | Status | Date and time | Commit ID | Notes |
 | --- | --- | --- | --- |
 | ✅ Done | Tue 6 Oct | `1469f68` + docs | Search-first Home (logo, slogan, one search box, list with book, number and isnad count; honest no-result message with «الصق إسنادًا»); three-link header; search by text, narrator, book and hadith number (per book), diacritics and letter forms ignored (10 Vitest cases); source block above the tree with «افتح في المصدر», status sentence per isnad, ruling with who said it and where, «كيف أتحقق من هذا؟»; narrator edition in short with «تفاصيل المصدر»; new `/sources` (status counted from data/); labelled tree controls and a legend line; CLS fix (desktop hadith 0.115 → 0.000). Checks: 135 unit tests, hard cases 15 / 15 ×3, 43 / 43 e2e locally and live, Lighthouse median 95–100 (mobile hadith re-measured alone, see EVALUATION ‡). `data/` unchanged. Open: page of `muslim-muqaddima-n1-a/b/c` (Shamela label «١/ ١» unreliable) → shown «غير مذكور», owner to decide. |
+
+## Product refocus — the Smart Isnād Explorer (owner request, 6 Oct evening)
+
+| Status | Date and time | Commit ID | Notes |
+| --- | --- | --- | --- |
+| ✅ Done | Tue 6 Oct, 16:45–18:00 | branch `explorer`, merged to `main` | One product: paste an isnād → **the trained BERT-mini reads it in the browser** (Transformers.js in a Web Worker; rules as automatic fallback) → the explorer finds every hadith with the same or a close isnād in a **36,390-hadith corpus** (fawazahmed0/hadith-api, pinned `df57907`, read by the same model offline; 17 MB static index; `corpus/MANIFEST.json` with SHA-256) → summary, **shared-chain graph** (reuses `IsnadTree`/dagre via the new `buildGraphFromChains`), ranked list with book/match-type/name filters, a page per hadith (`/c/<book>/<n>`), `/sources` with the corpus and the model. Home = the explorer; search-first Home removed; `/parse` redirects. **Reverses the 6 Oct morning decision not to publish the model** (owner, logged in `SOURCES_LOG`). Measured: tagger in Transformers.js = Python int8 labels on **100.00 % of 14,789 words**; all **18 Bukhari isnāds find their own hadith in the first 3 results** (model not better than rules on this small set, reported as is); 142 unit tests, 15/15 hard cases ×3, 46 browser tests (incl. fallback, privacy: every request goes to the site's own origin, axe). Found and fixed on the Vercel preview before merging: pnpm refused unapproved install scripts; the 11.7 MB model could not be stored by the HTTP cache of a fresh browser profile (`ERR_CACHE_WRITE_FAILURE`) → big files served `no-store` and kept by Transformers.js in Cache Storage; the 15 s model limit was too tight (now: wait up to 30 s while it downloads, then use the rules for that isnād and keep loading; drop the model only on error or a 20 s stall). Open: Lighthouse for the new Home; the user test; video and slides (rewritten scripts: `VIDEO_SCRIPT`, `PITCH`, `DECK`). |
 
 ## Schedule notes
 

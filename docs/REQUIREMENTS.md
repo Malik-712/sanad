@@ -6,7 +6,7 @@ Each official requirement, as recorded in `docs/BRIEF.md` from the challenge gui
 
 | # | Requirement | What meets it | Evidence | Status |
 | --- | --- | --- | --- | --- |
-| D1 | Working, complete product (not a prototype) | Five page types live: Home with search, hadith tree with source panels, 92 narrator pages, `/parse`, About | https://sanad-pi-five.vercel.app · 43 / 43 Playwright tests on the live site (`tests/e2e/`) | ✅ |
+| D1 | Working, complete product (not a prototype) | The Smart Isnād Explorer on Home (AI reading in the browser, matching against 36,390 hadiths, shared-chain graph, ranked list with filters), a page per found hadith, verified hadith and narrator pages, sources, about | https://sanad-pi-five.vercel.app · Playwright tests on the live site (`tests/e2e/`, count printed by the run) | ✅ |
 | D2 | Public GitHub repo with setup docs, licences, no secrets | Public repo; README with install, run and test steps; licence; package licences | https://github.com/Malik-712/sanad · `README.md` · `LICENSE` · `docs/licenses/` · history scan: 56 commits, no key or password found | ✅ |
 | D3 | Demo video, 2 minutes or less | Shot-by-shot script with timings and recording steps | `docs/VIDEO_SCRIPT.md` | ⏳ owner records |
 | D4 | Presentation on the official template | Slide-by-slide content in the template's order, built and planned on separate slides | `docs/DECK.md`, `docs/PITCH.md` (the official template file is not in the repo) | ⏳ owner pastes into the template |
@@ -32,7 +32,7 @@ Each official requirement, as recorded in `docs/BRIEF.md` from the challenge gui
 
 | Part | What meets it | Evidence | Status |
 | --- | --- | --- | --- |
-| Finding and checking more accurately | One merged tree per hadith with the meeting point computed from the chains; `/parse` finds a pasted isnad's tree | Engine tests (`lib/isnad/*.test.ts`) · 27 of 37 real isnads found in the right tree with no help (`docs/EVALUATION.md` b) | ✅ · ⏳ user test for speed (`docs/USER_TEST.md`) |
+| Finding and checking more accurately | A pasted isnād finds every hadith with the same or a close isnād, ranked, with the chain drawn; our own verified isnāds find their trees | `pnpm eval:explorer`: all 18 Bukhari isnāds find their own hadith in the first 3 results (`docs/EVALUATION.md` d) | ✅ · ⏳ user test for speed (`docs/USER_TEST.md`) |
 | Source and status shown clearly and traceably | Every isnad: book, edition, number, volume, page, link; three status badges with words | Source panel («افتح الموضع في المصدر») · `docs/SOURCES.md` §3b · e2e test «source link» | ✅ |
 | Separating what is supported from what needs checking | «مصدر موثق» only when verified with a source; «يحتاج تحققًا» for unchecked data and uncertain links; «لا مصدر بعد» (grey, never red) | `lib/data/derive.ts` (`routeStatus`, `narratorStatus`) · linker states (`lib/linker/linker.ts`) · hard cases 1–4 | ✅ |
 
@@ -40,8 +40,8 @@ Each official requirement, as recorded in `docs/BRIEF.md` from the challenge gui
 
 | Criterion (weight) | What meets it | Evidence | Status |
 | --- | --- | --- | --- |
-| Technical quality and AI use (25 %) | Narrator tagger trained, measured against a rule baseline on 300 isnads from 9 held-out books; linker with confidence states | Rules F1 0.757 · model F1 0.916 (ONNX int8) · whole chain 33.3 % vs 71.7 % (`docs/EVALUATION.md` a) · 135 unit tests · CI | ⚠️ model trained and measured, **not published** (data licence unclear); the site runs the rules |
-| Benefit per the track test (20 %) | Tree in one page vs drawing by hand; isnad lookup on `/parse` | User-test protocol ready (`docs/USER_TEST.md`); routes end to end (`docs/EVALUATION.md` b) | ⏳ 5-user test not run yet |
+| Technical quality and AI use (25 %) | A fine-tuned BERT-mini reads the narrator names **in the browser** (Web Worker, rules as automatic fallback); the explorer aligns and ranks with fixed, repeatable calculations; the AI is never the evidence | Rules F1 0.757 · model F1 0.916 on 300 held-out isnāds; browser tagger = Python labels on 100.00 % of 14,789 words (`pnpm check:tagger`); hard cases 15 / 15 ×3; unit tests · CI (`docs/EVALUATION.md` a, d) | ⚠️ the model's and the corpus's licences are unclear; published by owner decision, disclosed on `/sources` and in `docs/SOURCES_LOG.md` |
+| Benefit per the track test (20 %) | One paste finds all the hadiths of an isnād and shows where chains meet, instead of reading isnāds one by one or drawing by hand | User-test protocol ready (`docs/USER_TEST.md`); explorer results (`docs/EVALUATION.md` d) | ⏳ 5-user test not run yet |
 | Reliability and scholarly safety (15 %) | Every isnad cited; grades only quoted; abstains when unsure; repeatable | 15 / 15 hard cases, 3 runs, identical SHA-256 (`docs/HARD_CASES.md`) · `pnpm validate:data` before every build | ✅ |
 | Innovation and added value (15 %) | All isnads of one hadith merged into one sourced tree with its meeting point, and a pasted isnad matched to it, instead of reading one isnad at a time | Live site · `docs/PITCH.md` | ✅ |
 | Running cost and continuity (10 %) | $0 running cost; static pages; no API, database or key; rules work offline in the browser | `docs/COST.md` | ✅ |
@@ -55,6 +55,6 @@ Each official requirement, as recorded in `docs/BRIEF.md` from the challenge gui
 | No hadith, isnad or narrator fact from memory; each with its source URL | Data copied from source pages; the validator fails the build without a source | `pnpm validate:data` · `docs/SOURCES.md` |
 | Never grade; only quote with the author | Grades are a quoted field with `byAr` and `sourceUrl`; no grading code exists | `lib/data/schema.ts` (`gradeSchema`) |
 | New data unverified until the owner checks it | `verification.status`; badges follow it | `docs/REVIEW.md` · 37 / 37 isnads verified, 0 / 92 narrator records verified |
-| Automatic output labelled; low confidence never guessed | «استخراج آلي» notice on `/parse`; «يحتاج تحققًا» with candidates | `components/parse/` · hard cases 3–4 |
+| Automatic output labelled; low confidence never guessed | «استخراج آلي» notice with the reader used; «يحتاج تحققًا» with candidates; every imported hadith labelled «يحتاج تحققًا — من مجموعة خارجية»; nothing found → «لم نجد» | `components/parse/`, `components/explorer/` · hard cases 3–4 · e2e «nothing invented» |
 | Disclaimer on About and in the footer; source note in every source panel | Fixed sentences in `lib/copy/ar.ts` | e2e tests (About, source panel) |
 | Pasted text stays in the browser | No API route; analysis runs in the page | privacy test in `tests/e2e/parse.spec.ts` |
