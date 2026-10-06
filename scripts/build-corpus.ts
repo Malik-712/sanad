@@ -3,7 +3,7 @@
 //   python ml/index_corpus.py     (downloads at the pinned commit, reads isnads with the model)
 //   pnpm tsx scripts/build-corpus.ts
 // Shipped (public/corpus/): names.json (name dictionary + each hadith's name ids), idx.json (word → hadith ids),
-// docs/<book>-<k>.json (the isnad text of 200 hadiths each). Full hadith text is NOT shipped (fetched from the pinned source).
+// docs/<book>-<k>.json (the isnad text and the names read from it, for 200 hadiths each). Full hadith text is NOT shipped (fetched from the pinned source).
 import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -52,6 +52,7 @@ for (const book of CORPUS_BOOKS) {
   const offset = hadithNames.length;
   const numbers: number[] = [];
   const texts: string[] = [];
+  const nameLists: string[][] = [];
   raw.hadiths.forEach((h, i) => {
     const line = lines[i]!;
     if (line.n !== h.hadithnumber) throw new Error(`${book.id}: number mismatch at ${i}`);
@@ -69,10 +70,11 @@ for (const book of CORPUS_BOOKS) {
     }
     numbers.push(h.hadithnumber);
     texts.push(isnadText(h.text));
+    nameLists.push(line.names);
   });
   const chunks = Math.ceil(numbers.length / CHUNK);
   for (let k = 0; k < chunks; k++) {
-    const part = { n: numbers.slice(k * CHUNK, (k + 1) * CHUNK), t: texts.slice(k * CHUNK, (k + 1) * CHUNK) };
+    const part = { n: numbers.slice(k * CHUNK, (k + 1) * CHUNK), t: texts.slice(k * CHUNK, (k + 1) * CHUNK), m: nameLists.slice(k * CHUNK, (k + 1) * CHUNK) };
     writeFileSync(join(OUT, "docs", `${book.id}-${k}.json`), JSON.stringify(part));
   }
   books.push({ id: book.id, count: numbers.length, offset, sha256: createHash("sha256").update(rawBytes).digest("hex"), chunks });

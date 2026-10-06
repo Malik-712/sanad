@@ -60,15 +60,10 @@ export function ParseApp({ data }: { data: ParseData }) {
   // The model reads the names in a Web Worker; the rule parser takes over by itself if it cannot (lib/ml/client.ts).
   const reader = useMemo(() => createReader(), []);
   const [readerState, setReaderState] = useState<ReaderState>({ status: "idle", progress: 0 });
-  useEffect(() => {
-    const off = reader.subscribe(setReaderState);
-    // Start after the first paint, so the page is usable at once.
-    const t = setTimeout(() => reader.start(), 400);
-    return () => {
-      clearTimeout(t);
-      off();
-    };
-  }, [reader]);
+  useEffect(() => reader.subscribe(setReaderState), [reader]);
+  // The 12 MB model downloads when the visitor first shows intent (focus in the box, or pressing a button), not on
+  // page load: the page stays light, and the download runs while they paste.
+  const warmUp = () => reader.start();
 
   const run = async (value: string) => {
     setChoices({});
@@ -143,6 +138,7 @@ export function ParseApp({ data }: { data: ParseData }) {
     <>
       <ParseForm
         ref={inputRef}
+        onFocusBox={warmUp}
         value={text}
         onChange={(v) => {
           setText(v);

@@ -7,7 +7,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { toArabicIndic } from "@/lib/arabic/digits";
 import { bookById, CORPUS_PIN, sourceFileUrl } from "@/lib/corpus/books";
 import { ar } from "@/lib/copy/ar";
-import { findByNumber, loadCorpus, loadDocs, loadManifest, type DocRef } from "@/lib/explorer/corpus";
+import { findByNumber, loadDocs, loadManifest, type DocRef } from "@/lib/explorer/corpus";
 
 type State = { s: "loading" } | { s: "missing" } | { s: "ok"; doc: DocRef };
 type Full = { s: "loading" } | { s: "ok"; text: string } | { s: "empty" } | { s: "failed" };
@@ -23,8 +23,6 @@ function fromLocation(): { book: string; n: number } | null {
 export function CorpusHadith() {
   const [state, setState] = useState<State>({ s: "loading" });
   const [full, setFull] = useState<Full>({ s: "loading" });
-  // The names the model read in this isnād come from the name index (2 MB): loaded after the page is shown.
-  const [names, setNames] = useState<string[] | null>(null);
 
   useEffect(() => {
     let live = true;
@@ -40,13 +38,6 @@ export function CorpusHadith() {
       if (gid === null) return missing();
       const doc = (await loadDocs(manifest, [gid])).get(gid)!;
       if (live) setState({ s: "ok", doc });
-      loadCorpus()
-        .then((corpus) => {
-          if (live) setNames(corpus.index.h[gid]!.map((id) => corpus.index.dict[id]!));
-        })
-        .catch(() => {
-          if (live) setNames([]);
-        });
       // The full text comes from the pinned source file of this hadith; if that fails, the isnad above remains.
       try {
         const r = await fetch(`https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@${CORPUS_PIN}/editions/ara-${ref.book}/${ref.n}.json`);
@@ -78,6 +69,7 @@ export function CorpusHadith() {
     );
 
   const { doc } = state;
+  const names = doc.names;
   const book = bookById(doc.book)!;
   const title = ar.explorer.bookNumber(book.nameAr, toArabicIndic(doc.number));
 
@@ -108,38 +100,21 @@ export function CorpusHadith() {
           <p className="m-0 text-[20px] leading-[2.1] break-words">{doc.text}</p>
         </section>
 
-        {/* The full text arrives later from the pinned source file; its space is reserved so nothing moves. */}
-        <section aria-labelledby="full-h" className="flex min-h-[220px] flex-col gap-3">
-          <SectionHeading id="full-h" size={26}>
-            {T.fullText}
-          </SectionHeading>
-          {full.s === "ok" ? <p className="m-0 text-[20px] leading-[2.1] break-words">{full.text}</p> : null}
-          <p role="status" className="m-0 text-[13px] leading-[1.7] text-muted">
-            {full.s === "loading" ? T.fullTextLoading : full.s === "empty" ? T.fullTextMissing : full.s === "failed" ? T.fullTextFailed : ""}
-          </p>
-        </section>
-
         <section aria-labelledby="read-h" className="flex flex-col gap-3">
           <SectionHeading id="read-h" size={26}>
             {T.readTitle}
           </SectionHeading>
-          <div className="min-h-[96px]">
-            {names === null ? (
-              <p className="m-0 text-[14px] text-muted" role="status">
-                {T.readLoading}
-              </p>
-            ) : names.length ? (
-              <ol className="m-0 flex list-none flex-wrap gap-2 p-0">
-                {names.map((n, i) => (
-                  <li key={i} className="inline-flex min-h-10 items-center rounded-sq border border-line-strong bg-paper px-3 text-[16px]">
-                    {n}
-                  </li>
-                ))}
-              </ol>
-            ) : (
-              <p className="m-0 text-[15px]">{T.readNone}</p>
-            )}
-          </div>
+          {names.length ? (
+            <ol className="m-0 flex list-none flex-wrap gap-2 p-0">
+              {names.map((n, i) => (
+                <li key={i} className="inline-flex min-h-10 items-center rounded-sq border border-line-strong bg-paper px-3 text-[16px]">
+                  {n}
+                </li>
+              ))}
+            </ol>
+          ) : (
+            <p className="m-0 text-[15px]">{T.readNone}</p>
+          )}
           <p className="m-0 text-[13px] leading-[1.7] text-muted">{T.readNote}</p>
         </section>
 
@@ -187,6 +162,17 @@ export function CorpusHadith() {
             <Diamond size={7} />
             {T.allSources}
           </Link>
+        </section>
+
+        {/* The full text arrives later from the pinned source file; its section is last, so when it grows nothing visible moves. */}
+        <section aria-labelledby="full-h" className="flex flex-col gap-3">
+          <SectionHeading id="full-h" size={26}>
+            {T.fullText}
+          </SectionHeading>
+          {full.s === "ok" ? <p className="m-0 text-[20px] leading-[2.1] break-words">{full.text}</p> : null}
+          <p role="status" className="m-0 text-[13px] leading-[1.7] text-muted">
+            {full.s === "loading" ? T.fullTextLoading : full.s === "empty" ? T.fullTextMissing : full.s === "failed" ? T.fullTextFailed : ""}
+          </p>
         </section>
 
         <p className="m-0 flex items-start gap-2.5 text-[14px] leading-[1.7] text-muted">

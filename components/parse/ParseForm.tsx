@@ -15,10 +15,12 @@ export const ParseForm = forwardRef<
     onChange: (value: string) => void;
     onAnalyse: () => void;
     onSample?: () => void;
+    /** The visitor focused the box: a good moment to start loading the model. */
+    onFocusBox?: () => void;
     problem: InputProblem | null;
     sampleNote?: string;
   }
->(function ParseForm({ value, onChange, onAnalyse, onSample, problem, sampleNote }, ref) {
+>(function ParseForm({ value, onChange, onAnalyse, onSample, onFocusBox, problem, sampleNote }, ref) {
   const submit = (e: FormEvent) => {
     e.preventDefault();
     onAnalyse();
@@ -48,6 +50,7 @@ export const ParseForm = forwardRef<
         autoComplete="off"
         spellCheck={false}
         value={value}
+        onFocus={onFocusBox}
         placeholder={ar.parse.placeholder}
         onChange={(e) => onChange(e.target.value)}
         onKeyDown={onKeyDown}

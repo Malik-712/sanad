@@ -24,8 +24,8 @@ export async function createTagger(opts: {
   env.localModelPath = opts.localModelPath;
   // The model and the wasm are kept in the browser's Cache Storage (not the HTTP cache: see next.config.ts), so a
   // second visit does not download them again.
-  env.useBrowserCache = true;
-  env.useWasmCache = true;
+  env.useBrowserCache = Boolean(opts.wasmPath); // browser only (Node has no Cache Storage)
+  env.useWasmCache = Boolean(opts.wasmPath);
   if (opts.wasmPath) {
     const wasm = env.backends.onnx.wasm;
     if (wasm) {

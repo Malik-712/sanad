@@ -54,9 +54,9 @@ export function locate(manifest: Manifest, gid: number): { book: string; pos: nu
   return { book: manifest.books[0]!.id, pos: gid };
 }
 
-export type DocRef = { gid: number; book: string; pos: number; number: number; text: string };
+export type DocRef = { gid: number; book: string; pos: number; number: number; text: string; names: string[] };
 
-type Chunk = { n: number[]; t: string[] };
+type Chunk = { n: number[]; t: string[]; m: string[][] };
 const chunkCache = new Map<string, Promise<Chunk>>();
 
 function loadChunk(book: string, k: number, base: string): Promise<Chunk> {
@@ -103,7 +103,7 @@ export async function loadDocs(manifest: Manifest, gids: number[], base = "/corp
       const { book, pos } = locate(manifest, gid);
       const chunk = await loadChunk(book, Math.floor(pos / manifest.chunkSize), base);
       const i = pos % manifest.chunkSize;
-      out.set(gid, { gid, book, pos, number: chunk.n[i]!, text: chunk.t[i]! });
+      out.set(gid, { gid, book, pos, number: chunk.n[i]!, text: chunk.t[i]!, names: chunk.m[i] ?? [] });
     }),
   );
   return out;
