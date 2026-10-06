@@ -5,6 +5,7 @@ import { TreeLegend } from "@/components/hadith/TreePlaceholder";
 import { GoldFrame } from "@/components/ui/GoldFrame";
 import { toArabicIndic } from "@/lib/arabic/digits";
 import { ar } from "@/lib/copy/ar";
+import { downloadTreePng } from "@/lib/isnad/exportImage";
 import type { TreeLayout } from "@/lib/isnad/layout";
 
 // The isnad tree as in design/screens/Tree.dc.html (mobile) and TreeDesktop.dc.html (≥1024px):
@@ -41,14 +42,15 @@ export function IsnadTree(props: Props) {
   );
 }
 
-const MAX_ZOOM = 2;
+const MAX_ZOOM = 2.5;
 // Start fitted to the width, but never below the design's 60% so names stay readable;
 // a wide tree then opens on its top (the Prophet ﷺ), and zooming out shows all of it.
-const startZoom = (fit: number) => Math.min(1, Math.max(fit, 0.6));
+const startZoom = (fit: number, cap: number) => Math.min(cap, Math.max(fit, 0.6));
 const STEP = 0.2;
 
 function TreeCanvas({
   layout,
+  desktop: desktopTree,
   variant,
   labels,
   honorifics,
@@ -65,15 +67,17 @@ function TreeCanvas({
   const pinch = useRef<{ dist: number; z: number } | null>(null);
   const wasDrag = useRef(false);
   const minZoom = Math.min(0.6, fit);
+  // The wide desktop canvas may open larger than 100% so the tree fills it.
+  const fitCap = variant === "desktop" ? 1.35 : 1;
   // Open on the Prophet ﷺ: shift the drawing so his node sits in the middle of the viewport.
   const topNode = layout.nodes.find((n) => n.role === "prophet");
   const startView = useCallback(
     (f: number) => {
-      const z = startZoom(f);
+      const z = startZoom(f, fitCap);
       const px = topNode ? -(topNode.x - layout.width / 2) * z : 0;
       return { z, px: z > f ? px : 0, py: 0 };
     },
-    [topNode, layout.width],
+    [topNode, layout.width, fitCap],
   );
 
   // Fit the drawing to the viewport width on first paint and on resize.
@@ -83,7 +87,7 @@ function TreeCanvas({
     const update = () => {
       const w = vp.clientWidth;
       if (!w) return;
-      const f = Math.min(1, (w - 24) / layout.width);
+      const f = Math.min(fitCap, (w - 24) / layout.width);
       setFit(f);
       setView(startView(f));
     };
@@ -91,7 +95,7 @@ function TreeCanvas({
     const ro = new ResizeObserver(update);
     ro.observe(vp);
     return () => ro.disconnect();
-  }, [layout.width, startView]);
+  }, [layout.width, startView, fitCap]);
 
   const zoomBy = useCallback(
     (delta: number) =>
@@ -135,6 +139,21 @@ function TreeCanvas({
       {desktop ? <span>{shortLabel}</span> : null}
     </button>
   );
+  const saveImage = () =>
+    downloadTreePng({
+      layout: desktopTree,
+      labels,
+      honorifics,
+      dimmed: inRoute ? new Set(desktopTree.nodes.map((n) => n.id).filter((id) => !inRoute.has(id))) : null,
+      highlightEdges: desktopTree.edges
+        .filter((e) =>
+          selection?.kind === "route" ? e.routeIds.includes(selection.id) : selectedNode ? e.from === selectedNode || e.to === selectedNode : false,
+        )
+        .map((e) => e.d),
+      footer: ar.tree.downloadFooter,
+      commonTag: ar.legend.common,
+      fileName: ar.tree.downloadFile,
+    });
   const zoomButtons = (
     <>
       {control(ar.tree.zoomIn, ar.tree.zoomIn, () => zoomBy(STEP), "M12 5v14M5 12h14")}
@@ -145,6 +164,7 @@ function TreeCanvas({
       ) : null}
       {control(ar.tree.zoomOut, ar.tree.zoomOut, () => zoomBy(-STEP), "M5 12h14")}
       {control(ar.tree.reset, ar.tree.resetShort, () => setView(startView(fit)), "M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5")}
+      {control(ar.tree.download, ar.tree.downloadShort, saveImage, "M12 4v11M7 11l5 5 5-5M5 20h14")}
     </>
   );
 
@@ -158,7 +178,7 @@ function TreeCanvas({
       ) : null}
       <div
         ref={vpRef}
-        className={`relative cursor-grab touch-none overflow-hidden bg-paper select-none active:cursor-grabbing ${desktop ? "h-[660px]" : "h-[560px]"}`}
+        className={`relative cursor-grab touch-none overflow-hidden bg-paper select-none active:cursor-grabbing ${desktop ? "h-[max(700px,calc(100vh-150px))]" : "h-[560px]"}`}
         onPointerDown={(e) => {
           pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
           if (pointers.current.size === 2) {

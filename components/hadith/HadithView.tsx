@@ -99,7 +99,7 @@ export function HadithView({
   );
 
   return (
-    <div className="flex flex-col gap-4 px-4 pt-5 pb-8 lg:flex-row lg:flex-wrap lg:items-start lg:gap-6 lg:px-8 lg:pt-6">
+    <div className="flex flex-col gap-4 px-4 pt-5 pb-8 lg:flex-row lg:flex-nowrap lg:items-start lg:gap-4 lg:px-4 lg:pt-5">
       <div className="lg:hidden">
         <Segmented
           label={ar.hadith.tabsLabel}
@@ -114,10 +114,10 @@ export function HadithView({
 
       <aside
         aria-labelledby="routes-h"
-        className={`${view === "list" ? "flex" : "hidden"} min-w-0 flex-col gap-2.5 lg:flex lg:flex-[1_1_280px]`}
+        className={`${view === "list" ? "flex" : "hidden"} min-w-0 flex-col gap-2.5 lg:flex lg:flex-[0_0_210px]`}
       >
         <div className="hidden flex-col gap-1 border-b-2 border-ink pb-2.5 lg:flex">
-          <h2 id="routes-h" className="m-0 text-[26px] leading-[1.3] font-semibold">
+          <h2 id="routes-h" className="m-0 text-[20px] leading-[1.3] font-semibold">
             {listLabel}
           </h2>
           <span className="text-[13px] text-muted">{ar.hadith.routesHint}</span>
@@ -153,7 +153,7 @@ export function HadithView({
                   <StatusInline status={r.status} />
                 </span>
               </span>
-              <span className="line-clamp-2 text-[17px] leading-[1.6] lg:text-[16px]">{r.summary}</span>
+              <span className="line-clamp-2 text-[17px] leading-[1.6] lg:text-[14px]">{r.summary}</span>
               <span className="lg:hidden">
                 <StatusBadge status={r.status} />
               </span>
@@ -165,7 +165,7 @@ export function HadithView({
         })}
       </aside>
 
-      <div className={`${view === "tree" ? "flex" : "hidden"} min-w-0 flex-col lg:flex lg:flex-[999_1_560px]`}>
+      <div className={`${view === "tree" ? "flex" : "hidden"} min-w-0 flex-col lg:flex lg:flex-[1_1_0%]`}>
         <IsnadTree
           mobile={layouts.mobile}
           desktop={layouts.desktop}
@@ -178,7 +178,7 @@ export function HadithView({
         />
       </div>
 
-      <aside className="flex min-w-0 flex-col gap-4 lg:flex-[1_1_360px]">
+      <aside className="flex min-w-0 flex-col gap-4 lg:flex-[0_0_290px]">
         {route ? (
           <section aria-label={ar.hadith.panelLabel} className="flex flex-col overflow-hidden rounded-sq border-[1.5px] border-ink bg-paper">
             {panelHead(route.panelEyebrow, route.panelTitle, false)}

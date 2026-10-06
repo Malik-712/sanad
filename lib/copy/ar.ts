@@ -354,6 +354,10 @@ export const ar = {
     zoomOut: "تصغير",
     reset: "إعادة الشجرة إلى وضعها",
     resetShort: "إعادة الضبط",
+    download: "تنزيل الشجرة صورة",
+    downloadShort: "تنزيل صورة",
+    downloadFooter: "سَنَد — شجرة الأسانيد. أداة مساعدة بالذكاء الاصطناعي، لا تحكم على الأحاديث ولا تُفتي.",
+    downloadFile: "sanad-isnad-tree.png",
     // One line under the legend (owner, 6 Oct).
     legendNote: "نقطة الالتقاء: راوٍ تلتقي عنده أكثر الأسانيد. نقطة الافتراق: موضع يتفرّع منه الإسناد إلى أكثر من راوٍ.",
     hintMobile: "اسحب لتحريك الشجرة، واضغط على راوٍ لتظهر ترجمته.",
