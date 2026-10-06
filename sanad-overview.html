@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>سَنَد — نظرة عامة على المشروع</title>
+<style>
+  :root {
+    --green: #0E4B3B; --green-deep: #0A3A2D; --parchment: #F5F2EB; --paper: #FFFDF8;
+    --ink: #1C1C1A; --muted: #5E6B66; --line: #DDD6C6; --gold: #C9A45C; --on-green: #CFDAD4;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--parchment); color: var(--ink);
+         font-family: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif; line-height: 1.9; }
+  header { background: var(--green); color: #fff; padding: 40px 16px; text-align: center;
+           border-bottom: 4px solid var(--gold); }
+  header h1 { margin: 0 0 8px; font-size: 2.2rem; }
+  header .slogan { font-size: 1.4rem; margin: 0 0 8px; }
+  header p { margin: 4px 0; color: var(--on-green); }
+  header a { color: #fff; }
+  nav { background: var(--paper); border-bottom: 1px solid var(--line); padding: 8px 16px;
+        text-align: center; }
+  nav a { display: inline-block; padding: 8px 12px; color: var(--green); text-decoration: none; font-weight: 500; }
+  nav a:hover, nav a:focus { background: #EDE8DC; }
+  main { max-width: 900px; margin: 0 auto; padding: 16px; }
+  section { background: var(--paper); border: 1px solid var(--line); border-radius: 2px;
+            padding: 20px; margin: 20px 0; }
+  h2 { margin-top: 0; color: var(--green); border-bottom: 2px solid var(--gold); padding-bottom: 6px; }
+  h3 { color: var(--green-deep); margin-bottom: 4px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+  th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: right; vertical-align: top; }
+  th { background: #EAF1EC; color: var(--green-deep); }
+  .table-wrap { overflow-x: auto; }
+  .flow { background: var(--green); color: #fff; padding: 16px; border-radius: 2px; }
+  .flow ol { margin: 0; padding-inline-start: 24px; }
+  .note { border-inline-start: 4px solid var(--gold); background: #F7EBD6; padding: 8px 12px; margin: 12px 0; }
+  .badge { display: inline-block; padding: 0 10px; border-radius: 2px; font-size: .9rem; font-weight: 600; margin: 2px; }
+  .ok { background: #E6F0EA; color: #1F5E44; }
+  .check { background: #F7EBD6; color: #7A4F0F; }
+  .none { background: #ECEBE7; color: #45494A; }
+  footer { background: var(--green); color: var(--on-green); text-align: center; padding: 24px 16px; }
+  footer strong { color: #fff; }
+  @media (max-width: 600px) { header h1 { font-size: 1.7rem; } section { padding: 14px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>سَنَد</h1>
+  <p class="slogan">«لكلِّ حديثٍ إسناد»</p>
+  <p>تحدّي الذكاء الاصطناعي في خدمة المحتوى الإسلامي · المسار ٠٤: أدوات المعرفة والتحقق · بُني في ٤–٦ أكتوبر ٢٠٢٦ · مطوِّر منفرد</p>
+  <p><a href="https://sanad-pi-five.vercel.app">الموقع المباشر</a> · <a href="https://github.com/Malik-712/sanad">الشيفرة</a></p>
+</header>
+
+<nav>
+  <a href="#concept">الفكرة</a>
+  <a href="#scope">النطاق</a>
+  <a href="#workflow">سير العمل</a>
+  <a href="#stack">الأدوات</a>
+  <a href="#tech">التوثيق التقني</a>
+  <a href="#legal">التوثيق القانوني</a>
+  <a href="#scholarly">التوثيق الشرعي</a>
+</nav>
+
+<main>
+
+<section id="concept">
+  <h2>١. الفكرة</h2>
+  <p>سَنَد تطبيق ويب عربي من اليمين إلى اليسار. تلصق <strong>إسنادًا</strong> (سلسلة رواة الحديث)، فيقرؤه نموذج ذكاء اصطناعي داخل متصفحك، ثم يجد سَنَد كل حديث في مجموعة من <strong>٣٦٬٣٩٠</strong> حديثًا له الإسناد نفسه أو إسناد قريب، ويرسم السلسلة المشتركة في رسم تفاعلي واحد. وللأحاديث الخمسة التي حقّقناها (٣٧ إسنادًا) لوحات مصادر كاملة وأشجار مدمجة.</p>
+  <div class="note">هو أداة مساعدة لا مرجع: <strong>لا يحكم على حديث</strong> و<strong>لا يُفتي</strong>.</div>
+
+  <div class="table-wrap"><table>
+    <tr><th>الجمهور</th><td>طلبة الحديث، والباحثون، والمعلّمون، وكل من يحتاج إلى فحص إسناد قبل الاستشهاد به.</td></tr>
+    <tr><th>المشكلة</th><td>الأسانيد متفرقة نصوصًا في كتب كثيرة. وإيجاد كل حديث يشترك في السلسلة، أو رسم الشجرة يدويًا (التشجير)، يستغرق ساعات ويقع فيه الخطأ.</td></tr>
+    <tr><th>الحل</th><td>ألصق مرة واحدة ← كل الأحاديث المطابقة مرتبةً، والسلسلة مرسومة، ولكلٍّ كتابه ورقمه ورابط مصدره.</td></tr>
+    <tr><th>الوعد</th><td>لا يُعرض حديث بلا إسناده، بنصّه من كتابه.</td></tr>
+  </table></div>
+
+  <h3>كيف يجيب عن معيار المسار ٠٤ (الدقة · ظهور المصادر وحالة الدليل · الفصل بين ما تدعمه المصادر وما يحتاج إلى تحقق)</h3>
+  <ul>
+    <li>كل نتيجة مدخل حقيقي له كتاب ورقم ورابط مصدر.</li>
+    <li>ثلاث حالات للدليل تظهر دائمًا بكلمة:
+      <span class="badge ok">مصدر موثق</span>
+      <span class="badge check">يحتاج تحققًا</span>
+      <span class="badge none">لا مصدر بعد</span>
+    </li>
+    <li>الذكاء الاصطناعي يقرأ الأسماء فقط. المطابقة والترتيب حسابات ثابتة. والنموذج ليس هو الدليل.</li>
+  </ul>
+</section>
+
+<section id="scope">
+  <h2>٢. النطاق</h2>
+  <div class="table-wrap"><table>
+    <tr><th>ما أُنجز (النسخة الأولى)</th><th>لاحقًا (لم يبدأ)</th></tr>
+    <tr>
+      <td><ul>
+        <li>المستكشف في الرئيسية: الصق ← قراءة داخل المتصفح ← مطابقات ← رسم + قائمة مرتبة مع مرشّحات</li>
+        <li>صفحة لكل حديث يُعثر عليه (<code dir="ltr">/c/&lt;book&gt;/&lt;n&gt;</code>)</li>
+        <li>٥ أحاديث موثقة، ٣٧ إسنادًا، أشجار مدمجة فيها المدار ونقاط التفرّع</li>
+        <li>٩٢ صفحة راوٍ مع نصوص من التقريب</li>
+        <li>لوحة مصدر مع اقتباس قابل للنسخ؛ صفحة المصادر؛ «عن سَنَد» بالمنهج والحدود</li>
+        <li>قارئ بالقواعد إذا تعذّر تحميل النموذج</li>
+      </ul></td>
+      <td><ul>
+        <li>مقارنة حديثين</li>
+        <li>تصدير الشجرة PNG/PDF</li>
+        <li>مزيد من الأحاديث المحقّقة يدويًا</li>
+        <li>حسابات وأشجار محفوظة</li>
+      </ul></td>
+    </tr>
+  </table></div>
+</section>
+
+<section id="workflow">
+  <h2>٣. سير العمل</h2>
+  <div class="flow">
+    <ol>
+      <li>ألصق الإسناد.</li>
+      <li>الواسم يجد الأسماء وألفاظ التحمّل (في متصفحك داخل Web Worker). إن فشل النموذج أو تأخّر ← يقرأ المحلّل بالقواعد (ويُكتب ذلك على الشاشة).</li>
+      <li>مواءمة الأسماء بالترتيب مع كل إسناد في المجموعة (خوارزمية ثابتة).</li>
+      <li>ملخص · رسم السلسلة المشتركة · قائمة مرتبة (الكتاب / نوع المطابقة / الاسم).</li>
+      <li>صفحة الحديث: الإسناد، والحالة، ورابط المصدر (+ شجرتنا الموثقة إن كانت عندنا).</li>
+    </ol>
+  </div>
+  <p>مرة واحدة خارج الإنترنت: بيانات Sanadset 650K ← وسوم على مستوى الكلمة (التقسيم <strong>بحسب الكتاب</strong>، ومجموعة اختبار من ٣٠٠ إسناد) ← ضبط BERT-mini ← ONNX بدقة int8 (١٢٫٢٤ ميغابايت) ← النموذج نفسه يقرأ أسانيد المجموعة كلها (٣٦٬٣٩٠) في فهرس ثابت.</p>
+</section>
+
+<section id="stack">
+  <h2>٤. الأدوات والتقنيات</h2>
+  <div class="table-wrap"><table>
+    <tr><th>المجال</th><th>الاختيار</th></tr>
+    <tr><td>الويب</td><td>Next.js 16 (App Router، صفحات ثابتة)، TypeScript صارم، Tailwind 4، pnpm</td></tr>
+    <tr><td>الشجرة</td><td>مُصيِّر SVG خاص + تخطيط dagre + تحريك/تكبير بمؤشر</td></tr>
+    <tr><td>فحص البيانات</td><td>مخططات zod + <code dir="ltr">validate:data</code> (يُفشل البناء)</td></tr>
+    <tr><td>تعلّم الآلة (خارج الإنترنت)</td><td>Python: pandas وtransformers وseqeval وoptimum؛ النموذج الأساس <code dir="ltr">asafaya/bert-mini-arabic</code></td></tr>
+    <tr><td>تعلّم الآلة (المتصفح)</td><td>Transformers.js + ONNX Runtime (WASM) داخل Web Worker</td></tr>
+    <tr><td>الخط</td><td>IBM Plex Sans Arabic فقط (OFL)</td></tr>
+    <tr><td>الاختبارات</td><td>Vitest، وPlaywright (Edge) مع axe</td></tr>
+    <tr><td>الاستضافة / التكامل المستمر</td><td>Vercel Hobby (نشر تلقائي من <code dir="ltr">main</code>)، وGitHub Actions</td></tr>
+    <tr><td>الاستعانة بالذكاء الاصطناعي</td><td>Claude Code وClaude Design (مُعلَن عنها)</td></tr>
+  </table></div>
+</section>
+
+<section id="tech">
+  <h2>التوثيق التقني</h2>
+
+  <h3>٥. البنية</h3>
+  <ul>
+    <li><strong>ثابت فقط.</strong> لا قاعدة بيانات ولا مسار API ولا أسرار خادم ولا واجهة مدفوعة. النص الملصوق يُعالَج في الصفحة ولا يُرسل إلى أي مكان.</li>
+    <li><strong>المجموعة:</strong> <code dir="ltr">fawazahmed0/hadith-api</code> (٧ كتب)، مثبّتة على الإصدار <code dir="ltr">df57907</code>، مع SHA-256 لكل كتاب في <code dir="ltr">corpus/MANIFEST.json</code>. تُشحن فهرسًا ثابتًا بحجم ~١٧ ميغابايت (أسماء + قوائم) ومقاطع نصية من ٢٠٠ حديث.</li>
+    <li><strong>المطابقة:</strong> يصوّت كل اسم ملصوق للأحاديث التي فيها أندر كلماته؛ ثم تُوازَن المرشّحات بأطول متتالية مشتركة موزونة. الأصناف: <em>مطابق</em>، <em>يحتوي</em>، <em>قريب</em>. الصيغ الأقصر للاسم تُحسب ٠٫٨.</li>
+    <li><strong>ربط الرواة (سجلاتنا):</strong> الكنية/الاسم المطابق تمامًا = ١٫٠، وإلا Jaro-Winkler؛ وسياق الشيخ/التلميذ يعيد الترتيب فقط. الحالات: عالية (≥ ٠٫٩٠ وفارق ≥ ٠٫١٠) · تحقّق (٠٫٦٠–٠٫٩٠ أو تقارب شديد، مع أزرار المرشّحين) · لا شيء (< ٠٫٦٠).</li>
+    <li><strong>تحميل النموذج:</strong> ينتظر حتى ٣٠ ثانية أثناء التنزيل، ثم تقرأ القواعد ذلك الإسناد ويواصل النموذج التحميل؛ ويُسقَط عند الخطأ أو توقف ٢٠ ثانية فقط. الملفات الكبيرة تُقدَّم <code dir="ltr">no-store</code> (المتصفحات الجديدة ترفض مدخل ذاكرة HTTP بحجم ١٢ ميغابايت) وتُحفظ في Cache Storage.</li>
+  </ul>
+
+  <h3>٦. نموذج البيانات</h3>
+  <p><code dir="ltr">data/hadiths/&lt;id&gt;.json</code>: لكل إسناد: الكتاب، والطبعة، والرقم، والجزء/الصفحة، ورابط المصدر، ونص الإسناد كاملًا، والسلسلة، والحكم المنقول مع قائله، وحالة التحقق. و<code dir="ltr">data/narrators.json</code>: الاسم، والكنى، والدور، والترضّي، والطبقة، والوفاة، واقتباس التقريب (الرقم والصفحة)، ونوع التعيين، والتحقق.</p>
+  <p>يرفض المدقِّق أي إسناد بلا مصدر، أو راويًا مجهولًا، أو سلسلة لا تنتهي عند النبي ﷺ، أو بيانات نائبة (placeholders).</p>
+
+  <h3>٧. النتائج المقيسة</h3>
+  <div class="table-wrap"><table>
+    <tr><th>البند</th><th>النتيجة</th></tr>
+    <tr><td>واسم أسماء الرواة، ٣٠٠ إسناد محجوب من ٩ كتب لم يرها النموذج</td><td>القواعد: F1 ‏٠٫٧٦، السلسلة تامة ٣٢٪ · <strong>النموذج: F1 ‏٠٫٩١٦، السلسلة تامة ٧١٪</strong></td></tr>
+    <tr><td>نموذج المتصفح مقابل Python int8</td><td>وسوم متطابقة على ١٠٠٪ من ١٤٬٧٨٩ كلمة</td></tr>
+    <tr><td>تطابق ONNX مع PyTorch</td><td>٩٩٫٤٩٪</td></tr>
+    <tr><td>المستكشف: أسانيدنا الثمانية عشر من البخاري</td><td>كلها تجد حديثها بين أول ٣ نتائج (النموذج لا يتفوّق على القواعد في هذه العيّنة الصغيرة؛ يُذكر كما هو)</td></tr>
+    <tr><td>الحالات الصعبة (راوٍ مجهول، إسناد منقطع، اسم مشترك، نص ليس إسنادًا، التشكيل، إدخال طويل…)</td><td>١٥ / ١٥، ثلاث مرات، SHA-256 متطابق</td></tr>
+    <tr><td>الاختبارات</td><td>١٤٢ اختبار وحدة · ٤٦ اختبار متصفح (منها كاشف الخصوصية، وبديل عند حجب النموذج، وaxe)</td></tr>
+    <tr><td>إمكانية الوصول / السرعة</td><td>axe: لا مخالفات جسيمة أو حرجة في أي صفحة عند ٣٩٠ و١٤٤٠ بكسل؛ Lighthouse للأداء ٩٥–١٠٠</td></tr>
+    <tr><td>الكلفة</td><td>٠ دولار كلفة تشغيل</td></tr>
+  </table></div>
+  <div class="note">لم يُنجز بعد: اختبار المستخدمين الخمسة بالتوقيت (البروتوكول جاهز في <code dir="ltr">docs/USER_TEST.md</code>).</div>
+
+  <h3>٨. بوابات الجودة</h3>
+  <p>قبل كل دفع: <code dir="ltr">pnpm lint</code> و<code dir="ltr">pnpm test</code> و<code dir="ltr">pnpm validate:data</code> و<code dir="ltr">pnpm build</code>. ويشغّل التكامل المستمر الحالات الصعبة ٣ مرات. اختبارات المتصفح تعمل محليًا وعلى الموقع المباشر (<code dir="ltr">BASE_URL</code>). أمر واحد يعيد الأرقام: <code dir="ltr">pnpm eval:all</code>.</p>
+</section>
+
+<section id="legal">
+  <h2>التوثيق القانوني</h2>
+
+  <h3>٩. التراخيص والمصدر</h3>
+  <div class="table-wrap"><table>
+    <tr><th>البند</th><th>الحالة</th></tr>
+    <tr><td>الشيفرة</td><td>© ٢٠٢٦ عبدالملك، <strong>جميع الحقوق محفوظة</strong> (وللمالك أن يفتحها لاحقًا)</td></tr>
+    <tr><td>اعتماديات npm وPython</td><td>MIT / Apache-2.0 / BSD / MPL-2.0؛ القوائم الكاملة في <code dir="ltr">docs/licenses/</code></td></tr>
+    <tr><td>IBM Plex Sans Arabic، وScheherazade New (علامة واحدة U+FD41)</td><td>SIL OFL 1.1</td></tr>
+    <tr><td><strong>Sanadset 650K</strong> (بيانات التدريب)</td><td>⚠ <strong>لم يُذكر ترخيص.</strong> استُخدمت للتدريب البحثي؛ قرّر المالك نشر النموذج المشتق؛ مُعلَن</td></tr>
+    <tr><td><strong><code dir="ltr">bert-mini-arabic</code></strong> (النموذج الأساس)</td><td>⚠ بطاقة Hugging Face بلا حقل ترخيص؛ مستودع المؤلف يظهر MIT</td></tr>
+    <tr><td><strong>مجموعة <code dir="ltr">hadith-api</code></strong></td><td>⚠ أصلها وترخيصها غير مذكورين؛ تُعرض كما نُشرت دون تعديل، وموسومة «يحتاج تحققًا — من مجموعة خارجية»</td></tr>
+    <tr><td>الشاملة (shamela.ws)، ودرر (dorar.net)</td><td>⚠ لم يوجد ترخيص. تُخزَّن اقتباسات قصيرة منسوبة وروابط فقط؛ والأسئلة الشائعة في دُرَر تنصّ على عدم نسخ محتواه</td></tr>
+    <tr><td>المشروع السابق <code dir="ltr">sanad2</code></td><td>مُعلَن في <code dir="ltr">docs/BASELINE.md</code> (الوسم <code dir="ltr">challenge-baseline</code>)؛ أُعيد استعمال فن الشعار فقط، وهو موسوم في الملفات</td></tr>
+  </table></div>
+  <p>كل أداة ذكاء اصطناعي ونموذج ومجموعة بيانات وخدمة وحزمة مسجّلة بترخيصها في <code dir="ltr">docs/SOURCES_LOG.md</code> (البند ٩ من الشروط).</p>
+
+  <h3>١٠. الالتزام بشروط التحدّي</h3>
+  <ul>
+    <li><strong>النافذة الزمنية:</strong> بدأ المستودع فارغًا؛ وأول إيداع (٤ أكتوبر) فيه ملفات التخطيط فقط.</li>
+    <li><strong>الخصوصية:</strong> لا بيانات مستخدمين في أي مكان؛ الاختبارات بنصوص مصنوعة أو موثقة؛ واختبار Playwright يؤكد أن أي طلب لا يحمل النص الملصوق.</li>
+    <li><strong>طلب طرف ثالث:</strong> تجلب صفحة الحديث نصّه الكامل من شبكة jsDelivr (يكشف فقط أيّ حديث فُتح)؛ ولا يحدث ذلك أثناء التحليل.</li>
+    <li><strong>الأسرار:</strong> لا حاجة لأيٍّ منها؛ فُحص السجل ولم يوجد شيء.</li>
+    <li><strong>حواشي المحقّقين</strong> لا تُنسخ أبدًا: النص التراثي فقط، مع ذكر الطبعة وربط الصفحة.</li>
+  </ul>
+</section>
+
+<section id="scholarly">
+  <h2>التوثيق الشرعي والعلمي</h2>
+
+  <h3>١١. القواعد التي يفرضها المنتج</h3>
+  <ol>
+    <li><strong>لا شيء من الذاكرة.</strong> كل حديث وإسناد وبيان عن راوٍ ورقم وحكم منسوخ من صفحة مصدر مذكورة؛ فإن لم يوجد مصدر ← حقل فارغ ← «لا مصدر بعد».</li>
+    <li><strong>سَنَد لا يحكم.</strong> الحكم يظهر اقتباسًا منسوبًا إلى قائله مع رابطه فقط. ولا تُستعمل ألفاظ الحكم على الحديث بصوت سَنَد نفسه. وإخراج مسلم للحديث في الصحيح منقول عن ابن الصلاح (<em>المقدمة</em>، تحقيق عتر).</li>
+    <li><strong>غير موثق حتى يوثّقه المالك.</strong> البيانات الجديدة «يحتاج تحققًا»؛ والتغييرات تُسجَّل في <code dir="ltr">docs/REVIEW.md</code>.</li>
+    <li><strong>الذكاء الاصطناعي موسوم ومتواضع.</strong> المخرجات «استخراج آلي — راجِع النتائج»؛ والثقة المنخفضة تعرض مرشّحين لا تخمينًا صامتًا؛ ولا سجل ← «لا مصدر بعد» (رمادي محايد لا أحمر: غياب المصدر لا يعني أن الحديث مختلق).</li>
+    <li><strong>الأسماء المشتركة لا تُخمَّن.</strong> الراوي الملتبس (مثل «سفيان» و«محمد بن جعفر») يبقى غير محسوم ما لم يحسمه مصدر مقتبس.</li>
+    <li><strong>جُمل ثابتة في كل مكان:</strong> «أداة مساعدة بالذكاء الاصطناعي، لا تحكم على الأحاديث ولا تُفتي» (في «عن سَنَد» والتذييل)، ومع كل مصدر: «ذِكرُ الحديث في كتابٍ ليس حكمًا عليه. الأحكام تُنقل منسوبةً إلى قائليها.»</li>
+    <li><strong>الأدب:</strong> ﷺ بعد اسم النبي؛ والترضّي بعد كل صحابي (يفرضه المدقِّق)؛ ويُسمّى الطريق «إسنادًا» (والجمع «أسانيد»).</li>
+  </ol>
+
+  <h3>١٢. المصادر والتحقق</h3>
+  <div class="table-wrap"><table>
+    <tr><th>المحتوى</th><th>المصدر</th></tr>
+    <tr><td>نصوص البخاري ومسلم وأرقامهما</td><td>المكتبة الشاملة (الطبعة السلطانية؛ طبعة عبد الباقي)، مع رابط الصفحة</td></tr>
+    <tr><td>بيانات الرواة</td><td><em>تقريب التهذيب</em> (يُقتبس الرقم والصفحة)؛ وتُراجَع في <em>تهذيب الكمال</em> و<em>تحفة الأشراف</em></td></tr>
+    <tr><td>الأحكام القصيرة</td><td>دُرَر، مع ذكر القائل</td></tr>
+    <tr><td>أحاديث المجموعة</td><td><code dir="ltr">hadith-api</code> (قد يختلف الترقيم عن الطبعات المطبوعة، لا سيما في مسلم؛ ويُذكر ذلك على الشاشة)</td></tr>
+  </table></div>
+  <p><strong>حالة التحقق:</strong> ٣٧ من ٣٧ إسنادًا راجعها المالك على الشاملة (٥ أكتوبر، <code dir="ltr">docs/REVIEW.md</code>)؛ ٠ من ٩٢ سجل راوٍ موثّق (تظهر «يحتاج تحققًا»)؛ و٤٤ راويًا بلا تعيين قاطع.</p>
+
+  <h3>١٣. الحدود المعروفة والبنود المفتوحة</h3>
+  <ul>
+    <li>لا توجد بعد مراجعة متخصص لحديث كامل.</li>
+    <li><em>محمد بن حاتم</em> (<code dir="ltr">muslim-iman-55-n96</code>) مربوط بابن ميمون «قرينةً» مع أن التقريب و<em>تهذيب الكمال</em> يختلفان؛ وقد وُسم لعرضه على متخصص.</li>
+    <li>طبعة التقريب (الناشر، المحقق، السنة) لم تُذكر بعد؛ وصفحة <code dir="ltr">muslim-muqaddima-n1-*</code> غير موثوقة (تظهر «غير مذكور»).</li>
+    <li>المجموعة تغطي ٧ كتب فقط وليست طبعة موثّقة؛ والنموذج يقرأ الأسماء ولا يفهم النص.</li>
+    <li>أسئلة الترخيص المفتوحة (البند ٩) تُعلَن ولا تُحسم.</li>
+    <li>ما بقي على المالك: اختبار المستخدمين، والفيديو، والشرائح، والتقديم في البوابة.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>وثائق تفصيلية</h2>
+  <p dir="ltr" style="text-align:left"><code>docs/SOURCES.md</code> · <code>docs/SOURCES_LOG.md</code> · <code>docs/REVIEW.md</code> · <code>docs/EVALUATION.md</code> · <code>docs/HARD_CASES.md</code> · <code>docs/REQUIREMENTS.md</code> · <code>docs/JUDGES.md</code> · <code>docs/COST.md</code></p>
+</section>
+
+</main>
+
+<footer>
+  <p><strong>أداة مساعدة بالذكاء الاصطناعي، لا تحكم على الأحاديث ولا تُفتي.</strong></p>
+  <p>ذِكرُ الحديث في كتابٍ ليس حكمًا عليه. الأحكام تُنقل منسوبةً إلى قائليها.</p>
+</footer>
+
+</body>
+</html>
