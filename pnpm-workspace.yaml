@@ -2,3 +2,6 @@ allowBuilds:
   esbuild: true
   sharp: false
   unrs-resolver: false
+  # Install scripts we do not need: the native binaries ship inside the packages (Node-side tests only).
+  onnxruntime-node: false
+  protobufjs: false
