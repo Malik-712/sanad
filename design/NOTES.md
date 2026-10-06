@@ -51,10 +51,11 @@ Owner decisions, 5 Oct 2026:
 5. **Icons:** the design's own SVGs, not `lucide-react` (CLAUDE.md updated).
 6. **Narrator pages** are reached from the route panel, which lists the route's narrators with links.
 7. **Search** filters «أحاديث مختارة» in place; the query stays in `?q=`.
-8. **Desktop header on every page** from 1024px; «شجرة الأسانيد» in the nav only on hadith pages; Home, Paste and About in a centred 720px column.
+8. **Desktop header on every page** from 1024px; «شجرة الأسانيد» in the nav only on hadith pages; Paste, About and narrator pages in a centred 720px column. *Changed 6 Oct for Home:* a full-width hero band (frame as on the hadith band) with the slogan and search card in the first column and the drawing in the second; the list in two columns; content and footer in one 1344px container with 48px gutters. No header search on Home. The hero drawing is tagged «رسم توضيحي» and its caption gives counts only (no meeting point). On mobile the search card still overlaps the band and frame by 72px, as in the screen.
 9. **Footers** follow each screen; on the hadith page the disclaimer is the line in the panel column (stacked under the panel on mobile).
 10. **Honorifics** come from `honorificAr` in `data/narrators.json` (see `docs/RESOLUTIONS.md`).
 11. **Status badges** follow `verification.status`, which only the owner sets.
+12. **Base line height** 1.5: the screens leave it at `normal`, which is 1.5 for IBM Plex Sans Arabic.
 
 Following the design's own rules:
 
