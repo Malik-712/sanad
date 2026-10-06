@@ -1,0 +1,10 @@
+# Training, prediction and export (on top of requirements.txt). CPU wheels are enough for BERT-mini:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+#   pip install -r ml/requirements-train.txt
+# Versions used on 6 Oct 2026: torch 2.14.1+cpu, transformers 4.57.6, onnxruntime 1.30.0.
+transformers>=4.45,<5
+datasets
+accelerate
+optimum[onnxruntime]
+onnx
+onnxruntime

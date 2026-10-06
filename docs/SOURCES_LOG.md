@@ -38,6 +38,12 @@ Required by the challenge Terms and Conditions, §9. Add a row for every AI tool
 | 2026-10-06 | Library | @dagrejs/dagre 3.1.1 | https://www.npmjs.com/package/@dagrejs/dagre | Tree layout (positions of the isnad tree nodes) | MIT |
 | 2026-10-06 | Dataset | Sanadset 650K (Mendeley Data, DOI 10.17632/5xth87zwb5.5) | https://data.mendeley.com/datasets/5xth87zwb5 | Training and evaluation data for the narrator tagger (`ml/`); the raw file is not committed | unclear — no licence line shown on the page (checked 6 Oct). Owner decision 6 Oct: proceed for research and evaluation only; the rule parser stays the default engine, and the trained model is reported in `docs/EVALUATION.md` with this note |
 | 2026-10-06 | Model | asafaya/bert-mini-arabic (base model for fine-tuning) | https://huggingface.co/asafaya/bert-mini-arabic | Starting weights for the narrator tagger | unclear — the Hugging Face card has no licence field; the author's code repository (github.com/alisafaya/Arabic-BERT) shows MIT, with no separate terms for the pretrained weights. Citation requested: Safaya et al., 2020 (SemEval) |
+| 2026-10-06 | Dev tool (Python) | pandas 3.0.6, numpy 2.5.3 | https://pypi.org/project/pandas/ | Reading Sanadset in chunks (`ml/prepare_data.py`); offline only | pandas: BSD-3-Clause; numpy: BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0 (package metadata) |
+| 2026-10-06 | Dev tool (Python) | seqeval 1.2.2 | https://pypi.org/project/seqeval/ | Entity precision / recall / F1 (`ml/evaluate.py`, `ml/train.py`) | MIT (package metadata) |
+| 2026-10-06 | Dev tool (Python) | pytest 9.1.1 | https://pypi.org/project/pytest/ | Twin tests of the Python normaliser and tokeniser | MIT (package metadata) |
+| 2026-10-06 | Library (Python) | torch 2.14.1+cpu | https://pytorch.org | Training the narrator tagger on CPU; offline only, not shipped | Apache-2.0 AND Apache-2.0 WITH LLVM-exception AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND MIT (package metadata) |
+| 2026-10-06 | Library (Python) | transformers 4.57.6, datasets 5.0.1, accelerate 1.15.0 | https://pypi.org/project/transformers/ | Fine-tuning and prediction (`ml/train.py`, `ml/predict.py`); offline only | Apache-2.0 (package metadata) |
+| 2026-10-06 | Library (Python) | optimum 2.1.0, onnx 1.23.2, onnxruntime 1.30.0 | https://pypi.org/project/optimum/ | ONNX export, int8 quantisation and parity check (`ml/export_onnx.py`); the exported model is not shipped | optimum, onnx: Apache-2.0; onnxruntime: MIT (package metadata) |
 
 ## To add when used
 
