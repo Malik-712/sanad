@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Adapted from sanad2: design/sanad-mark.source.svg (tag challenge-baseline) (small mark: the same artwork without the gold frame). See docs/BASELINE.md. -->
   <rect width="200" height="200" rx="16" fill="#0E4B3B"/>
   <path fill="#F5F2EB" transform="translate(34 46) scale(12)" d="M0 2H3V8H4V2H5V8H6V2H7V8H8V2H9V8H10V2H11V9H0V8H2V3H0Z M4 0H5V1H4Z"/>
 </svg>

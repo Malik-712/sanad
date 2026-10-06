@@ -6,13 +6,22 @@ import { SkipLink } from "@/components/layout/SkipLink";
 import { ar } from "@/lib/copy/ar";
 import "./globals.css";
 
-// The main font. Latin subset too, so URLs and edition names in source lines
-// render in the same family instead of the fallback.
+// The main font, Arabic subset: preloaded, because every page starts with Arabic text.
 const plexArabic = IBM_Plex_Sans_Arabic({
   weight: ["400", "500", "600", "700"],
-  subsets: ["arabic", "latin"],
+  subsets: ["arabic"],
   display: "swap",
   variable: "--font-plex-arabic",
+});
+
+// The same family's Latin subset, so URLs and edition names in source lines render in Plex too.
+// Not preloaded (6 Oct, Lighthouse): its files load only on pages that show Latin text.
+const plexLatin = IBM_Plex_Sans_Arabic({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  preload: false,
+  variable: "--font-plex-latin",
 });
 
 // Fallback for one sign only: «﵁» (U+FD41), which IBM Plex Sans Arabic does not have.
@@ -47,7 +56,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="ar" dir="rtl" className={`${plexArabic.variable} ${honorificSign.variable} h-full`}>
+    <html lang="ar" dir="rtl" className={`${plexArabic.variable} ${plexLatin.variable} ${honorificSign.variable} h-full`}>
       <body className="flex min-h-full flex-col font-sans antialiased">
         <SkipLink />
         <SiteHeader />
