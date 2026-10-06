@@ -3,6 +3,8 @@
 > Engineering spec for the AI part of Sanad: a narrator tagger trained on Sanadset, a rule-based baseline that is also the fallback, an in-browser runtime, a narrator linker with confidence levels, and a hard-cases file.
 > This file replaces the "Session C" and "Session D" sections of `docs/IMPLEMENTATION.md`. Where they differ, this file wins.
 
+> **Status, 6 Oct (as built).** C and D ran as one session. Training ran on the laptop CPU (27.9 min), not Colab. The owner decided on 6 Oct that the model is **not shipped** (Sanadset licence unclear): the live `/parse` runs the rule parser, and the model's numbers are in `docs/EVALUATION.md` as "trained, not shipped". So 5.5b (Transformers.js worker, 15 s fallback, cache headers) was not built, and the model files stay in `ml/out/` (git-ignored). Linker context only orders and pre-selects candidates; it never raises a link to `high`. 5.7 hard cases run on the rules only. Results: `docs/PROGRESS.md`.
+
 |                             |                                                                                                                                                                             |
 | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Window (adjusted)**       | Session C: Mon 5 Oct 16:30–23:00 · Session D: Mon 23:00 → Tue 6 Oct 03:00 (Riyadh)                                                                                          |

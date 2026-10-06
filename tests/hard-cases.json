@@ -1,0 +1,97 @@
+{
+  "note": "Hard cases for /parse (docs/PHASE5_AI_LAYER.md 5.7). Inputs are made up, or read at run time from data/ (word for word, source stored there). Run: pnpm hardcases --runs 3",
+  "cases": [
+    {
+      "id": "unknown-narrator",
+      "title": "راوٍ لا ترجمة له في بياناتنا",
+      "input": { "text": "حدثنا قزمان بن طرخان، عن يحيى بن سعيد الأنصاري، عن محمد بن إبراهيم التيمي" },
+      "expect": { "names": 3, "states": { "0": "none", "1": "high", "2": "high" }, "match": null }
+    },
+    {
+      "id": "broken-chain",
+      "title": "سلسلة سقط منها راوٍ",
+      "input": { "data": { "hadith": "niyyah", "route": "bukhari-1" }, "remove": "قَالَ: أَخْبَرَنِي مُحَمَّدُ بْنُ إِبْرَاهِيمَ التَّيْمِيُّ : " },
+      "expect": { "names": 5, "match": null }
+    },
+    {
+      "id": "ambiguous-sufyan",
+      "title": "اسم مشترك: «سفيان» وحده",
+      "input": { "text": "حدثنا زيد بن خالد، حدثنا سفيان، عن عمرو بن بكر" },
+      "expect": { "names": 3, "states": { "1": "check" }, "candidatesAtLeast": { "1": 2 } }
+    },
+    {
+      "id": "ambiguous-hammad",
+      "title": "اسم مشترك: «حماد» وحده",
+      "input": { "text": "حدثنا زيد بن خالد، حدثنا حماد، عن عمرو بن بكر" },
+      "expect": { "names": 3, "notHigh": [1] }
+    },
+    {
+      "id": "not-an-isnad",
+      "title": "نص ليس إسنادًا",
+      "input": { "text": "هذا كلام عادي ليس فيه شيء من ذلك البتة" },
+      "expect": { "problem": "notIsnad" }
+    },
+    {
+      "id": "matn-only",
+      "title": "متن وحده بلا إسناد",
+      "input": { "data": { "hadith": "niyyah", "matn": true } },
+      "expect": { "problem": "notIsnad" }
+    },
+    {
+      "id": "empty",
+      "title": "نص فارغ",
+      "input": { "text": "   " },
+      "expect": { "problem": "empty" }
+    },
+    {
+      "id": "too-long",
+      "title": "أطول من ٢٠٠٠ حرف",
+      "input": { "text": "حدثنا زيد عن عمرو ", "repeat": 120 },
+      "expect": { "problem": "tooLong" }
+    },
+    {
+      "id": "no-tashkeel",
+      "title": "الإسناد نفسه بلا تشكيل (والأصل مشكول تشكيلًا تامًّا)",
+      "input": { "data": { "hadith": "niyyah", "route": "bukhari-1" }, "stripMarks": true },
+      "expect": { "names": 6, "match": "bukhari-1" }
+    },
+    {
+      "id": "full-tashkeel",
+      "title": "تشكيل تام كما في المصدر",
+      "input": { "data": { "hadith": "niyyah", "route": "bukhari-1" } },
+      "expect": { "names": 6, "match": "bukhari-1" }
+    },
+    {
+      "id": "short-forms",
+      "title": "صيغ مختصرة: ثنا، نا، أنا",
+      "input": { "text": "ثنا زيد بن خالد، نا عمرو بن بكر، أنا سالم بن هلال" },
+      "expect": { "names": 3, "sighas": ["نا", "أنا"] }
+    },
+    {
+      "id": "mixed-honorifics",
+      "title": "ترضٍّ مختلط: ﵁، رضي الله عنها، رضي الله عنه",
+      "input": { "text": "حدثنا زيد ﵁ عن هند رضي الله عنها عن سالم رضي الله عنه قال" },
+      "expect": { "names": 3, "namesText": ["زيد", "هند", "سالم"] }
+    },
+    {
+      "id": "tahwil",
+      "title": "تحويل «ح» بين إسنادين",
+      "input": { "data": { "hadith": "man-kadhaba", "route": "muslim-muqaddima-n1-a" } },
+      "expect": { "tahwil": true, "match": "any" }
+    },
+    {
+      "id": "parallel-names",
+      "title": "شيخان معًا: «فلان وابن فلان»",
+      "input": { "data": { "hadith": "la-yuminu", "route": "muslim-iman-45-n71-a" } },
+      "expect": { "parallel": true, "match": "any" }
+    },
+    {
+      "id": "very-long",
+      "title": "إسناد طويل جدًّا (خمسة عشر راويًا)",
+      "input": {
+        "text": "حدثنا راوي واحد، حدثنا راوي اثنان، حدثنا راوي ثلاثة، حدثنا راوي أربعة، حدثنا راوي خمسة، حدثنا راوي ستة، حدثنا راوي سبعة، حدثنا راوي ثمانية، حدثنا راوي تسعة، حدثنا راوي عشرة، حدثنا راوي أحد عشر، حدثنا راوي اثنا عشر، حدثنا راوي ثلاثة عشر، حدثنا راوي أربعة عشر، حدثنا راوي خمسة عشر"
+      },
+      "expect": { "names": 15, "match": null }
+    }
+  ]
+}

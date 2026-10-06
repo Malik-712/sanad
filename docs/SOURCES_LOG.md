@@ -44,6 +44,7 @@ Required by the challenge Terms and Conditions, §9. Add a row for every AI tool
 | 2026-10-06 | Library (Python) | torch 2.14.1+cpu | https://pytorch.org | Training the narrator tagger on CPU; offline only, not shipped | Apache-2.0 AND Apache-2.0 WITH LLVM-exception AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND MIT (package metadata) |
 | 2026-10-06 | Library (Python) | transformers 4.57.6, datasets 5.0.1, accelerate 1.15.0 | https://pypi.org/project/transformers/ | Fine-tuning and prediction (`ml/train.py`, `ml/predict.py`); offline only | Apache-2.0 (package metadata) |
 | 2026-10-06 | Library (Python) | optimum 2.1.0, onnx 1.23.2, onnxruntime 1.30.0 | https://pypi.org/project/optimum/ | ONNX export, int8 quantisation and parity check (`ml/export_onnx.py`); the exported model is not shipped | optimum, onnx: Apache-2.0; onnxruntime: MIT (package metadata) |
+| 2026-10-06 | Dev tool | @playwright/test 1.63.0, @axe-core/playwright 4.13.0 | https://www.npmjs.com/package/@playwright/test | End-to-end tests of `/parse` (flow, privacy spy, axe scan) in the installed Edge; not shipped | @playwright/test: Apache-2.0; @axe-core/playwright: MPL-2.0 (package.json) |
 
 ## To add when used
 
