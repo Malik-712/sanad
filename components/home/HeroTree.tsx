@@ -7,7 +7,7 @@ export function HeroTree() {
       height="190"
       viewBox="0 0 320 190"
       aria-hidden="true"
-      className="block h-auto w-full max-w-[334px]"
+      className="block h-auto w-full max-w-[334px] lg:max-w-none"
     >
       <path
         d="M160 20V96M160 114V126M32 126H288M32 126V147M96 126V147M160 126V147M224 126V147M288 126V147M32 157V171M96 157V171M160 157V171M224 157V171M288 157V171"

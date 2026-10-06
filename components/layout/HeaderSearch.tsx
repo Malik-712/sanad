@@ -1,8 +1,13 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { SearchIcon } from "@/components/ui/icons";
 import { ar } from "@/lib/copy/ar";
 
 // The desktop header search (TreeDesktop): a plain form that opens Home with ?q=, so it needs no JavaScript.
+// Not on Home itself, where the big search card does the job.
 export function HeaderSearch() {
+  if (usePathname() === "/") return null;
   return (
     <form
       role="search"

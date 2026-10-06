@@ -6,15 +6,18 @@ import { ar } from "@/lib/copy/ar";
 // "green" (Home, narrator): disclaimer + «كيف نعمل، ومن أين ننقل»;
 // "about" (About): the demo line only when sample data exists + «ابدأ البحث»;
 // "plain" (Paste): a 2px ink rule with the disclaimer.
+// `wide` (Home): from 1024px the content lines up with the Home container (1344px, 48px gutters) instead of the 720px column.
 const goldUnderline =
   "inline-flex min-h-11 items-center self-start text-parchment underline decoration-gold decoration-2 underline-offset-[6px] hover:text-parchment";
 
 export function SiteFooter({
   variant,
   showDemoNote = false,
+  wide = false,
 }: {
   variant: "green" | "about" | "plain";
   showDemoNote?: boolean;
+  wide?: boolean;
 }) {
   if (variant === "plain") {
     return (
@@ -41,8 +44,8 @@ export function SiteFooter({
   }
 
   return (
-    <footer className="ongreen mt-auto bg-green px-5 pt-7 pb-8 text-parchment">
-      <div className="mx-auto flex max-w-[720px] flex-col gap-3">
+    <footer className={`ongreen mt-auto bg-green px-5 pt-7 pb-8 text-parchment ${wide ? "lg:px-12" : ""}`}>
+      <div className={`mx-auto flex max-w-[720px] flex-col gap-3 ${wide ? "lg:max-w-[84rem]" : ""}`}>
         <p className="m-0 text-[16px] leading-[1.7] font-medium">{ar.disclaimerLine}</p>
         <Link href="/about" className={`${goldUnderline} text-[14px]`}>
           {ar.footer.aboutLink}

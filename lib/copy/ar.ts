@@ -119,8 +119,10 @@ export const ar = {
 
   home: {
     intro: "ابحث عن حديث، فترى أسانيده بنصّها من كتبها في شجرة واحدة: أين تلتقي، وأين تفترق.",
-    // «أسانيد «…»: ثمانية أسانيد عند مصنِّفَين، تلتقي كلها عند …» (the sentence comes from the engine).
+    // «أسانيد «…»: ثمانية أسانيد عند مصنِّفَين.» Counts only: the drawing is a sketch, so the caption makes no claim about a meeting point.
     heroCaption: (title: string, sentence: string) => `أسانيد «${title}»: ${sentence}`,
+    // The tag next to the hero drawing.
+    illustration: "رسم توضيحي",
     searchPlaceholder: "مثلًا: إنما الأعمال",
     tryLabel: "جرّب",
     pasteTitle: "عندك إسناد من كتاب؟",

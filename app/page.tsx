@@ -5,7 +5,6 @@ import { HeroTree } from "@/components/home/HeroTree";
 import { HomeSearch, HomeSearchFromUrl } from "@/components/home/HomeSearch";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { DemoTag } from "@/components/ui/DemoTag";
-import { GoldFrame } from "@/components/ui/GoldFrame";
 import { PasteIcon } from "@/components/ui/icons";
 import { countNoun, numberWord } from "@/lib/arabic/count";
 import { joinAr } from "@/lib/arabic/list";
@@ -13,9 +12,6 @@ import { ar } from "@/lib/copy/ar";
 import { companionIds, compilerIds, displayName } from "@/lib/data/derive";
 import { getHadiths, getNarrator, getNarratorMap } from "@/lib/data/load";
 import type { Hadith } from "@/lib/data/types";
-import { analyze } from "@/lib/isnad/analyze";
-import { buildGraph } from "@/lib/isnad/graph";
-import { countsSentence } from "@/lib/isnad/summary";
 import { buildSearchEntry } from "@/lib/search/filter";
 
 // The two «جرّب» suggestions: a hadith and a narrator, both read from data/.
@@ -39,11 +35,14 @@ function narratedByLine(h: Hadith): string {
   return ar.home.narratedBy(who, compilersLine(h));
 }
 
+// Counts only («ثمانية أسانيد عند مصنِّفَين.»): the drawing beside it is a sketch, not this hadith's tree,
+// so the caption names no meeting point.
 function heroSentence(h: Hadith): string {
-  const narrators = getNarratorMap();
-  const graph = buildGraph(h, narrators);
-  return countsSentence(h, graph, analyze(graph), narrators);
+  return ar.hadith.counts(countNoun(h.routes.length, "isnad"), countNoun(compilerIds(h).length, "compiler", "gen"));
 }
+
+// «لكلِّ حديثٍ / إسناد»: the design breaks the slogan before its last word.
+const sloganBreak = ar.slogan.lastIndexOf(" ");
 
 export default function Home() {
   const hadiths = getHadiths();
@@ -80,33 +79,36 @@ export default function Home() {
     </Link>
   );
   const demoTag = hadiths.some((h) => h.demo) ? <DemoTag /> : null;
-  const searchProps = { entries, cards, tryLinks, between, demoTag };
+
+  const heroText = (
+    <>
+      <h1 className="m-0 text-[46px] leading-[1.22] font-bold">
+        {ar.slogan.slice(0, sloganBreak)}
+        <br />
+        {ar.slogan.slice(sloganBreak + 1)}
+      </h1>
+      <p className="m-0 max-w-[300px] text-[16px] leading-[1.8] text-on-green-muted lg:max-w-[420px]">{ar.home.intro}</p>
+    </>
+  );
+  const heroFigure = heroHadith ? (
+    <figure className="m-0 flex flex-col gap-2.5 lg:w-full lg:max-w-[400px]">
+      <HeroTree />
+      <figcaption className="flex flex-col gap-2 text-[14px] leading-[1.7] text-on-green-muted">
+        <DemoTag onGreen label={ar.home.illustration} />
+        {ar.home.heroCaption(heroHadith.titleAr, heroSentence(heroHadith))}
+      </figcaption>
+    </figure>
+  ) : null;
+
+  const searchProps = { entries, cards, tryLinks, between, demoTag, heroText, heroFigure };
 
   return (
     <>
-      <div className="ongreen bg-green text-parchment">
-        <section className="relative mx-auto flex max-w-[720px] flex-col gap-5 px-7 pt-10 pb-28">
-          <GoldFrame inset="0 10px 10px" />
-          <h1 className="m-0 text-[46px] leading-[1.22] font-bold">
-            {ar.slogan}
-          </h1>
-          <p className="m-0 max-w-[300px] text-[16px] leading-[1.8] text-on-green-muted">{ar.home.intro}</p>
-          {heroHadith ? (
-            <figure className="m-0 mt-2 flex flex-col gap-2.5">
-              <HeroTree />
-              <figcaption className="text-[14px] leading-[1.7] text-on-green-muted">
-                {ar.home.heroCaption(heroHadith.titleAr, heroSentence(heroHadith))}
-              </figcaption>
-            </figure>
-          ) : null}
-        </section>
-      </div>
-
       <Suspense fallback={<HomeSearch {...searchProps} initialQuery="" />}>
         <HomeSearchFromUrl {...searchProps} />
       </Suspense>
 
-      <SiteFooter variant="green" />
+      <SiteFooter variant="green" wide />
     </>
   );
 }
