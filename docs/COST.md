@@ -9,12 +9,12 @@ How much Sanad costs to run, what it depends on, how it is kept correct, and wha
 | Hosting | Vercel, Hobby plan (free), auto-deploy from `main` | $0 |
 | Server code | None. Every page is generated at build time from JSON (`generateStaticParams`); no API route, no server function at runtime | $0 |
 | Database | None. The data is `data/*.json` in the repository | $0 |
-| AI at runtime | None called. `/parse` runs the rule parser and the linker in the visitor's browser; no model API, no GPU, no key | $0 |
+| AI at runtime | Our own small model (12.24 MB) runs **in the visitor's browser** (Web Worker); no model API, no GPU, no key, no server. It costs us nothing per use; the visitor downloads the model once (cached) | $0 |
 | Secrets | None needed; none in the repository (history scanned, 56 commits) | — |
 | Source code and CI | GitHub public repository; GitHub Actions on every push | $0 |
 | Domain | The free `*.vercel.app` address | $0 |
 
-What a visitor downloads (Lighthouse, median of 3 runs, mobile): **437–616 KB per page**, fonts included (`docs/EVALUATION.md` (c)).
+What a visitor downloads: a page is about half a megabyte (Lighthouse, `docs/EVALUATION.md` (c), measured before the explorer was added). Analysing an isnād adds, once and then cached: the model (12.24 MB), the onnxruntime WebAssembly (14.3 MB, compressed in transit) and the name index (about 2.3 MB). **Measured on 6 Oct: `public/` is 43.5 MB (corpus 17.6, model 12.3, onnxruntime 13.6) and the build output adds 27.7 MB, about 71 MB in all, under Vercel Hobby's 100 MB limit.**
 
 **One-off costs already paid (not running costs):** the model was trained once on a laptop CPU in 27.9 minutes; no cloud GPU was used.
 
@@ -40,7 +40,8 @@ What a visitor downloads (Lighthouse, median of 3 runs, mobile): **437–616 KB 
 | --- | --- | --- |
 | Vercel | Outage, or the free plan changes | The same `pnpm build` output deploys to any host that runs Next.js (Netlify, Cloudflare, a small Node server). No data or secret is tied to Vercel. |
 | Source links (shamela.ws, dorar.net) | A page moves | The isnad text, book, edition, number, volume and page are stored in `data/`, so the citation stays complete without the link; a broken link is fixed in one JSON field. |
-| Narrator extraction on `/parse` | Wrong or missing names | It never decides alone: uncertain names are «يحتاج تحققًا» with choices; unknown ones are «لا مصدر بعد». The trained model, if its data licence is cleared, can replace the rules with the rules kept as the fallback (`docs/EVALUATION.md`). |
+| The model in the browser | It cannot load (old phone, slow network, blocked) | If it is not ready after 30 seconds, the **rule parser reads that isnād instead** (and the model keeps loading for the next one); on any error, or if it stalls for 20 seconds, the model is dropped for good and the page says «تعمل الآن الطريقة البديلة (القواعد)» (tested in `tests/e2e/parse.spec.ts`). It never decides alone: uncertain names are «يحتاج تحققًا» with choices. |
+| The external corpus | The upstream repository changes or disappears | The site ships its own copy of the index (`public/corpus/`), built from a **pinned commit** with SHA-256 hashes in `corpus/MANIFEST.json`. Only a hadith's full text is fetched from the pinned jsDelivr URL when its page opens; if that fails the page shows the isnād it already has. |
 | The browser | Old browser, JavaScript off | Pages are generated as static HTML (the hadith list, the drawn tree, narrator pages, About). Interaction needs JavaScript: search filtering, choosing an isnad and its source panel, pan and zoom, and `/parse`. |
 | A data error | A wrong or unsourced fact | `pnpm validate:data` runs before every build and fails it if an isnad lacks a source, number or book, or a chain names an unknown narrator. |
 

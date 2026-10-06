@@ -117,7 +117,7 @@ Playwright uses the Microsoft Edge installed on the machine (`channel: "msedge"`
 - **A match is by the name as written**, not proof of the same person.
 - **The corpus is external and unverified**, with no stated text origin or licence; its numbering differs from printed editions (notably Muslim). Only our 5 hadiths are checked against their books.
 - **No tree for imported hadiths:** the corpus has isnād text only, no narrator ids and no grouping of the same hadith across books.
-- The first visit downloads the 12 MB model (cached afterwards); a slow connection falls back to the rules after 15 s.
+- The first visit downloads the 12 MB model (cached afterwards); if it is not ready after 30 s the rules read that isnād (and say so) while it keeps loading; a model that errors or stalls for 20 s is dropped.
 - Sanad never grades a hadith or a narrator, and it is not a fatwa tool.
 
 ## Repository map

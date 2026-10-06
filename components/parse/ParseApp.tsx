@@ -168,8 +168,8 @@ export function ParseApp({ data }: { data: ParseData }) {
             : ar.parse.loadingModel}
         </p>
       ) : null}
-      {readerState.status === "fallback" ? (
-        <p role="status" data-reason={readerState.reason} className="m-0 border-s-[3px] border-check ps-3 text-[14px] leading-[1.7]">
+      {readerState.status === "fallback" || result?.parse.engine === "rules" ? (
+        <p role="status" data-reason={readerState.reason ?? "model not ready in time"} className="m-0 border-s-[3px] border-check ps-3 text-[14px] leading-[1.7]">
           {ar.parse.fallbackBanner}
         </p>
       ) : null}

@@ -61,8 +61,9 @@ Every fact on the site can be checked against its source in under a minute:
 
 ## 3c. What is not a source
 
-- **`/parse` (paste an isnad).** The names it finds are an automatic reading of the user's own text by the rule parser (`lib/parser/`). They are shown as «استخراج آلي», linked to our narrator records with a confidence state, and never added to `data/`. Nothing pasted leaves the browser.
-- **Sanadset 650K** (Mendeley Data) was used only to train and measure a narrator tagger offline (`ml/`, `docs/EVALUATION.md`). No text from it is shown in the app, and the trained model is not published (licence unclear).
+- **The explorer (Home, paste an isnād).** The names it finds are an automatic reading of the user's own text by our trained model in the browser (the rule parser if the model cannot load). They are shown as «استخراج آلي», linked to our narrator records with a confidence state, and never added to `data/`. Nothing pasted leaves the browser.
+- **Sanadset 650K** (Mendeley Data) was used to train and measure the narrator tagger offline (`ml/`, `docs/EVALUATION.md`). No text from it is shown in the app. The trained model **is published** (owner decision, 6 Oct evening) although the dataset's licence is unclear; `docs/SOURCES_LOG.md` and `/sources` say so.
+- **The hadith corpus** (fawazahmed0/hadith-api, 36,390 hadiths, pinned commit `df57907…`) is the evidence the explorer matches against. It is **external and unverified**: its text origin and licence are not stated, its Muslim numbering differs from the printed editions, and nothing in it is shown as «مصدر موثق». Only our 5 hadiths (§1, §6) are copied from checked source pages.
 - **Sample values in the design files** (`design/`) are not data and were never copied into `data/` (CLAUDE.md rule 9).
 
 ## 4. Licences of the sources
