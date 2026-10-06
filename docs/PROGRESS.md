@@ -9,7 +9,7 @@ Last updated: Mon 5 Oct 2026, 21:00.
 | Session | Status | Planned (original) | Planned (adjusted) |
 | --- | --- | --- | --- |
 | Setup | ✅ Done | Sun 4 Oct | — |
-| A — Foundation and screens | 🔄 In progress | Mon 06:00–10:00 | Mon 09:00–12:30 |
+| A — Foundation and screens | ✅ Done 6 Oct | Mon 06:00–10:00 | Mon 09:00–12:30 |
 | B — Isnad engine and tree | ⬜ Not started | Mon 10:00–14:00 | Mon 12:30–16:30 |
 | Data track (owner + mentor) | ✅ Done 5 Oct | Mon 10:00–19:00 | Mon 10:00–19:00 (fixed: mentor hours) |
 | C — ML narrator tagger | ⬜ Not started | Mon 14:00–21:00 | Mon 16:30–23:00 |
@@ -33,7 +33,8 @@ Last updated: Mon 5 Oct 2026, 21:00.
 | --- | --- | --- | --- |
 | ✅ Done | Mon 5 Oct 20:30 | see `git log` | Item 1: Next.js 16.3.8 + TypeScript strict + Tailwind 4 tokens (design colours only, no shadows, 2px radius), IBM Plex Sans Arabic as the only font, `lang="ar" dir="rtl"`, `lib/copy/ar.ts`, favicon (small mark), Vitest, `validate:data` stub + prebuild. lint/test/validate/build pass. Home is a temporary placeholder. |
 | ✅ Done | Mon 5 Oct | see `git log` | Step 10: repo imported in Vercel (project `sanad`, deployment `dpl_5Wu4FANi4bPYe6Ay2D8h9dHXobPq`, production, READY, from `dc0e28d`). Live URL: https://sanad-pi-five.vercel.app (HTTP 200, `lang="ar" dir="rtl"`). README rewritten, `docs/BASELINE.md` added. |
-| ⏳ Next | — | — | Items 2+: design/NOTES.md, shared components, the 5 routes, demo data, metadata/OG image. Originally: starts ~3 h late. If short on time, cut the Open Graph image polish first; keep every "Done when" item. Owner imports the repo in Vercel at the end. |
+| ✅ Done | Mon 5 Oct – Tue 6 Oct | `e100ccc` … see `git log` | PLAN-A stages 1–10: design notes, companion honorifics, helpers and shared UI, Home, hadith page, 92 narrator pages, Paste (labelled sample), About, 404, focus and axe checks (0 violations), the U+FD41 fallback font, `docs/SOURCES.md`, licence pass of `docs/SOURCES_LOG.md`. All 100 pages live at https://sanad-pi-five.vercel.app. |
+| ↪ Replaced | — | — | Items 2+ (now done above): design/NOTES.md, shared components, the 5 routes, demo data, metadata/OG image. Originally: starts ~3 h late. If short on time, cut the Open Graph image polish first; keep every "Done when" item. Owner imports the repo in Vercel at the end. |
 
 ## Session B — Isnad engine and tree
 

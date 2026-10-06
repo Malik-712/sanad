@@ -35,11 +35,12 @@ The challenge window is 4–6 Oct 2026. This table is kept in step with [docs/PR
 
 | Built | Next |
 | --- | --- |
-| Foundation: Arabic RTL layout, design tokens, IBM Plex Sans Arabic, live deployment | Screens: Home, hadith tree, narrator page, paste page, about page |
-| Data: 5 hadiths, 37 isnads, 92 narrator records, each with a source URL | Isnad engine and the interactive tree |
-| Data validator that runs before every build | ML narrator tagger and `/parse` |
+| Foundation: Arabic RTL layout, design tokens, IBM Plex Sans Arabic, live deployment | Isnad engine and the drawn, interactive tree |
+| Pages: Home with search, hadith page (isnad list and source panel), 92 narrator pages, paste page, about page | ML narrator tagger and analysis on `/parse` |
+| Data: 5 hadiths, 37 isnads, 92 narrator records, each with a source URL; validator before every build | Tests for the engine; end-to-end tests |
+| Source documentation and licence log | |
 
-The live page is a placeholder until the screens are built.
+On the hadith page the tree area is a placeholder until the engine draws it. The paste page shows a labelled sample; analysis is not built yet.
 
 ## How Sanad treats hadith
 
@@ -93,6 +94,7 @@ pnpm build
 - [docs/BRIEF.md](docs/BRIEF.md): concept, goals and judging criteria
 - [docs/IMPLEMENTATION.md](docs/IMPLEMENTATION.md): build playbook
 - [docs/PROGRESS.md](docs/PROGRESS.md): what is done
+- [docs/SOURCES.md](docs/SOURCES.md): which scholarly sources Sanad uses, how text is taken and checked, and an index of every isnad
 - [docs/SOURCES_LOG.md](docs/SOURCES_LOG.md): every tool, model, dataset and package, with its licence
 - [docs/BASELINE.md](docs/BASELINE.md): the earlier version of this project
 - [CLAUDE.md](CLAUDE.md): project rules, scholarly rules, schema and design tokens

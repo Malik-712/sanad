@@ -4,10 +4,10 @@ Required by the challenge Terms and Conditions, §9. Add a row for every AI tool
 
 | Date | Type | Name | Source / link | Purpose in Sanad | Licence / legal basis |
 | --- | --- | --- | --- | --- | --- |
-| 2026-10-04 | AI tool | Claude (claude.ai) | https://claude.ai | Planning, brief, logo draft (`sanad-mark.svg`) | Anthropic Consumer Terms (Claude Pro) |
+| 2026-10-04 | AI tool | Claude (claude.ai) | https://claude.ai | Planning, brief, logo draft (`sanad-mark.svg`) | Anthropic Consumer Terms (Claude Pro) — the terms assign outputs to the user: «we assign to you all of our right, title, and interest—if any—in Outputs» (anthropic.com/legal/consumer-terms, read 6 Oct) |
 | 2026-10-04 | AI tool | Claude Code | https://claude.com/claude-code | Writing and testing code, with human review | Anthropic Consumer Terms (Claude Pro) |
-| 2026-10-04 | AI tool | Claude Design | https://claude.ai | UI design system and screen designs | Anthropic Consumer Terms (Claude Pro) |
-| 2026-10-04 | Font | IBM Plex Sans Arabic | https://fonts.google.com/specimen/IBM+Plex+Sans+Arabic | The only font: interface, hadith text, narrator names | SIL Open Font License 1.1 (check on the font page) |
+| 2026-10-04 | AI tool | Claude Design | https://claude.ai | UI design system and screen designs | Anthropic Consumer Terms (Claude Pro) — the terms assign outputs to the user: «we assign to you all of our right, title, and interest—if any—in Outputs» (anthropic.com/legal/consumer-terms, read 6 Oct) |
+| 2026-10-04 | Font | IBM Plex Sans Arabic | https://fonts.google.com/specimen/IBM+Plex+Sans+Arabic | The only font: interface, hadith text, narrator names | SIL Open Font License 1.1, Reserved Font Name «Plex» (read from `ofl/ibmplexsansarabic/OFL.txt` in github.com/google/fonts, 6 Oct); self-hosted by `next/font` from the Google Fonts files |
 | 2026-10-04 | Hosting | Vercel (Hobby) | https://vercel.com | Live demo hosting | Vercel Terms of Service |
 | 2026-10-05 | Tool | pnpm 12.9.1 | https://pnpm.io | Package manager | MIT |
 | 2026-10-05 | Library | next 16.3.8 | https://www.npmjs.com/package/next | Web framework (App Router, static pages, `next/font`) | MIT |
@@ -30,12 +30,19 @@ Required by the challenge Terms and Conditions, §9. Add a row for every AI tool
 
 | 2026-10-06 | Font | Scheherazade New, Regular (unmodified file from github.com/google/fonts, `ofl/scheherazadenew`) | https://software.sil.org/scheherazade/ | Fallback for one sign only, «﵁» (U+FD41), which IBM Plex Sans Arabic lacks; `unicode-range: U+FD41`, fetched only on pages that contain the sign | SIL Open Font License 1.1, Reserved Font Names «Scheherazade» and «SIL»; the file is shipped unmodified with `app/fonts/OFL-ScheherazadeNew.txt` |
 
+| 2026-10-06 | Dev tool | axe-core 4.14.0 (with playwright-core) | https://www.npmjs.com/package/axe-core | One-off accessibility scan of all pages at 390px and 1440px; run outside the repo, not shipped | MPL-2.0 |
+| 2026-10-04 | Source | al-Maktaba al-Shamila (shamela.ws): Bukhari (1681), Muslim (1727), Taqrib (8609), Ibn al-Salah (22870), and the books cited in notes | https://shamela.ws | Where the hadith, isnad and narrator texts in `data/` were read and copied from (see `docs/SOURCES.md`) | unclear — no terms or licence page found on the site (checked 6 Oct); the texts are classical, no editor's notes copied |
+| 2026-10-05 | Source | dorar.net (الدرر السنية) | https://dorar.net | The short grade quoted on 29 isnads, with its author and a link | unclear — FAQ (dorar.net/feedback, read 28 Sep) says the content is for searching on the site and not to be copied; only a short attributed quote and link are stored; owner decision pending |
+
 ## To add when used
 
 - Sanadset 650K (training and evaluation data) — licence to be checked on Mendeley Data.
 - asafaya/bert-mini-arabic (base model) — licence to be checked on Hugging Face.
 - Every npm and Python package (name, version, licence) — can be generated with `npx license-checker --summary` and `pip-licenses`.
-- Every hadith source page used in `data/` (dorar.net, shamela.ws).
+
+## How licences were checked
+
+Each licence was read from the package's `license` field or LICENSE file, the font's `OFL.txt`, the service's terms page, or the GitHub API for the repository. Where no licence or terms could be found, the row says «unclear» and the item is listed for the owner in `docs/REVIEW.md` or `docs/SOURCES.md`.
 
 ## Starting version (Terms §8)
 
