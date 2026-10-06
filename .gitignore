@@ -49,5 +49,5 @@ test-results/
 .DS_Store
 Thumbs.db
 
-# Keep the exported browser model (Session C)
-!public/models/sanad-ner/**
+# The trained model is not shipped (owner decision 6 Oct, Sanadset licence unclear); it stays in ml/out/.
+public/models/
