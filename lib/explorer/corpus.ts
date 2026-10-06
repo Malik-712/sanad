@@ -12,6 +12,17 @@ export type Manifest = {
 
 export type Corpus = { index: CorpusIndex; manifest: Manifest };
 
+let manifestLoading: Promise<Manifest> | null = null;
+
+/** The book list and counts (a few hundred bytes): enough to find one hadith without the name index. */
+export function loadManifest(base = "/corpus"): Promise<Manifest> {
+  manifestLoading ??= fetch(`${base}/manifest.json`).then((r) => {
+    if (!r.ok) throw new Error(`manifest: ${r.status}`);
+    return r.json() as Promise<Manifest>;
+  });
+  return manifestLoading;
+}
+
 let loading: Promise<Corpus> | null = null;
 
 export function loadCorpus(base = "/corpus"): Promise<Corpus> {
@@ -65,10 +76,11 @@ function loadChunk(book: string, k: number, base: string): Promise<Chunk> {
 export async function findByNumber(manifest: Manifest, book: string, number: number, base = "/corpus"): Promise<number | null> {
   const b = manifest.books.find((x) => x.id === book);
   if (!b) return null;
+  // Numbers rise through the book and are nearly one per hadith, so the chunk is usually the one at (number - 1) / size.
   let lo = 0;
   let hi = b.chunks - 1;
+  let mid = Math.min(hi, Math.max(0, Math.floor((number - 1) / manifest.chunkSize)));
   while (lo <= hi) {
-    const mid = (lo + hi) >> 1;
     const chunk = await loadChunk(book, mid, base);
     const first = chunk.n[0]!;
     const last = chunk.n[chunk.n.length - 1]!;
@@ -78,6 +90,7 @@ export async function findByNumber(manifest: Manifest, book: string, number: num
       const i = chunk.n.indexOf(number);
       return i < 0 ? null : b.offset + mid * manifest.chunkSize + i;
     }
+    mid = (lo + hi) >> 1;
   }
   return null;
 }
