@@ -20,16 +20,19 @@ export const ar = {
   nav: {
     label: "القائمة الرئيسية",
     home: "سَنَد، الرئيسية",
-    homeLink: "الرئيسية",
-    tree: "شجرة الأسانيد",
+    // Three links only (owner, 6 Oct): search, paste, about.
+    search: "البحث",
     parse: "الصق إسنادًا",
-    about: "المنهج",
+    about: "عن المشروع",
   },
 
   search: {
     label: "ابحث بكلمات الحديث أو باسم راوٍ",
+    placeholder: "اكتب كلمات من الحديث أو اسم راوٍ",
+    hint: "أو رقم الحديث، مثل: البخاري ١",
     button: "ابحث",
-    headerLabel: "البحث في الموقع",
+    clear: "مسح",
+    clearTitle: "مسح النص",
   },
 
   disclaimer,
@@ -48,6 +51,7 @@ export const ar = {
 
   footer: {
     aboutLink: "كيف نعمل، ومن أين ننقل",
+    sourcesLink: "المصادر وكيف نتحقق",
     startSearch: "ابدأ البحث",
     demoNote: "البيانات في هذا النموذج بيانات توضيحية.",
   },
@@ -88,6 +92,15 @@ export const ar = {
       definite: "الرواة",
       definiteOne: "الراوي",
     },
+    hadith: {
+      one: "حديث",
+      dualNom: "حديثان",
+      dualGen: "حديثين",
+      plural: "أحاديث",
+      acc: "حديثًا",
+      definite: "الأحاديث",
+      definiteOne: "الحديث",
+    },
     name: {
       one: "اسم",
       dualNom: "اسمان",
@@ -118,21 +131,19 @@ export const ar = {
   },
 
   home: {
-    intro: "ابحث عن حديث، فترى أسانيده بنصّها من كتبها في شجرة واحدة: أين تلتقي، وأين تفترق.",
-    // «أسانيد «…»: ثمانية أسانيد عند مصنِّفَين.» Counts only: the drawing is a sketch, so the caption makes no claim about a meeting point.
-    heroCaption: (title: string, sentence: string) => `أسانيد «${title}»: ${sentence}`,
-    // The tag next to the hero drawing.
-    illustration: "رسم توضيحي",
-    searchPlaceholder: "مثلًا: إنما الأعمال",
-    tryLabel: "جرّب",
-    pasteTitle: "عندك إسناد من كتاب؟",
-    pasteText: "الصقه، ونستخرج رواته ونرسم سلسلته.",
-    featured: "أحاديث مختارة",
     // «من رواية عمر بن الخطاب رضي الله عنه. عند البخاري ومسلم.»
     narratedBy: (who: string, compilers: string) => `من رواية ${who}. عند ${compilers}.`,
     companionsCount: (count: string) => `${count} من الصحابة`,
-    openTree: (routes: string) => `افتح الشجرة: ${routes}`,
-    noResults: "لم نجد حديثًا بهذه الكلمات. جرّب كلمة من نص الحديث أو اسم راوٍ.",
+    // «صحيح البخاري، حديث ١ · ثمانية أسانيد»
+    sourceLine: (book: string, number: string, routes: string) => `${book}، حديث ${number} · ${routes}`,
+    openTree: "افتح شجرة الأسانيد",
+    listTitle: "الأحاديث",
+    // Counts come from data/ (owner, 6 Oct: not a fixed number).
+    count: (hadiths: string) => `في الموقع ${hadiths}.`,
+    results: (hadiths: string) => `النتائج: ${hadiths}.`,
+    noResults: (hadiths: string) =>
+      `لا نتائج. في الموقع الآن ${hadiths} فقط. يمكنك لصق إسناد أي حديث ليحلّله الموقع.`,
+    pasteButton: "الصق إسنادًا",
     and: "و",
   },
 
@@ -165,8 +176,27 @@ export const ar = {
     chainAria: "من النبي ﷺ في الأعلى إلى المصنِّف في الأسفل",
     place: "الموضع",
     grade: "الحكم المنقول",
-    noGrade: "لم ننقل نصّ الحكم بعد، ولن نعرض حكمًا بلا مصدر.",
+    noGrade: "لا حكم مذكور.",
+    gradeBy: "قاله",
+    gradeFrom: "نقلناه من",
     gradeSource: "المصدر",
+    statusLabel: "حالة الإسناد",
+    // The source block above the tree (owner, 6 Oct). Values come from the route that carries the matn.
+    sourceTitle: "المصدر",
+    sourceBook: "الكتاب",
+    sourceAuthor: "المصنِّف",
+    sourceNumber: "رقم الحديث",
+    sourcePlace: "الجزء والصفحة",
+    openInSource: "افتح في المصدر",
+    notMentioned: "غير مذكور",
+    // «كيف أتحقق من هذا؟» under the tree.
+    verifyTitle: "كيف أتحقق من هذا؟",
+    verifySteps: [
+      "افتح الكتاب من زر «افتح الموضع في المصدر».",
+      "قارن رقم الحديث بما في الكتاب.",
+      "قارن أسماء الرواة في الإسناد واحدًا واحدًا.",
+    ],
+    allSources: "كل المصادر وحالتها",
     openSource: "افتح الموضع في المصدر",
     copy: "انسخ التوثيق",
     copied: "نُسخ التوثيق",
@@ -189,6 +219,11 @@ export const ar = {
     noQuote: "لم ننقل نصّ الحكم بعد، ولن نعرض حكمًا بلا مصدر.",
     prophetNote: "إليه ﷺ ترجع الأسانيد كلها.",
     identification: "تعيين الراوي",
+    edition: "الطبعة",
+    editionNotMentioned: "غير مذكورة",
+    sourceDetails: "تفاصيل المصدر",
+    entryNo: "رقم الترجمة",
+    page: "الصفحة",
     routesThrough: (routes: string) => `يمرّ به ${routes}:`,
     sourceLink: "المصدر",
   },
@@ -279,7 +314,8 @@ export const ar = {
     rijalBook: "تقريب التهذيب، لابن حجر العسقلاني",
     rijalNote: "ننقل عبارته كما هي، مع رقم الترجمة والصفحة.",
     editionsLabel: "الطبعات المعتمدة",
-    editionsPlaceholder: "[أضف الطبعات ودور النشر]",
+    // As al-Maktaba al-Shamila records them (docs/SOURCES.md); no edition is filled in from memory.
+    editionsPlaceholder: "صحيح البخاري: ط السلطانية. صحيح مسلم: ت عبد الباقي. تقريب التهذيب: الطبعة غير مذكورة. كما في بيانات المكتبة الشاملة.",
     listJoin: "، و",
     statusTitle: "ثلاث حالات للدليل",
     statusText: {
@@ -310,6 +346,9 @@ export const ar = {
     zoomIn: "تكبير",
     zoomOut: "تصغير",
     reset: "إعادة الشجرة إلى وضعها",
+    resetShort: "إعادة الضبط",
+    // One line under the legend (owner, 6 Oct).
+    legendNote: "نقطة الالتقاء: راوٍ تلتقي عنده أكثر الأسانيد. نقطة الافتراق: موضع يتفرّع منه الإسناد إلى أكثر من راوٍ.",
     hintMobile: "اسحب لتحريك الشجرة، واضغط على راوٍ لتظهر ترجمته.",
     hintDesktop: "النبي ﷺ في الأعلى، والمصنِّفون في الأسفل. اسحب للتحريك.",
     zoomPct: (pct: string) => `${pct}٪`,
@@ -339,6 +378,25 @@ export const ar = {
     common: "نقطة الالتقاء",
     branch: "نقطة افتراق",
     selected: "المختار",
+  },
+
+  // /sources (owner, 6 Oct): every book and site Sanad copies from, and what has been checked. Counts come from data/.
+  sources: {
+    metaTitle: "المصادر",
+    title: "المصادر وكيف نتحقق",
+    intro: "كل نصّ في الموقع منقول من هذه الكتب، ومعه رابط صفحته. وهنا ما راجعناه منها وما لم نراجعه بعد.",
+    textTitle: "كتب ننقل منها النص",
+    notesTitle: "كتب نستشهد بها في الملاحظات",
+    notesText: "نذكرها لتعيين راوٍ أو لتوضيح قراءة، برابط الصفحة. لا نعرض نصّها في الموقع.",
+    author: "المؤلف",
+    edition: "الطبعة كما في الشاملة",
+    use: "ماذا ننقل منه",
+    open: "افتح المصدر",
+    noLink: "لا رابط محفوظ",
+    isnads: (total: string, checked: string) => `الأسانيد المنقولة منه: ${total}. راجعها صاحب المشروع: ${checked}.`,
+    entries: (total: string, checked: string) => `التراجم المنقولة منه: ${total}. راجعها صاحب المشروع: ${checked}.`,
+    quotes: (total: string, checked: string) => `النصوص المنقولة منه: ${total}، في أسانيد راجعها صاحب المشروع: ${checked}.`,
+    licenceNote: "رخصة الموقع غير واضحة، فننقل منه الحكم القصير مع قائله ورابطه فقط.",
   },
 
   placeholder: {

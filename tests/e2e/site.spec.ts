@@ -67,10 +67,43 @@ test("tree: a narrator node opens the narrator panel and the full page", async (
   await expect(page.getByRole("heading", { level: 1 })).toContainText("عمر بن الخطاب");
 });
 
-test("search with no result explains what to try", async ({ page }) => {
+test("search: no result says how many hadiths there are and offers «الصق إسنادًا»", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("searchbox", { name: "ابحث بكلمات الحديث أو باسم راوٍ" }).fill("كلمة غير موجودة إطلاقا");
-  await expect(page.getByRole("status")).toContainText("لم نجد حديثًا بهذه الكلمات");
+  const status = page.getByRole("status").filter({ hasText: "لا نتائج" });
+  await expect(status).toContainText("في الموقع الآن خمسة أحاديث فقط");
+  await page.getByRole("link", { name: "الصق إسنادًا" }).last().click();
+  await expect(page).toHaveURL(/\/parse$/);
+});
+
+test("search: by narrator, by hadith number, and the clear button", async ({ page }) => {
+  await page.goto("/");
+  const box = page.getByRole("searchbox", { name: "ابحث بكلمات الحديث أو باسم راوٍ" });
+  await expect(box).toHaveAttribute("placeholder", "اكتب كلمات من الحديث أو اسم راوٍ");
+  await box.fill("البخاري ١");
+  await expect(page.locator('a[href^="/hadith/"]')).toHaveCount(1);
+  await expect(page.locator('a[href="/hadith/niyyah"]')).toBeVisible();
+  await box.fill("تميم الداري");
+  await expect(page.locator('a[href="/hadith/al-din-al-nasiha"]')).toBeVisible();
+  await page.getByRole("button", { name: "مسح" }).click();
+  await expect(box).toHaveValue("");
+  await expect(page.locator('a[href^="/hadith/"]')).toHaveCount(5);
+});
+
+test("hadith page: the source above the tree, and «كيف أتحقق من هذا؟»", async ({ page }) => {
+  await page.goto("/hadith/niyyah");
+  await expect(page.getByRole("link", { name: "افتح في المصدر" })).toHaveAttribute("href", bukhari1.url);
+  const verify = page.getByRole("region", { name: "كيف أتحقق من هذا؟" });
+  await expect(verify.getByRole("listitem")).toHaveCount(3);
+  await verify.getByRole("link", { name: "كل المصادر وحالتها" }).click();
+  await expect(page).toHaveURL(/\/sources$/);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("المصادر وكيف نتحقق");
+});
+
+test("header: three links only", async ({ page }) => {
+  await page.goto("/about");
+  const nav = page.getByRole("navigation", { name: "القائمة الرئيسية" }).first();
+  await expect(nav.getByRole("link")).toHaveText(["البحث", "الصق إسنادًا", "عن المشروع"]);
 });
 
 test("About states the disclaimer; unknown pages give the 404 page", async ({ page }) => {
@@ -102,7 +135,7 @@ test("keyboard only: skip link, search, open a hadith, select an isnad", async (
   await expect(page.getByRole("region", { name: "لوحة المصدر" })).toBeVisible();
 });
 
-for (const path of ["/", "/hadith/niyyah", "/hadith/niyyah?isnad=bukhari-1", "/narrator/umar-ibn-al-khattab", "/parse", "/about"]) {
+for (const path of ["/", "/hadith/niyyah", "/hadith/niyyah?isnad=bukhari-1", "/narrator/umar-ibn-al-khattab", "/parse", "/about", "/sources"]) {
   test(`axe (WCAG 2.1 A/AA): no serious or critical issues on ${path}`, async ({ page }) => {
     await page.goto(path);
     expect(await seriousAxe(page)).toEqual([]);

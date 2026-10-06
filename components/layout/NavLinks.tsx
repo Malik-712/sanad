@@ -4,17 +4,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ar } from "@/lib/copy/ar";
 
-// Mobile: «الصق إسنادًا», «المنهج». Desktop: «الرئيسية», «شجرة الأسانيد» (hadith pages only), «الصق إسنادًا», «المنهج».
+// Three links on every page and width (owner, 6 Oct): «البحث», «الصق إسنادًا», «عن المشروع».
 // The current page gets a gold underline and aria-current.
 export function NavLinks({ desktop = false }: { desktop?: boolean }) {
   const pathname = usePathname();
-  const onHadith = pathname.startsWith("/hadith/");
-
-  const links: { href: string; label: string; current: boolean }[] = [];
-  if (desktop) links.push({ href: "/", label: ar.nav.homeLink, current: pathname === "/" });
-  if (desktop && onHadith) links.push({ href: pathname, label: ar.nav.tree, current: true });
-  links.push({ href: "/parse", label: ar.nav.parse, current: pathname === "/parse" });
-  links.push({ href: "/about", label: ar.nav.about, current: pathname === "/about" });
+  const links: { href: string; label: string; current: boolean }[] = [
+    { href: "/", label: ar.nav.search, current: pathname === "/" },
+    { href: "/parse", label: ar.nav.parse, current: pathname === "/parse" },
+    { href: "/about", label: ar.nav.about, current: pathname === "/about" },
+  ];
 
   // Hover as in the design: a muted underline bar on desktop, a text underline on mobile.
   const size = desktop

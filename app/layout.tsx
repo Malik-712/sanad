@@ -15,12 +15,12 @@ const plexArabic = IBM_Plex_Sans_Arabic({
 });
 
 // The same family's Latin subset, so URLs and edition names in source lines render in Plex too.
-// Not preloaded (6 Oct, Lighthouse): its files load only on pages that show Latin text.
+// Regular weight only, preloaded (one small file): loading it late made the source panel's URLs
+// reflow on the hadith page (Lighthouse CLS 0.115, 6 Oct). Latin text in the UI is regular weight.
 const plexLatin = IBM_Plex_Sans_Arabic({
-  weight: ["400", "500", "600", "700"],
+  weight: "400",
   subsets: ["latin"],
   display: "swap",
-  preload: false,
   variable: "--font-plex-latin",
 });
 

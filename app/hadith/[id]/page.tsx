@@ -9,11 +9,12 @@ import { NarratorPanelBody } from "@/components/panels/NarratorPanelBody";
 import { DemoTag } from "@/components/ui/DemoTag";
 import { Diamond } from "@/components/ui/Diamond";
 import { GoldFrame } from "@/components/ui/GoldFrame";
+import { buttonOnGreen } from "@/components/ui/buttons";
 import { ChevronIcon } from "@/components/ui/icons";
 import { countDefinite, countNoun, numberWord } from "@/lib/arabic/count";
 import { toArabicIndic } from "@/lib/arabic/digits";
 import { ar } from "@/lib/copy/ar";
-import { displayName, routeNumber, routeStatus } from "@/lib/data/derive";
+import { displayName, matnRoute, routeNumber, routeStatus, volumePage } from "@/lib/data/derive";
 import { getHadith, getHadiths, getNarrator, getNarratorMap } from "@/lib/data/load";
 import type { Route } from "@/lib/data/types";
 import { analyze } from "@/lib/isnad/analyze";
@@ -52,6 +53,7 @@ export default async function HadithPage({ params }: PageProps<"/hadith/[id]">) 
   if (!h) notFound();
 
   const total = h.routes.length;
+  const source = matnRoute(h);
   const narratorMap = getNarratorMap();
   const graph = buildGraph(h, narratorMap);
   const analysis = analyze(graph);
@@ -151,12 +153,38 @@ export default async function HadithPage({ params }: PageProps<"/hadith/[id]">) 
             <h1 className="m-0 text-[26px] leading-[1.75] font-normal break-words lg:text-[34px] lg:leading-[1.6]">
               «{h.matnAr}»
             </h1>
-            <p className="m-0 text-[14px] leading-[1.7] text-on-green-muted">
-              {ar.hadith.matnFrom}:{" "}
-              <a href={h.matnSource.url} target="_blank" rel="noopener noreferrer" className="py-2 text-parchment hover:text-parchment">
-                {toArabicIndic(h.matnSource.book)}، {toArabicIndic(h.matnSource.number)}
+            {/* Where the matn is from, so it can be checked (owner, 6 Oct): book, compiler, number, volume and page,
+                all from the route whose source page carries this matn. */}
+            <div className="flex flex-col gap-3 pt-1">
+              <dl className="m-0 grid grid-cols-2 gap-x-6 gap-y-2 text-[14px] leading-[1.6] sm:grid-cols-4">
+                <div className="flex flex-col">
+                  <dt className="text-on-green-muted">{ar.hadith.sourceBook}</dt>
+                  <dd className="m-0">
+                    {source.book.nameAr} ({source.book.edition})
+                  </dd>
+                </div>
+                <div className="flex flex-col">
+                  <dt className="text-on-green-muted">{ar.hadith.sourceAuthor}</dt>
+                  <dd className="m-0">{source.book.authorAr}</dd>
+                </div>
+                <div className="flex flex-col">
+                  <dt className="text-on-green-muted">{ar.hadith.sourceNumber}</dt>
+                  <dd className="m-0">{routeNumber(source)}</dd>
+                </div>
+                <div className="flex flex-col">
+                  <dt className="text-on-green-muted">{ar.hadith.sourcePlace}</dt>
+                  <dd className="m-0">{volumePage(source)}</dd>
+                </div>
+              </dl>
+              <a
+                href={h.matnSource.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${buttonOnGreen} self-start px-5 text-[15px]`}
+              >
+                {ar.hadith.openInSource}
               </a>
-            </p>
+            </div>
             {h.matnVariants?.length ? (
               <details className="text-[14px] leading-[1.7] text-on-green-muted">
                 <summary className="min-h-11 cursor-pointer content-center">{ar.hadith.variantsSummary}</summary>
@@ -183,6 +211,24 @@ export default async function HadithPage({ params }: PageProps<"/hadith/[id]">) 
       <Suspense fallback={<HadithView {...viewProps} initial={routes[0] ? { kind: "route", id: routes[0].id } : null} />}>
         <HadithViewFromUrl {...viewProps} />
       </Suspense>
+
+      {/* «كيف أتحقق من هذا؟» (owner, 6 Oct): three steps, and the list of every source. */}
+      <section
+        aria-labelledby="verify-h"
+        className="mx-4 mb-10 flex flex-col gap-3 rounded-sq border-[1.5px] border-ink bg-paper p-5 lg:mx-8 lg:max-w-[720px]"
+      >
+        <h2 id="verify-h" className="m-0 text-[20px] leading-[1.4] font-semibold">
+          {ar.hadith.verifyTitle}
+        </h2>
+        <ol className="m-0 flex list-decimal flex-col gap-1.5 ps-6 text-[15px] leading-[1.7]">
+          {ar.hadith.verifySteps.map((step) => (
+            <li key={step}>{step}</li>
+          ))}
+        </ol>
+        <Link href="/sources" className="inline-flex min-h-11 items-center self-start text-[15px]">
+          {ar.hadith.allSources}
+        </Link>
+      </section>
     </>
   );
 }

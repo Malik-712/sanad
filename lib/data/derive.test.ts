@@ -93,9 +93,10 @@ describe("compilers, companions, routes through a narrator", () => {
 });
 
 describe("routePlace and citationText", () => {
-  it("uses Arabic-Indic digits and leaves out missing parts", () => {
+  it("uses Arabic-Indic digits; a missing volume is left out, a missing page says «غير مذكور»", () => {
     expect(routePlace(route())).toBe("[طبعة]، ج ٣، ص ٤٥");
-    expect(routePlace(route({ page: undefined }))).toBe("[طبعة]، ج ٣");
+    expect(routePlace(route({ page: undefined }))).toBe("[طبعة]، ج ٣، ص غير مذكور");
+    expect(routePlace(route({ volume: undefined }))).toBe("[طبعة]، ص ٤٥");
   });
 
   it("builds the copied citation", () => {

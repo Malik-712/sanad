@@ -119,28 +119,32 @@ function TreeCanvas({
   const hiKey = selection ? `${selection.kind}:${selection.id}` : "none";
 
   const desktop = variant === "desktop";
+  // Each control says what it does (owner, 6 Oct): a tooltip everywhere, and visible words on desktop.
+  // Mobile buttons are icon-only, so they carry an aria-label; desktop buttons are named by their text.
+  const control = (label: string, shortLabel: string, onClick: () => void, icon: string) => (
+    <button
+      type="button"
+      className={`${zoomBtn} ${desktop ? "gap-1.5 px-3 text-[14px]" : ""}`}
+      title={label}
+      aria-label={desktop ? undefined : label}
+      onClick={onClick}
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="square" aria-hidden="true">
+        <path d={icon} />
+      </svg>
+      {desktop ? <span>{shortLabel}</span> : null}
+    </button>
+  );
   const zoomButtons = (
     <>
-      <button type="button" className={zoomBtn} aria-label={ar.tree.zoomIn} onClick={() => zoomBy(STEP)}>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="square" aria-hidden="true">
-          <path d="M12 5v14M5 12h14" />
-        </svg>
-      </button>
+      {control(ar.tree.zoomIn, ar.tree.zoomIn, () => zoomBy(STEP), "M12 5v14M5 12h14")}
       {desktop ? (
         <span className="min-w-[52px] text-center text-[15px]" aria-live="polite">
           {ar.tree.zoomPct(toArabicIndic(Math.round(view.z * 100)))}
         </span>
       ) : null}
-      <button type="button" className={zoomBtn} aria-label={ar.tree.zoomOut} onClick={() => zoomBy(-STEP)}>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="square" aria-hidden="true">
-          <path d="M5 12h14" />
-        </svg>
-      </button>
-      <button type="button" className={zoomBtn} aria-label={ar.tree.reset} onClick={() => setView(startView(fit))}>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="square" aria-hidden="true">
-          <path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" />
-        </svg>
-      </button>
+      {control(ar.tree.zoomOut, ar.tree.zoomOut, () => zoomBy(-STEP), "M5 12h14")}
+      {control(ar.tree.reset, ar.tree.resetShort, () => setView(startView(fit)), "M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5")}
     </>
   );
 
@@ -296,7 +300,7 @@ function TreeCanvas({
 }
 
 const zoomBtn =
-  "flex size-11 cursor-pointer items-center justify-center rounded-sq border-[1.5px] border-ink bg-paper p-0 text-ink hover:bg-hover";
+  "flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-sq border-[1.5px] border-ink bg-paper p-0 text-ink hover:bg-hover";
 
 function Shape({ role, common, desktop, dim }: { role: string; common: boolean; desktop: boolean; dim: boolean }) {
   const s = desktop ? 18 : role === "prophet" ? 15 : 14;

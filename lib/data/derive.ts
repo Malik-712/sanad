@@ -41,12 +41,24 @@ export function routesThrough(hadiths: Hadith[], narratorId: string): { hadith: 
   );
 }
 
-/** «ت عبد الباقي، ج ١، ص ٧٤». Parts that are missing in the data are left out. */
+/** «ت عبد الباقي، ج ١، ص ٧٤». A missing volume is left out; a missing page says «غير مذكور» (owner, 6 Oct). */
 export function routePlace(route: Route): string {
   const parts = [route.book.edition];
   if (route.volume) parts.push(`${ar.place.volume} ${toArabicIndic(route.volume)}`);
-  if (route.page) parts.push(`${ar.place.page} ${toArabicIndic(route.page)}`);
+  parts.push(`${ar.place.page} ${route.page ? toArabicIndic(route.page) : ar.hadith.notMentioned}`);
   return parts.join("، ");
+}
+
+/** «ج ١، ص ٦», or «غير مذكور» for each missing part. */
+export function volumePage(route: Route): string {
+  const v = route.volume ? toArabicIndic(route.volume) : ar.hadith.notMentioned;
+  const p = route.page ? toArabicIndic(route.page) : ar.hadith.notMentioned;
+  return `${ar.place.volume} ${v}، ${ar.place.page} ${p}`;
+}
+
+/** The route whose source page carries the matn shown on the hadith page (same URL); else the first route. */
+export function matnRoute(h: Hadith): Route {
+  return h.routes.find((r) => r.url === h.matnSource.url) ?? h.routes[0]!;
 }
 
 /** «صحيح البخاري، حديث ١» style number as printed, in Arabic-Indic digits. */

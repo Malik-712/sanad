@@ -1,27 +1,21 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { type ReactNode, useDeferredValue, useRef, useState } from "react";
-import { GoldFrame } from "@/components/ui/GoldFrame";
+import { buttonPrimary } from "@/components/ui/buttons";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { countNoun } from "@/lib/arabic/count";
+import { toArabicIndic } from "@/lib/arabic/digits";
 import { ar } from "@/lib/copy/ar";
 import { filterEntries, type SearchEntry } from "@/lib/search/filter";
 
-// The Home hero, the search card and the «أحاديث مختارة» list it filters in place.
-// The query starts from ?q= (the desktop header search on other pages sends it) but is not written back to the URL.
-//
-// Below 1024px (design «Home»): the green band, then the card overlapping its bottom by 72px.
-// From 1024px: one full-width band; the slogan and the card in the first column, the drawing in the second.
-// The band's inner wrapper becomes `display: contents` there, so the single form joins the band's grid.
+// Home (owner, 6 Oct): search only. The logo, the slogan and one large search box on the green band,
+// then the list of hadiths, filtered as the user types. The query starts from ?q= but is not written back.
 type Props = {
   entries: SearchEntry[];
   cards: { id: string; card: ReactNode }[];
-  tryLinks: { href: string; label: string }[];
-  between: ReactNode;
-  demoTag: ReactNode;
-  heroText: ReactNode;
-  heroFigure: ReactNode;
 };
 
 /** Reads ?q= once; render inside <Suspense> with <HomeSearch initialQuery=""> as the fallback. */
@@ -30,96 +24,105 @@ export function HomeSearchFromUrl(props: Props) {
   return <HomeSearch key={q} {...props} initialQuery={q} />;
 }
 
-// Desktop content: at most 1344px (the 1440px artboard less the band's 48px gutters), centred.
-const desktopGutter = "lg:px-[max(3rem,calc((100%-84rem)/2))]";
+const hadiths = (n: number) => (n >= 1 && n <= 99 ? countNoun(n, "hadith") : `${toArabicIndic(n)} ${ar.nouns.hadith.plural}`);
 
-export function HomeSearch({ entries, cards, tryLinks, between, demoTag, heroText, heroFigure, initialQuery }: Props & { initialQuery: string }) {
+export function HomeSearch({ entries, cards, initialQuery }: Props & { initialQuery: string }) {
   const [query, setQuery] = useState(initialQuery);
   const deferred = useDeferredValue(query);
-  const listRef = useRef<HTMLSpanElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const listRef = useRef<HTMLHeadingElement>(null);
 
   const shown = new Set(filterEntries(entries, deferred));
   const visible = cards.filter((c) => shown.has(c.id));
+  const searching = deferred.trim() !== "";
+  const none = searching && visible.length === 0;
 
   return (
     <>
-      <div
-        className={`relative lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:gap-x-16 lg:gap-y-7 lg:bg-green lg:pt-14 lg:pb-16 ${desktopGutter}`}
-      >
-        <div className="ongreen relative bg-green text-parchment lg:contents">
-          <GoldFrame className="inset-x-2.5 top-0 bottom-2.5 lg:inset-x-5 lg:top-3 lg:bottom-3.5" />
-          <div className="mx-auto flex max-w-[720px] flex-col gap-5 px-7 pt-10 lg:col-start-1 lg:row-start-1 lg:m-0 lg:max-w-none lg:self-end lg:p-0">
-            {heroText}
-          </div>
-          <div className="mx-auto max-w-[720px] px-7 pt-7 pb-28 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:m-0 lg:flex lg:max-w-none lg:justify-center lg:p-0">
-            {heroFigure}
-          </div>
-        </div>
-
-        <form
-          role="search"
-          aria-labelledby="home-q-label"
-          onSubmit={(e) => {
-            e.preventDefault();
-            listRef.current?.focus();
-          }}
-          className="relative mx-4 -mt-[72px] flex flex-col gap-3 rounded-sq border-[1.5px] border-ink bg-paper p-5 md:mx-auto md:w-[688px] lg:col-start-1 lg:row-start-2 lg:m-0 lg:w-full lg:max-w-[600px] lg:self-start"
-        >
-          <label id="home-q-label" htmlFor="home-q" className="text-[15px] font-medium">
-            {ar.search.label}
-          </label>
-          <div className="flex h-[52px] rounded-sq border-[1.5px] border-ink bg-paper focus-within:outline-[3px] focus-within:outline-offset-2 focus-within:outline-green focus-within:outline-solid">
-            <input
-              id="home-q"
-              name="q"
-              type="search"
-              autoComplete="off"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder={ar.home.searchPlaceholder}
-              className="min-w-0 flex-1 border-0 bg-transparent px-3.5 text-[16px] text-ink outline-none"
-            />
-            <button
-              type="submit"
-              className="w-[84px] flex-none cursor-pointer border-0 bg-green text-[15px] font-medium text-parchment hover:bg-green-deep"
-            >
-              {ar.search.button}
-            </button>
-          </div>
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="text-[13px] text-muted">{ar.home.tryLabel}</span>
-            {tryLinks.map((t) => (
-              <Link
-                key={t.href}
-                href={t.href}
-                className="inline-flex min-h-11 items-center rounded-sq border border-line-strong px-3 text-[17px] text-ink no-underline hover:border-ink hover:text-ink"
+      <div className="ongreen bg-green text-parchment">
+        <div className="mx-auto flex max-w-[760px] flex-col items-center gap-6 px-5 pt-10 pb-12 lg:pt-16 lg:pb-16">
+          <Image src="/brand/sanad-mark.svg" alt="" width={72} height={72} priority />
+          <h1 className="m-0 text-center text-[40px] leading-[1.25] font-bold lg:text-[52px]">{ar.slogan}</h1>
+          <form
+            role="search"
+            aria-labelledby="home-q-label"
+            onSubmit={(e) => {
+              e.preventDefault();
+              listRef.current?.focus();
+            }}
+            className="flex w-full flex-col gap-2"
+          >
+            <label id="home-q-label" htmlFor="home-q" className="text-[15px] font-medium text-on-green-muted">
+              {ar.search.label}
+            </label>
+            <div className="flex h-14 rounded-sq border-[1.5px] border-ink bg-paper focus-within:outline-[3px] focus-within:outline-offset-2 focus-within:outline-gold focus-within:outline-solid">
+              <input
+                ref={inputRef}
+                id="home-q"
+                name="q"
+                type="search"
+                autoComplete="off"
+                spellCheck={false}
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder={ar.search.placeholder}
+                aria-describedby="home-q-hint"
+                className="min-w-0 flex-1 border-0 bg-transparent px-4 text-[17px] text-ink outline-none [&::-webkit-search-cancel-button]:hidden"
+              />
+              {query ? (
+                <button
+                  type="button"
+                  title={ar.search.clearTitle}
+                  onClick={() => {
+                    setQuery("");
+                    inputRef.current?.focus();
+                  }}
+                  className="flex min-w-11 flex-none cursor-pointer items-center gap-1 border-0 bg-transparent px-3 text-[14px] text-muted hover:bg-hover hover:text-ink"
+                >
+                  <span aria-hidden="true" className="text-[20px] leading-none">
+                    ×
+                  </span>
+                  {ar.search.clear}
+                </button>
+              ) : null}
+              <button
+                type="submit"
+                className="w-[96px] flex-none cursor-pointer border-0 bg-green text-[16px] font-medium text-parchment hover:bg-green-deep"
               >
-                {t.label}
-              </Link>
-            ))}
-          </div>
-        </form>
+                {ar.search.button}
+              </button>
+            </div>
+            <span id="home-q-hint" className="text-[13px] text-on-green-muted">
+              {ar.search.hint}
+            </span>
+          </form>
+        </div>
       </div>
 
-      <div className={`mx-auto flex w-full max-w-[720px] flex-col gap-10 px-4 pt-6 pb-10 lg:max-w-none lg:pt-10 lg:pb-14 ${desktopGutter}`}>
-        {between}
-        <section aria-labelledby="featured-h" className="flex flex-col">
-          <SectionHeading id="featured-h" end={demoTag}>
+      <div className="mx-auto flex w-full max-w-[880px] flex-col px-4 pt-8 pb-12">
+        <section aria-labelledby="list-h" className="flex flex-col">
+          <SectionHeading id="list-h">
             <span ref={listRef} tabIndex={-1} className="outline-none">
-              {ar.home.featured}
+              {ar.home.listTitle}
             </span>
           </SectionHeading>
-          {/* One column, two from 1024px; each row keeps its own rule. */}
-          <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-x-12">
+          <p role="status" className={`m-0 pt-3 leading-[1.8] ${none ? "text-[16px] text-ink" : "text-[14px] text-muted"}`}>
+            {none
+              ? ar.home.noResults(hadiths(cards.length))
+              : searching
+                ? ar.home.results(hadiths(visible.length))
+                : ar.home.count(hadiths(cards.length))}
+          </p>
+          {none ? (
+            <Link href="/parse" className={`${buttonPrimary} mt-4 self-start`}>
+              {ar.home.pasteButton}
+            </Link>
+          ) : null}
+          <div className="flex flex-col">
             {visible.map((c) => (
               <div key={c.id}>{c.card}</div>
             ))}
           </div>
-          {visible.length === 0 ? (
-            <p role="status" className="m-0 py-5 text-[15px] leading-[1.7] text-muted">
-              {ar.home.noResults}
-            </p>
-          ) : null}
         </section>
       </div>
     </>

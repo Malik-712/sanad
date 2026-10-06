@@ -1,11 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ar } from "@/lib/copy/ar";
-import { HeaderSearch } from "./HeaderSearch";
 import { NavLinks } from "./NavLinks";
 
-// Below 1024px: the mobile header (64px, small mark at 44px, two links).
-// From 1024px: the TreeDesktop header (72px, full mark at 48px, nav, search) on every page.
+// Below 1024px: the mobile header (64px, small mark at 44px). From 1024px: 72px, full mark at 48px.
+// Both carry the same three links; search lives on Home («البحث»).
 export function SiteHeader() {
   return (
     <div className="ongreen bg-green text-parchment">
@@ -21,7 +20,6 @@ export function SiteHeader() {
           <Image src="/brand/sanad-mark.svg" alt="" width={48} height={48} priority />
         </Link>
         <NavLinks desktop />
-        <HeaderSearch />
       </header>
     </div>
   );

@@ -4,6 +4,7 @@ import { StatusBadge } from "@/components/ui/StatusBadge";
 import { ar } from "@/lib/copy/ar";
 import { citationText } from "@/lib/data/cite";
 import { routePlace, routeStatus } from "@/lib/data/derive";
+import { siteName } from "@/lib/data/sources";
 import type { Route } from "@/lib/data/types";
 import { ChainList, type ChainRow } from "./ChainList";
 import { CopyCitation } from "./CopyCitation";
@@ -27,7 +28,10 @@ function SourceRef({ by, url }: { by: string; url: string }) {
 export function RoutePanelBody({ route, chain, links }: { route: Route; chain: ChainRow[]; links: string[] }) {
   return (
     <div className="flex flex-col gap-[18px] p-5 lg:px-6 lg:pt-5 lg:pb-6">
-      <StatusBadge status={routeStatus(route)} />
+      <div className="flex flex-col gap-1.5">
+        <StatusBadge status={routeStatus(route)} />
+        <p className="m-0 text-[14px] leading-[1.7] text-muted">{ar.about.statusText[routeStatus(route)]}</p>
+      </div>
 
       <div className="flex flex-col gap-2">
         <span className="text-[14px] font-medium">{ar.hadith.isnadText}</span>
@@ -50,9 +54,18 @@ export function RoutePanelBody({ route, chain, links }: { route: Route; chain: C
         <div className="flex flex-col gap-1.5">
           <dt className="text-[13px] text-muted">{ar.hadith.grade}</dt>
           {route.grade ? (
+            // The ruling as quoted: its text, who said it, and where we read it (owner, 6 Oct).
             <dd className="m-0 flex flex-col gap-1">
               <span className="text-[15px]">«{route.grade.textAr}»</span>
-              <SourceRef by={route.grade.byAr} url={route.grade.sourceUrl} />
+              <span className="text-[14px]">
+                {ar.hadith.gradeBy}: {route.grade.byAr}
+              </span>
+              <span className="text-[14px]">
+                {ar.hadith.gradeFrom}: {siteName(route.grade.sourceUrl) ?? ar.hadith.notMentioned}،{" "}
+                <a href={route.grade.sourceUrl} target="_blank" rel="noopener noreferrer" className="py-2">
+                  {ar.hadith.gradeSource}
+                </a>
+              </span>
             </dd>
           ) : (
             <dd className="m-0 text-[15px]">{ar.hadith.noGrade}</dd>

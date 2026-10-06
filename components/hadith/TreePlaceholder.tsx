@@ -20,7 +20,8 @@ export function TreePlaceholder() {
 export function TreeLegend() {
   const item = "inline-flex items-center gap-[7px]";
   return (
-    <div className="flex flex-wrap gap-x-4 gap-y-2.5 border-t-[1.5px] border-ink px-3.5 py-3 text-[13px] lg:gap-x-[22px] lg:px-4">
+    <div className="flex flex-col gap-2 border-t-[1.5px] border-ink px-3.5 py-3 lg:px-4">
+    <div className="flex flex-wrap gap-x-4 gap-y-2.5 text-[13px] lg:gap-x-[22px]">
       <span className={item}>
         <span className="mx-0.5 size-[9px] rotate-45 border-2 border-green bg-gold" aria-hidden="true" />
         {ar.legend.prophet}
@@ -49,6 +50,9 @@ export function TreeLegend() {
         <span className="h-1 w-[22px] bg-green" aria-hidden="true" />
         {ar.legend.selected}
       </span>
+    </div>
+    {/* What the two gold marks mean (owner, 6 Oct). */}
+    <p className="m-0 text-[13px] leading-[1.7] text-muted">{ar.tree.legendNote}</p>
     </div>
   );
 }

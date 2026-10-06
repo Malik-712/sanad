@@ -8,6 +8,11 @@ import type { Narrator } from "@/lib/data/types";
 
 // The narrator panel content (design «لوحة الراوي»), shared by /narrator/[id] and the hadith page.
 // Every value comes from data/narrators.json; a grade is only the quoted Taqrib entry.
+// «غير مذكورة» when the data says the edition is not recorded; otherwise the edition as written.
+function editionShort(edition: string): string {
+  return edition.includes("غير مذكورة") ? ar.narrator.editionNotMentioned : edition;
+}
+
 export function NarratorPanelBody({
   narrator: n,
   books = [],
@@ -70,6 +75,34 @@ export function NarratorPanelBody({
                   ) : null}
                 </span>
               </span>
+              {/* The edition in a few words; the full wording from data/ in «تفاصيل المصدر» (owner, 6 Oct). */}
+              <span className="text-[13px] text-muted">
+                {ar.narrator.edition}: {editionShort(n.taqrib.edition)}
+              </span>
+              <details className="text-[14px] leading-[1.7]">
+                <summary className="min-h-11 cursor-pointer content-center text-green">{ar.narrator.sourceDetails}</summary>
+                <dl className="m-0 flex flex-col gap-1.5 pt-1">
+                  <div>
+                    <dt className="inline text-muted">{ar.narrator.edition}: </dt>
+                    <dd className="m-0 inline break-words">{n.taqrib.edition}</dd>
+                  </div>
+                  <div>
+                    <dt className="inline text-muted">{ar.narrator.entryNo}: </dt>
+                    <dd className="m-0 inline">{toArabicIndic(n.taqrib.entryNo)}</dd>
+                  </div>
+                  <div>
+                    <dt className="inline text-muted">{ar.narrator.page}: </dt>
+                    <dd className="m-0 inline">{toArabicIndic(n.taqrib.page)}</dd>
+                  </div>
+                  {n.taqrib.url ? (
+                    <div>
+                      <a href={n.taqrib.url} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center break-all">
+                        {n.taqrib.url}
+                      </a>
+                    </div>
+                  ) : null}
+                </dl>
+              </details>
             </>
           ) : (
             <p className="m-0 border border-dashed border-edge px-3.5 py-3 text-[14px] leading-[1.7] text-muted">
