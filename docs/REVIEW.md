@@ -104,9 +104,13 @@ Decisions given by the owner (Malek) and applied:
 4. **Accepted as they are** (no change): all current narrator `identification` values (19 «نص», 27 «قرينة», 47 empty, 9 of them flagged same-name) and all null grades (the 7 Muqaddima routes and `muslim-iman-16-n20` stay «لم أجد»).
 5. **Phase 2 checklist** (`docs/BRIEF.md`): tasks 1–5 ticked.
 
-### Honest note on task 5
+### Task 5: specialist review
 
-The owner marked task 5 complete. This log records no named specialist or mentor review of a full hadith, so that part of the task rests on the owner's own checks. When a mentor reviews one (the best candidate is «إنما الأعمال بالنيات»), add the name, date and changes here.
+The owner marked task 5 complete. **Update 5 Oct 2026:** the owner (Malek) confirmed that a hadith specialist has reviewed and verified all the data (5 hadiths, 37 routes). The owner's statement is recorded here as given.
+
+Details given by the owner:
+
+- Reviewer: Ibrahim Aljunaydil · Date: 2026-10-05 · Scope: all 5 hadiths · Changes requested: none
 
 ### Still open after this (no longer blocking Session A)
 
