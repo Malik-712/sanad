@@ -4,7 +4,7 @@ Required by the challenge Terms and Conditions, §9. Add a row for every AI tool
 
 | Date | Type | Name | Source / link | Purpose in Sanad | Licence / legal basis |
 | --- | --- | --- | --- | --- | --- |
-| 2026-10-04 | AI tool | Claude (claude.ai) | https://claude.ai | Planning, brief, logo draft (`sanad-mark.svg`) | Anthropic Consumer Terms (Claude Pro) — the terms assign outputs to the user: «we assign to you all of our right, title, and interest—if any—in Outputs» (anthropic.com/legal/consumer-terms, read 6 Oct) |
+| 2026-10-04 | AI tool | Claude (claude.ai) | https://claude.ai | Planning and brief. The logo (`sanad-mark.svg`) was first drafted for the earlier project sanad2, before the challenge, and is reused here: see `docs/BASELINE.md` | Anthropic Consumer Terms (Claude Pro) — the terms assign outputs to the user: «we assign to you all of our right, title, and interest—if any—in Outputs» (anthropic.com/legal/consumer-terms, read 6 Oct) |
 | 2026-10-04 | AI tool | Claude Code | https://claude.com/claude-code | Writing and testing code, with human review | Anthropic Consumer Terms (Claude Pro) |
 | 2026-10-04 | AI tool | Claude Design | https://claude.ai | UI design system and screen designs | Anthropic Consumer Terms (Claude Pro) — the terms assign outputs to the user: «we assign to you all of our right, title, and interest—if any—in Outputs» (anthropic.com/legal/consumer-terms, read 6 Oct) |
 | 2026-10-04 | Font | IBM Plex Sans Arabic | https://fonts.google.com/specimen/IBM+Plex+Sans+Arabic | The only font: interface, hadith text, narrator names | SIL Open Font License 1.1, Reserved Font Name «Plex» (read from `ofl/ibmplexsansarabic/OFL.txt` in github.com/google/fonts, 6 Oct); self-hosted by `next/font` from the Google Fonts files |
@@ -44,11 +44,16 @@ Required by the challenge Terms and Conditions, §9. Add a row for every AI tool
 | 2026-10-06 | Library (Python) | torch 2.14.1+cpu | https://pytorch.org | Training the narrator tagger on CPU; offline only, not shipped | Apache-2.0 AND Apache-2.0 WITH LLVM-exception AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND MIT (package metadata) |
 | 2026-10-06 | Library (Python) | transformers 4.57.6, datasets 5.0.1, accelerate 1.15.0 | https://pypi.org/project/transformers/ | Fine-tuning and prediction (`ml/train.py`, `ml/predict.py`); offline only | Apache-2.0 (package metadata) |
 | 2026-10-06 | Library (Python) | optimum 2.1.0, onnx 1.23.2, onnxruntime 1.30.0 | https://pypi.org/project/optimum/ | ONNX export, int8 quantisation and parity check (`ml/export_onnx.py`); the exported model is not shipped | optimum, onnx: Apache-2.0; onnxruntime: MIT (package metadata) |
-| 2026-10-06 | Dev tool | @playwright/test 1.63.0, @axe-core/playwright 4.13.0 | https://www.npmjs.com/package/@playwright/test | End-to-end tests of `/parse` (flow, privacy spy, axe scan) in the installed Edge; not shipped | @playwright/test: Apache-2.0; @axe-core/playwright: MPL-2.0 (package.json) |
+| 2026-10-06 | Dev tool | @playwright/test 1.63.0, @axe-core/playwright 4.13.0 | https://www.npmjs.com/package/@playwright/test | End-to-end tests of every page (flows, privacy spy, axe WCAG 2.1 A/AA scan) in the installed Edge; not shipped | @playwright/test: Apache-2.0; @axe-core/playwright: MPL-2.0 (package.json) |
+| 2026-10-06 | Dev tool | Lighthouse 12.8.2 (run with `npx`) | https://github.com/GoogleChrome/lighthouse | Performance, accessibility, best-practice and SEO audits of the live site (`scripts/lighthouse.sh`); not shipped | Apache-2.0 |
+| 2026-10-06 | Dev tool | Microsoft Edge (installed browser) | https://www.microsoft.com/edge | Browser for Playwright and Lighthouse runs | Microsoft Software License Terms (the installed copy on the owner's machine) |
+| 2026-10-06 | Dev tool (Python) | pip-licenses 5.5.5 (in `ml/.venv`) | https://pypi.org/project/pip-licenses/ | Lists the Python package licences in `docs/licenses/python.md` | MIT |
+| 2026-10-06 | Service | GitHub Actions | https://github.com/features/actions | CI on every push: lint, unit tests, data validation, hard cases ×3, build (`.github/workflows/ci.yml`) | GitHub Terms of Service (free for public repositories) |
+| 2026-10-06 | Source | sanad2 (the owner's earlier project), tag `challenge-baseline` | https://github.com/Malik-712/sanad2 | The logo artwork, reused; ideas listed in `docs/BASELINE.md`. No code copied | Owner's own work |
 
-## To add when used
+## Full package lists
 
-- Every npm and Python package (name, version, licence) — can be generated with `npx license-checker --summary` and `pip-licenses`.
+- Every npm and Python package, including transitive ones, is listed with its version and licence in [`docs/licenses/npm.md`](licenses/npm.md) (18 shipped, 357 development and test only) and [`docs/licenses/python.md`](licenses/python.md) (65, offline training only). Generated on 6 Oct with `pnpm licenses list --json` and `pip-licenses`; re-run them when a dependency changes.
 
 ## How licences were checked
 
