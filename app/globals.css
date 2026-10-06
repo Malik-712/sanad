@@ -136,6 +136,16 @@
   }
 }
 
+/* The selected isnad appears over 300ms (no animation under reduced motion, below). */
+.tree-draw {
+  animation: tree-draw 300ms cubic-bezier(0.5, 0, 0.2, 1);
+}
+@keyframes tree-draw {
+  from {
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

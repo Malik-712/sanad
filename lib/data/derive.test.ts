@@ -99,6 +99,6 @@ describe("routePlace and citationText", () => {
   });
 
   it("builds the copied citation", () => {
-    expect(citationText(route())).toBe("[كتاب]، [طبعة]، ج ٣، ص ٤٥، رقم ١٢. https://example.org/sample");
+    expect(citationText(route())).toBe(["[نص الإسناد]", "[كتاب]، [طبعة]، ج ٣، ص ٤٥، رقم ١٢. https://example.org/sample"].join("\n"));
   });
 });

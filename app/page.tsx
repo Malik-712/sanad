@@ -13,6 +13,9 @@ import { ar } from "@/lib/copy/ar";
 import { companionIds, compilerIds, displayName } from "@/lib/data/derive";
 import { getHadiths, getNarrator, getNarratorMap } from "@/lib/data/load";
 import type { Hadith } from "@/lib/data/types";
+import { analyze } from "@/lib/isnad/analyze";
+import { buildGraph } from "@/lib/isnad/graph";
+import { countsSentence } from "@/lib/isnad/summary";
 import { buildSearchEntry } from "@/lib/search/filter";
 
 // The two «جرّب» suggestions: a hadith and a narrator, both read from data/.
@@ -34,6 +37,12 @@ function narratedByLine(h: Hadith): string {
   const companions = companionIds(h);
   const who = companions.length <= 2 ? joinAr(names(companions)) : ar.home.companionsCount(numberWord(companions.length, "gen"));
   return ar.home.narratedBy(who, compilersLine(h));
+}
+
+function heroSentence(h: Hadith): string {
+  const narrators = getNarratorMap();
+  const graph = buildGraph(h, narrators);
+  return countsSentence(h, graph, analyze(graph), narrators);
 }
 
 export default function Home() {
@@ -86,11 +95,7 @@ export default function Home() {
             <figure className="m-0 mt-2 flex flex-col gap-2.5">
               <HeroTree />
               <figcaption className="text-[14px] leading-[1.7] text-on-green-muted">
-                {ar.home.heroCaption(
-                  heroHadith.titleAr,
-                  countNoun(heroHadith.routes.length, "isnad"),
-                  countNoun(compilerIds(heroHadith).length, "compiler", "gen"),
-                )}
+                {ar.home.heroCaption(heroHadith.titleAr, heroSentence(heroHadith))}
               </figcaption>
             </figure>
           ) : null}

@@ -3,9 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import type { ChainRow } from "@/components/hadith/ChainList";
-import { HadithView, HadithViewFromUrl, type RouteItem } from "@/components/hadith/HadithView";
+import { HadithView, HadithViewFromUrl, type NarratorItem, type RouteItem } from "@/components/hadith/HadithView";
 import { RoutePanelBody } from "@/components/hadith/RoutePanelBody";
-import { TreePlaceholder } from "@/components/hadith/TreePlaceholder";
+import { NarratorPanelBody } from "@/components/panels/NarratorPanelBody";
 import { DemoTag } from "@/components/ui/DemoTag";
 import { Diamond } from "@/components/ui/Diamond";
 import { GoldFrame } from "@/components/ui/GoldFrame";
@@ -13,9 +13,13 @@ import { ChevronIcon } from "@/components/ui/icons";
 import { countDefinite, countNoun, numberWord } from "@/lib/arabic/count";
 import { toArabicIndic } from "@/lib/arabic/digits";
 import { ar } from "@/lib/copy/ar";
-import { compilerIds, displayName, routeNumber, routeStatus } from "@/lib/data/derive";
-import { getHadith, getHadiths, getNarrator } from "@/lib/data/load";
+import { displayName, routeNumber, routeStatus } from "@/lib/data/derive";
+import { getHadith, getHadiths, getNarrator, getNarratorMap } from "@/lib/data/load";
 import type { Route } from "@/lib/data/types";
+import { analyze } from "@/lib/isnad/analyze";
+import { buildGraph } from "@/lib/isnad/graph";
+import { DESKTOP, layoutTree, MOBILE } from "@/lib/isnad/layout";
+import { countsSentence } from "@/lib/isnad/summary";
 
 export const dynamicParams = false;
 
@@ -48,7 +52,11 @@ export default async function HadithPage({ params }: PageProps<"/hadith/[id]">) 
   if (!h) notFound();
 
   const total = h.routes.length;
-  const counts = ar.hadith.counts(countNoun(total, "isnad"), countNoun(compilerIds(h).length, "compiler", "gen"));
+  const narratorMap = getNarratorMap();
+  const graph = buildGraph(h, narratorMap);
+  const analysis = analyze(graph);
+  const counts = countsSentence(h, graph, analysis, narratorMap);
+  const totalWord = total >= 3 ? numberWord(total, "gen") : toArabicIndic(total);
   const routes: RouteItem[] = h.routes.map((route, i) => {
     const { rows, links } = chainOf(route);
     return {
@@ -56,16 +64,66 @@ export default async function HadithPage({ params }: PageProps<"/hadith/[id]">) 
       no: toArabicIndic(i + 1),
       title: ar.hadith.routeTitle(route.book.nameAr, routeNumber(route)),
       panelTitle: ar.hadith.panelTitle(route.book.nameAr, routeNumber(route)),
-      panelEyebrow: ar.hadith.panelEyebrow(toArabicIndic(i + 1), total >= 3 ? numberWord(total, "gen") : toArabicIndic(total)),
+      panelEyebrow: ar.hadith.panelEyebrow(toArabicIndic(i + 1), totalWord),
       summary: route.isnadAr,
       status: routeStatus(route),
+      chain: route.chain,
       body: <RoutePanelBody route={route} chain={rows} links={links} />,
     };
   });
+  // Tree labels: the short name from data/; a companion's honorific goes on a small second line.
+  const labels: Record<string, string> = {};
+  const honorifics: Record<string, string> = {};
+  const arias: Record<string, string> = {};
+  const narrators: Record<string, NarratorItem> = {};
+  for (const node of graph.nodes.values()) {
+    const n = narratorMap.get(node.id);
+    labels[node.id] = n?.nameAr ?? node.id;
+    if (n?.honorificAr) honorifics[node.id] = n.honorificAr;
+    const isCommon = node.id === analysis.commonLink;
+    const roleWord = isCommon ? ar.narratorPanel.roleCommon(ar.narrator.role[node.role]) : ar.narrator.role[node.role];
+    arias[node.id] = ar.tree.nodeAria(n ? displayName(n) : node.id, roleWord);
+    if (!n) continue;
+    const through = node.routeIds.length;
+    let lead = null;
+    if (node.role === "prophet") lead = <p className="m-0 text-[15px] leading-[1.8]">{ar.narratorPanel.prophetNote}</p>;
+    else if (isCommon) {
+      const students = node.students.length;
+      const line =
+        (through === total
+          ? ar.narratorPanel.commonAll(countDefinite(total, "isnad"))
+          : ar.narratorPanel.commonSome(countNoun(through, "isnad"), totalWord)) +
+        (students >= 2 ? ar.narratorPanel.branchesTo(countNoun(students, "narrator", "gen")) : "") +
+        ".";
+      lead = (
+        <p className="m-0 flex items-start gap-2.5 text-[15px] leading-[1.7]">
+          <span aria-hidden="true" className="mt-2 size-2.5 flex-none rotate-45 border-2 border-gold" />
+          {line}
+        </p>
+      );
+    }
+    const books = [...new Set(h.routes.filter((r) => r.chain[0] === node.id).map((r) => r.book.nameAr))];
+    narrators[node.id] = {
+      id: node.id,
+      name: displayName(n),
+      eyebrow: roleWord,
+      through: ar.narratorPanel.through(toArabicIndic(through), countNoun(total, "isnad", "gen")),
+      body: <NarratorPanelBody narrator={n} books={books} lead={lead} />,
+    };
+  }
+  const honorificSet = new Set(Object.keys(honorifics));
+  const labelMap = new Map(Object.entries(labels));
   const viewProps = {
     routes,
+    narrators,
     listLabel: countDefinite(total, "isnad"),
-    tree: <TreePlaceholder />,
+    layouts: {
+      mobile: layoutTree(graph, analysis, labelMap, MOBILE, honorificSet),
+      desktop: layoutTree(graph, analysis, labelMap, DESKTOP, honorificSet),
+    },
+    labels,
+    honorifics,
+    arias,
     disclaimer: (
       <p className="m-0 flex items-start gap-2.5 text-[14px] leading-[1.7]">
         <Diamond tone="green" className="mt-2" />
@@ -122,7 +180,7 @@ export default async function HadithPage({ params }: PageProps<"/hadith/[id]">) 
         </section>
       </div>
 
-      <Suspense fallback={<HadithView {...viewProps} initial={routes[0]?.id ?? null} />}>
+      <Suspense fallback={<HadithView {...viewProps} initial={routes[0] ? { kind: "route", id: routes[0].id } : null} />}>
         <HadithViewFromUrl {...viewProps} />
       </Suspense>
     </>

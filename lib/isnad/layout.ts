@@ -59,7 +59,7 @@ export type PlacedNode = {
   y: number;
   /** Bounding box of shape + label (for hit areas and the overlap test). */
   box: { left: number; top: number; width: number; height: number };
-  lines: 1 | 2;
+  lines: number;
   common: boolean;
 };
 
@@ -83,19 +83,21 @@ export function layoutTree(
   analysis: Analysis,
   labels: Map<string, string>,
   cfg: LayoutConfig,
+  /** Nodes with a second, small line under the name (a companion's honorific). */
+  extraLine: Set<string> = new Set(),
 ): TreeLayout {
   const g = new Graph();
   g.setGraph({ rankdir: "TB", ranker: "longest-path", nodesep: cfg.nodeSep, ranksep: cfg.rankSep, marginx: cfg.margin, marginy: cfg.margin });
   g.setDefaultEdgeLabel(() => ({}));
 
-  const lines = new Map<string, 1 | 2>();
+  const lines = new Map<string, number>();
   const heights = new Map<string, number>();
   for (const n of graph.nodes.values()) {
     const label = labels.get(n.id) ?? n.id;
-    const l: 1 | 2 = label.length * cfg.charWidth > cfg.boxWidth - 8 ? 2 : 1;
+    const l = Math.min(3, Math.max(1, Math.ceil((label.length * cfg.charWidth) / (cfg.boxWidth - 8))));
     lines.set(n.id, l);
     const shapeH = cfg.shape[n.role].h + (n.id === analysis.commonLink ? cfg.ring * 2 - 4 : 0);
-    const h = shapeH + cfg.labelGap + l * cfg.lineHeight;
+    const h = shapeH + cfg.labelGap + l * cfg.lineHeight + (extraLine.has(n.id) ? cfg.lineHeight : 0);
     heights.set(n.id, h);
     g.setNode(n.id, { width: cfg.boxWidth, height: h });
   }

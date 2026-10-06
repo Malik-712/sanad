@@ -79,6 +79,15 @@ export const ar = {
       definite: "المصنِّفون",
       definiteOne: "المصنِّف",
     },
+    narrator: {
+      one: "راوٍ",
+      dualNom: "راويان",
+      dualGen: "راويَين",
+      plural: "رواة",
+      acc: "راويًا",
+      definite: "الرواة",
+      definiteOne: "الراوي",
+    },
     name: {
       one: "اسم",
       dualNom: "اسمان",
@@ -110,8 +119,8 @@ export const ar = {
 
   home: {
     intro: "ابحث عن حديث، فترى أسانيده بنصّها من كتبها في شجرة واحدة: أين تلتقي، وأين تفترق.",
-    // «أسانيد «…»: ثمانية أسانيد عند مصنِّفَين.» Counts from data only.
-    heroCaption: (title: string, routes: string, compilers: string) => `أسانيد «${title}»: ${routes} عند ${compilers}.`,
+    // «أسانيد «…»: ثمانية أسانيد عند مصنِّفَين، تلتقي كلها عند …» (the sentence comes from the engine).
+    heroCaption: (title: string, sentence: string) => `أسانيد «${title}»: ${sentence}`,
     searchPlaceholder: "مثلًا: إنما الأعمال",
     tryLabel: "جرّب",
     pasteTitle: "عندك إسناد من كتاب؟",
@@ -130,6 +139,10 @@ export const ar = {
     eyebrow: "شجرة الأسانيد",
     // «ثمانية أسانيد عند مصنِّفَين.» Counts from data only; the meeting point comes with Session B.
     counts: (routes: string, compilers: string) => `${routes} عند ${compilers}.`,
+    // From the engine: the common link carries every isnad, or only some (owner decision, 6 Oct).
+    countsMeetAll: (routes: string, compilers: string, name: string) => `${routes} عند ${compilers}، تلتقي كلها عند ${name}.`,
+    countsMeetSome: (routes: string, compilers: string, some: string, name: string) =>
+      `${routes} عند ${compilers}، يلتقي ${some} منها عند ${name}.`,
     matnFrom: "نص المتن من",
     variantsSummary: "قراءة أخرى في المتن",
     variantSource: "المصدر",
@@ -141,7 +154,7 @@ export const ar = {
     panelEyebrow: (no: string, total: string) => `الإسناد ${no} من ${total}`,
     close: "إغلاق اللوحة",
     emptyTitle: "اختر من الشجرة",
-    emptyText: "اختر إسنادًا من القائمة لتقرأ نصّه.",
+    emptyText: "اضغط على راوٍ لترى ترجمته، أو على إسناد في القائمة لتقرأ نصّه.",
     treeLabel: "شجرة الأسانيد",
     treeSoon: "تُرسم الشجرة هنا قريبًا. اختر إسنادًا من القائمة لتقرأ نصّه.",
     panelLabel: "لوحة المصدر",
@@ -259,6 +272,31 @@ export const ar = {
     metaTitle: "الصفحة غير موجودة",
     title: "لم نجد هذه الصفحة",
     text: "قد يكون الرابط ناقصًا أو قديمًا. ابدأ من الصفحة الرئيسية.",
+  },
+
+  tree: {
+    zoomIn: "تكبير",
+    zoomOut: "تصغير",
+    reset: "إعادة الشجرة إلى وضعها",
+    hintMobile: "اسحب لتحريك الشجرة، واضغط على راوٍ لتظهر ترجمته.",
+    hintDesktop: "النبي ﷺ في الأعلى، والمصنِّفون في الأسفل. اسحب للتحريك.",
+    zoomPct: (pct: string) => `${pct}٪`,
+    nodeAria: (name: string, role: string) => `${name}، ${role}`,
+  },
+
+  // The narrator panel on the hadith page (design «لوحة الراوي»). Counts come from the engine.
+  narratorPanel: {
+    label: "لوحة الراوي",
+    roleCommon: (role: string) => `${role}، وهو نقطة الالتقاء`,
+    prophetNote: "إليه ﷺ ترجع الأسانيد كلها في هذه الشجرة.",
+    commonAll: (definite: string) => `تمرّ به ${definite} كلها`,
+    commonSome: (count: string, total: string) => `تمرّ به ${count} من ${total}`,
+    branchesTo: (students: string) => `، ومنه تتفرّع إلى ${students}`,
+    through: (count: string, total: string) => `يمرّ به ${count} من ${total}`,
+    throughMarked: "، وهي مُعلَّمة في القائمة.",
+    showRoutes: "اعرض الأسانيد",
+    fullPage: "الترجمة كاملة",
+    thruSelected: "يمرّ بالراوي المختار",
   },
 
   legend: {

@@ -13,7 +13,8 @@ describe("layoutTree on data/", () => {
         const graph = buildGraph(h, narrators);
         const analysis = analyze(graph);
         const labels = new Map([...graph.nodes.keys()].map((id) => [id, narrators.get(id)?.nameAr ?? id]));
-        const t = layoutTree(graph, analysis, labels, cfg);
+        const honorific = new Set([...graph.nodes.keys()].filter((id) => narrators.get(id)?.honorificAr));
+        const t = layoutTree(graph, analysis, labels, cfg, honorific);
 
         expect(t.nodes).toHaveLength(graph.nodes.size);
         for (let i = 0; i < t.nodes.length; i++) {

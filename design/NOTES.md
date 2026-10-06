@@ -63,6 +63,6 @@ Following the design's own rules:
 - **About:** «كتب الرواية» lists only the books in `data/`; the death date in the design is dropped (sample content); the editions line stays a visible placeholder until Session F.
 - **Skip link and not-found page** added for accessibility.
 
-## Left for Session B
+## Session B (done 6 Oct)
 
-The drawn tree (layout, nodes, edges, branch diamonds, the common-link ring and tag, pan and zoom, node selection), the narrator panel on the hadith page, the meeting-point sentences («تلتقي كلها عند …», «تمرّ به الأسانيد … كلها»), and the zod schemas.
+The tree is drawn from data by the engine (`lib/isnad/`): graph, analysis and dagre layout, with tests. It includes nodes and edges, branch diamonds, the common-link ring and tag (owner decision: never the Prophet ﷺ or a compiler; when it carries only some isnads, the count is said in words), pan by drag, zoom by buttons / wheel / pinch, reset, and isnad and narrator selection (`?isnad=` / `?narrator=`). Tree labels use `nameAr` (no invented short names); a companion's honorific is a small second line. Wide trees open at 60% on the Prophet ﷺ; zooming out shows the whole tree.

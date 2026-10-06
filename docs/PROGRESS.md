@@ -10,7 +10,7 @@ Last updated: Mon 5 Oct 2026, 21:00.
 | --- | --- | --- | --- |
 | Setup | ✅ Done | Sun 4 Oct | — |
 | A — Foundation and screens | ✅ Done 6 Oct | Mon 06:00–10:00 | Mon 09:00–12:30 |
-| B — Isnad engine and tree | ⬜ Not started | Mon 10:00–14:00 | Mon 12:30–16:30 |
+| B — Isnad engine and tree | ✅ Done 6 Oct | Mon 10:00–14:00 | Mon 12:30–16:30 |
 | Data track (owner + mentor) | ✅ Done 5 Oct | Mon 10:00–19:00 | Mon 10:00–19:00 (fixed: mentor hours) |
 | C — ML narrator tagger | ⬜ Not started | Mon 14:00–21:00 | Mon 16:30–23:00 |
 | D — Linking and /parse | ⬜ Not started | Mon 21:00–Tue 01:00 | Mon 23:00–Tue 03:00 |
@@ -40,7 +40,8 @@ Last updated: Mon 5 Oct 2026, 21:00.
 
 | Status | Date and time | Commit ID | Notes |
 | --- | --- | --- | --- |
-| ⬜ Not started | Planned Mon 12:30–16:30 | — | If short on time, cut pinch-zoom (keep buttons + wheel) and URL state polish; keep engine tests and the validator. |
+| ✅ Done | Tue 6 Oct | see `git log` | zod schema + stricter validator (one test per rule; passes on data, fails on a broken copy), engine (graph, analysis, dagre layout) with tests incl. the five real common links, the drawn tree with pan/zoom/pinch/keyboard, narrator panel on the hadith page, counts sentence from the engine, citation copies the isnad text. 63 tests. |
+| ↪ Was | Planned Mon 12:30–16:30 | — | If short on time, cut pinch-zoom (keep buttons + wheel) and URL state polish; keep engine tests and the validator. |
 
 ## Data track — 5 real hadiths (owner + mentor)
 

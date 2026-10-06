@@ -2,12 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/layout/SiteFooter";
-import { Diamond } from "@/components/ui/Diamond";
-import { StatusBadge } from "@/components/ui/StatusBadge";
+import { NarratorPanelBody } from "@/components/panels/NarratorPanelBody";
 import { countNoun } from "@/lib/arabic/count";
-import { toArabicIndic } from "@/lib/arabic/digits";
 import { ar } from "@/lib/copy/ar";
-import { displayName, narratorStatus, routesThrough } from "@/lib/data/derive";
+import { displayName, routesThrough } from "@/lib/data/derive";
 import { getHadiths, getNarrator, getNarrators } from "@/lib/data/load";
 
 export const dynamicParams = false;
@@ -34,9 +32,6 @@ export default async function NarratorPage({ params }: PageProps<"/narrator/[id]
     count: through.filter((x) => x.hadith.id === h.id).length,
   }));
   const books = [...new Set(through.filter((x) => x.route.chain[0] === n.id).map((x) => x.route.book.nameAr))];
-  const isProphet = n.role === "prophet";
-  const isCompiler = n.role === "compiler";
-  const showTaqrib = n.role === "companion" || n.role === "narrator";
 
   return (
     <>
@@ -51,68 +46,12 @@ export default async function NarratorPage({ params }: PageProps<"/narrator/[id]
       </div>
 
       <div className="mx-auto w-full max-w-[720px] px-4 pt-6 pb-10">
-        <div className="flex flex-col gap-[18px] rounded-sq border-[1.5px] border-ink bg-paper p-5 lg:px-6">
-          {isProphet ? <p className="m-0 text-[15px] leading-[1.8]">{ar.narrator.prophetNote}</p> : null}
-
-          {isProphet ? null : (
-            <dl className="m-0 grid grid-cols-2 gap-3">
-              <div className="flex flex-col gap-0.5">
-                <dt className="text-[13px] text-muted">{ar.narrator.tabaqa}</dt>
-                <dd className="m-0 text-[16px]">{n.tabaqa ?? ar.narrator.notReported}</dd>
-              </div>
-              <div className="flex flex-col gap-0.5">
-                <dt className="text-[13px] text-muted">{ar.narrator.death}</dt>
-                <dd className="m-0 text-[16px]">{n.deathAr ?? ar.narrator.notReported}</dd>
-              </div>
-            </dl>
-          )}
-
-          {isCompiler && books.length ? (
-            <div className="flex flex-col gap-0.5">
-              <span className="text-[13px] text-muted">{ar.narrator.book}</span>
-              <span className="text-[19px]">{books.join("، ")}</span>
-            </div>
-          ) : null}
-
-          {showTaqrib ? (
-            <div className="flex flex-col gap-2.5 border-t border-line pt-4">
-              <span className="text-[14px] font-medium">{ar.narrator.taqribHeading}</span>
-              {n.taqrib ? (
-                <>
-                  <blockquote className="m-0 text-[21px] leading-[1.9] lg:text-[22px]">«{n.taqrib.quoteAr}»</blockquote>
-                  <span className="flex items-center gap-2 text-[13px] text-muted">
-                    <Diamond size={7} />
-                    <span>
-                      {ar.narrator.taqribRef(toArabicIndic(n.taqrib.page), toArabicIndic(n.taqrib.entryNo))}
-                      {n.taqrib.url ? (
-                        <>
-                          {"، "}
-                          <a href={n.taqrib.url} target="_blank" rel="noopener noreferrer" className="py-2">
-                            {ar.narrator.sourceLink}
-                          </a>
-                        </>
-                      ) : null}
-                    </span>
-                  </span>
-                </>
-              ) : (
-                <p className="m-0 border border-dashed border-edge px-3.5 py-3 text-[14px] leading-[1.7] text-muted">
-                  {ar.narrator.noQuote}
-                </p>
-              )}
-              <StatusBadge status={narratorStatus(n)} />
-            </div>
-          ) : null}
-
-          {n.identification ? (
-            <div className="flex flex-col gap-1 border-t border-line pt-4">
-              <span className="text-[13px] text-muted">{ar.narrator.identification}</span>
-              <p className="m-0 text-[15px] leading-[1.7] break-words">
-                <b className="font-semibold">{n.identification.kind}</b>: {n.identification.note}
-              </p>
-            </div>
-          ) : null}
-
+        <div className="rounded-sq border-[1.5px] border-ink bg-paper">
+          <NarratorPanelBody
+            narrator={n}
+            books={books}
+            lead={n.role === "prophet" ? <p className="m-0 text-[15px] leading-[1.8]">{ar.narrator.prophetNote}</p> : null}
+          >
           {through.length ? (
             <div className="flex flex-col gap-2 border-t border-line pt-4">
               <span className="text-[14px]">{ar.narrator.routesThrough(countNoun(through.length, "isnad"))}</span>
@@ -131,6 +70,7 @@ export default async function NarratorPage({ params }: PageProps<"/narrator/[id]
               </ul>
             </div>
           ) : null}
+          </NarratorPanelBody>
         </div>
       </div>
 
