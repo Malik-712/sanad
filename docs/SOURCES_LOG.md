@@ -34,6 +34,9 @@ Required by the challenge Terms and Conditions, §9. Add a row for every AI tool
 | 2026-10-04 | Source | al-Maktaba al-Shamila (shamela.ws): Bukhari (1681), Muslim (1727), Taqrib (8609), Ibn al-Salah (22870), and the books cited in notes | https://shamela.ws | Where the hadith, isnad and narrator texts in `data/` were read and copied from (see `docs/SOURCES.md`) | unclear — no terms or licence page found on the site (checked 6 Oct); the texts are classical, no editor's notes copied |
 | 2026-10-05 | Source | dorar.net (الدرر السنية) | https://dorar.net | The short grade quoted on 29 isnads, with its author and a link | unclear — FAQ (dorar.net/feedback, read 28 Sep) says the content is for searching on the site and not to be copied; only a short attributed quote and link are stored; owner decision pending |
 
+| 2026-10-06 | Library | zod 4.6.5 | https://www.npmjs.com/package/zod | Data schema and validation (`lib/data/schema.ts`, `pnpm validate:data`) | MIT |
+| 2026-10-06 | Library | @dagrejs/dagre 3.1.1 | https://www.npmjs.com/package/@dagrejs/dagre | Tree layout (positions of the isnad tree nodes) | MIT |
+
 ## To add when used
 
 - Sanadset 650K (training and evaluation data) — licence to be checked on Mendeley Data.

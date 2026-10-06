@@ -20,6 +20,10 @@ describe("filterEntries", () => {
     expect(filterEntries(entries, "يحيى بن سعيد الأنصاري")).toContain("niyyah");
   });
 
+  it("ignores honorifics typed with a name", () => {
+    expect(filterEntries(entries, "عمر بن الخطاب رضي الله عنه")).toContain("niyyah");
+  });
+
   it("returns nothing for words that are not there", () => {
     expect(filterEntries(entries, "قزقز")).toEqual([]);
   });

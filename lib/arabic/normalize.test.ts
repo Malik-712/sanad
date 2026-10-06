@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { normalizeArabic } from "./normalize";
+import { normalizeArabic, stripHonorifics } from "./normalize";
 
 describe("normalizeArabic", () => {
   it("removes diacritics (titles as written in data/)", () => {
@@ -10,6 +10,15 @@ describe("normalizeArabic", () => {
   it("matches plain typing against vowelled text", () => {
     expect(normalizeArabic("إنما الأعمال")).toBe(normalizeArabic("إِنَّمَا الْأَعْمَالُ"));
     expect(normalizeArabic("يحيى بن سعيد")).toBe("يحيي بن سعيد");
+  });
+
+  it("removes honorifics when asked (forms found in data/)", () => {
+    expect(stripHonorifics("رَسُولَ اللهِ ﷺ")).toBe("رسول الله");
+    expect(stripHonorifics("عُمَرَ بْنَ الْخَطَّابِ ﵁ عَلَى الْمِنْبَرِ")).toBe("عمر بن الخطاب علي المنبر");
+    expect(stripHonorifics("عبد الله بن عمر رضي الله عنهما")).toBe("عبد الله بن عمر");
+    expect(stripHonorifics("أبو هريرة رضي الله عنه")).toBe("ابو هريره");
+    expect(stripHonorifics("قال رسول الله صلى الله عليه وسلم")).toBe("قال رسول الله");
+    expect(normalizeArabic("رضي الله عنه")).toBe("رضي الله عنه");
   });
 
   it("folds hamza seats, tatweel and spaces", () => {
