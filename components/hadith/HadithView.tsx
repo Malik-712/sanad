@@ -114,7 +114,7 @@ export function HadithView({
 
       <aside
         aria-labelledby="routes-h"
-        className={`${view === "list" ? "flex" : "hidden"} min-w-0 flex-col gap-2.5 lg:flex lg:flex-[0_0_210px]`}
+        className={`${view === "list" ? "flex" : "hidden"} min-w-0 flex-col gap-2.5 lg:flex lg:flex-[0_0_180px] xl:flex-[0_0_220px]`}
       >
         <div className="hidden flex-col gap-1 border-b-2 border-ink pb-2.5 lg:flex">
           <h2 id="routes-h" className="m-0 text-[20px] leading-[1.3] font-semibold">
@@ -178,7 +178,7 @@ export function HadithView({
         />
       </div>
 
-      <aside className="flex min-w-0 flex-col gap-4 lg:flex-[0_0_290px]">
+      <aside className="flex min-w-0 flex-col gap-4 lg:flex-[0_0_250px] xl:flex-[0_0_290px]">
         {route ? (
           <section aria-label={ar.hadith.panelLabel} className="flex flex-col overflow-hidden rounded-sq border-[1.5px] border-ink bg-paper">
             {panelHead(route.panelEyebrow, route.panelTitle, false)}

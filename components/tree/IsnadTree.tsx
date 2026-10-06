@@ -128,7 +128,7 @@ function TreeCanvas({
   const control = (label: string, shortLabel: string, onClick: () => void, icon: string) => (
     <button
       type="button"
-      className={`${zoomBtn} ${desktop ? "gap-1.5 px-3 text-[14px]" : ""}`}
+      className={`${zoomBtn} ${desktop ? "gap-1.5 px-3 text-[14px] whitespace-nowrap" : ""}`}
       title={label}
       aria-label={desktop ? undefined : label}
       onClick={onClick}
