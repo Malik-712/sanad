@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
-const immutable = "public, max-age=31536000, immutable";
+// no-transform: the CDN must not recompress the model or the wasm (a recompressed stream failed inside Transformers.js on a Vercel preview).
+const immutable = "public, max-age=31536000, immutable, no-transform";
 
 const nextConfig: NextConfig = {
   // `next dev` would otherwise append its own block to CLAUDE.md, which only the owner edits.

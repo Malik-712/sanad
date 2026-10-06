@@ -136,8 +136,9 @@ test("privacy: no request carries the pasted text; only this site's static files
     expect(r.method()).toBe("GET");
   }
   // Nothing leaves the site while analysing: every request goes to the site's own origin.
+  // (A Vercel preview adds its own toolbar script from vercel.live; a production deployment does not.)
   const origin = new URL(baseURL!).origin;
-  for (const r of seen) expect(new URL(r.url()).origin, r.url()).toBe(origin);
+  for (const r of seen) if (!r.url().startsWith("https://vercel.live/")) expect(new URL(r.url()).origin, r.url()).toBe(origin);
   await expect(page).toHaveURL(/\/$/);
 });
 

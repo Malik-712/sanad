@@ -14,6 +14,8 @@ export default defineConfig({
     baseURL: remote ?? `http://localhost:${port}`,
     channel: "msedge",
     locale: "ar",
+    // A saved browser state, for a protected Vercel preview (cookie from its share link).
+    ...(process.env.STORAGE_STATE ? { storageState: process.env.STORAGE_STATE } : {}),
   },
   projects: [
     { name: "mobile-390", use: { viewport: { width: 390, height: 844 }, hasTouch: true } },
