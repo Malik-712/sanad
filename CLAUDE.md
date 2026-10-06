@@ -44,7 +44,7 @@ Sanad is an Arabic, right-to-left web app that merges all routes (turuq) of one 
 - Tree: our own SVG renderer (to match the design exactly), positions from `@dagrejs/dagre`, pan/zoom with pointer events + the design's zoom buttons. No canvas libraries.
 - Validation: `zod` schemas for all data.
 - Icons: the design's own SVG icons (square caps, 2 px stroke), copied into `components/ui/icons.tsx`, only where the design has an icon. No icon package (owner decision, 5 Oct; replaces `lucide-react`).
-- Font via `next/font/google`: **IBM Plex Sans Arabic only** (400/500/600/700, Arabic subset) for everything, including hadith text and narrator names. No second font. Source text is marked by «» and the source line under it, not by a font.
+- Font via `next/font/google`: **IBM Plex Sans Arabic only** (400/500/600/700, Arabic subset) for everything, including hadith text and narrator names. No second font. Source text is marked by «» and the source line under it, not by a font. One exception (owner decision, 6 Oct): the sign «﵁» (U+FD41), which Plex lacks, falls back to the unmodified Scheherazade New file (`app/fonts/`, OFL 1.1) through `unicode-range: U+FD41` only.
 - Tests: Vitest (logic), Playwright + `@axe-core/playwright` (end-to-end and accessibility).
 - ML: Python in `ml/` (pandas, datasets, transformers, seqeval, optimum). Training runs on Google Colab or Kaggle (free GPU). In the browser: `@huggingface/transformers` (Transformers.js) inside a Web Worker.
 - Hosting: Vercel Hobby, auto-deploy from `main`.

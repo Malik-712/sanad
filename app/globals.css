@@ -49,11 +49,12 @@
   --font-*: initial;
 }
 
-/* One font only. next/font sets --font-plex-arabic on <html>; inline so it resolves there. */
+/* One font, plus a fallback for the single sign «﵁» (U+FD41) that it lacks.
+   next/font sets the variables on <html>; inline so they resolve there. */
 @theme inline {
-  --font-sans: var(--font-plex-arabic), Tahoma, sans-serif;
-  --default-font-family: var(--font-plex-arabic), Tahoma, sans-serif;
-  --default-mono-font-family: var(--font-plex-arabic), Tahoma, sans-serif;
+  --font-sans: var(--font-plex-arabic), var(--font-honorific-sign), Tahoma, sans-serif;
+  --default-font-family: var(--font-plex-arabic), var(--font-honorific-sign), Tahoma, sans-serif;
+  --default-mono-font-family: var(--font-plex-arabic), var(--font-honorific-sign), Tahoma, sans-serif;
 }
 
 @layer base {
