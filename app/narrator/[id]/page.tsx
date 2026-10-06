@@ -50,7 +50,7 @@ export default async function NarratorPage({ params }: PageProps<"/narrator/[id]
         </div>
       </div>
 
-      <main id="main" className="mx-auto w-full max-w-[720px] px-4 pt-6 pb-10">
+      <div className="mx-auto w-full max-w-[720px] px-4 pt-6 pb-10">
         <div className="flex flex-col gap-[18px] rounded-sq border-[1.5px] border-ink bg-paper p-5 lg:px-6">
           {isProphet ? <p className="m-0 text-[15px] leading-[1.8]">{ar.narrator.prophetNote}</p> : null}
 
@@ -132,7 +132,7 @@ export default async function NarratorPage({ params }: PageProps<"/narrator/[id]
             </div>
           ) : null}
         </div>
-      </main>
+      </div>
 
       <SiteFooter variant="green" />
     </>

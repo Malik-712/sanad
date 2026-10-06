@@ -41,7 +41,7 @@ export function HadithView({ routes, listLabel, tree, disclaimer, initial }: Pro
   }
 
   return (
-    <main id="main" className="flex flex-col gap-4 px-4 pt-5 pb-8 lg:flex-row lg:flex-wrap lg:items-start lg:gap-6 lg:px-8 lg:pt-6">
+    <div className="flex flex-col gap-4 px-4 pt-5 pb-8 lg:flex-row lg:flex-wrap lg:items-start lg:gap-6 lg:px-8 lg:pt-6">
       <div className="lg:hidden">
         <Segmented
           label={ar.hadith.tabsLabel}
@@ -132,6 +132,6 @@ export function HadithView({ routes, listLabel, tree, disclaimer, initial }: Pro
         )}
         {disclaimer}
       </aside>
-    </main>
+    </div>
   );
 }

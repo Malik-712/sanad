@@ -29,6 +29,7 @@ export const ar = {
   search: {
     label: "ابحث بكلمات الحديث أو باسم راوٍ",
     button: "ابحث",
+    headerLabel: "البحث في الموقع",
   },
 
   disclaimer,

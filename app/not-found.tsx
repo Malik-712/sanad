@@ -15,11 +15,11 @@ export default function NotFound() {
           <p className="m-0 text-[16px] leading-[1.8] text-on-green-muted">{ar.notFound.text}</p>
         </section>
       </div>
-      <main id="main" className="mx-auto w-full max-w-[720px] px-4 py-10">
+      <div className="mx-auto w-full max-w-[720px] px-4 py-10">
         <Link href="/" className={`${buttonPrimary} self-start`}>
           {ar.footer.startSearch}
         </Link>
-      </main>
+      </div>
       <SiteFooter variant="green" />
     </>
   );

@@ -47,7 +47,7 @@ export default function ParsePage() {
         </section>
       </div>
 
-      <main id="main" className="mx-auto flex w-full max-w-[720px] flex-col gap-7 px-4 pt-6 pb-9">
+      <div className="mx-auto flex w-full max-w-[720px] flex-col gap-7 px-4 pt-6 pb-9">
         <ParseForm defaultValue={route?.isnadAr ?? ""} />
         <AutoNotice />
 
@@ -95,7 +95,7 @@ export default function ParsePage() {
             </section>
           </>
         ) : null}
-      </main>
+      </div>
 
       <SiteFooter variant="plain" />
     </>

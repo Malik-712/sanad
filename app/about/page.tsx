@@ -46,7 +46,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <main id="main" className="mx-auto flex w-full max-w-[720px] flex-col gap-10 px-4 pt-8 pb-10">
+      <div className="mx-auto flex w-full max-w-[720px] flex-col gap-10 px-4 pt-8 pb-10">
         <section aria-labelledby="how-h" className="flex flex-col">
           <h2 id="how-h" className={h2}>
             {ar.about.stepsTitle}
@@ -151,7 +151,7 @@ export default function AboutPage() {
           </h2>
           <p className="m-0 text-[15px] leading-[1.8]">{ar.about.privacyText}</p>
         </section>
-      </main>
+      </div>
 
       <SiteFooter variant="about" showDemoNote={hasDemo} />
     </>

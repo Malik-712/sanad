@@ -13,6 +13,8 @@ export function ParseForm({ defaultValue }: { defaultValue: string }) {
         id="isnad-in"
         name="isnad"
         rows={7}
+        autoComplete="off"
+        spellCheck={false}
         defaultValue={defaultValue}
         className="box-border w-full resize-y rounded-sq border-[1.5px] border-ink bg-paper px-4 py-3.5 text-[19px] leading-[1.9] text-ink"
       />

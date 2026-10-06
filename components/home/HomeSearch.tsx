@@ -35,19 +35,22 @@ export function HomeSearch({ entries, cards, tryLinks, between, demoTag, initial
     <>
       <form
         role="search"
+        aria-labelledby="home-q-label"
         onSubmit={(e) => {
           e.preventDefault();
           listRef.current?.focus();
         }}
         className="relative mx-4 -mt-[72px] flex flex-col gap-3 rounded-sq border-[1.5px] border-ink bg-paper p-5 lg:mx-auto lg:w-[688px]"
       >
-        <label htmlFor="home-q" className="text-[15px] font-medium">
+        <label id="home-q-label" htmlFor="home-q" className="text-[15px] font-medium">
           {ar.search.label}
         </label>
         <div className="flex h-[52px] rounded-sq border-[1.5px] border-ink bg-paper focus-within:outline-[3px] focus-within:outline-offset-2 focus-within:outline-green focus-within:outline-solid">
           <input
             id="home-q"
+            name="q"
             type="search"
+            autoComplete="off"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={ar.home.searchPlaceholder}
@@ -66,7 +69,7 @@ export function HomeSearch({ entries, cards, tryLinks, between, demoTag, initial
             <Link
               key={t.href}
               href={t.href}
-              className="inline-flex min-h-11 items-center rounded-sq border border-line-strong px-3 text-[17px] text-ink no-underline hover:text-ink"
+              className="inline-flex min-h-11 items-center rounded-sq border border-line-strong px-3 text-[17px] text-ink no-underline hover:border-ink hover:text-ink"
             >
               {t.label}
             </Link>
@@ -74,7 +77,7 @@ export function HomeSearch({ entries, cards, tryLinks, between, demoTag, initial
         </div>
       </form>
 
-      <main id="main" className="mx-auto flex w-full max-w-[720px] flex-col gap-10 px-4 pt-6 pb-10">
+      <div className="mx-auto flex w-full max-w-[720px] flex-col gap-10 px-4 pt-6 pb-10">
         {between}
         <section aria-labelledby="featured-h" className="flex flex-col">
           <SectionHeading id="featured-h" end={demoTag}>
@@ -91,7 +94,7 @@ export function HomeSearch({ entries, cards, tryLinks, between, demoTag, initial
             </p>
           ) : null}
         </section>
-      </main>
+      </div>
     </>
   );
 }

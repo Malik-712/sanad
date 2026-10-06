@@ -71,8 +71,11 @@
     line-height: 1.7;
   }
 
+  /* Links inside text are underlined so they are not told apart by colour alone (cards and nav opt out). */
   a {
     color: var(--color-green);
+    text-decoration-line: underline;
+    text-underline-offset: 3px;
   }
   a:hover {
     color: var(--color-green-deep);
@@ -84,6 +87,20 @@
   }
   .ongreen :focus-visible {
     outline-color: var(--color-gold);
+  }
+
+  h1,
+  h2 {
+    text-wrap: balance;
+  }
+
+  a,
+  button,
+  summary,
+  input,
+  textarea {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 
   ::selection {
