@@ -4,6 +4,18 @@ Each case in `tests/hard-cases.json` goes through the same pipeline as the live 
 
 Runs: 3. Identical output in every run: **yes**. Cases passed: **15 / 15**.
 
+## Summary
+
+What a reader of an isnad gets wrong most often, and what Sanad does in each case:
+
+- **Wrong input** (empty text, more than 2,000 characters, ordinary prose, a matn with no isnad): Sanad shows a plain Arabic message that says what to paste instead, and draws nothing.
+- **A name it cannot place** (an unknown narrator, a short name such as «سفيان» or «حماد»): Sanad never picks silently. An unknown name is marked «لا مصدر بعد» and the chain goes on. A bare «سفيان», which matches two records (Ibn ʿUyayna and al-Thawri), is marked «يحتاج تحققًا» and the user chooses. A bare «حماد» is marked «لا مصدر بعد»: our data has one Hammad record and the bare form is not one of its aliases, so Sanad does not stretch the match.
+- **A chain that is not one of ours** (a narrator removed from a real isnad, or a made-up chain of fifteen names): every name is still read, but no match card appears, so a broken chain is never shown as a known route.
+- **The way isnads are written** (full tashkeel or none, the short forms «ثنا، نا، أنا», mixed honorifics, «ح» between two isnads, two teachers named together «فلان وابن فلان»): the same isnad is read the same way, honorifics are dropped from names, and the real route is still found.
+- **Repeatability:** the whole set is run three times; the SHA-256 hash of the full output must be the same each time, so a result a user sees today is the result a judge sees tomorrow.
+
+## Runs and cases
+
 | Run | SHA-256 of all outputs |
 | --- | --- |
 | 1 | `ea171b635b61b712e7540646d9efdcd53856c3f3b0956ee9e48de53361877ac6` |
