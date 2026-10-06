@@ -86,8 +86,8 @@ Lighthouse 12.8.2 in headless Microsoft Edge on https://sanad-pi-five.vercel.app
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | `/` | mobile | 87 | 100 | 100 | 100 | 80 / 97 / 87 | 470 KB | 3.5 s | 189 ms | 0.000 |
 | `/` | desktop | 100 | 100 | 100 | 100 | 100 / 100 / 100 | 470 KB | 0.7 s | 0 ms | 0.000 |
-| `/c/bukhari/1` | mobile | 72 | 100 | 100 | 100 | 77 / 54 / 72 | 486 KB | 3.4 s | 501 ms | 0.208 |
-| `/c/bukhari/1` | desktop | 79 | 100 | 100 | 100 | 79 / 79 / 79 | 486 KB | 0.6 s | 0 ms | 0.513 |
+| `/c/bukhari/1` | mobile | 95 | 100 | 100 | 100 | 92 / 95 / 95 | 486 KB | 2.8 s | 93 ms | 0.001 |
+| `/c/bukhari/1` | desktop | 100 | 100 | 100 | 100 | 100 / 100 / 100 | 486 KB | 0.7 s | 0 ms | 0.000 |
 | `/hadith/niyyah` | mobile | 84 | 100 | 100 | 100 | 84 / 88 / 62 | 642 KB | 3.0 s | 401 ms | 0.000 |
 | `/hadith/niyyah` | desktop | 92 | 100 | 100 | 100 | 92 / 94 / 63 | 646 KB | 0.7 s | 217 ms | 0.000 |
 | `/narrator/umar-ibn-al-khattab` | mobile | 95 | 100 | 100 | 100 | 71 / 95 / 98 | 469 KB | 2.1 s | 113 ms | 0.000 |
@@ -102,7 +102,7 @@ Lighthouse 12.8.2 in headless Microsoft Edge on https://sanad-pi-five.vercel.app
 
 | Finding | Before | Fix | Result |
 | --- | --- | --- | --- |
-| Hadith page `/c/bukhari/1`: its text waited for a 2.3 MB name index, then for the full text from a CDN | mobile Performance 65, LCP 7.4 s, CLS 0.22; desktop 76 | The isnād comes from one small file and is shown first; names are in that file; the full text is the last section | see the table above |
+| Hadith page `/c/bukhari/1`: its text waited for a 2.3 MB name index, then for the full text from a CDN | mobile Performance 65, LCP 7.4 s, CLS 0.22; desktop 76 | The isnād comes from one small file and is shown first; names are in that file; the full text is the last section | mobile Performance 95, LCP 2.8 s, CLS 0.001; desktop 100 (median of 3, live, after the loading-block fix) |
 | Hadith page, second try: names still loaded the big index in the background | mobile 59 (TBT 987 ms), desktop CLS 0.625 | Names moved into the 200-hadith files; the index is no longer loaded on this page | see the table above |
 | Home: the 12 MB model started downloading 0.4 s after load, inside Lighthouse's measuring window | mobile runs 96 / 97 / 79; page weight 11.5 MB | The model starts when the visitor first focuses the paste box or presses a button | see the table above |
 | No `robots.txt` (Lighthouse SEO «robots.txt is not valid») | desktop Home SEO 92 in 2 of 3 runs | `public/robots.txt` | SEO 100 |

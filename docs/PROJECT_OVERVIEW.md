@@ -98,7 +98,7 @@ Offline, once: Sanadset 650K → word-level labels (split **by book**, 300-isnad
 | Explorer: our 18 Bukhari isnads | All find their own hadith in the first 3 results (model not better than rules on this small set; reported as is) |
 | Hard cases (unknown narrator, broken chain, shared name, non-isnad, tashkeel, long input…) | 15 / 15, three runs, identical SHA-256 |
 | Tests | 142 unit · 46 browser (incl. privacy spy, model-blocked fallback, axe) |
-| Accessibility / speed | axe: 0 serious or critical on every page at 390 and 1440 px; Lighthouse performance 95–100 |
+| Accessibility / speed | axe: 0 serious or critical on every page at 390 and 1440 px. Lighthouse (live, median of 3): Accessibility, Best practices and SEO 100 on every page; Performance varies by page and run (on mobile 69–100), see `docs/EVALUATION.md` (c) for every number and what was fixed |
 | Cost | $0 running cost |
 
 Not yet done: the 5-user timed test (protocol ready in `docs/USER_TEST.md`).
