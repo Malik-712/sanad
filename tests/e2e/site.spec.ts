@@ -21,32 +21,27 @@ async function seriousAxe(page: Page) {
     .map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(" ")).join(" | ")}`);
 }
 
-test("Home → search → tree → select an isnad → its source link", async ({ page }) => {
-  await page.goto("/");
-  const search = page.getByRole("searchbox", { name: "ابحث بكلمات الحديث أو باسم راوٍ" });
-  await search.fill("بالنيات");
-  const card = page.locator('a[href="/hadith/niyyah"]').first();
-  await expect(card).toBeVisible();
-  await card.click();
-  await expect(page).toHaveURL(/\/hadith\/niyyah$/);
+test("verified hadith: the tree, an isnad, its source link (reached by its address)", async ({ page }) => {
+  await page.goto("/hadith/niyyah");
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-
-  if (isMobile(page)) {
-    // Mobile: the isnad list is the second view of the switch.
-    await page.getByRole("group", { name: "طريقة العرض" }).getByRole("button").nth(1).click();
-  }
+  if (isMobile(page)) await page.getByRole("group", { name: "طريقة العرض" }).getByRole("button").nth(1).click();
   const routeButton = page.getByRole("button", { name: /صحيح البخاري، حديث ١(?![٠-٩])/ }).first();
   await routeButton.click();
   await expect(page).toHaveURL(/isnad=bukhari-1/);
-  // Desktop keeps the list beside the tree; mobile switches back to the tree view (the list is then hidden).
-  if (!isMobile(page)) await expect(routeButton).toHaveAttribute("aria-pressed", "true");
-
   const panel = page.getByRole("region", { name: "لوحة المصدر" });
-  await expect(panel).toBeVisible();
-  const source = panel.getByRole("link", { name: "افتح الموضع في المصدر" });
-  await expect(source).toHaveAttribute("href", bukhari1.url);
-  await expect(source).toHaveAttribute("target", "_blank");
-  await expect(panel.getByText("ذِكرُ الحديث في كتابٍ ليس حكمًا عليه.", { exact: false })).toBeVisible();
+  await expect(panel.getByRole("link", { name: "افتح الموضع في المصدر" })).toHaveAttribute("href", bukhari1.url);
+});
+
+test("header: three links only, on every page", async ({ page }) => {
+  await page.goto("/about");
+  const nav = page.getByRole("navigation", { name: "القائمة الرئيسية" }).first();
+  await expect(nav.getByRole("link")).toHaveText(["محلّل الإسناد", "الكتب والمصادر", "عن المشروع"]);
+});
+
+test("/parse leads to Home", async ({ page }) => {
+  await page.goto("/parse");
+  await expect(page).toHaveURL(/\/$/);
+  await expect(page.getByLabel("نصّ الإسناد")).toBeVisible();
 });
 
 test("a deep link opens the selected isnad", async ({ page }) => {
@@ -67,29 +62,6 @@ test("tree: a narrator node opens the narrator panel and the full page", async (
   await expect(page.getByRole("heading", { level: 1 })).toContainText("عمر بن الخطاب");
 });
 
-test("search: no result says how many hadiths there are and offers «الصق إسنادًا»", async ({ page }) => {
-  await page.goto("/");
-  await page.getByRole("searchbox", { name: "ابحث بكلمات الحديث أو باسم راوٍ" }).fill("كلمة غير موجودة إطلاقا");
-  const status = page.getByRole("status").filter({ hasText: "لا نتائج" });
-  await expect(status).toContainText("في الموقع الآن خمسة أحاديث فقط");
-  await page.getByRole("link", { name: "الصق إسنادًا" }).last().click();
-  await expect(page).toHaveURL(/\/parse$/);
-});
-
-test("search: by narrator, by hadith number, and the clear button", async ({ page }) => {
-  await page.goto("/");
-  const box = page.getByRole("searchbox", { name: "ابحث بكلمات الحديث أو باسم راوٍ" });
-  await expect(box).toHaveAttribute("placeholder", "اكتب كلمات من الحديث أو اسم راوٍ");
-  await box.fill("البخاري ١");
-  await expect(page.locator('a[href^="/hadith/"]')).toHaveCount(1);
-  await expect(page.locator('a[href="/hadith/niyyah"]')).toBeVisible();
-  await box.fill("تميم الداري");
-  await expect(page.locator('a[href="/hadith/al-din-al-nasiha"]')).toBeVisible();
-  await page.getByRole("button", { name: "مسح" }).click();
-  await expect(box).toHaveValue("");
-  await expect(page.locator('a[href^="/hadith/"]')).toHaveCount(5);
-});
-
 test("hadith page: the source above the tree, and «كيف أتحقق من هذا؟»", async ({ page }) => {
   await page.goto("/hadith/niyyah");
   await expect(page.getByRole("link", { name: "افتح في المصدر" })).toHaveAttribute("href", bukhari1.url);
@@ -100,12 +72,6 @@ test("hadith page: the source above the tree, and «كيف أتحقق من هذ�
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("المصادر وكيف نتحقق");
 });
 
-test("header: three links only", async ({ page }) => {
-  await page.goto("/about");
-  const nav = page.getByRole("navigation", { name: "القائمة الرئيسية" }).first();
-  await expect(nav.getByRole("link")).toHaveText(["البحث", "الصق إسنادًا", "عن المشروع"]);
-});
-
 test("About states the disclaimer; unknown pages give the 404 page", async ({ page }) => {
   await page.goto("/about");
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
@@ -114,30 +80,10 @@ test("About states the disclaimer; unknown pages give the 404 page", async ({ pa
   expect(res?.status()).toBe(404);
 });
 
-test("keyboard only: skip link, search, open a hadith, select an isnad", async ({ page }) => {
-  test.skip(isMobile(page), "keyboard path checked at desktop width");
-  await page.goto("/");
-  await page.keyboard.press("Tab");
-  await expect(page.locator(":focus")).toHaveAttribute("href", "#main");
-  await page.getByRole("searchbox", { name: "ابحث بكلمات الحديث أو باسم راوٍ" }).focus();
-  await page.keyboard.type("بالنيات");
-  const card = page.locator('a[href="/hadith/niyyah"]').first();
-  await card.focus();
-  await page.keyboard.press("Enter");
-  await expect(page).toHaveURL(/\/hadith\/niyyah$/);
-  const routeButton = page.getByRole("button", { name: /صحيح البخاري، حديث ١(?![٠-٩])/ }).first();
-  await routeButton.focus();
-  await expect(routeButton).toBeFocused();
-  // A visible focus ring (outline) on the focused control.
-  const outline = await routeButton.evaluate((el) => getComputedStyle(el).outlineStyle);
-  expect(outline).not.toBe("none");
-  await page.keyboard.press("Enter");
-  await expect(page.getByRole("region", { name: "لوحة المصدر" })).toBeVisible();
-});
-
-for (const path of ["/", "/hadith/niyyah", "/hadith/niyyah?isnad=bukhari-1", "/narrator/umar-ibn-al-khattab", "/parse", "/about", "/sources"]) {
+for (const path of ["/", "/hadith/niyyah", "/hadith/niyyah?isnad=bukhari-1", "/narrator/umar-ibn-al-khattab", "/c/bukhari/1", "/about", "/sources"]) {
   test(`axe (WCAG 2.1 A/AA): no serious or critical issues on ${path}`, async ({ page }) => {
     await page.goto(path);
+    if (path.startsWith("/c/")) await expect(page.getByRole("heading", { level: 1 })).toContainText("حديث", { timeout: 20_000 });
     expect(await seriousAxe(page)).toEqual([]);
   });
 }

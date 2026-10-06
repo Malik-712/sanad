@@ -4,13 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ar } from "@/lib/copy/ar";
 
-// Three links on every page and width (owner, 6 Oct): «البحث», «الصق إسنادًا», «عن المشروع».
+// Three links on every page and width: the explorer (Home), the books and sources, and about.
 // The current page gets a gold underline and aria-current.
 export function NavLinks({ desktop = false }: { desktop?: boolean }) {
   const pathname = usePathname();
   const links: { href: string; label: string; current: boolean }[] = [
-    { href: "/", label: ar.nav.search, current: pathname === "/" },
-    { href: "/parse", label: ar.nav.parse, current: pathname === "/parse" },
+    { href: "/", label: ar.nav.explorer, current: pathname === "/" },
+    { href: "/sources", label: ar.nav.sources, current: pathname === "/sources" },
     { href: "/about", label: ar.nav.about, current: pathname === "/about" },
   ];
 

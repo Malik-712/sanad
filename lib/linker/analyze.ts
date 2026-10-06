@@ -17,10 +17,17 @@ export type Analysis =
   | { ok: false; problem: InputProblem }
   | { ok: true; parse: ParseResult; links: LinkResult[] };
 
-export function analyzeIsnad(text: string, index: LinkIndex): Analysis {
-  if (!text.trim()) return { ok: false, problem: "empty" };
-  if (text.length > MAX_CHARS) return { ok: false, problem: "tooLong" };
-  const parse = parseRules(text);
+/** The input rules that apply before any reading: empty, too long. */
+export function checkInput(text: string): InputProblem | null {
+  if (!text.trim()) return "empty";
+  if (text.length > MAX_CHARS) return "tooLong";
+  return null;
+}
+
+/** Links names already read from the text (by the model or by the rules) and applies the «not an isnad» rule. */
+export function analyzeParsed(text: string, parse: ParseResult, index: LinkIndex): Analysis {
+  const problem = checkInput(text);
+  if (problem) return { ok: false, problem };
   const hasSigha = tokenize(text).some((t) => isSigha(t.text));
   if (!parse.names.length || (!hasSigha && parse.names.length < 2)) return { ok: false, problem: "notIsnad" };
   const links = linkNames(
@@ -29,6 +36,13 @@ export function analyzeIsnad(text: string, index: LinkIndex): Analysis {
     { tahwil: parse.tahwil, parallel: parse.parallel },
   );
   return { ok: true, parse, links };
+}
+
+/** Rule-based reading (no model): used by the tests, the evaluation scripts and as the fallback. */
+export function analyzeIsnad(text: string, index: LinkIndex): Analysis {
+  const problem = checkInput(text);
+  if (problem) return { ok: false, problem };
+  return analyzeParsed(text, parseRules(text), index);
 }
 
 /** The narrator id used for each name: the user's choice, else a confident link, else the context suggestion. */

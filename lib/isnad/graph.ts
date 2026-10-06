@@ -30,21 +30,37 @@ export type IsnadGraph = {
   routeIds: string[];
 };
 
+export type ChainRoute = { id: string; chain: string[]; sighas?: string[] };
+
 export function buildGraph(hadith: Hadith, narrators: Map<string, Narrator>): IsnadGraph {
+  return buildGraphFromChains(hadith.routes, (id) => {
+    const record = narrators.get(id);
+    return { role: record?.role ?? "narrator", missing: !record };
+  });
+}
+
+/**
+ * The graph of any set of chains (each from the compiler up to the Prophet ﷺ). `info` says what each id is:
+ * the explorer uses it for names read from the corpus, which have no narrator record.
+ */
+export function buildGraphFromChains(
+  routes: ChainRoute[],
+  info: (id: string) => { role: Role; missing: boolean },
+): IsnadGraph {
   const nodes = new Map<string, GraphNode>();
   const edges = new Map<string, GraphEdge>();
 
   const node = (id: string): GraphNode => {
     let n = nodes.get(id);
     if (!n) {
-      const record = narrators.get(id);
-      n = { id, role: record?.role ?? "narrator", missing: !record, depth: 0, routeIds: [], teachers: [], students: [] };
+      const { role, missing } = info(id);
+      n = { id, role, missing, depth: 0, routeIds: [], teachers: [], students: [] };
       nodes.set(id, n);
     }
     return n;
   };
 
-  for (const route of hadith.routes) {
+  for (const route of routes) {
     const top = [...route.chain].reverse(); // Prophet ﷺ first
     top.forEach((id, i) => {
       const n = node(id);
@@ -83,5 +99,5 @@ export function buildGraph(hadith: Hadith, narrators: Map<string, Narrator>): Is
     if (!changed) break;
   }
 
-  return { nodes, edges: [...edges.values()], routeIds: hadith.routes.map((r) => r.id) };
+  return { nodes, edges: [...edges.values()], routeIds: routes.map((r) => r.id) };
 }

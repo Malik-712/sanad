@@ -4,27 +4,68 @@ Generated on 2026-10-06 with `pnpm licenses list --prod --json` and `pnpm licens
 
 ## Shipped with the site (production)
 
-18 package versions (runtime dependencies and their dependencies). By licence: MIT 12, Apache-2.0 2, CC-BY-4.0 1, ISC 1, BSD-3-Clause 1, 0BSD 1.
+59 package versions (runtime dependencies and their dependencies). By licence: MIT 32, Apache-2.0 8, BSD-3-Clause 12, CC-BY-4.0 1, ISC 3, 0BSD 1, (MIT OR CC0-1.0) 1.
 
 | Package | Version | Licence |
 | --- | --- | --- |
 | @dagrejs/dagre | 3.1.1 | MIT |
 | @dagrejs/graphlib | 4.0.5 | MIT |
+| @huggingface/jinja | 0.5.10 | MIT |
+| @huggingface/tokenizers | 0.2.0 | Apache-2.0 |
+| @huggingface/transformers | 4.3.0 | Apache-2.0 |
+| @img/colour | 1.1.0 | MIT |
 | @next/env | 16.3.8 | MIT |
+| @protobufjs/aspromise | 1.1.2 | BSD-3-Clause |
+| @protobufjs/base64 | 1.1.2 | BSD-3-Clause |
+| @protobufjs/codegen | 2.0.5 | BSD-3-Clause |
+| @protobufjs/eventemitter | 1.1.1 | BSD-3-Clause |
+| @protobufjs/fetch | 1.1.1 | BSD-3-Clause |
+| @protobufjs/float | 1.0.2 | BSD-3-Clause |
+| @protobufjs/path | 1.1.2 | BSD-3-Clause |
+| @protobufjs/pool | 1.1.0 | BSD-3-Clause |
+| @protobufjs/utf8 | 1.1.2 | BSD-3-Clause |
 | @swc/helpers | 0.5.23 | Apache-2.0 |
+| @types/node | 20.19.43 | MIT |
+| adm-zip | 0.6.1 | MIT |
 | baseline-browser-mapping | 2.11.27 | Apache-2.0 |
 | caniuse-lite | 1.0.30001814 | CC-BY-4.0 |
 | client-only | 0.0.1 | MIT |
+| define-data-property | 1.1.4 | MIT |
+| define-properties | 1.2.1 | MIT |
+| detect-libc | 2.1.2 | Apache-2.0 |
+| es-define-property | 1.0.1 | MIT |
+| es-errors | 1.3.0 | MIT |
+| escape-string-regexp | 4.0.0 | MIT |
+| flatbuffers | 25.9.23 | Apache-2.0 |
+| global-agent | 4.1.3 | BSD-3-Clause |
+| globalthis | 1.0.4 | MIT |
+| gopd | 1.2.0 | MIT |
+| guid-typescript | 1.0.9 | ISC |
+| has-property-descriptors | 1.0.2 | MIT |
+| long | 5.3.2 | Apache-2.0 |
+| matcher | 4.0.0 | MIT |
 | nanoid | 3.3.19 | MIT |
 | next | 16.3.8 | MIT |
+| object-keys | 1.1.1 | MIT |
+| onnxruntime-common | 1.30.0 | MIT |
+| onnxruntime-common | 1.31.0-dev.20260911-2a43ec07e | MIT |
+| onnxruntime-node | 1.30.0 | MIT |
+| onnxruntime-web | 1.31.0-dev.20260914-8d85527a0 | MIT |
 | picocolors | 1.1.1 | ISC |
+| platform | 1.3.6 | MIT |
 | postcss | 8.5.23 | MIT |
+| protobufjs | 7.6.6 | BSD-3-Clause |
 | react | 19.2.8 | MIT |
 | react-dom | 19.2.8 | MIT |
 | scheduler | 0.27.0 | MIT |
+| semver | 7.8.5 | ISC |
+| serialize-error | 8.1.0 | MIT |
+| sharp | 0.35.5 | Apache-2.0 |
 | source-map-js | 1.2.2 | BSD-3-Clause |
 | styled-jsx | 5.1.6 | MIT |
 | tslib | 2.8.1 | 0BSD |
+| type-fest | 0.20.2 | (MIT OR CC0-1.0) |
+| undici-types | 6.21.0 | MIT |
 | zod | 4.6.5 | MIT |
 
 ## Development and test only (not shipped)

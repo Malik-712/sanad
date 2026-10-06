@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "prebuild": "pnpm validate:data",
+    "prebuild": "node scripts/copy-ort.mjs && pnpm validate:data",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
@@ -16,10 +16,16 @@
     "test:e2e": "playwright test",
     "hardcases": "tsx scripts/hardcases.ts",
     "eval:e2e": "tsx scripts/eval-e2e.ts",
-    "eval:all": "pnpm test && pnpm hardcases --runs 3 && pnpm eval:e2e"
+    "eval:all": "pnpm test && pnpm hardcases --runs 3 && pnpm eval:e2e",
+    "copy:ort": "node scripts/copy-ort.mjs",
+    "predev": "node scripts/copy-ort.mjs",
+    "check:tagger": "tsx scripts/check-tagger.ts",
+    "eval:explorer": "tsx scripts/eval-explorer.ts",
+    "build:corpus": "tsx scripts/build-corpus.ts"
   },
   "dependencies": {
     "@dagrejs/dagre": "^3.1.1",
+    "@huggingface/transformers": "^4.3.0",
     "next": "16.3.8",
     "react": "19.2.8",
     "react-dom": "19.2.8",

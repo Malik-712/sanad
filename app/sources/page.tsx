@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import { readFileSync } from "node:fs";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { toArabicIndic } from "@/lib/arabic/digits";
 import { ar } from "@/lib/copy/ar";
+import { bookById, CORPUS_REPO, sourceFileUrl } from "@/lib/corpus/books";
+import { countNoun } from "@/lib/arabic/count";
 import { getHadiths, getNarrators } from "@/lib/data/load";
 import { countSource, NOTE_SOURCES, TEXT_SOURCES, type SourceBook, type SourceCount } from "@/lib/data/sources";
 
@@ -42,9 +45,14 @@ function OpenLink({ url }: { url: string | null }) {
   );
 }
 
+type Manifest = { pinnedCommit: string; total: number; books: { id: string; count: number }[] };
+
 export default function SourcesPage() {
   const hadiths = getHadiths();
   const narrators = getNarrators();
+  // Counts come from the build manifest, never typed here.
+  const manifest = JSON.parse(readFileSync("corpus/MANIFEST.json", "utf8")) as Manifest;
+  const routes = hadiths.flatMap((h) => h.routes);
 
   return (
     <>
@@ -56,6 +64,82 @@ export default function SourcesPage() {
       </div>
 
       <div className="mx-auto flex w-full max-w-[720px] flex-col gap-10 px-4 pt-6 pb-10">
+        <section aria-labelledby="corpus-h" className="flex flex-col gap-4">
+          <SectionHeading id="corpus-h" size={26}>
+            {ar.sources.corpusTitle}
+          </SectionHeading>
+          <p className="m-0 text-[15px] leading-[1.7]">{ar.sources.corpusIntro}</p>
+          <div className="flex flex-col gap-3 rounded-sq border-[1.5px] border-ink bg-paper p-5">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <h3 className="m-0 text-[21px] leading-[1.5] font-semibold" dir="ltr">
+                fawazahmed0/hadith-api
+              </h3>
+              <StatusBadge status="check" />
+            </div>
+            <p className="m-0 text-[14px] leading-[1.7]">{ar.sources.corpusCount(toArabicIndic(manifest.total))}</p>
+            <ul className="m-0 grid list-none grid-cols-1 gap-1 p-0 text-[14px] leading-[1.7] sm:grid-cols-2">
+              {manifest.books.map((b) => (
+                <li key={b.id}>
+                  <a href={sourceFileUrl(b.id)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center">
+                    {bookById(b.id)?.nameAr ?? b.id}
+                  </a>{" "}
+                  <span className="text-muted">({toArabicIndic(b.count)})</span>
+                </li>
+              ))}
+            </ul>
+            <p className="m-0 text-[14px] leading-[1.7]">
+              <span className="text-muted">{ar.sources.corpusPin}: </span>
+              <span dir="ltr">{manifest.pinnedCommit}</span>
+            </p>
+            <p className="m-0 text-[13px] leading-[1.7] text-muted">
+              {ar.sources.corpusStatus} {ar.sources.corpusLicence} {ar.sources.corpusNumbering} {ar.sources.corpusNoGrades}
+            </p>
+            <a href={CORPUS_REPO} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center self-start text-[15px]">
+              {ar.sources.corpusRepo}
+            </a>
+          </div>
+        </section>
+
+        <section aria-labelledby="model-h" className="flex flex-col gap-4">
+          <SectionHeading id="model-h" size={26}>
+            {ar.sources.modelTitle}
+          </SectionHeading>
+          <div className="flex flex-col gap-3 rounded-sq border-[1.5px] border-ink bg-paper p-5">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <h3 className="m-0 text-[21px] leading-[1.5] font-semibold" dir="ltr">
+                sanad-ner (BERT-mini)
+              </h3>
+              <StatusBadge status="check" />
+            </div>
+            <p className="m-0 text-[15px] leading-[1.7]">{ar.sources.modelText}</p>
+            <p className="m-0 text-[14px] leading-[1.7]">
+              <span className="text-muted">{ar.sources.modelBase}: </span>
+              <a href="https://huggingface.co/asafaya/bert-mini-arabic" target="_blank" rel="noopener noreferrer" dir="ltr">
+                asafaya/bert-mini-arabic
+              </a>
+            </p>
+            <p className="m-0 text-[14px] leading-[1.7]">
+              <span className="text-muted">{ar.sources.modelData}: </span>
+              <a href="https://data.mendeley.com/datasets/5xth87zwb5" target="_blank" rel="noopener noreferrer" dir="ltr">
+                Sanadset 650K
+              </a>
+            </p>
+            <p className="m-0 text-[14px] leading-[1.7]">{ar.sources.modelMeasured}</p>
+            <p className="m-0 text-[13px] leading-[1.7] text-muted">
+              {ar.sources.modelLicence} {ar.sources.modelFallback}
+            </p>
+          </div>
+        </section>
+
+        <section aria-labelledby="verified-h" className="flex flex-col gap-3">
+          <SectionHeading id="verified-h" size={26}>
+            {ar.sources.verifiedTitle}
+          </SectionHeading>
+          <p className="m-0 text-[15px] leading-[1.7]">
+            {ar.sources.verifiedText(countNoun(hadiths.length, "hadith"), countNoun(routes.filter((r) => r.verification.status === "verified").length, "isnad"))}
+          </p>
+        </section>
+
         <section aria-labelledby="text-h" className="flex flex-col gap-4">
           <SectionHeading id="text-h" size={26}>
             {ar.sources.textTitle}

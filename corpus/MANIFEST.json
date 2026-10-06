@@ -1,0 +1,63 @@
+{
+  "corpus": "fawazahmed0/hadith-api",
+  "repository": "https://github.com/fawazahmed0/hadith-api",
+  "pinnedCommit": "df57907be35291c91ad6a6691180e22ca9920784",
+  "editions": "ara-<book> (Arabic, with diacritics), as published; text origin and licence are not stated by the corpus",
+  "reader": "narrator names read from each isnad by the trained tagger (ml/index_corpus.py, ONNX int8), cut before the Prophet ﷺ is mentioned",
+  "total": 36390,
+  "books": [
+    {
+      "id": "bukhari",
+      "count": 7589,
+      "offset": 0,
+      "sha256": "f887d8724f75fb6e1d5d29342a173af5346ad9b933173c85e6e3cb570063ea33",
+      "chunks": 38
+    },
+    {
+      "id": "muslim",
+      "count": 7563,
+      "offset": 7589,
+      "sha256": "2cb296f3455ff8a3da9f6a0ca3de75da675788b2fb446ad316df297838e48217",
+      "chunks": 38
+    },
+    {
+      "id": "abudawud",
+      "count": 5274,
+      "offset": 15152,
+      "sha256": "30dd3792ea65abe7fd0be8d568809d4eac04e38cbbd588b9c6055218fe43675f",
+      "chunks": 27
+    },
+    {
+      "id": "tirmidhi",
+      "count": 3998,
+      "offset": 20426,
+      "sha256": "22b7ffbbca9beb5d4f108cc0389a3cd16917876b3ceb32993c46e1554afd871b",
+      "chunks": 20
+    },
+    {
+      "id": "nasai",
+      "count": 5765,
+      "offset": 24424,
+      "sha256": "18294d8da9ec9a735719f26709858ac30657c1122f6a39d179f128bfc59ecb80",
+      "chunks": 29
+    },
+    {
+      "id": "ibnmajah",
+      "count": 4343,
+      "offset": 30189,
+      "sha256": "495fcccdea5f2d157794d2b1bd1eaa0e0a5ff5aeb6be2d7817de8f25e3b3349c",
+      "chunks": 22
+    },
+    {
+      "id": "malik",
+      "count": 1858,
+      "offset": 34532,
+      "sha256": "8bcc8001df35cfff1697f792d99d9fa5a865e7d89734ff8a77bd49d12f7465b7",
+      "chunks": 10
+    }
+  ],
+  "names": 16115,
+  "indexedWords": 3438,
+  "shippedBytes": 18039849,
+  "chunkSize": 200
+}

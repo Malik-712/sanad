@@ -14,6 +14,8 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     // Python side (virtualenv packages ship their own JS).
     "ml/**",
+    // Third-party files served as they are (onnxruntime wasm loader, model, corpus).
+    "public/**",
   ]),
 ]);
 

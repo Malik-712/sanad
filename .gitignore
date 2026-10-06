@@ -49,5 +49,16 @@ test-results/
 .DS_Store
 Thumbs.db
 
-# The trained model is not shipped (owner decision 6 Oct, Sanadset licence unclear); it stays in ml/out/.
-public/models/
+# The trained model IS shipped from public/models/sanad-ner (owner decision 6 Oct, evening; Sanadset licence unclear, see docs/SOURCES_LOG.md).
+
+# Corpus raw files and the offline model pass (re-creatable from corpus/MANIFEST.json)
+corpus/raw/
+corpus/names/
+
+# Exception: the shipped browser model
+!public/models/sanad-ner/onnx/model_quantized.onnx
+
+# onnxruntime wasm copied from node_modules by scripts/copy-ort.mjs
+public/ort/
+
+# onnxruntime wasm copied from node_modules by scripts/copy-ort.mjs

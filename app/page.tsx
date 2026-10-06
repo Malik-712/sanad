@@ -1,57 +1,30 @@
-import { Suspense } from "react";
-import { HadithCard } from "@/components/home/HadithCard";
-import { HomeSearch, HomeSearchFromUrl } from "@/components/home/HomeSearch";
+import Image from "next/image";
 import { SiteFooter } from "@/components/layout/SiteFooter";
-import { countNoun, numberWord } from "@/lib/arabic/count";
-import { joinAr } from "@/lib/arabic/list";
+import { ParseApp } from "@/components/parse/ParseApp";
 import { ar } from "@/lib/copy/ar";
-import { companionIds, compilerIds, displayName, matnRoute, routeNumber } from "@/lib/data/derive";
-import { getHadiths, getNarrator, getNarratorMap } from "@/lib/data/load";
-import type { Hadith } from "@/lib/data/types";
-import { buildSearchEntry } from "@/lib/search/filter";
+import { getHadiths, getNarrators } from "@/lib/data/load";
+import { buildParseData } from "@/lib/linker/parseData";
 
-function names(ids: string[]): string[] {
-  return ids.map((id) => {
-    const n = getNarrator(id);
-    return n ? displayName(n) : id;
-  });
-}
-
-function narratedByLine(h: Hadith): string {
-  const companions = companionIds(h);
-  const who = companions.length <= 2 ? joinAr(names(companions)) : ar.home.companionsCount(numberWord(companions.length, "gen"));
-  return ar.home.narratedBy(who, joinAr(names(compilerIds(h))));
-}
-
-// Book and number of the route that carries the matn shown on the hadith page, and the isnad count.
-function sourceLine(h: Hadith): string {
-  const r = matnRoute(h);
-  return ar.home.sourceLine(r.book.nameAr, routeNumber(r), countNoun(h.routes.length, "isnad"));
-}
-
+// Home = the Smart Isnād Explorer: paste an isnād, the model reads it in the browser, and the hadiths that have this
+// isnād (or a close one) are listed and drawn. The narrator records and verified routes it needs are passed as props;
+// the corpus files are static files loaded by the browser. Nothing pasted is sent anywhere.
 export default function Home() {
-  const hadiths = getHadiths();
-  const narrators = getNarratorMap();
-  const entries = hadiths.map((h) => buildSearchEntry(h, narrators));
-  const cards = hadiths.map((h) => ({
-    id: h.id,
-    card: (
-      <HadithCard
-        href={`/hadith/${h.id}`}
-        title={h.titleAr}
-        meta={narratedByLine(h)}
-        sourceLine={sourceLine(h)}
-        openLabel={ar.home.openTree}
-      />
-    ),
-  }));
-  const props = { entries, cards };
+  const data = buildParseData(getHadiths(), getNarrators());
 
   return (
     <>
-      <Suspense fallback={<HomeSearch {...props} initialQuery="" />}>
-        <HomeSearchFromUrl {...props} />
-      </Suspense>
+      <div className="ongreen bg-green text-parchment">
+        <section className="mx-auto flex max-w-[760px] flex-col items-center gap-4 px-5 pt-9 pb-10 text-center lg:pt-12">
+          <Image src="/brand/sanad-mark.svg" alt="" width={64} height={64} priority />
+          <h1 className="m-0 text-[36px] leading-[1.25] font-bold lg:text-[46px]">{ar.slogan}</h1>
+          <p className="m-0 max-w-[560px] text-[16px] leading-[1.8] text-on-green-muted">{ar.explorer.hero}</p>
+        </section>
+      </div>
+
+      <div className="mx-auto flex w-full max-w-[880px] flex-col gap-7 px-4 pt-6 pb-10">
+        <ParseApp data={data} />
+      </div>
+
       <SiteFooter variant="green" />
     </>
   );

@@ -1,18 +1,21 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ChainList, type ChainRow } from "@/components/hadith/ChainList";
 import { AutoNotice } from "@/components/parse/AutoNotice";
 import { MatchTag, NarratorChip } from "@/components/parse/NarratorChip";
 import { NarratorChooser } from "@/components/parse/NarratorChooser";
 import { ParseForm } from "@/components/parse/ParseForm";
+import { ExplorerResults } from "@/components/explorer/ExplorerResults";
 import { buttonOnGreen } from "@/components/ui/buttons";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { countNoun, numberWord } from "@/lib/arabic/count";
 import { toArabicIndic } from "@/lib/arabic/digits";
 import { ar } from "@/lib/copy/ar";
-import { analyzeIsnad, decidedIds, findRoute, readings, type Analysis, type InputProblem } from "@/lib/linker/analyze";
+import { foldName } from "@/lib/corpus/names";
+import { analyzeParsed, checkInput, decidedIds, findRoute, readings, type Analysis, type InputProblem } from "@/lib/linker/analyze";
+import { createReader, type ReaderState } from "@/lib/ml/client";
 import { HIGH, type LinkResult } from "@/lib/linker/linker";
 import type { ParseData } from "@/lib/linker/parseData";
 
@@ -53,10 +56,33 @@ export function ParseApp({ data }: { data: ParseData }) {
   const [choices, setChoices] = useState<Record<number, string>>({});
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const resultsRef = useRef<HTMLDivElement>(null);
+  const [reading, setReading] = useState(false);
+  // The model reads the names in a Web Worker; the rule parser takes over by itself if it cannot (lib/ml/client.ts).
+  const reader = useMemo(() => createReader(), []);
+  const [readerState, setReaderState] = useState<ReaderState>({ status: "idle", progress: 0 });
+  useEffect(() => {
+    const off = reader.subscribe(setReaderState);
+    // Start after the first paint, so the page is usable at once.
+    const t = setTimeout(() => reader.start(), 400);
+    return () => {
+      clearTimeout(t);
+      off();
+    };
+  }, [reader]);
 
-  const run = (value: string) => {
-    const a = analyzeIsnad(value, data.index);
+  const run = async (value: string) => {
     setChoices({});
+    const early = checkInput(value);
+    if (early) {
+      setProblem(early);
+      setResult(null);
+      inputRef.current?.focus();
+      return;
+    }
+    setReading(true);
+    const parse = await reader.read(value);
+    setReading(false);
+    const a = analyzeParsed(value, parse, data.index);
     if (!a.ok) {
       setProblem(a.problem);
       setResult(null);
@@ -103,7 +129,9 @@ export function ParseApp({ data }: { data: ParseData }) {
     const undecided = links.some((l, i) => l.state === "check" && !choices[i] && !l.byContext);
     // The design writes «تطابق عالٍ» on the first confident chip only; the others show the percentage.
     const firstHigh = links.findIndex((l, i) => l.state === "high" && !choices[i]);
-    return { ids, found, rows, links: links_, undecided, firstHigh };
+    // The names the explorer looks for: the chain as read, in text order.
+    const explorerNames = reading.map((i) => ({ folded: foldName(parse.names[i]!.text), display: parse.names[i]!.text }));
+    return { ids, found, rows, links: links_, undecided, firstHigh, explorerNames };
   }, [result, choices, data]);
 
   const sample = data.sample;
@@ -133,6 +161,19 @@ export function ParseApp({ data }: { data: ParseData }) {
         {...(sample && text === sample.text ? { sampleNote: ar.parse.sampleFrom(sample.label) } : {})}
       />
 
+      {readerState.status === "loading" || reading ? (
+        <p role="status" className="m-0 text-[14px] text-muted">
+          {readerState.status === "loading" && readerState.progress > 0
+            ? ar.parse.loadingModelPct(toArabicIndic(Math.round(readerState.progress * 100)))
+            : ar.parse.loadingModel}
+        </p>
+      ) : null}
+      {readerState.status === "fallback" ? (
+        <p role="status" data-reason={readerState.reason} className="m-0 border-s-[3px] border-check ps-3 text-[14px] leading-[1.7]">
+          {ar.parse.fallbackBanner}
+        </p>
+      ) : null}
+
       <p className="sr-only" aria-live="polite">
         {result && view ? ar.parse.announce(names(count), view.found ? view.found.route.hadithTitle : null) : ""}
       </p>
@@ -144,7 +185,7 @@ export function ParseApp({ data }: { data: ParseData }) {
           aria-labelledby="found-h"
           className="flex flex-col gap-7 outline-none motion-safe:animate-[fade-in_180ms_ease-out]"
         >
-          <AutoNotice engine={ar.parse.engine} />
+          <AutoNotice engine={result.parse.engine === "model" ? ar.parse.engine : ar.parse.engineRules} />
 
           <section aria-labelledby="found-h" className="flex flex-col gap-3.5">
             <SectionHeading id="found-h" size={26}>
@@ -202,6 +243,8 @@ export function ParseApp({ data }: { data: ParseData }) {
               </p>
             ) : null}
           </section>
+
+          <ExplorerResults pasted={view.explorerNames.map((x) => x.folded)} display={view.explorerNames.map((x) => x.display)} />
 
           {view.found ? (
             <section className="ongreen flex flex-col gap-2.5 bg-green p-5 text-parchment">
