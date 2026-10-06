@@ -17,10 +17,15 @@ export type ParseResult = {
   names: FoundName[];
   /** sighas[i] is the transmission word between names[i] and names[i+1] ("" if none was found). */
   sighas: string[];
+  /** The transmission word before the first name («حدثنا»), and the one before the Prophet ﷺ («سمعت»), "" if none. */
+  leadSigha: string;
+  prophetSigha: string;
   /** Indices into names where a new branch starts after «ح» (tahwil). */
   tahwil: number[];
   /** The isnad reaches the Prophet ﷺ («رسول الله»، «النبي»). */
   prophet: boolean;
+  /** Indices into names that stand beside the previous name («فلان وابن فلان»): either may be the link. */
+  parallel: number[];
 };
 
 /** A name as a span of word indices [start, end) into tokenize(text). */

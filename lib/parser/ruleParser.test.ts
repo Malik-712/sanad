@@ -79,6 +79,11 @@ describe("parseRules", () => {
     expect(r.tahwil).toEqual([2]);
   });
 
+  it("does not read words after a name and its honorific as another name", () => {
+    expect(names("سمعت زيد بن خالد ﵁ على المنبر، قال: سمعت رسول الله ﷺ")).toEqual(["زيد بن خالد"]);
+    expect(names("عن رجل، من بني فلان، عن عمرو")).toEqual(["رجل", "عمرو"]);
+  });
+
   it("keeps «يعني» inside a name", () => {
     expect(names("حدثنا زيد يعني ابن خالد عن عمرو")).toEqual(["زيد يعني ابن خالد", "عمرو"]);
   });

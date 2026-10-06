@@ -9,7 +9,6 @@ export const SIGHAS = new Set([
   "حدثه",
   "حدثها",
   "حدثهم",
-  "يحدث",
   "اخبرنا",
   "اخبرني",
   "اخبرناه",
@@ -55,6 +54,22 @@ const WEAK = ["قال", "قالت", "قالا", "قالوا", "يقول", "تق�
 
 /** Transmission words that say how the hadith was received (preferred over «قال» when showing a sigha). */
 export const STRONG_SIGHAS = new Set([...SIGHAS].filter((w) => !WEAK.includes(w)));
+
+/** «يحدّث فلانًا»: the next name is the listener, not the next link of the chain. */
+export const LISTENER_VERBS = new Set(["يحدث", "يخبر"]);
+
+/** A name that starts with one of these after «و» is a second name beside the previous one («محمد بن المثنى وابن بشار»). */
+export const PARALLEL_STARTS = new Set(["وابن", "وابو", "وابي", "وابا"]);
+
+/** An explanation of the previous name («يعني ابن علية»، «وهو ابن القاسم»). */
+export function isApposition(words: string[], i: number): boolean {
+  const w = words[i];
+  const next = words[i + 1];
+  return w === "يعني" || ((w === "وهو" || w === "هو") && (next === "ابن" || next === "بن"));
+}
+
+/** Words that are never a name by themselves. */
+export const PRONOUNS = new Set(["هو", "وهو", "هي", "وهي"]);
 
 /** «ح»: tahwil, the isnad starts a new branch. */
 export const TAHWIL = "ح";
