@@ -50,6 +50,21 @@ Used in route and narrator notes, `docs/RESOLUTIONS.md` and `docs/REVIEW.md` to 
 - **Checks against the sources.** `docs/VERIFY-ISNADS.md`, `docs/VERIFY-NARRATORS.md` and `docs/RESOLUTIONS.md` record each check with the page read.
 - **Automatic checks.** `pnpm validate:data` runs before every build: valid JSON, unique ids, every isnad has a source URL, number and book, every narrator in a chain exists, every companion has its honorific.
 
+## 3b. How to verify any fact yourself
+
+Every fact on the site can be checked against its source in under a minute:
+
+1. **An isnad.** On a hadith page, choose the isnad. The source panel shows the book, the edition, the number, the volume and page, and the button «افتح الموضع في المصدر». It opens the Shamela page the text was copied from. Compare the isnad text in the panel with the page, word for word.
+2. **A grade.** Under «الحكم» the panel quotes the ruling with who said it, and links to where it was read. If no ruling was copied, the panel says so instead of showing one.
+3. **A narrator.** Click a narrator in the tree, or open his page. The Taqrib entry is quoted with its entry number and page, with a link. Status «يحتاج تحققًا» means the owner has not checked that record yet.
+4. **The whole data set.** Every value lives in `data/` with its URL next to it. `pnpm validate:data` fails the build if an isnad has no source, number or book. Section 6 below lists all 37 isnads with their source pages.
+
+## 3c. What is not a source
+
+- **`/parse` (paste an isnad).** The names it finds are an automatic reading of the user's own text by the rule parser (`lib/parser/`). They are shown as «استخراج آلي», linked to our narrator records with a confidence state, and never added to `data/`. Nothing pasted leaves the browser.
+- **Sanadset 650K** (Mendeley Data) was used only to train and measure a narrator tagger offline (`ml/`, `docs/EVALUATION.md`). No text from it is shown in the app, and the trained model is not published (licence unclear).
+- **Sample values in the design files** (`design/`) are not data and were never copied into `data/` (CLAUDE.md rule 9).
+
 ## 4. Licences of the sources
 
 | Source | Status |
