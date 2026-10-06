@@ -2,7 +2,7 @@
 
 Live record of what is done, per session in `docs/IMPLEMENTATION.md`. All times are Riyadh time (UTC+3). Update this file at the end of every session.
 
-Last updated: Tue 6 Oct 2026 (Sessions C and D).
+Last updated: Tue 6 Oct 2026, about 12:00 (Sessions E and F; owner steps remain, see below).
 
 ## Summary
 
@@ -14,8 +14,8 @@ Last updated: Tue 6 Oct 2026 (Sessions C and D).
 | Data track (owner + mentor) | ✅ Done 5 Oct | Mon 10:00–19:00 | Mon 10:00–19:00 (fixed: mentor hours) |
 | C — ML narrator tagger | ✅ Done 6 Oct | Mon 14:00–21:00 | Mon 16:30–23:00 |
 | D — Linking and /parse | ✅ Done 6 Oct | Mon 21:00–Tue 01:00 | Mon 23:00–Tue 03:00 |
-| E — Quality and evidence | ⬜ Not started | Tue 08:00–13:00 | Tue 08:30–13:00 |
-| F — Submission package | ⬜ Not started | Tue 13:00–19:00 | Tue 13:00–18:00 |
+| E — Quality and evidence | ✅ Done 6 Oct (user test ⏳ owner) | Tue 08:00–13:00 | Tue 08:30–13:00 |
+| F — Submission package | ✅ Done 6 Oct (video, slides, submit ⏳ owner) | Tue 13:00–19:00 | Tue 13:00–18:00 |
 | Buffer + submit | — | Tue 19:00–20:00 | Tue 18:00–20:00 (submit by 19:00) |
 
 ## Setup
@@ -67,13 +67,15 @@ Last updated: Tue 6 Oct 2026 (Sessions C and D).
 
 | Status | Date and time | Commit ID | Notes |
 | --- | --- | --- | --- |
-| ⬜ Not started | Planned Tue 08:30–13:00 | — | Owner recruits 5 test users on Monday so the user test can run Tuesday morning. |
+| ✅ Done | Tue 6 Oct, 11:00–12:00 | see `git log` | **Lighthouse** on the live site, 5 pages × mobile/desktop, median of 3 runs: Performance 96–100, Accessibility / Best practices / SEO 100 (`docs/EVALUATION.md` c). First run had `/` mobile at 81; fixed by preloading only the Arabic font subset (8 → 4 font preloads). **axe** WCAG 2.1 A/AA: 0 serious or critical issues on every page at 390 and 1440 px. **Playwright**: 35 / 35 locally and on the live site (main flow, narrator, About, 404, `/parse`, keyboard path, privacy, axe). **Hard cases** 15 / 15, 3 identical runs, readable summary (`docs/HARD_CASES.md`). **web-design-guidelines**: `/parse` fixes (long names, placeholder); other pages: no new issues. **CI**: `.github/workflows/ci.yml` (lint, test, validate:data, hard cases ×3, build), badge passing. **User test**: protocol, handouts and blank tables in `docs/USER_TEST.md` — ⏳ to be run by the owner; no result is reported until then. |
+| ↪ Was | Planned Tue 08:30–13:00 | — | Owner recruits 5 test users on Monday so the user test can run Tuesday morning. |
 
 ## Session F — Submission package
 
 | Status | Date and time | Commit ID | Notes |
 | --- | --- | --- | --- |
-| ⬜ Not started | Planned Tue 13:00–18:00 | — | Shortened by 1 h to keep the 2 h buffer the playbook requires. Owner records the video and fills the official deck. Submit on the portal by 19:00 at the latest; keep the confirmation email. |
+| ✅ Done (docs) | Tue 6 Oct, 11:00–12:15 | see `git log` | README (what an isnad is, screenshots, Mermaid diagram, run/test steps, results, limits, licences, AI use); `docs/SOURCES.md` (+ how to verify any fact, what is not a source, dorar.net/Cloudflare note); `docs/REQUIREMENTS.md`; `docs/JUDGES.md` (+ `pnpm eval:all`); `docs/BASELINE.md` (sanad2 tag `challenge-baseline`; the logo is adapted from it and marked in the files; no file byte-identical); `docs/COST.md`; `docs/SOURCES_LOG.md` + `docs/licenses/` (18 shipped + 357 dev npm packages, 65 Python); secrets scan of all 56 commits: none; `docs/VIDEO_SCRIPT.md` (1:55), `docs/PITCH.md` (5:00), `docs/DECK.md` (official template not in the repo). Live check: 100 pages, 0 broken internal links, 89 / 89 shamela.ws links answer, 0 console errors. ⏳ Owner: user test, video, slides in the template, submission. |
+| ↪ Was | Planned Tue 13:00–18:00 | — | Shortened by 1 h to keep the 2 h buffer the playbook requires. Owner records the video and fills the official deck. Submit on the portal by 19:00 at the latest; keep the confirmation email. |
 
 ## Schedule notes
 

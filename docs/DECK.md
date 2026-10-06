@@ -65,7 +65,7 @@ Screenshots to use: `docs/screenshots/home.png`, `docs/screenshots/tree.png`, `d
 - لا يُنشر إسناد بلا مصدر: مدقّق البيانات يوقف البناء.
 - إمكانية الوصول: ٠ مشكلات جسيمة أو حرجة في كل الصفحات (WCAG 2.1 AA، على ٣٩٠ و١٤٤٠ بكسل).
 - اختبارات: ١٣٠ اختبار وحدة، و٣٥ اختبار متصفح على الموقع الحي.
-- Lighthouse: see `docs/EVALUATION.md` for the measured medians before quoting them.
+- Lighthouse على الموقع الحي (الوسيط من ٣ قياسات، ٥ صفحات، جوال وحاسوب): الأداء ٩٦–١٠٠، وإمكانية الوصول وأفضل الممارسات وSEO ‏١٠٠.
 
 *Sources:* `docs/HARD_CASES.md`, `tests/e2e/`, `docs/EVALUATION.md`.
 

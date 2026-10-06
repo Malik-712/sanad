@@ -105,7 +105,8 @@ Playwright uses the Microsoft Edge installed on the machine (`channel: "msedge"`
 | Real routes pasted on `/parse` | right tree found with no help for 27 of 37 | [`docs/EVALUATION.md`](docs/EVALUATION.md) (b) |
 | Accessibility (axe, WCAG 2.1 A/AA) | 0 serious or critical issues on every page at 390 and 1440 px | `tests/e2e/` |
 | End-to-end tests | 35 / 35 locally and on the live site | `tests/e2e/` |
-| Lighthouse | see the table in `docs/EVALUATION.md` | [`docs/EVALUATION.md`](docs/EVALUATION.md) |
+| Live links | 100 pages, 0 broken internal links; 89 / 89 shamela.ws source links answer; 0 console errors | `scripts/check-links.mjs` |
+| Lighthouse (live, median of 3 runs) | 5 pages × mobile and desktop: Performance 96–100; Accessibility, Best practices, SEO 100 | [`docs/EVALUATION.md`](docs/EVALUATION.md) (c) |
 | User test (5 users, by hand vs Sanad) | protocol ready; **not run yet** | [`docs/USER_TEST.md`](docs/USER_TEST.md) |
 
 ## Limits
@@ -113,6 +114,7 @@ Playwright uses the Microsoft Edge installed on the machine (`channel: "msedge"`
 - **5 hadiths** (37 isnads, from al-Bukhari and Muslim) and 92 narrator records. The narrator records are sourced but not yet checked by the owner, so they show «يحتاج تحققًا».
 - The rule parser misses story-style isnads («قلت لفلان…») and two isnads written in one text; such names come out unlinked or need choosing.
 - A tree shows the isnads we copied, not every isnad of the hadith that exists.
+- The dorar.net grade links sit behind Cloudflare bot protection; a visitor may occasionally see a Cloudflare check before the page.
 - Sanad never grades a hadith or a narrator, and it is not a fatwa tool.
 
 ## Repository map

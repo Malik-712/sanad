@@ -78,6 +78,8 @@ The full log of tools, packages, fonts and services with their licences is in `d
 
 ## 5. Open items
 
+- **dorar.net links and Cloudflare (checked 6 Oct).** The 5 dorar.net grade links are valid: opened in Microsoft Edge, `dorar.net/h/45wXAdej` shows the hadith. But dorar.net is behind Cloudflare bot protection: scripted checks get status 403, and after several requests a browser may see «Attention Required» before the page. The grade text, its author and the link are all stored in `data/`, so the quote stays complete. The 89 shamela.ws links all answered (`node scripts/check-links.mjs`).
+
 - Edition details not recorded by Shamela (editors, publishers, years) — to be supplied by the owner if wanted.
 - The licences marked **unclear** above.
 - From `docs/RESOLUTIONS.md`: marfu' or mawquf of `muslim-zuhd-3004-n72`; the identity of «محمد بن حاتم» (specialist); the printed page of `muslim-muqaddima-n1-*`.
