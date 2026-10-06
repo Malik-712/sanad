@@ -26,10 +26,10 @@ Owner decision (5 Oct 2026): every companion record carries the honorific shown 
 | `abu-said-al-khudri` | «رضي الله عنهما» | Owner decision, on Taqrib no. 2253: «له ولأبيه صحبة» — https://shamela.ws/book/8609/158 |
 | the other 8 companions | «رضي الله عنه» | Owner decision after the checks below. |
 
-Checks made for the other companions' fathers (Taqrib, and Ibn Hajar's *al-Isaba*, local Shamela copy, book 9767). «Not found» means no evidence found by exact-phrase search, not proof:
+Checks made for the other companions' fathers (Taqrib, and Ibn Hajar's *al-Isaba*, local Shamela copy, book 9767). «Not found» means no evidence found by exact-phrase search, not proof. *al-Isaba* is cited by name and link only; its text is not reproduced, because the licence of shamela.ws and of the Shamela connector is still unclear (see `docs/REVIEW.md`):
 
-- `anas-ibn-malik`: *al-Isaba* 8/409 (entry of Umm Sulaym): «فغضب مالك وخرج إلى الشّام فمات بها» — https://shamela.ws/book/9767/4322
-- `ali-ibn-abi-talib`: *al-Isaba* 7/196, Abu Talib (no. 10175) is listed under «القسم الرابع» — https://shamela.ws/book/9767/3728
+- `anas-ibn-malik`: *al-Isaba* 8/409, entry of Umm Sulaym (on his father Malik ibn al-Nadr) — https://shamela.ws/book/9767/4322
+- `ali-ibn-abi-talib`: *al-Isaba* 7/196, entry of Abu Talib (no. 10175), in the book's fourth section — https://shamela.ws/book/9767/3728
 - `umar-ibn-al-khattab`, `al-zubayr-ibn-al-awwam`: no entry found for the father in *al-Isaba* (named only in the lineage of others).
 - `al-mughira-ibn-shuba`, `tamim-al-dari`, `salama-ibn-al-akwa`: the father's name was not found as an entry in *al-Isaba*.
 - `abu-hurayra`: the father's name itself is disputed (Taqrib no. 8426).

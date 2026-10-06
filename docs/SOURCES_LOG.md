@@ -25,8 +25,10 @@ Required by the challenge Terms and Conditions, §9. Add a row for every AI tool
 | 2026-10-05 | Dev tool | kill-port 2.0.1 (via npx) | https://www.npmjs.com/package/kill-port | Stops the local test server between checks; not in the repo | MIT |
 | 2026-10-05 | AI tool | Vercel connector (claude.ai) | https://vercel.com | Read-only checks of deployments and project protection settings | Vercel Terms of Service |
 | 2026-10-05 | AI tool | Context7 (documentation lookup) | https://github.com/upstash/context7 | Checking current Tailwind CSS docs | MIT (server code); the hosted service has its own terms |
-| 2026-10-05 | AI tool | Shamela connector («وصلة الشاملة», local Shamela library) | — | Reading Taqrib and al-Isaba pages for the companion honorific checks (`docs/RESOLUTIONS.md`) | unclear (no licence stated by the connector; owner to confirm) |
-| 2026-10-05 | Source | Ibn Hajar, *al-Isaba fi Tamyiz al-Sahaba* (al-Maktaba al-Shamila, book 9767) | https://shamela.ws/book/9767 | Evidence for the honorific decision (entries cited in `docs/RESOLUTIONS.md`); nothing copied into `data/` | Classical text; shamela.ws terms not yet checked (Stage 10) — unclear |
+| 2026-10-05 | AI tool | Shamela connector («وصلة الشاملة», local Shamela library) | — | Reading Taqrib and al-Isaba pages for the companion honorific checks (`docs/RESOLUTIONS.md`) | unclear — no licence stated; not used by the public site (see `docs/REVIEW.md`) |
+| 2026-10-05 | Source | Ibn Hajar, *al-Isaba fi Tamyiz al-Sahaba* (al-Maktaba al-Shamila, book 9767) | https://shamela.ws/book/9767 | Evidence for the honorific decision (entries cited in `docs/RESOLUTIONS.md`); nothing copied into `data/` | unclear — cited by name and link only, no text reproduced (owner decision, 6 Oct; see `docs/REVIEW.md`) |
+
+| 2026-10-06 | Font | Scheherazade New, Regular (unmodified file from github.com/google/fonts, `ofl/scheherazadenew`) | https://software.sil.org/scheherazade/ | Fallback for one sign only, «﵁» (U+FD41), which IBM Plex Sans Arabic lacks; `unicode-range: U+FD41`, fetched only on pages that contain the sign | SIL Open Font License 1.1, Reserved Font Names «Scheherazade» and «SIL»; the file is shipped unmodified with `app/fonts/OFL-ScheherazadeNew.txt` |
 
 ## To add when used
 

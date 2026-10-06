@@ -137,3 +137,11 @@ Numbers after this step: 92 narrators; `identification` 19 «نص», 29 «قري
 The first draft also listed a "difference" in `muslim-muqaddima-n1-b/c` (missing Abu Bakr ibn Abi Shayba / Ibn Bashshar). That is not a defect: each of the three routes follows one path of the printed tahwil isnad.
 
 Still open: marfu'/mawquf of `muslim-zuhd-3004-n72`; the Hatim comparison (specialist); the page of `muslim-muqaddima-n1-*`; the Taqrib edition; a specialist's review of one full hadith.
+## 6 Oct 2026 — licences marked unclear (owner decision)
+
+These two items stay **unclear** until the owner confirms their licence. Until then their text is not published and the public version does not depend on them: they are cited by name and link only.
+
+| Item | Used for | Status |
+| --- | --- | --- |
+| Shamela connector («وصلة الشاملة», local Shamela library) | Reading pages during the source checks (companion honorifics) | **unclear** — no licence stated |
+| shamela.ws, for *al-Isaba* (book 9767) | Evidence for the honorific decision (`docs/RESOLUTIONS.md`) | **unclear** — the quoted wording was removed from `RESOLUTIONS.md`; only the source name and page links remain |
