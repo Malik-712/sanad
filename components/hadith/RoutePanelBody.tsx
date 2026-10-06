@@ -16,7 +16,7 @@ function SourceRef({ by, url }: { by: string; url: string }) {
       <Diamond size={7} />
       <span>
         {by}،{" "}
-        <a href={url} target="_blank" rel="noopener noreferrer">
+        <a href={url} target="_blank" rel="noopener noreferrer" className="py-2">
           {ar.hadith.gradeSource}
         </a>
       </span>

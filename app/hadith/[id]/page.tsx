@@ -95,7 +95,7 @@ export default async function HadithPage({ params }: PageProps<"/hadith/[id]">) 
             </h1>
             <p className="m-0 text-[14px] leading-[1.7] text-on-green-muted">
               {ar.hadith.matnFrom}:{" "}
-              <a href={h.matnSource.url} target="_blank" rel="noopener noreferrer" className="text-parchment hover:text-parchment">
+              <a href={h.matnSource.url} target="_blank" rel="noopener noreferrer" className="py-2 text-parchment hover:text-parchment">
                 {toArabicIndic(h.matnSource.book)}، {toArabicIndic(h.matnSource.number)}
               </a>
             </p>
@@ -106,7 +106,7 @@ export default async function HadithPage({ params }: PageProps<"/hadith/[id]">) 
                   {h.matnVariants.map((v) => (
                     <li key={v.sourceUrl + v.textAr}>
                       «{v.textAr}»: {v.note}{" "}
-                      <a href={v.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-parchment hover:text-parchment">
+                      <a href={v.sourceUrl} target="_blank" rel="noopener noreferrer" className="py-2 text-parchment hover:text-parchment">
                         {ar.hadith.variantSource}
                       </a>
                     </li>

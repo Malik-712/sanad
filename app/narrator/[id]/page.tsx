@@ -87,7 +87,7 @@ export default async function NarratorPage({ params }: PageProps<"/narrator/[id]
                       {n.taqrib.url ? (
                         <>
                           {"، "}
-                          <a href={n.taqrib.url} target="_blank" rel="noopener noreferrer">
+                          <a href={n.taqrib.url} target="_blank" rel="noopener noreferrer" className="py-2">
                             {ar.narrator.sourceLink}
                           </a>
                         </>
