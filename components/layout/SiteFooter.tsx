@@ -6,6 +6,8 @@ import { ar } from "@/lib/copy/ar";
 // "green" (Home, narrator): disclaimer + «كيف نعمل، ومن أين ننقل»;
 // "about" (About): the demo line only when sample data exists + «ابدأ البحث»;
 // "plain" (Paste): a 2px ink rule with the disclaimer.
+// The inner width is the page's 720px column less the footer's own padding (20px, or 16px for "plain"),
+// so the footer text lines up with the band and the content above it.
 // `wide` (Home): from 1024px the content lines up with the Home container (1344px, 48px gutters) instead of the 720px column.
 const goldUnderline =
   "inline-flex min-h-11 items-center self-start text-parchment underline decoration-gold decoration-2 underline-offset-[6px] hover:text-parchment";
@@ -22,7 +24,7 @@ export function SiteFooter({
   if (variant === "plain") {
     return (
       <footer className="mt-auto border-t-2 border-ink px-4 pt-5 pb-7">
-        <div className="mx-auto flex max-w-[720px] items-start gap-2.5">
+        <div className="mx-auto flex max-w-[688px] items-start gap-2.5">
           <Diamond tone="green" className="mt-[9px]" />
           <span className="text-[14px] leading-[1.7]">{ar.disclaimerLine}</span>
         </div>
@@ -33,7 +35,7 @@ export function SiteFooter({
   if (variant === "about") {
     return (
       <footer className="ongreen mt-auto bg-green px-5 pt-6 pb-7 text-parchment">
-        <div className="mx-auto flex max-w-[720px] flex-col gap-2">
+        <div className="mx-auto flex max-w-[680px] flex-col gap-2">
           {showDemoNote ? <span className="text-[14px] text-on-green-muted">{ar.footer.demoNote}</span> : null}
           <Link href="/" className={`${goldUnderline} text-[15px]`}>
             {ar.footer.startSearch}
@@ -45,7 +47,7 @@ export function SiteFooter({
 
   return (
     <footer className={`ongreen mt-auto bg-green px-5 pt-7 pb-8 text-parchment ${wide ? "lg:px-12" : ""}`}>
-      <div className={`mx-auto flex max-w-[720px] flex-col gap-3 ${wide ? "lg:max-w-[84rem]" : ""}`}>
+      <div className={`mx-auto flex max-w-[680px] flex-col gap-3 ${wide ? "lg:max-w-[84rem]" : ""}`}>
         <p className="m-0 text-[16px] leading-[1.7] font-medium">{ar.disclaimerLine}</p>
         <Link href="/about" className={`${goldUnderline} text-[14px]`}>
           {ar.footer.aboutLink}
