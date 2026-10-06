@@ -36,11 +36,11 @@ Required by the challenge Terms and Conditions, §9. Add a row for every AI tool
 
 | 2026-10-06 | Library | zod 4.6.5 | https://www.npmjs.com/package/zod | Data schema and validation (`lib/data/schema.ts`, `pnpm validate:data`) | MIT |
 | 2026-10-06 | Library | @dagrejs/dagre 3.1.1 | https://www.npmjs.com/package/@dagrejs/dagre | Tree layout (positions of the isnad tree nodes) | MIT |
+| 2026-10-06 | Dataset | Sanadset 650K (Mendeley Data, DOI 10.17632/5xth87zwb5.5) | https://data.mendeley.com/datasets/5xth87zwb5 | Training and evaluation data for the narrator tagger (`ml/`); the raw file is not committed | unclear — no licence line shown on the page (checked 6 Oct). Owner decision 6 Oct: proceed for research and evaluation only; the rule parser stays the default engine, and the trained model is reported in `docs/EVALUATION.md` with this note |
+| 2026-10-06 | Model | asafaya/bert-mini-arabic (base model for fine-tuning) | https://huggingface.co/asafaya/bert-mini-arabic | Starting weights for the narrator tagger | unclear — the Hugging Face card has no licence field; the author's code repository (github.com/alisafaya/Arabic-BERT) shows MIT, with no separate terms for the pretrained weights. Citation requested: Safaya et al., 2020 (SemEval) |
 
 ## To add when used
 
-- Sanadset 650K (training and evaluation data) — licence to be checked on Mendeley Data.
-- asafaya/bert-mini-arabic (base model) — licence to be checked on Hugging Face.
 - Every npm and Python package (name, version, licence) — can be generated with `npx license-checker --summary` and `pip-licenses`.
 
 ## How licences were checked
