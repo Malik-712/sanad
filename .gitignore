@@ -30,6 +30,8 @@ venv/
 ml/data/
 ml/outputs/
 ml/checkpoints/
+ml/out/
+ml/preds/
 *.onnx
 *.safetensors
 *.bin
@@ -48,4 +50,4 @@ test-results/
 Thumbs.db
 
 # Keep the exported browser model (Session C)
-!public/models/**/*.onnx
+!public/models/sanad-ner/**
