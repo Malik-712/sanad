@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
-// no-transform: the CDN must not recompress the model or the wasm (a recompressed stream failed inside Transformers.js on a Vercel preview).
-const immutable = "public, max-age=31536000, immutable, no-transform";
+// The model (11.7 MB) and the wasm (14 MB) are kept by Transformers.js in the browser's Cache Storage, which has room for
+// them. The HTTP cache must not also try to store them: a fresh browser profile refuses an entry that large
+// (net::ERR_CACHE_WRITE_FAILURE) and that aborts the download. no-store keeps them out of it; no-transform stops
+// the CDN recompressing the stream.
+const bigFile = "no-store, no-transform";
 
 const nextConfig: NextConfig = {
   // `next dev` would otherwise append its own block to CLAUDE.md, which only the owner edits.
@@ -16,8 +19,8 @@ const nextConfig: NextConfig = {
   },
   async headers() {
     return [
-      { source: "/models/:path*", headers: [{ key: "Cache-Control", value: immutable }] },
-      { source: "/ort/:path*", headers: [{ key: "Cache-Control", value: immutable }] },
+      { source: "/models/:path*", headers: [{ key: "Cache-Control", value: bigFile }] },
+      { source: "/ort/:path*", headers: [{ key: "Cache-Control", value: bigFile }] },
       { source: "/corpus/:path*", headers: [{ key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" }] },
     ];
   },

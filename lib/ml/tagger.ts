@@ -22,9 +22,10 @@ export async function createTagger(opts: {
   env.allowRemoteModels = false;
   env.allowLocalModels = true;
   env.localModelPath = opts.localModelPath;
-  // The browser's own HTTP cache already keeps these files (immutable); Transformers.js's extra cache is not needed.
-  env.useBrowserCache = false;
-  env.useWasmCache = false;
+  // The model and the wasm are kept in the browser's Cache Storage (not the HTTP cache: see next.config.ts), so a
+  // second visit does not download them again.
+  env.useBrowserCache = true;
+  env.useWasmCache = true;
   if (opts.wasmPath) {
     const wasm = env.backends.onnx.wasm;
     if (wasm) {
