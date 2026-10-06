@@ -56,9 +56,10 @@ export function CorpusHadith() {
     };
   }, []);
 
+  // While loading the page is a full screen tall, so the footer is below the fold and does not jump when the hadith arrives.
   if (state.s !== "ok")
     return (
-      <div className="mx-auto flex w-full max-w-[720px] flex-col gap-4 px-4 pt-8 pb-10">
+      <div key="loading" className="mx-auto flex min-h-[100svh] w-full max-w-[720px] flex-col gap-4 px-4 pt-8 pb-10">
         <p role="status" className="m-0 text-[16px]">
           {state.s === "loading" ? T.loading : T.notFound}
         </p>
@@ -73,8 +74,9 @@ export function CorpusHadith() {
   const book = bookById(doc.book)!;
   const title = ar.explorer.bookNumber(book.nameAr, toArabicIndic(doc.number));
 
+  // A distinct key: React must replace the loading block, not resize it into the green band (a layout shift).
   return (
-    <>
+    <div key="ok" className="contents">
       <div className="ongreen bg-green text-parchment">
         <div className="mx-auto flex max-w-[720px] flex-col gap-2 px-5 pt-5 pb-7">
           <Link href="/" className="inline-flex min-h-11 items-center self-start text-[14px] text-on-green-muted no-underline hover:text-parchment">
@@ -180,6 +182,6 @@ export function CorpusHadith() {
           {ar.disclaimerLine}
         </p>
       </div>
-    </>
+    </div>
   );
 }
