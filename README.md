@@ -83,14 +83,14 @@ pnpm dev                 # http://localhost:3000
 
 ```bash
 pnpm lint                # ESLint
-pnpm test                # 130 unit tests (Vitest): engine, parser, linker, normaliser, data rules
+pnpm test                # 135 unit tests (Vitest): engine, parser, linker, normaliser, data rules
 pnpm validate:data       # every isnad has a source, every narrator exists, ...
 pnpm build               # production build (runs validate:data first)
 
 pnpm eval:all            # unit tests + hard cases ×3 (identical hashes) + the 37 routes end to end
 pnpm hardcases --runs 3  # 15 hard cases, writes docs/HARD_CASES.md
 
-pnpm build && pnpm test:e2e                                 # 35 Playwright tests at 390 and 1440 px (Edge)
+pnpm build && pnpm test:e2e                                 # 43 Playwright tests at 390 and 1440 px (Edge)
 BASE_URL=https://sanad-pi-five.vercel.app pnpm test:e2e     # the same tests on the live site
 bash scripts/lighthouse.sh https://sanad-pi-five.vercel.app 3   # Lighthouse, median of 3 runs
 ```
@@ -104,9 +104,9 @@ Playwright uses the Microsoft Edge installed on the machine (`channel: "msedge"`
 | Hard cases (ambiguous names, unknown narrator, broken chain, not an isnad, «ح», tashkeel, …) | 15 / 15 pass; 3 runs, identical SHA-256 | [`docs/HARD_CASES.md`](docs/HARD_CASES.md) |
 | Real routes pasted on `/parse` | right tree found with no help for 27 of 37 | [`docs/EVALUATION.md`](docs/EVALUATION.md) (b) |
 | Accessibility (axe, WCAG 2.1 A/AA) | 0 serious or critical issues on every page at 390 and 1440 px | `tests/e2e/` |
-| End-to-end tests | 35 / 35 locally and on the live site | `tests/e2e/` |
+| End-to-end tests | 43 / 43 locally and on the live site | `tests/e2e/` |
 | Live links | 100 pages, 0 broken internal links; 89 / 89 shamela.ws source links answer; 0 console errors | `scripts/check-links.mjs` |
-| Lighthouse (live, median of 3 runs) | 5 pages × mobile and desktop: Performance 96–100; Accessibility, Best practices, SEO 100 | [`docs/EVALUATION.md`](docs/EVALUATION.md) (c) |
+| Lighthouse (live, median of 3 runs) | 5 pages × mobile and desktop: Performance 95–100; Accessibility, Best practices, SEO 100; layout shift (CLS) 0.046 or less | [`docs/EVALUATION.md`](docs/EVALUATION.md) (c) |
 | User test (5 users, by hand vs Sanad) | protocol ready; **not run yet** | [`docs/USER_TEST.md`](docs/USER_TEST.md) |
 
 ## Limits

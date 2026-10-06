@@ -77,6 +77,12 @@ Last updated: Tue 6 Oct 2026, 11:40 (Sessions E and F; owner steps remain, see b
 | ✅ Done (docs) | Tue 6 Oct, 11:00–11:40 | see `git log` | README (what an isnad is, screenshots, Mermaid diagram, run/test steps, results, limits, licences, AI use); `docs/SOURCES.md` (+ how to verify any fact, what is not a source, dorar.net/Cloudflare note); `docs/REQUIREMENTS.md`; `docs/JUDGES.md` (+ `pnpm eval:all`); `docs/BASELINE.md` (sanad2 tag `challenge-baseline`; the logo is adapted from it and marked in the files; no file byte-identical); `docs/COST.md`; `docs/SOURCES_LOG.md` + `docs/licenses/` (18 shipped + 357 dev npm packages, 65 Python); secrets scan of all 56 commits: none; `docs/VIDEO_SCRIPT.md` (1:55), `docs/PITCH.md` (5:00), `docs/DECK.md` (official template not in the repo). Live check: 100 pages, 0 broken internal links, 89 / 89 shamela.ws links answer, 0 console errors. ⏳ Owner: user test, video, slides in the template, submission. |
 | ↪ Was | Planned Tue 13:00–18:00 | — | Shortened by 1 h to keep the 2 h buffer the playbook requires. Owner records the video and fills the official deck. Submit on the portal by 19:00 at the latest; keep the confirmation email. |
 
+## After F — simpler site (owner request, 6 Oct)
+
+| Status | Date and time | Commit ID | Notes |
+| --- | --- | --- | --- |
+| ✅ Done | Tue 6 Oct | `1469f68` + docs | Search-first Home (logo, slogan, one search box, list with book, number and isnad count; honest no-result message with «الصق إسنادًا»); three-link header; search by text, narrator, book and hadith number (per book), diacritics and letter forms ignored (10 Vitest cases); source block above the tree with «افتح في المصدر», status sentence per isnad, ruling with who said it and where, «كيف أتحقق من هذا؟»; narrator edition in short with «تفاصيل المصدر»; new `/sources` (status counted from data/); labelled tree controls and a legend line; CLS fix (desktop hadith 0.115 → 0.000). Checks: 135 unit tests, hard cases 15 / 15 ×3, 43 / 43 e2e locally and live, Lighthouse median 95–100 (mobile hadith re-measured alone, see EVALUATION ‡). `data/` unchanged. Open: page of `muslim-muqaddima-n1-a/b/c` (Shamela label «١/ ١» unreliable) → shown «غير مذكور», owner to decide. |
+
 ## Schedule notes
 
 - At 08:41 Monday, Session A has not started; the original plan had it 2 h 41 min in. We are about **3 hours behind**.

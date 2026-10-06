@@ -6,7 +6,7 @@ Each official requirement, as recorded in `docs/BRIEF.md` from the challenge gui
 
 | # | Requirement | What meets it | Evidence | Status |
 | --- | --- | --- | --- | --- |
-| D1 | Working, complete product (not a prototype) | Five page types live: Home with search, hadith tree with source panels, 92 narrator pages, `/parse`, About | https://sanad-pi-five.vercel.app · 35 / 35 Playwright tests on the live site (`tests/e2e/`) | ✅ |
+| D1 | Working, complete product (not a prototype) | Five page types live: Home with search, hadith tree with source panels, 92 narrator pages, `/parse`, About | https://sanad-pi-five.vercel.app · 43 / 43 Playwright tests on the live site (`tests/e2e/`) | ✅ |
 | D2 | Public GitHub repo with setup docs, licences, no secrets | Public repo; README with install, run and test steps; licence; package licences | https://github.com/Malik-712/sanad · `README.md` · `LICENSE` · `docs/licenses/` · history scan: 56 commits, no key or password found | ✅ |
 | D3 | Demo video, 2 minutes or less | Shot-by-shot script with timings and recording steps | `docs/VIDEO_SCRIPT.md` | ⏳ owner records |
 | D4 | Presentation on the official template | Slide-by-slide content in the template's order, built and planned on separate slides | `docs/DECK.md`, `docs/PITCH.md` (the official template file is not in the repo) | ⏳ owner pastes into the template |
@@ -40,7 +40,7 @@ Each official requirement, as recorded in `docs/BRIEF.md` from the challenge gui
 
 | Criterion (weight) | What meets it | Evidence | Status |
 | --- | --- | --- | --- |
-| Technical quality and AI use (25 %) | Narrator tagger trained, measured against a rule baseline on 300 isnads from 9 held-out books; linker with confidence states | Rules F1 0.757 · model F1 0.916 (ONNX int8) · whole chain 33.3 % vs 71.7 % (`docs/EVALUATION.md` a) · 130 unit tests · CI | ⚠️ model trained and measured, **not published** (data licence unclear); the site runs the rules |
+| Technical quality and AI use (25 %) | Narrator tagger trained, measured against a rule baseline on 300 isnads from 9 held-out books; linker with confidence states | Rules F1 0.757 · model F1 0.916 (ONNX int8) · whole chain 33.3 % vs 71.7 % (`docs/EVALUATION.md` a) · 135 unit tests · CI | ⚠️ model trained and measured, **not published** (data licence unclear); the site runs the rules |
 | Benefit per the track test (20 %) | Tree in one page vs drawing by hand; isnad lookup on `/parse` | User-test protocol ready (`docs/USER_TEST.md`); routes end to end (`docs/EVALUATION.md` b) | ⏳ 5-user test not run yet |
 | Reliability and scholarly safety (15 %) | Every isnad cited; grades only quoted; abstains when unsure; repeatable | 15 / 15 hard cases, 3 runs, identical SHA-256 (`docs/HARD_CASES.md`) · `pnpm validate:data` before every build | ✅ |
 | Innovation and added value (15 %) | All isnads of one hadith merged into one sourced tree with its meeting point, and a pasted isnad matched to it, instead of reading one isnad at a time | Live site · `docs/PITCH.md` | ✅ |

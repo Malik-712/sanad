@@ -14,7 +14,7 @@ How much Sanad costs to run, what it depends on, how it is kept correct, and wha
 | Source code and CI | GitHub public repository; GitHub Actions on every push | $0 |
 | Domain | The free `*.vercel.app` address | $0 |
 
-What a visitor downloads (Lighthouse, median of 3 runs, mobile): **510–718 KB per page**, fonts included (`docs/EVALUATION.md` (c)).
+What a visitor downloads (Lighthouse, median of 3 runs, mobile): **437–616 KB per page**, fonts included (`docs/EVALUATION.md` (c)).
 
 **One-off costs already paid (not running costs):** the model was trained once on a laptop CPU in 27.9 minutes; no cloud GPU was used.
 
@@ -51,7 +51,7 @@ What a visitor downloads (Lighthouse, median of 3 runs, mobile): **510–718 KB 
 | Each new hadith | Copy every isnad word for word with its page link (`method`, `retrieved`), add missing narrators, run `pnpm validate:data`; new data starts «unverified» | Owner | `data/`, `docs/SOURCES.md` |
 | Before marking «verified» | Check each isnad and narrator against its page; record what was checked | Owner, then a hadith specialist | `docs/REVIEW.md` |
 | Next | Review the 92 narrator records (all «يحتاج تحققًا» today) with a specialist | Owner + specialist | `docs/REVIEW.md` |
-| Every push | Lint, 130 unit tests, data validation, hard cases ×3, build | GitHub Actions | `.github/workflows/ci.yml` |
+| Every push | Lint, 135 unit tests, data validation, hard cases ×3, build | GitHub Actions | `.github/workflows/ci.yml` |
 | Monthly | Open every source link (37 isnad pages, Taqrib pages); fix moved ones | Owner | `docs/REVIEW.md` |
 | On each dependency update | Re-run `pnpm test:e2e`, Lighthouse and the licence lists | Owner | `docs/EVALUATION.md`, `docs/licenses/` |
 

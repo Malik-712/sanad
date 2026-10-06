@@ -34,14 +34,14 @@ pnpm eval:all
 
 | Step | What it checks | Result on 6 Oct 2026 |
 | --- | --- | --- |
-| `pnpm test` | 130 unit tests: isnad engine, parser, linker, Arabic normaliser, data rules | 130 / 130 pass |
+| `pnpm test` | 135 unit tests: isnad engine, parser, linker, search, Arabic normaliser, data rules | 135 / 135 pass |
 | `pnpm hardcases --runs 3` | 15 hard cases, run three times; SHA-256 of each run's output | 15 / 15 pass; 3 identical hashes (`docs/HARD_CASES.md`) |
 | `pnpm eval:e2e` | All 37 isnads in `data/` pasted into the `/parse` pipeline | right tree found with no help for 27 of 37; 28 after choosing (`docs/EVALUATION.md` b) |
 
 More checks:
 
 ```bash
-pnpm build && pnpm test:e2e                               # 35 browser tests at 390 and 1440 px, incl. axe and the privacy test
+pnpm build && pnpm test:e2e                               # 43 browser tests at 390 and 1440 px, incl. axe and the privacy test
 BASE_URL=https://sanad-pi-five.vercel.app pnpm test:e2e   # the same on the live site
 ```
 
