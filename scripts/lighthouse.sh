@@ -8,7 +8,7 @@ RUNS="${2:-3}"
 OUT="ml/out/lighthouse"
 mkdir -p "$OUT"
 export CHROME_PATH="${CHROME_PATH:-/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe}"
-for page in "/" "/hadith/niyyah" "/narrator/umar-ibn-al-khattab" "/parse" "/about"; do
+for page in "/" "/c/bukhari/1" "/hadith/niyyah" "/narrator/umar-ibn-al-khattab" "/sources" "/about"; do
   name=$(echo "$page" | tr '/' '_'); [ "$name" = "_" ] && name="_home"
   for ff in mobile desktop; do
     flags="--form-factor=$ff"
